@@ -1,0 +1,255 @@
+/* ===========================================
+    Font Gallery
+  ============================================ */
+/* Playfair Display - Regular */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("assets/styles/fonts/PlayfairDisplay-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Playfair Display - Italic */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("assets/styles/fonts/PlayfairDisplay-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Playfair Display - Medium */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("assets/styles/fonts/PlayfairDisplay-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Playfair Display - Medium Italic */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("assets/styles/fonts/PlayfairDisplay-MediumItalic.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Playfair Display - SemiBold */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("assets/styles/fonts/PlayfairDisplay-SemiBold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Playfair Display - SemiBold Italic */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("assets/styles/fonts/PlayfairDisplay-SemiBoldItalic.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* Playfair Display - Bold */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("assets/styles/fonts/PlayfairDisplay-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Playfair Display - Bold Italic */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("assets/styles/fonts/PlayfairDisplay-BoldItalic.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Playfair Display - Black */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("assets/styles/fonts/PlayfairDisplay-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* Playfair Display - Black Italic */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("assets/styles/fonts/PlayfairDisplay-BlackItalic.ttf")
+    format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* ===========================================
+    CSS VARIABLES & THEME SETUP
+   =========================================== */
+:root {
+  /* Light Theme Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #f1f3f5;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --text-tertiary: #adb5bd;
+  --accent-color: #e63946;
+  --accent-color2: #d62828;
+  --accent: #495057;
+  --accent-light: #e9ecef;
+  --border: #e0e0e0;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow-hover: rgba(0, 0, 0, 0.15);
+  --overlay: rgba(0, 0, 0, 0.5);
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --card-bg: #ffffff;
+  --gradient-primary: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  --gradient-secondary: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+  --link-color: #3f5dae;
+  /* Typography */
+  --font-primary: "Inter", sans-serif;
+  --font-secondary: "Playfair Display", serif;
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  --spacing-4xl: 5rem;
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #141414;
+  --bg-tertiary: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-tertiary: #888888;
+  --accent: #e0e0e0;
+  --accent-light: #333333;
+  --accent-color: #ffd700;
+  --accent-color2: #ffc300;
+  --border: #333333;
+  --shadow: rgba(255, 255, 255, 0.1);
+  --shadow-hover: rgba(255, 255, 255, 0.15);
+  --overlay: rgba(0, 0, 0, 0.6);
+  --nav-bg: rgba(10, 10, 10, 0.95);
+  --card-bg: #141414;
+  --link-color: #f5a623;
+}
+
+/* ===========================================
+    GLOBAL STYLES & RESET
+   =========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background-color var(--transition-normal),
+    color var(--transition-normal);
+  overflow-x: hidden;
+}
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-secondary);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
+}
+h1 {
+  font-size: clamp(1.75rem, 5vw, 3rem);
+}
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+h3 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+}
+p {
+  margin-bottom: var(--spacing-md);
+  color: var(--text-secondary);
+}
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+a:hover {
+  color: var(--text-primary);
+}
+
+img,
+picture,
+video,
+canvas,
+svg,
+label,
+input {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--textcolor);
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Default scrollbar styling (Webkit browsers) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bglight);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--rose);
+  border-radius: 6px;
+  border: 2px solid var(--bglight); /* creates padding effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--blue); /* On hover: blue for contrast */
+}
