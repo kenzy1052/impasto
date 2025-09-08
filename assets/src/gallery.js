@@ -30,7 +30,7 @@ function createGalleryItem(imageNumber) {
   item.className = "gallery-item fade-in";
   item.onclick = () => openLightbox(imageNumber);
   const img = document.createElement("img");
-  img.src = `/assets/images/img${imageNumber}.jpg`;
+  img.src = `assets/images/img${imageNumber}.jpg`;
   img.alt = `Gallery Image ${imageNumber}`;
   img.className = "no-context-menu";
   img.draggable = false;
@@ -90,7 +90,7 @@ function loadMoreImages() {
 function openLightbox(imageNumber) {
   const lightbox = document.getElementById("lightbox");
   const lightboxImage = document.getElementById("lightboxImage");
-  lightboxImage.src = `/assets/images/img${imageNumber}.jpg`;
+  lightboxImage.src = `assets/images/img${imageNumber}.jpg`;
   lightboxImage.alt = `Gallery Image ${imageNumber}`;
   lightbox.classList.add("active");
   // Prevent body scroll
