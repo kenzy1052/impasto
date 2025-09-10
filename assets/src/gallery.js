@@ -29,7 +29,7 @@ function createGalleryItem(imageNumber) {
   item.className = "gallery-item fade-in";
   item.onclick = () => openLightbox(imageNumber);
   const img = document.createElement("img");
-  img.src = `../images/img${imageNumber}.jpg`;
+  img.src = `/assets/images/img${imageNumber}.jpg`;
   img.alt = `Gallery Image ${imageNumber}`;
   img.className = "no-context-menu";
   img.draggable = false;
@@ -84,7 +84,7 @@ function openLightbox(imageNumber) {
   currentZoom = 1;
   translateX = 0;
   translateY = 0;
-  lightboxImage.src = `../images/img${imageNumber}.jpg`;
+  lightboxImage.src = `/assets/images/img${imageNumber}.jpg`;
   lightboxImage.alt = `Gallery Image ${imageNumber}`;
   lightboxCounter.textContent = `Image ${imageNumber} of ${totalImages}`;
   lightbox.classList.add("active");
@@ -114,7 +114,7 @@ function closeLightbox() {
 function updateLightboxImage() {
   const lightboxImage = document.getElementById("lightboxImage");
   const lightboxCounter = document.getElementById("lightboxCounter");
-  lightboxImage.src = `../images/img${currentImageIndex}.jpg`;
+  lightboxImage.src = `/assets/images/img${currentImageIndex}.jpg`;
   lightboxImage.alt = `Gallery Image ${currentImageIndex}`;
   lightboxCounter.textContent = `Image ${currentImageIndex} of ${totalImages}`;
   currentZoom = 1;
