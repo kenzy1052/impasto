@@ -57,7 +57,7 @@ function toggleTheme() {
     themeIcon.className = "fas fa-moon theme-icon";
     themeText.textContent = "Dark";
     logos.forEach((logo) => {
-      logo.src = "/assets/images/logo2.png";
+      logo.src = "assets/images/logo2.png";
     });
     localStorage.setItem("theme", "light");
   } else {
@@ -66,7 +66,7 @@ function toggleTheme() {
     themeIcon.className = "fas fa-sun theme-icon";
     themeText.textContent = "Light";
     logos.forEach((logo) => {
-      logo.src = "/assets/images/logo2d.png";
+      logo.src = "assets/images/logo2d.png";
     });
     localStorage.setItem("theme", "dark");
   }
@@ -83,7 +83,7 @@ function loadSavedTheme() {
     document.querySelector(".theme-text").textContent = "Light";
     const logos = document.querySelectorAll(".logo-icon, .footer-logo-icon");
     logos.forEach((logo) => {
-      logo.src = "/assets/images/logo2d.png";
+      logo.src = "assets/images/logo2d.png";
     });
   }
 }
