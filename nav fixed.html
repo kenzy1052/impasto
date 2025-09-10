@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta
+      name="keywords"
+      content="photography, studio, professional, memories, artistry, technology"
+    />
+    <meta name="author" content="Impasto Photography Studio" />
+    <title>
+      Impasto Photography Studio | Professional Photography Services
+    </title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Open Graph Meta Tags for SEO -->
+    <meta
+      property="og:title"
+      content="Impasto Photography Studio | Professional Photography Services"
+    />
+    <meta
+      property="og:description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://impastophotography.com" />
+    <meta
+      property="og:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Impasto Photography Studio | Professional Photography Services"
+    />
+    <meta
+      name="twitter:description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta
+      name="twitter:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/images/logo-fav.png" />
+    <link rel="apple-touch-icon" href="/assets/images/logo.png" />
+
+    <!--Default Styles-->
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+
+    <link rel="stylesheet" href="assets/styles/components/gallery.css" />
+
+    <style>
+      /* ===========================================
+          NAVIGATION - MOBILE FIRST
+         =========================================== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background: var(--nav-bg);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        transition: all var(--transition-normal);
+      }
+      .navbar.scrolled {
+        box-shadow: 0 4px 20px var(--shadow);
+      }
+      .nav-container {
+        margin: 0 auto;
+        padding: 0 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+      }
+      .logo {
+        transition: all var(--transition-normal);
+      }
+      .logo:hover {
+        transform: scale(1.05);
+      }
+      .logo-icon {
+        width: 90px;
+        height: auto;
+      }
+      .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: calc(100vh - 60px);
+        background: var(--nav-bg);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: var(--spacing-xl);
+        transition: left var(--transition-normal);
+        list-style: none;
+        overflow-y: auto;
+        box-shadow: 2px 0 10px var(--shadow);
+      }
+      .nav-menu.active {
+        left: 0;
+      }
+      .nav-item {
+        width: 100%;
+        text-align: left;
+        position: relative;
+      }
+      .nav-link-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+      .nav-link {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        transition: color var(--transition-fast);
+        padding: var(--spacing-md) 0;
+        display: block;
+        position: relative;
+        flex-grow: 1;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--link-color);
+        transition: width var(--transition-normal);
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--link-color);
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 60%;
+      }
+      /* Dropdown Toggle for Mobile */
+      .dropdown-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--spacing-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+      }
+      /* Dropdown Arrow for Mobile */
+      .dropdown-arrow {
+        font-size: 12px;
+        transition: transform var(--transition-normal);
+      }
+      .dropdown-arrow.open {
+        transform: rotate(180deg);
+      }
+      /* Dropdown Menu */
+      .dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height var(--transition-normal);
+        padding-left: var(--spacing-md);
+        margin-top: 0;
+      }
+      .dropdown-menu.open {
+        max-height: 500px;
+        margin-top: var(--spacing-sm);
+      }
+      .dropdown-item {
+        margin-bottom: var(--spacing-sm);
+      }
+      .dropdown-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 14px;
+        text-transform: capitalize;
+        transition: color var(--transition-fast);
+        display: block;
+        padding: var(--spacing-xs) 0;
+      }
+      .dropdown-link:hover {
+        color: var(--link-color);
+      }
+      .nav-controls {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+      .theme-toggle {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 50px;
+        padding: 4px 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-primary);
+        transition: all var(--transition-normal);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 12px var(--shadow);
+      }
+      .theme-toggle:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px var(--shadow-hover);
+      }
+      .theme-icon {
+        font-size: 12px;
+        transition: transform var(--transition-normal);
+      }
+      .theme-toggle:hover .theme-icon {
+        transform: rotate(180deg);
+      }
+      .mobile-menu-toggle {
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        font-size: 18px;
+        cursor: pointer;
+        padding: var(--spacing-sm);
+        display: block;
+        z-index: 1000;
+      }
+      .mobile-menu-toggle.active {
+        color: var(--link-color);
+      }
+      /* Mobile Menu Overlay */
+      .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition-normal),
+          visibility var(--transition-normal);
+      }
+      .mobile-menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* ===========================================
+    HERO SECTION - MOBILE FIRST
+   =========================================== */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        text-align: center;
+        padding: var(--spacing-xl) var(--spacing-md);
+        overflow: hidden;
+      }
+      /* Hero Slider */
+      .hero-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+      .hero-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+      .hero-slide.active {
+        opacity: 1;
+      }
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(var(--overlay), var(--overlay));
+        z-index: -1;
+      }
+      .hero-content {
+        max-width: 100%;
+        animation: fadeInUp 1s ease-out;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: var(--spacing-sm) var(--spacing-md);
+        border-radius: 50px;
+        color: white;
+        font-size: 12px;
+        font-weight: 500;
+        margin-bottom: var(--spacing-xl);
+      }
+      .hero-title {
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+        font-weight: 300;
+        color: white;
+        margin-bottom: var(--spacing-lg);
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        line-height: 1.3;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: var(--spacing-2xl);
+        font-weight: 300;
+        line-height: 1.5;
+      }
+      .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        justify-content: center;
+        align-items: center;
+      }
+      .h-btn {
+        width: 240px;
+      }
+      .scroll-indicator {
+        position: absolute;
+        bottom: var(--spacing-xl);
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba(255, 255, 255, 0.7);
+        animation: bounce 2s infinite;
+        cursor: pointer;
+        z-index: 1;
+      }
+      /* Hero Slider Indicators */
+      .hero-indicators {
+        position: absolute;
+        bottom: var(--spacing-2xl);
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: var(--spacing-sm);
+        z-index: 1;
+        margin-bottom: 30px;
+      }
+      .hero-indicator {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all var(--transition-normal);
+      }
+      .hero-indicator.active {
+        background: white;
+        transform: scale(1.2);
+      }
+      .hero-indicator:hover {
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      /* ===========================================
+          RESPONSIVE DESIGN - MOBILE FIRST
+        =========================================== */
+      /* Small screens (475px and up) */
+      @media (min-width: 475px) {
+        .hero-title {
+          font-size: clamp(2rem, 5vw, 3rem);
+        }
+        .hero-subtitle {
+          font-size: 1.1rem;
+        }
+      }
+      /* Medium screens (640px and up) */
+      @media (min-width: 640px) {
+        .nav-container {
+          padding: 0 var(--spacing-lg);
+        }
+        .logo-icon {
+          width: 110px;
+        }
+        .hero {
+          padding: var(--spacing-xl) var(--spacing-lg);
+        }
+        .hero-buttons {
+          flex-direction: row;
+          gap: var(--spacing-lg);
+        }
+        .theme-toggle {
+          padding: var(--spacing-xs) var(--spacing-sm);
+        }
+        .mobile-menu-toggle {
+          font-size: 24px;
+        }
+      }
+      /* Desktop screens (1024px and up) - DESKTOP NAVIGATION */
+      @media (min-width: 1024px) {
+        .navbar {
+          height: 70px;
+        }
+        .nav-container {
+          height: 70px;
+          padding: 0 var(--spacing-xl);
+        }
+        .logo-icon {
+          width: 120px;
+        }
+        .nav-menu {
+          position: static;
+          width: auto;
+          max-width: none;
+          height: auto;
+          background: transparent;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          padding: 0;
+          transition: none;
+          gap: var(--spacing-xl);
+          margin: 0 auto;
+          box-shadow: none;
+          overflow-y: visible;
+        }
+        .nav-menu.active {
+          left: auto;
+        }
+        .nav-item {
+          width: auto;
+          text-align: center;
+          position: relative;
+        }
+        .nav-link-container {
+          display: block;
+        }
+        .nav-link {
+          font-size: 14px;
+          letter-spacing: 1px;
+          padding: var(--spacing-sm) 0;
+          position: relative;
+          justify-content: center;
+        }
+        .nav-link::after {
+          left: 0;
+          transform: none;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+          width: 100%;
+        }
+        /* Hide dropdown toggle on desktop */
+        .dropdown-toggle {
+          display: none;
+        }
+        /* Desktop Dropdown Menu */
+        .dropdown-arrow {
+          display: none;
+        }
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%) translateY(10px);
+          background: var(--nav-bg);
+          backdrop-filter: blur(10px);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-md);
+          padding: var(--spacing-md);
+          min-width: 200px;
+          box-shadow: 0 4px 20px var(--shadow);
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity var(--transition-normal),
+            visibility var(--transition-normal),
+            transform var(--transition-normal);
+          max-height: none;
+          padding-left: var(--spacing-md);
+          margin-top: 0;
+          text-align: center;
+          list-style: none;
+        }
+        .nav-item:hover .dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-50%) translateY(0);
+        }
+        .dropdown-menu.open {
+          max-height: none;
+          margin-top: 0;
+        }
+        .dropdown-item {
+          margin-bottom: var(--spacing-sm);
+        }
+        .dropdown-item:last-child {
+          margin-bottom: 0;
+        }
+        .dropdown-link {
+          padding: var(--spacing-xs) var(--spacing-sm);
+          border-radius: var(--radius-sm);
+          transition: all var(--transition-fast);
+          display: block;
+          text-align: center;
+        }
+        .dropdown-link:hover {
+          background: var(--bg-tertiary);
+          color: var(--link-color);
+        }
+        .mobile-menu-toggle {
+          display: none;
+        }
+        .mobile-menu-overlay {
+          display: none;
+        }
+        .nav-controls {
+          position: static;
+          transform: none;
+        }
+        .hero {
+          min-height: 100vh;
+          padding: var(--spacing-2xl) var(--spacing-xl);
+        }
+        .hero-content {
+          max-width: 800px;
+        }
+        .hero-badge {
+          font-size: 14px;
+          margin-bottom: var(--spacing-2xl);
+        }
+        .hero-title {
+          font-size: clamp(2.5rem, 5vw, 3.5rem);
+        }
+        .hero-subtitle {
+          font-size: 1.25rem;
+          margin-bottom: var(--spacing-3xl);
+        }
+      }
+      /* Extra large screens (1280px and up) */
+      @media (min-width: 1280px) {
+        .nav-container {
+          max-width: 1280px;
+        }
+        .nav-menu {
+          gap: var(--spacing-2xl);
+        }
+      }
+      /* 3XL screens (1536px and up) */
+      @media (min-width: 1536px) {
+        .nav-container {
+          max-width: 1536px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="mobile-menu-overlay"
+      id="mobileMenuOverlay"
+      onclick="toggleMobileMenu()"
+    ></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo">
+          <img
+            src="/assets/images/logo2.png"
+            alt="Impasto logo"
+            class="logo-icon"
+          />
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a href="#home" class="nav-link active" onclick="setActiveNav(this)"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="/pages/information.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Information
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="/pages/about.html" class="dropdown-link">About Us</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/team.html" class="dropdown-link">Our Team</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/services.html" class="dropdown-link"
+                  >Services</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/testimonials.html" class="dropdown-link"
+                  >Testimonials</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="/pages/ratecards.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Ratecards
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="/pages/portrait-rates.html" class="dropdown-link"
+                  >Portrait Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/wedding-rates.html" class="dropdown-link"
+                  >Wedding Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/event-rates.html" class="dropdown-link"
+                  >Event Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/commercial-rates.html" class="dropdown-link"
+                  >Commercial Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/special-packages.html" class="dropdown-link"
+                  >Special Packages</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="/pages/store.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Store
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="/pages/prints.html" class="dropdown-link">Prints</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/digital-products.html" class="dropdown-link"
+                  >Digital Products</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a
+              href="/pages/contact.html"
+              class="nav-link"
+              onclick="setActiveNav(this)"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              href="/pages/blog.html"
+              class="nav-link"
+              onclick="setActiveNav(this)"
+              >Blog</a
+            >
+          </li>
+        </ul>
+        <div class="nav-controls">
+          <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon theme-icon"></i>
+            <span class="theme-text">Dark</span>
+          </button>
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero fade-in">
+      <div class="hero-slider">
+        <div
+          class="hero-slide active"
+          style="background-image: url('/assets/images/img0.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('/assets/images/img1.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('/assets/images/img2.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('/assets/images/img3.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('/assets/images/img4.jpg')"
+        ></div>
+      </div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-star"></i>
+          Professional Photography Studio
+        </div>
+        <h1 class="hero-title">CHERISHED MOMENTS COME AS YOU ARE</h1>
+        <p class="hero-subtitle">
+          Where artistry meets technology to create timeless memories
+        </p>
+        <div class="hero-buttons">
+          <a href="/pages/ratecards.html" class="btn btn-primary h-btn">
+            <i class="fas fa-images"></i>
+            View Ratecards
+          </a>
+          <a href="/pages/contact.html" class="btn btn-secondary h-btn">
+            <i class="fas fa-envelope"></i>
+            Contact Us
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Slider Indicators -->
+      <div class="hero-indicators">
+        <div class="hero-indicator active" onclick="goToSlide(0)"></div>
+        <div class="hero-indicator" onclick="goToSlide(1)"></div>
+        <div class="hero-indicator" onclick="goToSlide(2)"></div>
+        <div class="hero-indicator" onclick="goToSlide(3)"></div>
+        <div class="hero-indicator" onclick="goToSlide(4)"></div>
+      </div>
+
+      <div class="scroll-indicator" onclick="scrollToSection('gallery')">
+        <i class="fas fa-chevron-down fa-2x"></i>
+      </div>
+    </section>
+
+    <script src="assets/src/general.js"></script>
+    <script>
+      // ===========================================
+      // HERO SLIDER FUNCTIONALITY
+      // ===========================================
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".hero-slide");
+      const indicators = document.querySelectorAll(".hero-indicator");
+      const totalSlides = slides.length;
+
+      /**
+       * Go to a specific slide
+       * @param {number} slideIndex - Index of the slide to go to
+       */
+      function goToSlide(slideIndex) {
+        // Remove active class from all slides and indicators
+        slides.forEach((slide) => slide.classList.remove("active"));
+        indicators.forEach((indicator) => indicator.classList.remove("active"));
+
+        // Add active class to the selected slide and indicator
+        slides[slideIndex].classList.add("active");
+        indicators[slideIndex].classList.add("active");
+
+        // Update current slide index
+        currentSlide = slideIndex;
+      }
+
+      /**
+       * Go to the next slide
+       */
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        goToSlide(currentSlide);
+      }
+
+      /**
+       * Initialize the hero slider
+       */
+      function initHeroSlider() {
+        // Auto-advance slides every 5 seconds
+        setInterval(nextSlide, 5000);
+      }
+
+      // ===========================================
+      // THEME TOGGLE FUNCTIONALITY
+      // ===========================================
+      /**
+       * Toggle between light and dark themes
+       */
+      function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.querySelector(".theme-icon");
+        const themeText = document.querySelector(".theme-text");
+        const logos = document.querySelectorAll(
+          ".logo-icon, .footer-logo-icon"
+        );
+        // Check current theme
+        if (body.getAttribute("data-theme") === "dark") {
+          // Switch to light theme
+          body.removeAttribute("data-theme");
+          themeIcon.className = "fas fa-moon theme-icon";
+          themeText.textContent = "Dark";
+          logos.forEach((logo) => {
+            logo.src = "/assets/images/logo2.png";
+          });
+          localStorage.setItem("theme", "light");
+        } else {
+          // Switch to dark theme
+          body.setAttribute("data-theme", "dark");
+          themeIcon.className = "fas fa-sun theme-icon";
+          themeText.textContent = "Light";
+          logos.forEach((logo) => {
+            logo.src = "/assets/images/logo2d.png";
+          });
+          localStorage.setItem("theme", "dark");
+        }
+      }
+
+      /**
+       * Load saved theme preference on page load
+       */
+      function loadSavedTheme() {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          document.body.setAttribute("data-theme", "dark");
+          document.querySelector(".theme-icon").className =
+            "fas fa-sun theme-icon";
+          document.querySelector(".theme-text").textContent = "Light";
+          const logos = document.querySelectorAll(
+            ".logo-icon, .footer-logo-icon"
+          );
+          logos.forEach((logo) => {
+            logo.src = "/assets/images/logo2d.png";
+          });
+        }
+      }
+
+      // ===========================================
+      // NAVIGATION FUNCTIONALITY
+      // ===========================================
+      /**
+       * Set active navigation item
+       * @param {HTMLElement} element - The clicked navigation link
+       */
+      function setActiveNav(element) {
+        // Don't set active if this is a dropdown toggle
+        if (element.classList.contains("dropdown-toggle")) {
+          return;
+        }
+
+        // Remove active class from all nav links
+        document
+          .querySelectorAll(".nav-link:not(.dropdown-toggle)")
+          .forEach((link) => {
+            link.classList.remove("active");
+          });
+        // Add active class to clicked link
+        element.classList.add("active");
+        // Close mobile menu if open
+        const navMenu = document.getElementById("navMenu");
+        if (navMenu.classList.contains("active")) {
+          navMenu.classList.remove("active");
+          // Reset mobile menu toggle icon
+          const mobileToggle = document.querySelector(".mobile-menu-toggle");
+          mobileToggle.classList.remove("active");
+          mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          // Hide overlay
+          document
+            .getElementById("mobileMenuOverlay")
+            .classList.remove("active");
+        }
+      }
+
+      /**
+       * Toggle mobile menu
+       */
+      function toggleMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        navMenu.classList.toggle("active");
+        mobileToggle.classList.toggle("active");
+        overlay.classList.toggle("active");
+
+        // Change icon based on menu state
+        if (navMenu.classList.contains("active")) {
+          mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+        } else {
+          mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+      }
+
+      /**
+       * Toggle dropdown menu (for mobile)
+       * @param {HTMLElement} element - The clicked dropdown toggle
+       */
+      function toggleDropdown(element) {
+        // Only for mobile view
+        if (window.innerWidth < 1024) {
+          const dropdownMenu =
+            element.parentElement.parentElement.querySelector(".dropdown-menu");
+          const dropdownArrow = element.querySelector(".dropdown-arrow");
+          const parentLink = element.parentElement.querySelector(
+            ".nav-link:not(.dropdown-toggle)"
+          );
+
+          dropdownMenu.classList.toggle("open");
+          dropdownArrow.classList.toggle("open");
+
+          // Prevent default link behavior
+          event.preventDefault();
+          event.stopPropagation();
+
+          // Remove hover/active effects from parent link when dropdown is open
+          if (dropdownMenu.classList.contains("open")) {
+            parentLink.style.color = "";
+            parentLink.classList.remove("active");
+          }
+        }
+      }
+
+      /**
+       * Smooth scroll to section
+       * @param {string} sectionId - The ID of the section to scroll to
+       */
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          // Close mobile menu if open
+          const navMenu = document.getElementById("navMenu");
+          if (navMenu.classList.contains("active")) {
+            navMenu.classList.remove("active");
+            const mobileToggle = document.querySelector(".mobile-menu-toggle");
+            mobileToggle.classList.remove("active");
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            document
+              .getElementById("mobileMenuOverlay")
+              .classList.remove("active");
+          }
+          section.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }
+
+      /**
+       * Handle navbar scroll effect
+       */
+      function handleNavbarScroll() {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      }
+
+      // ===========================================
+      // SCROLL ANIMATION FUNCTIONS
+      // ===========================================
+      /**
+       * Initialize scroll animations
+       */
+      function initScrollAnimations() {
+        // Make hero section visible immediately
+        const heroSection = document.querySelector(".hero");
+        if (heroSection) {
+          heroSection.classList.add("visible");
+        }
+        // Trigger initial check for elements in view
+        handleScrollAnimations();
+      }
+
+      /**
+       * Handle scroll animations
+       */
+      function handleScrollAnimations() {
+        const animatedElements = document.querySelectorAll(
+          ".fade-in:not(.visible), .slide-in-left:not(.visible), .slide-in-right:not(.visible), .scale-in:not(.visible)"
+        );
+        animatedElements.forEach((element) => {
+          if (isElementInViewport(element)) {
+            element.classList.add("visible");
+          }
+        });
+      }
+
+      /**
+       * Check if element is in viewport
+       * @param {HTMLElement} element - The element to check
+       * @return {boolean} - True if element is in viewport
+       */
+      function isElementInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        const windowHeight =
+          window.innerHeight || document.documentElement.clientHeight;
+        // Add some offset for better timing (trigger when element is 80% visible)
+        const offset = windowHeight * 0.2;
+        return rect.top <= windowHeight - offset && rect.bottom >= offset;
+      }
+
+      // ===========================================
+      // EVENT LISTENERS
+      // ===========================================
+      // Initialize when DOM is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Load saved theme
+        loadSavedTheme();
+        // Initialize hero slider
+        initHeroSlider();
+        // Initialize scroll animations
+        initScrollAnimations();
+        // Add smooth scrolling to all navigation links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            scrollToSection(targetId);
+          });
+        });
+      });
+
+      // Scroll event listeners
+      window.addEventListener("scroll", handleNavbarScroll);
+      window.addEventListener("scroll", handleScrollAnimations);
+
+      // Keyboard navigation for lightbox
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeLightbox();
+        }
+        // Close mobile menu on escape
+        if (e.key === "Escape") {
+          const navMenu = document.getElementById("navMenu");
+          if (navMenu.classList.contains("active")) {
+            navMenu.classList.remove("active");
+            const mobileToggle = document.querySelector(".mobile-menu-toggle");
+            mobileToggle.classList.remove("active");
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            document
+              .getElementById("mobileMenuOverlay")
+              .classList.remove("active");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

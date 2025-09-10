@@ -226,11 +226,14 @@ button {
   padding: 0;
   background: none;
   border: none;
-  color: var(--textcolor);
 }
 
 button:focus {
   outline: none;
+}
+
+ul {
+  list-style-type: none;
 }
 
 /* Default scrollbar styling (Webkit browsers) */

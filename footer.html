@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Impasto Photography - Capturing Moments That Last Forever</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/styles/style.css" />
+    <link rel="stylesheet" href="/assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/components/footer.css" />
+    <style>
+      /* ===========================================
+          ANIMATIONS
+        =========================================== */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        40% {
+          transform: translateX(-50%) translateY(-10px);
+        }
+        60% {
+          transform: translateX(-50%) translateY(-5px);
+        }
+      }
+      @keyframes lightboxFadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .fade-in-up {
+        animation: fadeInUp 0.8s ease-out;
+      }
+      /* ===========================================
+          SCROLL ANIMATIONS
+         =========================================== */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .slide-in-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.8s ease-out;
+      }
+      .slide-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .slide-in-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.8s ease-out;
+      }
+      .slide-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .scale-in {
+        opacity: 0;
+        transform: scale(0.9);
+        transition: all 0.8s ease-out;
+      }
+      .scale-in.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+      /* ===========================================
+          RESPONSIVE DESIGN - MOBILE FIRST
+        =========================================== */
+      /* Medium screens (640px and up) */
+      @media (min-width: 640px) {
+        .footer-content {
+          padding: var(--spacing-3xl) var(--spacing-lg) var(--spacing-xl);
+        }
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: var(--spacing-2xl);
+        }
+        .footer-bottom-content {
+          flex-direction: column;
+          align-items: center;
+        }
+        .footer-copyright {
+          margin-bottom: var(--spacing-md);
+        }
+        .social-links {
+          justify-content: center;
+        }
+      }
+      /* Desktop screens (1024px and up) - DESKTOP NAVIGATION */
+      @media (min-width: 1024px) {
+        .footer {
+          margin-top: var(--spacing-4xl);
+        }
+        .footer-content {
+          padding: var(--spacing-3xl) var(--spacing-xl) var(--spacing-xl);
+        }
+        .footer-grid {
+          grid-template-columns: repeat(4, 1fr);
+          gap: var(--spacing-2xl);
+          margin-bottom: var(--spacing-3xl);
+        }
+        .footer-bottom-content {
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .footer-copyright {
+          margin-bottom: 0;
+        }
+        .kenzy-credit {
+          order: 2;
+          margin: 0;
+        }
+        .social-links {
+          justify-content: flex-end;
+          order: 3;
+        }
+      }
+      /* Extra large screens (1280px and up) */
+      @media (min-width: 1280px) {
+        .footer-content {
+          max-width: 1400px;
+          margin: 0 auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section style="height: 50vh">HA</section>
+    <!-- Footer -->
+    <footer class="footer scale-in">
+      <div class="footer-content container">
+        <div class="footer-grid">
+          <!-- Logo Section -->
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img
+                src="/assets/images/logo2.png"
+                class="footer-logo-icon"
+                alt="Impasto Photography"
+              />
+            </div>
+            <p class="footer-description">
+              At Impasto Photography, we specialize in capturing life's precious
+              moments with artistry and precision. Our team of professional
+              photographers is dedicated to creating timeless memories that
+              you'll cherish for generations to come.
+            </p>
+          </div>
+          <!-- Quick Links -->
+          <div class="footer-section slide-in-left">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#home">
+                  <i class="fas fa-chevron-right"></i>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/pages/information.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Information
+                </a>
+              </li>
+              <li>
+                <a href="/pages/ratecards.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Ratecards
+                </a>
+              </li>
+              <li>
+                <a href="/pages/store.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Store
+                </a>
+              </li>
+              <li>
+                <a href="/pages/contact.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a href="/pages/blog.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Services -->
+          <div class="footer-section fade-in">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#">
+                  <i class="fas fa-camera"></i>
+                  Pre-Birthday Shoots
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-user"></i>
+                  Studio Potraits
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-building"></i>
+                  Large Format Print and Cut
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-calendar-alt"></i>
+                  Event Coverage
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-plane"></i>
+                  Passport Pictures
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-palette"></i>
+                  Graphic Design
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-ellipsis-h"></i>
+                  etc
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Contact -->
+          <div class="footer-section slide-in-right">
+            <h3>Get In Touch</h3>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dome - Accra. Opposite Adehyeman Bank.</span>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>+233 (0) 242-641-305</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <span>potrit1@gmail.com</span>
+              </li>
+              <li>
+                <i class="fas fa-clock"></i>
+                <span>Mon-Fri: 8AM-5PM, Sat: 9:30AM-6PM, Sun: 1PM-6PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content container">
+          <div class="footer-copyright">
+            <p>© 2025 Impasto Photography. All rights reserved.</p>
+          </div>
+          <div class="kenzy-credit">
+            <p>Website developed with 💖 by Kenzyverse</p>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-pinterest-p"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="/assets/src/general.js"></script>
+  </body>
+</html>

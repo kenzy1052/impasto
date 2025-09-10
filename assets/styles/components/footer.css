@@ -1,0 +1,253 @@
+/* ===========================================
+          FOOTER - MOBILE FIRST
+         =========================================== */
+.footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  margin-top: var(--spacing-3xl);
+}
+.footer-content {
+  padding: var(--spacing-2xl) var(--spacing-md) var(--spacing-xl);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-2xl);
+}
+.footer-section h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+  position: relative;
+  padding-bottom: var(--spacing-sm);
+}
+.footer-section h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--link-color);
+}
+.footer-logo-icon {
+  width: 100px;
+  height: auto;
+}
+.footer-links {
+  list-style: none;
+}
+.footer-links li {
+  margin-bottom: var(--spacing-sm);
+}
+.footer-links a {
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+.footer-links a:hover {
+  color: var(--text-primary);
+  transform: translateX(5px);
+}
+.footer-links i {
+  width: 16px;
+  text-align: center;
+}
+.contact-info {
+  list-style: none;
+}
+.contact-info li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.contact-info i {
+  width: 20px;
+  color: var(--accent);
+  margin-top: 3px;
+}
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding: var(--spacing-xl) 0;
+  text-align: center;
+  color: var(--text-tertiary);
+}
+.footer-bottom-content {
+  padding: 0 var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+.social-links {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.social-link {
+  width: 40px;
+  height: 40px;
+  background: var(--bg-tertiary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all var(--transition-normal);
+  border: 1px solid var(--border);
+}
+.social-link:hover {
+  background: var(--link-color);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(44, 62, 80, 0.4);
+}
+
+/* ===========================================
+          ANIMATIONS
+        =========================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+@keyframes lightboxFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+/* ===========================================
+          SCROLL ANIMATIONS
+         =========================================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease-out;
+}
+.slide-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s ease-out;
+}
+.slide-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.scale-in {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.8s ease-out;
+}
+.scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+/* ===========================================
+          RESPONSIVE DESIGN - MOBILE FIRST
+        =========================================== */
+/* Medium screens (640px and up) */
+@media (min-width: 640px) {
+  .footer-content {
+    padding: var(--spacing-3xl) var(--spacing-lg) var(--spacing-xl);
+  }
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-2xl);
+  }
+  .footer-bottom-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-copyright {
+    margin-bottom: var(--spacing-md);
+  }
+  .social-links {
+    justify-content: center;
+  }
+}
+/* Desktop screens (1024px and up) - DESKTOP NAVIGATION */
+@media (min-width: 1024px) {
+  .footer {
+    margin-top: var(--spacing-4xl);
+  }
+  .footer-content {
+    padding: var(--spacing-3xl) var(--spacing-xl) var(--spacing-xl);
+  }
+  .footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-2xl);
+    margin-bottom: var(--spacing-3xl);
+  }
+  .footer-bottom-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-copyright {
+    margin-bottom: 0;
+  }
+  .kenzy-credit {
+    order: 2;
+    margin: 0;
+  }
+  .social-links {
+    justify-content: flex-end;
+    order: 3;
+  }
+}
+/* Extra large screens (1280px and up) */
+@media (min-width: 1280px) {
+  .footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}

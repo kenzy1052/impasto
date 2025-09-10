@@ -3,7 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Impasto Photography - Capturing Moments That Last Forever</title>
+    <meta
+      name="description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta
+      name="keywords"
+      content="photography, studio, professional, memories, artistry, technology"
+    />
+    <meta name="author" content="Impasto Photography Studio" />
+    <title>
+      Impasto Photography Studio | Professional Photography Services
+    </title>
+
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
@@ -14,16 +26,67 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="/assets/styles/css/all.min.css" />
-    <link rel="stylesheet" href="/assets/styles/style.css" />
-    <link rel="stylesheet" href="/assets/styles/utils.css" />
-    <link rel="stylesheet" href="/assets/styles/components/theme.css" />
-    <link rel="stylesheet" href="/assets/styles/components/home.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Open Graph Meta Tags for SEO -->
+    <meta
+      property="og:title"
+      content="Impasto Photography Studio | Professional Photography Services"
+    />
+    <meta
+      property="og:description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://impastophotography.com" />
+    <meta
+      property="og:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Impasto Photography Studio | Professional Photography Services"
+    />
+    <meta
+      name="twitter:description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta
+      name="twitter:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/images/logo-fav.png" />
+    <link rel="apple-touch-icon" href="/assets/images/logo.png" />
+
+    <!--Default Styles-->
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/components/navhero.css" />
+    <link rel="stylesheet" href="assets/styles/components/gallery.css" />
+    <link rel="stylesheet" href="assets/styles/components/footer.css" />
   </head>
   <body>
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="mobile-menu-overlay"
+      id="mobileMenuOverlay"
+      onclick="toggleMobileMenu()"
+    ></div>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
-      <div class="nav-container container">
+      <div class="nav-container">
         <a href="#home" class="logo">
           <img
             src="/assets/images/logo2.png"
@@ -38,28 +101,101 @@
             >
           </li>
           <li class="nav-item">
-            <a
-              href="/pages/information.html"
-              class="nav-link"
-              onclick="setActiveNav(this)"
-              >Information</a
-            >
+            <div class="nav-link-container">
+              <a
+                href="/pages/information.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Information
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="/pages/about.html" class="dropdown-link">About Us</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/team.html" class="dropdown-link">Our Team</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/services.html" class="dropdown-link"
+                  >Services</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/testimonials.html" class="dropdown-link"
+                  >Testimonials</a
+                >
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
-            <a
-              href="/pages/ratecards.html"
-              class="nav-link"
-              onclick="setActiveNav(this)"
-              >Ratecards</a
-            >
+            <div class="nav-link-container">
+              <a
+                href="/pages/ratecards.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Ratecards
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="/pages/portrait-rates.html" class="dropdown-link"
+                  >Portrait Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/wedding-rates.html" class="dropdown-link"
+                  >Wedding Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/event-rates.html" class="dropdown-link"
+                  >Event Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/commercial-rates.html" class="dropdown-link"
+                  >Commercial Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/special-packages.html" class="dropdown-link"
+                  >Special Packages</a
+                >
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
-            <a
-              href="/pages/store.html"
-              class="nav-link"
-              onclick="setActiveNav(this)"
-              >Store</a
-            >
+            <div class="nav-link-container">
+              <a
+                href="/pages/store.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Store
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="/pages/prints.html" class="dropdown-link">Prints</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/digital-products.html" class="dropdown-link"
+                  >Digital Products</a
+                >
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a
@@ -89,65 +225,123 @@
         </div>
       </div>
     </nav>
+
     <!-- Hero Section -->
     <section id="home" class="hero fade-in">
+      <div class="hero-slider">
+        <div
+          class="hero-slide active"
+          style="background-image: url('/assets/images/img0.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('/assets/images/img1.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('/assets/images/img2.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('/assets/images/img3.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('/assets/images/img4.jpg')"
+        ></div>
+      </div>
+      <div class="hero-overlay"></div>
+
       <div class="hero-content">
         <div class="hero-badge">
           <i class="fas fa-star"></i>
           Professional Photography Studio
         </div>
-        <h1 class="hero-title">CAPTURING MOMENTS THAT LAST FOREVER</h1>
+        <h1 class="hero-title">CHERISHED MOMENTS COME AS YOU ARE</h1>
         <p class="hero-subtitle">
           Where artistry meets technology to create timeless memories
         </p>
         <div class="hero-buttons">
-          <a href="/pages/ratecards.html" class="btn btn-primary">
+          <a href="/pages/ratecards.html" class="btn btn-primary h-btn">
             <i class="fas fa-images"></i>
             View Ratecards
           </a>
-          <a href="/pages/contact.html" class="btn btn-secondary">
+          <a href="/pages/contact.html" class="btn btn-secondary h-btn">
             <i class="fas fa-envelope"></i>
             Contact Us
           </a>
         </div>
       </div>
+
+      <!-- Hero Slider Indicators -->
+      <div class="hero-indicators">
+        <div class="hero-indicator active" onclick="goToSlide(0)"></div>
+        <div class="hero-indicator" onclick="goToSlide(1)"></div>
+        <div class="hero-indicator" onclick="goToSlide(2)"></div>
+        <div class="hero-indicator" onclick="goToSlide(3)"></div>
+        <div class="hero-indicator" onclick="goToSlide(4)"></div>
+      </div>
+
       <div class="scroll-indicator" onclick="scrollToSection('gallery')">
         <i class="fas fa-chevron-down fa-2x"></i>
       </div>
     </section>
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery container fade-in">
-      <div class="gallery-header slide-in-left">
-        <h2 class="gallery-title">Our Portfolio</h2>
-        <p class="gallery-subtitle">
-          Explore our collection of stunning photographs that capture life's
-          most precious moments
-        </p>
-      </div>
-      <div class="gallery-grid" id="galleryGrid">
-        <!-- Gallery items will be dynamically inserted here -->
-      </div>
-      <div class="load-more-container slide-in-right">
-        <button
-          class="btn-load-more"
-          id="loadMoreBtn"
-          onclick="loadMoreImages()"
-        >
-          <i class="fas fa-plus"></i>
-          View More
+
+    <!-- Main Content -->
+    <main>
+      <!-- Gallery Section -->
+      <section id="gallery" class="gallery container fade-in">
+        <div class="gallery-header slide-in-left">
+          <h2 class="gallery-title">Our Portfolio</h2>
+          <p class="gallery-subtitle">
+            Explore our collection of stunning photographs that capture life's
+            most precious moments
+          </p>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Gallery items will be dynamically inserted here -->
+        </div>
+        <div class="load-more-container slide-in-right">
+          <button
+            class="btn-load-more"
+            id="loadMoreBtn"
+            onclick="loadMoreImages()"
+          >
+            <i class="fas fa-plus"></i>
+            View More
+          </button>
+        </div>
+      </section>
+      <!-- Advanced Lightbox -->
+      <div class="lightbox" id="lightbox">
+        <!-- Mobile Top Bar -->
+        <div class="lightbox-top-bar">
+          <div class="lightbox-counter" id="lightboxCounter">Image 1 of 60</div>
+          <button class="lightbox-close" onclick="closeLightbox()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <!-- Navigation Arrows (Desktop Only) -->
+        <button class="lightbox-nav lightbox-prev" onclick="previousImage()">
+          <i class="fas fa-chevron-left"></i>
         </button>
-      </div>
-    </section>
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-      <div class="lightbox-content" onclick="event.stopPropagation()">
-        <img src="" alt="" class="lightbox-image" id="lightboxImage" />
-        <button class="lightbox-close" onclick="closeLightbox()">
-          <i class="fas fa-times"></i>
+        <button class="lightbox-nav lightbox-next" onclick="nextImage()">
+          <i class="fas fa-chevron-right"></i>
         </button>
+        <!-- Image Container -->
+        <div class="lightbox-content">
+          <div class="lightbox-image-container" id="lightboxImageContainer">
+            <img src="" alt="" class="lightbox-image" id="lightboxImage" />
+          </div>
+        </div>
+        <!-- Mobile Bottom Bar -->
+        <div class="lightbox-bottom-bar">
+          <div class="zoom-instruction">Swipe to view next picture</div>
+        </div>
       </div>
-    </div>
-    <!-- Footer -->
+    </main>
+
+    <!--footer-->
     <footer class="footer scale-in">
       <div class="footer-content container">
         <div class="footer-grid">
@@ -160,6 +354,12 @@
                 alt="Impasto Photography"
               />
             </div>
+            <p class="footer-description">
+              At Impasto Photography, we specialize in capturing life's precious
+              moments with artistry and precision. Our team of professional
+              photographers is dedicated to creating timeless memories that
+              you'll cherish for generations to come.
+            </p>
           </div>
           <!-- Quick Links -->
           <div class="footer-section slide-in-left">
@@ -261,7 +461,7 @@
               </li>
               <li>
                 <i class="fas fa-phone"></i>
-                <span>+233 (o) 242-641-305</span>
+                <span>+233 (0) 242-641-305</span>
               </li>
               <li>
                 <i class="fas fa-envelope"></i>
@@ -277,7 +477,12 @@
       </div>
       <div class="footer-bottom">
         <div class="footer-bottom-content container">
-          <p>© 2025 Impasto Photography. All rights reserved.</p>
+          <div class="footer-copyright">
+            <p>© 2025 Impasto Photography. All rights reserved.</p>
+          </div>
+          <div class="kenzy-credit">
+            <p>Website developed with 💖 by Kenzyverse</p>
+          </div>
           <div class="social-links">
             <a href="#" class="social-link">
               <i class="fab fa-facebook-f"></i>
@@ -301,7 +506,8 @@
         </div>
       </div>
     </footer>
-    <script src="/assets/src/general.js"></script>
-    <script src="/assets/src/gallery.js"></script>
+    <script src="assets/src/general.js"></script>
+    <script src="assets/src/navhero.js"></script>
+    <script src="assets/src/gallery.js"></script>
   </body>
 </html>
