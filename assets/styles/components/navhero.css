@@ -227,6 +227,7 @@
   width: 100%;
   height: 100%;
   z-index: -1;
+  margin-top: 60px;
 }
 .hero-slide {
   position: absolute;
@@ -235,7 +236,7 @@
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 1s ease-in-out;

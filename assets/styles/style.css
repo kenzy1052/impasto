@@ -109,7 +109,7 @@
   --card-bg: #ffffff;
   --gradient-primary: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
   --gradient-secondary: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
-  --link-color: #3f5dae;
+  --link-color: #e63946;
   /* Typography */
   --font-primary: "Inter", sans-serif;
   --font-secondary: "Playfair Display", serif;
@@ -151,7 +151,7 @@
   --overlay: rgba(0, 0, 0, 0.6);
   --nav-bg: rgba(10, 10, 10, 0.95);
   --card-bg: #141414;
-  --link-color: #f5a623;
+  --link-color: #ffd700;
 }
 
 /* ===========================================
