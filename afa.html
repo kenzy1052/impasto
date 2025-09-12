@@ -15,7 +15,6 @@
     <title>
       Impasto Photography Studio | Professional Photography Services
     </title>
-
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
@@ -32,7 +31,6 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-
     <!-- Open Graph Meta Tags for SEO -->
     <meta
       property="og:title"
@@ -46,9 +44,8 @@
     <meta property="og:url" content="https://impastophotography.com" />
     <meta
       property="og:image"
-      content="https://impastophotography.comassets/images/og-image.jpg"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
     />
-
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -61,13 +58,11 @@
     />
     <meta
       name="twitter:image"
-      content="https://impastophotography.comassets/images/og-image.jpg"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
     />
-
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/logo-fav.png" />
     <link rel="apple-touch-icon" href="assets/images/logo.png" />
-
     <!--Default Styles-->
     <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
     <link rel="stylesheet" href="assets/styles/style.css" />
@@ -75,18 +70,17 @@
     <link rel="stylesheet" href="assets/styles/components/navhero.css" />
     <link rel="stylesheet" href="assets/styles/components/footer.css" />
     <style>
-      * ===========================================
+      /* ===========================================
     ABOUT US PAGE STYLES
    =========================================== */
-
-/* About Hero Section */
-.about-hero {
+      /* About Hero Section - Fixed positioning issue */
+      .about-hero {
         background: linear-gradient(135deg, var(--gradient-primary));
         padding: var(--spacing-3xl) 0;
         position: relative;
         overflow: hidden;
+        margin-top: 60px; /* Added to account for fixed navbar */
       }
-
       .about-hero::before {
         content: "";
         position: absolute;
@@ -97,28 +91,24 @@
         background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
         opacity: 0.5;
       }
-
       .about-hero-content {
         position: relative;
         z-index: 1;
         text-align: center;
         color: white;
       }
-
       .about-title {
         font-size: clamp(2rem, 5vw, 3.5rem);
         font-weight: 700;
         margin-bottom: var(--spacing-md);
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
-
       .about-subtitle {
         font-size: clamp(1.1rem, 3vw, 1.5rem);
         font-weight: 300;
         margin-bottom: var(--spacing-lg);
         opacity: 0.9;
       }
-
       .about-breadcrumb {
         display: flex;
         align-items: center;
@@ -127,44 +117,36 @@
         font-size: 0.9rem;
         opacity: 0.8;
       }
-
       .about-breadcrumb a {
         color: white;
         text-decoration: none;
         transition: opacity var(--transition-fast);
       }
-
       .about-breadcrumb a:hover {
         opacity: 1;
       }
-
       .about-breadcrumb i {
         font-size: 0.8rem;
       }
-
       /* Section Styles */
       .section {
         padding: var(--spacing-4xl) 0;
       }
-
       .section-header {
         margin-bottom: var(--spacing-3xl);
       }
-
       .section-title {
         font-size: clamp(1.75rem, 4vw, 2.5rem);
         font-weight: 600;
         color: var(--text-primary);
         margin-bottom: var(--spacing-md);
       }
-
       .section-subtitle {
         font-size: 1.1rem;
         color: var(--text-secondary);
         max-width: 600px;
         margin: 0 auto;
       }
-
       .section-divider {
         display: flex;
         align-items: center;
@@ -172,61 +154,134 @@
         gap: var(--spacing-md);
         margin: var(--spacing-lg) 0;
       }
-
       .divider-line {
         height: 2px;
         width: 60px;
         background: var(--accent-color);
       }
-
       .divider-icon {
         color: var(--accent-color);
         font-size: 1.2rem;
       }
 
-      /* Our Story Section */
+      /* ===========================================
+           STATS SECTION - MATCHING FIRST FILE DESIGN
+           =========================================== */
+      .stats-section {
+        background: var(--bg-secondary);
+        padding: var(--spacing-4xl) 0;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--spacing-xl);
+        text-align: center;
+      }
+      .stat-number {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        font-weight: 700;
+        color: var(--accent-color);
+        margin-bottom: var(--spacing-sm);
+        font-family: var(--font-secondary);
+        display: block;
+      }
+      .stat-label {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* ===========================================
+           OUR STORY SECTION - MATCHING FIRST FILE DESIGN
+           =========================================== */
       .story-content {
         display: grid;
         grid-template-columns: 1fr;
         gap: var(--spacing-2xl);
         align-items: center;
       }
-
-      .story-text {
-        text-align: left;
+      .story-image {
+        position: relative;
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        height: 400px;
       }
-
+      .story-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform var(--transition-slow);
+      }
+      .story-image:hover img {
+        transform: scale(1.05);
+      }
+      .story-text {
+        padding: var(--spacing-lg) 0;
+      }
       .story-text p {
-        font-size: 1.1rem;
-        line-height: 1.8;
+        font-size: 0.95rem;
+        line-height: 1.7;
         margin-bottom: var(--spacing-lg);
         color: var(--text-secondary);
       }
+      .story-text p:last-child {
+        margin-bottom: 0;
+      }
+      .story-highlight {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin: var(--spacing-lg) 0 var(--spacing-md);
+        font-family: var(--font-secondary);
+        font-style: italic;
+        border-left: 4px solid var(--accent-color);
+        padding-left: var(--spacing-lg);
+      }
 
-      /* Mission & Vision Section */
+      /* ===========================================
+           MISSION & VISION SECTION - MATCHING FIRST FILE DESIGN
+           =========================================== */
       .mission-vision-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: var(--spacing-xl);
+        gap: var(--spacing-2xl);
       }
-
       .mission-card,
       .vision-card {
-        background: var(--bg-secondary);
+        background: var(--bg-primary);
         padding: var(--spacing-2xl);
         border-radius: var(--radius-xl);
         text-align: center;
-        transition: transform var(--transition-normal),
-          box-shadow var(--transition-normal);
+        transition: all var(--transition-normal);
         border: 1px solid var(--border);
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
-
+      .mission-card::before,
+      .vision-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--accent-color);
+      }
+      .vision-card::before {
+        background: var(--accent-color2);
+      }
       .mission-card:hover,
       .vision-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--shadow-hover);
       }
-
       .card-icon {
         width: 80px;
         height: 80px;
@@ -238,20 +293,29 @@
         justify-content: center;
         color: white;
         font-size: 2rem;
+        transition: all var(--transition-normal);
       }
-
+      .vision-card .card-icon {
+        background: var(--accent-color2);
+      }
+      .mission-card:hover .card-icon,
+      .vision-card:hover .card-icon {
+        transform: scale(1.1) rotate(10deg);
+      }
       .mission-card h3,
       .vision-card h3 {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         margin-bottom: var(--spacing-md);
         color: var(--text-primary);
+        font-family: var(--font-secondary);
       }
-
       .mission-card p,
       .vision-card p {
-        font-size: 1rem;
+        font-size: 0.95rem;
         line-height: 1.6;
         color: var(--text-secondary);
+        max-width: 500px;
+        margin: 0 auto;
       }
 
       /* Our Values Section */
@@ -260,7 +324,6 @@
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: var(--spacing-xl);
       }
-
       .value-item {
         text-align: center;
         padding: var(--spacing-xl);
@@ -270,12 +333,10 @@
           box-shadow var(--transition-normal);
         border: 1px solid var(--border);
       }
-
       .value-item:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
       }
-
       .value-icon {
         width: 60px;
         height: 60px;
@@ -287,36 +348,34 @@
         justify-content: center;
         color: white;
         font-size: 1.5rem;
+        transition: transform var(--transition-normal);
       }
-
+      .value-item:hover .value-icon {
+        transform: scale(1.1) rotate(5deg);
+      }
       .value-item h4 {
         font-size: 1.2rem;
         margin-bottom: var(--spacing-sm);
         color: var(--text-primary);
       }
-
       .value-item p {
         font-size: 0.95rem;
         line-height: 1.6;
         color: var(--text-secondary);
       }
-
       /* Meet the Team Section */
       .team-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: var(--spacing-2xl);
       }
-
       .team-member {
         text-align: center;
         transition: transform var(--transition-normal);
       }
-
       .team-member:hover {
         transform: translateY(-10px);
       }
-
       .member-image {
         position: relative;
         width: 250px;
@@ -326,14 +385,12 @@
         overflow: hidden;
         border: 4px solid var(--accent-color);
       }
-
       .member-image img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: transform var(--transition-normal);
       }
-
       .member-overlay {
         position: absolute;
         top: 0;
@@ -347,20 +404,16 @@
         opacity: 0;
         transition: opacity var(--transition-normal);
       }
-
       .member-image:hover .member-overlay {
         opacity: 1;
       }
-
       .member-image:hover img {
         transform: scale(1.1);
       }
-
       .member-overlay .social-links {
         display: flex;
         gap: var(--spacing-md);
       }
-
       .member-overlay .social-link {
         width: 40px;
         height: 40px;
@@ -374,25 +427,21 @@
         transition: transform var(--transition-fast),
           background var(--transition-fast);
       }
-
       .member-overlay .social-link:hover {
         transform: scale(1.1);
         background: var(--accent-color2);
       }
-
       .team-member h4 {
         font-size: 1.3rem;
         margin-bottom: var(--spacing-xs);
         color: var(--text-primary);
       }
-
       .member-role {
         font-size: 1rem;
         color: var(--accent-color);
         font-weight: 600;
         margin-bottom: var(--spacing-sm);
       }
-
       .member-bio {
         font-size: 0.9rem;
         line-height: 1.6;
@@ -400,14 +449,12 @@
         max-width: 300px;
         margin: 0 auto;
       }
-
       /* Journey Timeline */
       .timeline {
         position: relative;
         max-width: 800px;
         margin: 0 auto;
       }
-
       .timeline::before {
         content: "";
         position: absolute;
@@ -418,25 +465,28 @@
         background: var(--accent-color);
         transform: translateX(-50%);
       }
-
       .timeline-item {
         position: relative;
         margin-bottom: var(--spacing-3xl);
         width: 50%;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
       }
-
+      .timeline-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
       .timeline-item:nth-child(odd) {
         left: 0;
         padding-right: var(--spacing-2xl);
         text-align: right;
       }
-
       .timeline-item:nth-child(even) {
         left: 50%;
         padding-left: var(--spacing-2xl);
         text-align: left;
       }
-
       .timeline-item::before {
         content: "";
         position: absolute;
@@ -447,15 +497,12 @@
         border-radius: 50%;
         border: 4px solid var(--bg-primary);
       }
-
       .timeline-item:nth-child(odd)::before {
         right: -10px;
       }
-
       .timeline-item:nth-child(even)::before {
         left: -10px;
       }
-
       .timeline-content {
         background: var(--bg-secondary);
         padding: var(--spacing-xl);
@@ -464,100 +511,153 @@
         transition: transform var(--transition-normal),
           box-shadow var(--transition-normal);
       }
-
       .timeline-content:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
       }
-
       .timeline-year {
         font-size: 1.2rem;
         font-weight: 700;
         color: var(--accent-color);
         margin-bottom: var(--spacing-sm);
+        transition: transform var(--transition-fast),
+          color var(--transition-fast);
       }
-
+      .timeline-content:hover .timeline-year {
+        transform: scale(1.1);
+        color: var(--accent-color2);
+      }
       .timeline-content h4 {
         font-size: 1.1rem;
         margin-bottom: var(--spacing-sm);
         color: var(--text-primary);
       }
-
       .timeline-content p {
         font-size: 0.95rem;
         line-height: 1.6;
         color: var(--text-secondary);
         margin: 0;
       }
-
       /* CTA Section */
       .cta-section {
         background: linear-gradient(135deg, var(--gradient-primary));
         padding: var(--spacing-3xl) 0;
         text-align: center;
-        color: white;
+        position: relative;
+        z-index: 1;
+        opacity: 1 !important; /* Ensure visibility */
+        transform: none !important; /* Remove any transform that might hide it */
       }
-
       .cta-content h2 {
         font-size: clamp(1.75rem, 4vw, 2.5rem);
         margin-bottom: var(--spacing-lg);
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        color: var(
+          --text-primary
+        ); /* Use CSS variable instead of fixed white */
       }
-
       .cta-content p {
         font-size: 1.2rem;
         margin-bottom: var(--spacing-2xl);
-        opacity: 0.9;
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
+        color: var(
+          --text-primary
+        ); /* Use CSS variable instead of fixed white */
+        opacity: 0.9;
       }
-
       .cta-buttons {
         display: flex;
         gap: var(--spacing-lg);
         justify-content: center;
         flex-wrap: wrap;
       }
-
       .cta-buttons .btn {
         min-width: 200px;
+        position: relative;
+        z-index: 2;
       }
-
       /* Responsive Design */
+      @media (min-width: 475px) {
+        .about-hero {
+          padding: var(--spacing-4xl) 0;
+        }
+        .about-title {
+          font-size: clamp(2.5rem, 5vw, 4rem);
+        }
+        .section {
+          padding: var(--spacing-4xl) 0;
+        }
+      }
+      @media (min-width: 640px) {
+        .about-hero {
+          padding: var(--spacing-5xl) 0;
+        }
+        .about-title {
+          font-size: clamp(2.5rem, 5vw, 4.5rem);
+        }
+        .story-text p {
+          font-size: 1.2rem;
+        }
+        .section {
+          padding: var(--spacing-5xl) 0;
+        }
+      }
       @media (min-width: 768px) {
         .story-content {
           grid-template-columns: 1fr 1fr;
         }
-
         .mission-vision-grid {
           grid-template-columns: 1fr 1fr;
         }
-
         .values-grid {
           grid-template-columns: repeat(2, 1fr);
         }
-
         .team-grid {
           grid-template-columns: repeat(2, 1fr);
         }
+        .about-hero {
+          padding: var(--spacing-6xl) 0;
+        }
+        .section {
+          padding: var(--spacing-6xl) 0;
+        }
       }
-
       @media (min-width: 1024px) {
         .values-grid {
           grid-template-columns: repeat(4, 1fr);
         }
-
         .team-grid {
           grid-template-columns: repeat(4, 1fr);
         }
+        .about-hero {
+          padding: var(--spacing-7xl) 0;
+        }
+        .section {
+          padding: var(--spacing-7xl) 0;
+        }
       }
-
+      @media (min-width: 1280px) {
+        .about-hero {
+          padding: var(--spacing-8xl) 0;
+        }
+        .section {
+          padding: var(--spacing-8xl) 0;
+        }
+      }
+      @media (min-width: 1536px) {
+        .about-hero {
+          padding: var(--spacing-9xl) 0;
+        }
+        .section {
+          padding: var(--spacing-9xl) 0;
+        }
+      }
       @media (max-width: 767px) {
         .timeline::before {
           left: 20px;
         }
-
         .timeline-item {
           width: 100%;
           left: 0 !important;
@@ -565,22 +665,18 @@
           padding-right: 0 !important;
           text-align: left !important;
         }
-
         .timeline-item::before {
           left: 10px !important;
         }
-
         .cta-buttons {
           flex-direction: column;
           align-items: center;
         }
       }
-
       /* Dark Theme Support */
       [data-theme="dark"] .about-hero {
         background: linear-gradient(135deg, var(--gradient-secondary));
       }
-
       [data-theme="dark"] .mission-card,
       [data-theme="dark"] .vision-card,
       [data-theme="dark"] .value-item,
@@ -588,17 +684,24 @@
         background: var(--bg-tertiary);
         border-color: var(--border);
       }
-
       /* Animation Classes */
       .slide-in-up {
         opacity: 0;
         transform: translateY(50px);
         transition: opacity 0.8s ease, transform 0.8s ease;
       }
-
       .slide-in-up.visible {
         opacity: 1;
         transform: translateY(0);
+      }
+      /* Fixed Hero Section - Prevents floating/movement issue */
+      .hero {
+        position: relative; /* Changed from absolute/fixed */
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0; /* Reset any margin that might cause issues */
       }
     </style>
   </head>
@@ -609,7 +712,6 @@
       id="mobileMenuOverlay"
       onclick="toggleMobileMenu()"
     ></div>
-
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
       <div class="nav-container">
@@ -751,8 +853,7 @@
         </div>
       </div>
     </nav>
-
-    <!-- Hero Section -->
+    <!-- Hero Section - Updated with camera icon and new content -->
     <section id="home" class="hero fade-in">
       <div class="hero-slider">
         <div
@@ -777,15 +878,16 @@
         ></div>
       </div>
       <div class="hero-overlay"></div>
-
       <div class="hero-content">
         <div class="hero-badge">
-          <i class="fas fa-star"></i>
-          Professional Photography Studio
+          <i class="fas fa-camera"></i>
+          Since 2010
         </div>
-        <h1 class="hero-title">WHO WE ARE</h1>
+        <h1 class="hero-title">About Impasto Photography</h1>
+        <p class="hero-subtitle">
+          Capturing Life's Beautiful Moments Since 2010
+        </p>
       </div>
-
       <!-- Hero Slider Indicators -->
       <div class="hero-indicators">
         <div class="hero-indicator active" onclick="goToSlide(0)"></div>
@@ -794,34 +896,39 @@
         <div class="hero-indicator" onclick="goToSlide(3)"></div>
         <div class="hero-indicator" onclick="goToSlide(4)"></div>
       </div>
-
       <div class="scroll-indicator" onclick="scrollToSection('next-section')">
         <i class="fas fa-chevron-down fa-2x"></i>
       </div>
     </section>
-    <!-- Main Content -->
-    <main class="main-content container">
-      <!-- About Hero Section -->
-      <section class="about-hero fade-in" id="next-section">
-        <div class="container">
-          <div class="about-hero-content">
-            <div class="about-hero-text">
-              <h1 class="about-title">About Impasto Photography</h1>
-              <p class="about-subtitle">
-                Capturing Life's Beautiful Moments Since 2010
-              </p>
-              <div class="about-breadcrumb">
-                <a href="#home">Home</a>
-                <i class="fas fa-chevron-right"></i>
-                <span>About Us</span>
-              </div>
-            </div>
+
+    <!-- Stats Section - Matching First File Design -->
+    <section id="stats" class="stats-section fade-in-up">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number" data-count="15">0</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="10000">0</span>
+            <span class="stat-label">Happy Clients</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="50000">0</span>
+            <span class="stat-label">Photos Captured</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="750">0</span>
+            <span class="stat-label">Projects Completed</span>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Our Story Section -->
-      <section class="our-story section fade-in">
+    <!-- Main Content -->
+    <main class="main-content container">
+      <!-- Our Story Section - Matching First File Design -->
+      <section class="our-story section slide-in-left" id="next-section">
         <div class="container">
           <div class="section-header text-center">
             <h2 class="section-title">Our Story</h2>
@@ -834,9 +941,14 @@
               From a passion project to a premier photography studio
             </p>
           </div>
-
           <div class="story-content">
-            <div></div>
+            <div class="story-image">
+              <img
+                src="assets/images/img10.jpg"
+                alt="Our Photography Studio"
+                class="no-context-menu"
+              />
+            </div>
             <div class="story-text">
               <p>
                 Impasto Photography began as a dream in 2010, founded with a
@@ -845,6 +957,10 @@
                 studio in Dome, Accra, has blossomed into one of Ghana's most
                 sought-after photography destinations.
               </p>
+              <div class="story-highlight">
+                "Every photograph tells a story, and we're here to help you tell
+                yours beautifully."
+              </div>
               <p>
                 Our name "Impasto" reflects our artistic approach – just as
                 impasto technique in painting creates texture and depth, we
@@ -865,9 +981,20 @@
         </div>
       </section>
 
-      <!-- Our Mission & Vision Section -->
-      <section class="mission-vision section slide-in-left">
+      <!-- Our Mission & Vision Section - Matching First File Design -->
+      <section class="mission-vision section slide-in-right">
         <div class="container">
+          <div class="section-header text-center">
+            <h2 class="section-title">Our Mission & Vision</h2>
+            <div class="section-divider">
+              <span class="divider-line"></span>
+              <i class="fas fa-bullseye divider-icon"></i>
+              <span class="divider-line"></span>
+            </div>
+            <p class="section-subtitle">
+              The driving force behind our passion for photography
+            </p>
+          </div>
           <div class="mission-vision-grid">
             <div class="mission-card">
               <div class="card-icon">
@@ -913,7 +1040,6 @@
               The principles that guide every frame we capture
             </p>
           </div>
-
           <div class="values-grid">
             <div class="value-item">
               <div class="value-icon">
@@ -974,7 +1100,6 @@
               The passionate artists behind the lens
             </p>
           </div>
-
           <div class="team-grid">
             <div class="team-member">
               <div class="member-image">
@@ -1104,7 +1229,6 @@
             </div>
             <p class="section-subtitle">Milestones that shaped our story</p>
           </div>
-
           <div class="timeline">
             <div class="timeline-item">
               <div class="timeline-content">
@@ -1359,68 +1483,98 @@
         </div>
       </div>
     </footer>
+
     <script src="assets/src/general.js"></script>
     <script src="assets/src/navhero.js"></script>
     <script>
       // ===========================================
+      // COUNTER ANIMATIONS FOR STATS SECTION
+      // ===========================================
+      function animateCounter(counter, target) {
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+        const updateCounter = () => {
+          current += increment;
+          if (current < target) {
+            counter.textContent = Math.floor(current).toLocaleString();
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target.toLocaleString();
+          }
+        };
+        updateCounter();
+      }
+
+      function initCounters() {
+        const counters = document.querySelectorAll(".stat-number");
+        counters.forEach((counter) => {
+          if (
+            isElementInViewport(counter) &&
+            !counter.classList.contains("animated")
+          ) {
+            counter.classList.add("animated");
+            const target = parseInt(counter.getAttribute("data-count"));
+            animateCounter(counter, target);
+          }
+        });
+      }
+
+      // ===========================================
       // ABOUT PAGE SPECIFIC FUNCTIONALITY
       // ===========================================
-
       /**
        * Initialize About Page specific animations and interactions
        */
       function initAboutPage() {
         // Initialize scroll animations for about page elements
         initAboutScrollAnimations();
-
         // Add smooth scrolling for internal links
         initSmoothScrolling();
-
         // Initialize timeline animations
         initTimelineAnimations();
-
         // Initialize team member hover effects
         initTeamMemberEffects();
-
         // Initialize value cards hover effects
         initValueCardEffects();
+        // Initialize counter animations
+        initCounters();
       }
-
       /**
        * Initialize scroll animations specific to about page
        */
       function initAboutScrollAnimations() {
         const animatedElements = document.querySelectorAll(
-          ".about-hero .fade-in, .our-story .fade-in, .mission-vision .slide-in-left, " +
-            ".our-values .fade-in, .meet-team .slide-in-right, .journey-timeline .fade-in, " +
-            ".cta-section .slide-in-up"
+          ".our-story .fade-in, .mission-vision .slide-in-left, " +
+            ".our-values .fade-in, .meet-team .slide-in-right, .journey-timeline .fade-in"
         );
-
         // Trigger initial check
         handleAboutScrollAnimations();
-
         // Add scroll event listener
         window.addEventListener("scroll", handleAboutScrollAnimations);
+        // Make CTA section visible immediately
+        const ctaSection = document.querySelector(".cta-section");
+        if (ctaSection) {
+          ctaSection.classList.add("visible");
+          ctaSection.style.opacity = "1";
+          ctaSection.style.transform = "translateY(0)";
+        }
       }
-
       /**
        * Handle about page scroll animations
        */
       function handleAboutScrollAnimations() {
         const animatedElements = document.querySelectorAll(
-          ".about-hero .fade-in:not(.visible), .our-story .fade-in:not(.visible), " +
+          ".our-story .fade-in:not(.visible), " +
             ".mission-vision .slide-in-left:not(.visible), .our-values .fade-in:not(.visible), " +
-            ".meet-team .slide-in-right:not(.visible), .journey-timeline .fade-in:not(.visible), " +
-            ".cta-section .slide-in-up:not(.visible)"
+            ".meet-team .slide-in-right:not(.visible), .journey-timeline .fade-in:not(.visible)"
         );
-
         animatedElements.forEach((element) => {
           if (isElementInViewport(element)) {
             element.classList.add("visible");
           }
         });
       }
-
       /**
        * Initialize smooth scrolling for internal navigation
        */
@@ -1431,7 +1585,6 @@
             e.preventDefault();
             const targetId = this.getAttribute("href").substring(1);
             const targetElement = document.getElementById(targetId);
-
             if (targetElement) {
               targetElement.scrollIntoView({
                 behavior: "smooth",
@@ -1441,59 +1594,43 @@
           });
         });
       }
-
       /**
        * Initialize timeline animations
        */
       function initTimelineAnimations() {
         const timelineItems = document.querySelectorAll(".timeline-item");
-
         const observerOptions = {
           threshold: 0.1,
           rootMargin: "0px 0px -50px 0px",
         };
-
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.style.opacity = "1";
-              entry.target.style.transform = "translateY(0)";
+              entry.target.classList.add("visible");
             }
           });
         }, observerOptions);
-
         timelineItems.forEach((item) => {
-          // Set initial state
-          item.style.opacity = "0";
-          item.style.transform = "translateY(30px)";
-          item.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-
-          // Observe the item
           observer.observe(item);
         });
       }
-
       /**
        * Initialize team member hover effects
        */
       function initTeamMemberEffects() {
         const teamMembers = document.querySelectorAll(".team-member");
-
         teamMembers.forEach((member) => {
           const overlay = member.querySelector(".member-overlay");
           const socialLinks = member.querySelectorAll(
             ".member-overlay .social-link"
           );
-
           // Add hover effect for the entire team member card
           member.addEventListener("mouseenter", () => {
             member.style.transform = "translateY(-10px)";
           });
-
           member.addEventListener("mouseleave", () => {
             member.style.transform = "translateY(0)";
           });
-
           // Add staggered animation for social links
           if (overlay) {
             overlay.addEventListener("mouseenter", () => {
@@ -1503,7 +1640,6 @@
                 }, index * 100);
               });
             });
-
             overlay.addEventListener("mouseleave", () => {
               socialLinks.forEach((link) => {
                 link.style.transform = "scale(1)";
@@ -1512,23 +1648,19 @@
           }
         });
       }
-
       /**
        * Initialize value cards hover effects
        */
       function initValueCardEffects() {
         const valueItems = document.querySelectorAll(".value-item");
-
         valueItems.forEach((item) => {
           const icon = item.querySelector(".value-icon");
-
           item.addEventListener("mouseenter", () => {
             item.style.transform = "translateY(-5px)";
             if (icon) {
               icon.style.transform = "scale(1.1) rotate(5deg)";
             }
           });
-
           item.addEventListener("mouseleave", () => {
             item.style.transform = "translateY(0)";
             if (icon) {
@@ -1537,7 +1669,6 @@
           });
         });
       }
-
       /**
        * Check if element is in viewport
        * @param {HTMLElement} element - The element to check
@@ -1548,69 +1679,57 @@
         const windowHeight =
           window.innerHeight || document.documentElement.clientHeight;
         const offset = windowHeight * 0.2;
-
         return rect.top <= windowHeight - offset && rect.bottom >= offset;
       }
-
       /**
-       * Add parallax effect to hero section
+       * Add parallax effect to hero section - DISABLED to prevent movement
        */
       function initParallaxEffect() {
-        const heroSection = document.querySelector(".about-hero");
-
-        if (heroSection) {
-          window.addEventListener("scroll", () => {
-            const scrolled = window.pageYOffset;
-            const parallax = scrolled * 0.5;
-
-            heroSection.style.transform = `translateY(${parallax}px)`;
-          });
-        }
+        // Parallax effect disabled to prevent unwanted movement
+        // const heroSection = document.querySelector(".about-hero");
+        // if (heroSection) {
+        //   window.addEventListener("scroll", () => {
+        //     const scrolled = window.pageYOffset;
+        //     const parallax = scrolled * 0.2; // Reduced parallax effect for better performance
+        //     heroSection.style.transform = `translateY(${parallax}px)`;
+        //   });
+        // }
+        console.log("Parallax effect disabled for about-hero section");
       }
-
       /**
        * Initialize counter animation for timeline years
        */
-      function initCounters() {
+      function initTimelineCounters() {
         const timelineYears = document.querySelectorAll(".timeline-year");
-
         const observerOptions = {
           threshold: 0.5,
         };
-
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               const yearElement = entry.target;
-              const targetYear = parseInt(yearElement.textContent);
-
               // Simple animation effect
               yearElement.style.transform = "scale(1.2)";
               yearElement.style.color = "var(--accent-color2)";
-
               setTimeout(() => {
                 yearElement.style.transform = "scale(1)";
                 yearElement.style.color = "var(--accent-color)";
               }, 300);
-
               // Unobserve after animation
               observer.unobserve(yearElement);
             }
           });
         }, observerOptions);
-
         timelineYears.forEach((year) => {
           observer.observe(year);
         });
       }
-
       /**
        * Add interactive elements to mission/vision cards
        */
       function initMissionVisionInteractions() {
         const missionCard = document.querySelector(".mission-card");
         const visionCard = document.querySelector(".vision-card");
-
         if (missionCard) {
           missionCard.addEventListener("click", () => {
             missionCard.style.transform = "scale(1.02)";
@@ -1619,7 +1738,6 @@
             }, 200);
           });
         }
-
         if (visionCard) {
           visionCard.addEventListener("click", () => {
             visionCard.style.transform = "scale(1.02)";
@@ -1629,30 +1747,28 @@
           });
         }
       }
-
       /**
        * Initialize all about page functionality when DOM is loaded
        */
       document.addEventListener("DOMContentLoaded", function () {
         // Initialize about page specific functionality
         initAboutPage();
-
         // Initialize parallax effect
         initParallaxEffect();
-
         // Initialize counter animations
-        initCounters();
-
+        initTimelineCounters();
         // Initialize mission/vision interactions
         initMissionVisionInteractions();
-
+        // Add scroll event listener for counters
+        window.addEventListener("scroll", initCounters);
+        // Initial check for counters
+        initCounters();
         // Set active nav item for about page
         const aboutLinks = document.querySelectorAll('a[href="about.html"]');
         aboutLinks.forEach((link) => {
           link.classList.add("active");
         });
       });
-
       /**
        * Cleanup event listeners when page is unloaded
        */
@@ -1660,13 +1776,11 @@
         // Remove scroll event listener
         window.removeEventListener("scroll", handleAboutScrollAnimations);
       });
-
       // Export functions for external use if needed
       window.AboutPage = {
         init: initAboutPage,
         refreshAnimations: handleAboutScrollAnimations,
       };
-
       console.log("About Page Loaded Successfully! 📸");
     </script>
   </body>

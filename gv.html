@@ -1061,7 +1061,16 @@
       }
 
       function handleTouchEnd(e) {
-        // Handle swipe navigation only if not zoomed in and not dragging
+        const now = Date.now();
+
+        // Prevent accidental swipe right after pinch/zoom (cooldown 300ms)
+        if (now - lastZoomTime < 300) {
+          isDragging = false;
+          isPinching = false;
+          return;
+        }
+
+        // Handle swipe navigation only if at default zoom (1x) and not dragging/pinching
         if (
           currentZoom === 1 &&
           !isDragging &&
@@ -1069,7 +1078,7 @@
           e.changedTouches.length === 1
         ) {
           const touch = e.changedTouches[0];
-          const swipeThreshold = 50;
+          const swipeThreshold = 50; // px required to trigger swipe
           const diffX = touchStartX - touch.clientX;
 
           if (Math.abs(diffX) > swipeThreshold) {
@@ -1081,15 +1090,7 @@
           }
         }
 
-        // Apply inertia if we were dragging and there's velocity
-        if (
-          isDragging &&
-          (Math.abs(velocityX) > 0.1 || Math.abs(velocityY) > 0.1)
-        ) {
-          applyInertia();
-        }
-
-        // Reset flags
+        // Reset states
         isDragging = false;
         isPinching = false;
       }

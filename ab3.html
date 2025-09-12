@@ -15,7 +15,6 @@
     <title>
       Impasto Photography Studio | Professional Photography Services
     </title>
-
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
@@ -32,7 +31,6 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-
     <!-- Open Graph Meta Tags for SEO -->
     <meta
       property="og:title"
@@ -46,9 +44,8 @@
     <meta property="og:url" content="https://impastophotography.com" />
     <meta
       property="og:image"
-      content="https://impastophotography.comassets/images/og-image.jpg"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
     />
-
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -61,13 +58,11 @@
     />
     <meta
       name="twitter:image"
-      content="https://impastophotography.comassets/images/og-image.jpg"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
     />
-
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/logo-fav.png" />
     <link rel="apple-touch-icon" href="assets/images/logo.png" />
-
     <!--Default Styles-->
     <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
     <link rel="stylesheet" href="assets/styles/style.css" />
@@ -75,16 +70,16 @@
     <link rel="stylesheet" href="assets/styles/components/navhero.css" />
     <link rel="stylesheet" href="assets/styles/components/footer.css" />
     <style>
-      * ===========================================
+      /* ===========================================
     ABOUT US PAGE STYLES
    =========================================== */
-
-/* About Hero Section */
-.about-hero {
+      /* About Hero Section - Fixed positioning issue */
+      .about-hero {
         background: linear-gradient(135deg, var(--gradient-primary));
         padding: var(--spacing-3xl) 0;
         position: relative;
         overflow: hidden;
+        margin-top: 60px; /* Added to account for fixed navbar */
       }
 
       .about-hero::before {
@@ -184,12 +179,32 @@
         font-size: 1.2rem;
       }
 
-      /* Our Story Section */
+      /* Our Story Section - Professional layout with image */
       .story-content {
         display: grid;
         grid-template-columns: 1fr;
         gap: var(--spacing-2xl);
         align-items: center;
+      }
+
+      .story-image {
+        position: relative;
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        border: 3px solid var(--bg-primary);
+        height: 400px;
+      }
+
+      .story-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform var(--transition-normal);
+      }
+
+      .story-image:hover img {
+        transform: scale(1.05);
       }
 
       .story-text {
@@ -238,6 +253,12 @@
         justify-content: center;
         color: white;
         font-size: 2rem;
+        transition: transform var(--transition-normal);
+      }
+
+      .mission-card:hover .card-icon,
+      .vision-card:hover .card-icon {
+        transform: scale(1.1) rotate(5deg);
       }
 
       .mission-card h3,
@@ -287,6 +308,11 @@
         justify-content: center;
         color: white;
         font-size: 1.5rem;
+        transition: transform var(--transition-normal);
+      }
+
+      .value-item:hover .value-icon {
+        transform: scale(1.1) rotate(5deg);
       }
 
       .value-item h4 {
@@ -423,6 +449,14 @@
         position: relative;
         margin-bottom: var(--spacing-3xl);
         width: 50%;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .timeline-item.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .timeline-item:nth-child(odd) {
@@ -475,6 +509,13 @@
         font-weight: 700;
         color: var(--accent-color);
         margin-bottom: var(--spacing-sm);
+        transition: transform var(--transition-fast),
+          color var(--transition-fast);
+      }
+
+      .timeline-content:hover .timeline-year {
+        transform: scale(1.1);
+        color: var(--accent-color2);
       }
 
       .timeline-content h4 {
@@ -495,22 +536,31 @@
         background: linear-gradient(135deg, var(--gradient-primary));
         padding: var(--spacing-3xl) 0;
         text-align: center;
-        color: white;
+        position: relative;
+        z-index: 1;
+        opacity: 1 !important; /* Ensure visibility */
+        transform: none !important; /* Remove any transform that might hide it */
       }
 
       .cta-content h2 {
         font-size: clamp(1.75rem, 4vw, 2.5rem);
         margin-bottom: var(--spacing-lg);
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        color: var(
+          --text-primary
+        ); /* Use CSS variable instead of fixed white */
       }
 
       .cta-content p {
         font-size: 1.2rem;
         margin-bottom: var(--spacing-2xl);
-        opacity: 0.9;
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
+        color: var(
+          --text-primary
+        ); /* Use CSS variable instead of fixed white */
+        opacity: 0.9;
       }
 
       .cta-buttons {
@@ -522,9 +572,43 @@
 
       .cta-buttons .btn {
         min-width: 200px;
+        position: relative;
+        z-index: 2;
       }
 
       /* Responsive Design */
+      @media (min-width: 475px) {
+        .about-hero {
+          padding: var(--spacing-4xl) 0;
+        }
+
+        .about-title {
+          font-size: clamp(2.5rem, 5vw, 4rem);
+        }
+
+        .section {
+          padding: var(--spacing-4xl) 0;
+        }
+      }
+
+      @media (min-width: 640px) {
+        .about-hero {
+          padding: var(--spacing-5xl) 0;
+        }
+
+        .about-title {
+          font-size: clamp(2.5rem, 5vw, 4.5rem);
+        }
+
+        .story-text p {
+          font-size: 1.2rem;
+        }
+
+        .section {
+          padding: var(--spacing-5xl) 0;
+        }
+      }
+
       @media (min-width: 768px) {
         .story-content {
           grid-template-columns: 1fr 1fr;
@@ -541,6 +625,14 @@
         .team-grid {
           grid-template-columns: repeat(2, 1fr);
         }
+
+        .about-hero {
+          padding: var(--spacing-6xl) 0;
+        }
+
+        .section {
+          padding: var(--spacing-6xl) 0;
+        }
       }
 
       @media (min-width: 1024px) {
@@ -550,6 +642,34 @@
 
         .team-grid {
           grid-template-columns: repeat(4, 1fr);
+        }
+
+        .about-hero {
+          padding: var(--spacing-7xl) 0;
+        }
+
+        .section {
+          padding: var(--spacing-7xl) 0;
+        }
+      }
+
+      @media (min-width: 1280px) {
+        .about-hero {
+          padding: var(--spacing-8xl) 0;
+        }
+
+        .section {
+          padding: var(--spacing-8xl) 0;
+        }
+      }
+
+      @media (min-width: 1536px) {
+        .about-hero {
+          padding: var(--spacing-9xl) 0;
+        }
+
+        .section {
+          padding: var(--spacing-9xl) 0;
         }
       }
 
@@ -600,6 +720,16 @@
         opacity: 1;
         transform: translateY(0);
       }
+
+      /* Fixed Hero Section - Prevents floating/movement issue */
+      .hero {
+        position: relative; /* Changed from absolute/fixed */
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0; /* Reset any margin that might cause issues */
+      }
     </style>
   </head>
   <body>
@@ -609,7 +739,6 @@
       id="mobileMenuOverlay"
       onclick="toggleMobileMenu()"
     ></div>
-
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
       <div class="nav-container">
@@ -752,7 +881,7 @@
       </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - Updated with camera icon and new content -->
     <section id="home" class="hero fade-in">
       <div class="hero-slider">
         <div
@@ -777,15 +906,16 @@
         ></div>
       </div>
       <div class="hero-overlay"></div>
-
       <div class="hero-content">
         <div class="hero-badge">
-          <i class="fas fa-star"></i>
-          Professional Photography Studio
+          <i class="fas fa-camera"></i>
+          Since 2010
         </div>
-        <h1 class="hero-title">WHO WE ARE</h1>
+        <h1 class="hero-title">About Impasto Photography</h1>
+        <p class="hero-subtitle">
+          Capturing Life's Beautiful Moments Since 2010
+        </p>
       </div>
-
       <!-- Hero Slider Indicators -->
       <div class="hero-indicators">
         <div class="hero-indicator active" onclick="goToSlide(0)"></div>
@@ -794,34 +924,15 @@
         <div class="hero-indicator" onclick="goToSlide(3)"></div>
         <div class="hero-indicator" onclick="goToSlide(4)"></div>
       </div>
-
       <div class="scroll-indicator" onclick="scrollToSection('next-section')">
         <i class="fas fa-chevron-down fa-2x"></i>
       </div>
     </section>
+
     <!-- Main Content -->
     <main class="main-content container">
-      <!-- About Hero Section -->
-      <section class="about-hero fade-in" id="next-section">
-        <div class="container">
-          <div class="about-hero-content">
-            <div class="about-hero-text">
-              <h1 class="about-title">About Impasto Photography</h1>
-              <p class="about-subtitle">
-                Capturing Life's Beautiful Moments Since 2010
-              </p>
-              <div class="about-breadcrumb">
-                <a href="#home">Home</a>
-                <i class="fas fa-chevron-right"></i>
-                <span>About Us</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Our Story Section -->
-      <section class="our-story section fade-in">
+      <!-- Our Story Section - Professional layout with image -->
+      <section class="our-story section fade-in" id="next-section">
         <div class="container">
           <div class="section-header text-center">
             <h2 class="section-title">Our Story</h2>
@@ -834,9 +945,14 @@
               From a passion project to a premier photography studio
             </p>
           </div>
-
           <div class="story-content">
-            <div></div>
+            <div class="story-image">
+              <img
+                src="assets/images/img10.jpg"
+                alt="Our Photography Studio"
+                class="no-context-menu"
+              />
+            </div>
             <div class="story-text">
               <p>
                 Impasto Photography began as a dream in 2010, founded with a
@@ -913,7 +1029,6 @@
               The principles that guide every frame we capture
             </p>
           </div>
-
           <div class="values-grid">
             <div class="value-item">
               <div class="value-icon">
@@ -974,7 +1089,6 @@
               The passionate artists behind the lens
             </p>
           </div>
-
           <div class="team-grid">
             <div class="team-member">
               <div class="member-image">
@@ -1104,7 +1218,6 @@
             </div>
             <p class="section-subtitle">Milestones that shaped our story</p>
           </div>
-
           <div class="timeline">
             <div class="timeline-item">
               <div class="timeline-content">
@@ -1359,29 +1472,25 @@
         </div>
       </div>
     </footer>
+
     <script src="assets/src/general.js"></script>
     <script src="assets/src/navhero.js"></script>
     <script>
       // ===========================================
       // ABOUT PAGE SPECIFIC FUNCTIONALITY
       // ===========================================
-
       /**
        * Initialize About Page specific animations and interactions
        */
       function initAboutPage() {
         // Initialize scroll animations for about page elements
         initAboutScrollAnimations();
-
         // Add smooth scrolling for internal links
         initSmoothScrolling();
-
         // Initialize timeline animations
         initTimelineAnimations();
-
         // Initialize team member hover effects
         initTeamMemberEffects();
-
         // Initialize value cards hover effects
         initValueCardEffects();
       }
@@ -1391,16 +1500,21 @@
        */
       function initAboutScrollAnimations() {
         const animatedElements = document.querySelectorAll(
-          ".about-hero .fade-in, .our-story .fade-in, .mission-vision .slide-in-left, " +
-            ".our-values .fade-in, .meet-team .slide-in-right, .journey-timeline .fade-in, " +
-            ".cta-section .slide-in-up"
+          ".our-story .fade-in, .mission-vision .slide-in-left, " +
+            ".our-values .fade-in, .meet-team .slide-in-right, .journey-timeline .fade-in"
         );
-
         // Trigger initial check
         handleAboutScrollAnimations();
-
         // Add scroll event listener
         window.addEventListener("scroll", handleAboutScrollAnimations);
+
+        // Make CTA section visible immediately
+        const ctaSection = document.querySelector(".cta-section");
+        if (ctaSection) {
+          ctaSection.classList.add("visible");
+          ctaSection.style.opacity = "1";
+          ctaSection.style.transform = "translateY(0)";
+        }
       }
 
       /**
@@ -1408,12 +1522,10 @@
        */
       function handleAboutScrollAnimations() {
         const animatedElements = document.querySelectorAll(
-          ".about-hero .fade-in:not(.visible), .our-story .fade-in:not(.visible), " +
+          ".our-story .fade-in:not(.visible), " +
             ".mission-vision .slide-in-left:not(.visible), .our-values .fade-in:not(.visible), " +
-            ".meet-team .slide-in-right:not(.visible), .journey-timeline .fade-in:not(.visible), " +
-            ".cta-section .slide-in-up:not(.visible)"
+            ".meet-team .slide-in-right:not(.visible), .journey-timeline .fade-in:not(.visible)"
         );
-
         animatedElements.forEach((element) => {
           if (isElementInViewport(element)) {
             element.classList.add("visible");
@@ -1431,7 +1543,6 @@
             e.preventDefault();
             const targetId = this.getAttribute("href").substring(1);
             const targetElement = document.getElementById(targetId);
-
             if (targetElement) {
               targetElement.scrollIntoView({
                 behavior: "smooth",
@@ -1447,28 +1558,18 @@
        */
       function initTimelineAnimations() {
         const timelineItems = document.querySelectorAll(".timeline-item");
-
         const observerOptions = {
           threshold: 0.1,
           rootMargin: "0px 0px -50px 0px",
         };
-
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.style.opacity = "1";
-              entry.target.style.transform = "translateY(0)";
+              entry.target.classList.add("visible");
             }
           });
         }, observerOptions);
-
         timelineItems.forEach((item) => {
-          // Set initial state
-          item.style.opacity = "0";
-          item.style.transform = "translateY(30px)";
-          item.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-
-          // Observe the item
           observer.observe(item);
         });
       }
@@ -1478,22 +1579,18 @@
        */
       function initTeamMemberEffects() {
         const teamMembers = document.querySelectorAll(".team-member");
-
         teamMembers.forEach((member) => {
           const overlay = member.querySelector(".member-overlay");
           const socialLinks = member.querySelectorAll(
             ".member-overlay .social-link"
           );
-
           // Add hover effect for the entire team member card
           member.addEventListener("mouseenter", () => {
             member.style.transform = "translateY(-10px)";
           });
-
           member.addEventListener("mouseleave", () => {
             member.style.transform = "translateY(0)";
           });
-
           // Add staggered animation for social links
           if (overlay) {
             overlay.addEventListener("mouseenter", () => {
@@ -1503,7 +1600,6 @@
                 }, index * 100);
               });
             });
-
             overlay.addEventListener("mouseleave", () => {
               socialLinks.forEach((link) => {
                 link.style.transform = "scale(1)";
@@ -1518,17 +1614,14 @@
        */
       function initValueCardEffects() {
         const valueItems = document.querySelectorAll(".value-item");
-
         valueItems.forEach((item) => {
           const icon = item.querySelector(".value-icon");
-
           item.addEventListener("mouseenter", () => {
             item.style.transform = "translateY(-5px)";
             if (icon) {
               icon.style.transform = "scale(1.1) rotate(5deg)";
             }
           });
-
           item.addEventListener("mouseleave", () => {
             item.style.transform = "translateY(0)";
             if (icon) {
@@ -1548,24 +1641,23 @@
         const windowHeight =
           window.innerHeight || document.documentElement.clientHeight;
         const offset = windowHeight * 0.2;
-
         return rect.top <= windowHeight - offset && rect.bottom >= offset;
       }
 
       /**
-       * Add parallax effect to hero section
+       * Add parallax effect to hero section - DISABLED to prevent movement
        */
       function initParallaxEffect() {
-        const heroSection = document.querySelector(".about-hero");
-
-        if (heroSection) {
-          window.addEventListener("scroll", () => {
-            const scrolled = window.pageYOffset;
-            const parallax = scrolled * 0.5;
-
-            heroSection.style.transform = `translateY(${parallax}px)`;
-          });
-        }
+        // Parallax effect disabled to prevent unwanted movement
+        // const heroSection = document.querySelector(".about-hero");
+        // if (heroSection) {
+        //   window.addEventListener("scroll", () => {
+        //     const scrolled = window.pageYOffset;
+        //     const parallax = scrolled * 0.2; // Reduced parallax effect for better performance
+        //     heroSection.style.transform = `translateY(${parallax}px)`;
+        //   });
+        // }
+        console.log("Parallax effect disabled for about-hero section");
       }
 
       /**
@@ -1573,32 +1665,25 @@
        */
       function initCounters() {
         const timelineYears = document.querySelectorAll(".timeline-year");
-
         const observerOptions = {
           threshold: 0.5,
         };
-
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               const yearElement = entry.target;
-              const targetYear = parseInt(yearElement.textContent);
-
               // Simple animation effect
               yearElement.style.transform = "scale(1.2)";
               yearElement.style.color = "var(--accent-color2)";
-
               setTimeout(() => {
                 yearElement.style.transform = "scale(1)";
                 yearElement.style.color = "var(--accent-color)";
               }, 300);
-
               // Unobserve after animation
               observer.unobserve(yearElement);
             }
           });
         }, observerOptions);
-
         timelineYears.forEach((year) => {
           observer.observe(year);
         });
@@ -1610,7 +1695,6 @@
       function initMissionVisionInteractions() {
         const missionCard = document.querySelector(".mission-card");
         const visionCard = document.querySelector(".vision-card");
-
         if (missionCard) {
           missionCard.addEventListener("click", () => {
             missionCard.style.transform = "scale(1.02)";
@@ -1619,7 +1703,6 @@
             }, 200);
           });
         }
-
         if (visionCard) {
           visionCard.addEventListener("click", () => {
             visionCard.style.transform = "scale(1.02)";
@@ -1636,16 +1719,12 @@
       document.addEventListener("DOMContentLoaded", function () {
         // Initialize about page specific functionality
         initAboutPage();
-
         // Initialize parallax effect
         initParallaxEffect();
-
         // Initialize counter animations
         initCounters();
-
         // Initialize mission/vision interactions
         initMissionVisionInteractions();
-
         // Set active nav item for about page
         const aboutLinks = document.querySelectorAll('a[href="about.html"]');
         aboutLinks.forEach((link) => {
@@ -1666,7 +1745,6 @@
         init: initAboutPage,
         refreshAnimations: handleAboutScrollAnimations,
       };
-
       console.log("About Page Loaded Successfully! 📸");
     </script>
   </body>

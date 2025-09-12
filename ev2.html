@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Professional Portrait & Event Photography Services by Impasto Photography Studio. Capture your special moments with our expert photographers."
+    />
+    <meta
+      name="keywords"
+      content="portrait photography, event photography, family portraits, headshots, party events, graduation photography"
+    />
+    <meta name="author" content="Impasto Photography Studio" />
+    <title>Portraits & Events | Impasto Photography Studio</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Open Graph Meta Tags for SEO -->
+    <meta
+      property="og:title"
+      content="Portraits & Events | Impasto Photography Studio"
+    />
+    <meta
+      property="og:description"
+      content="Professional Portrait & Event Photography Services. Capture your special moments with our expert photographers."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://impastophotography.com/events.html"
+    />
+    <meta
+      property="og:image"
+      content="https://impastophotography.com/assets/images/og-events.jpg"
+    />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Portraits & Events | Impasto Photography Studio"
+    />
+    <meta
+      name="twitter:description"
+      content="Professional Portrait & Event Photography Services. Capture your special moments with our expert photographers."
+    />
+    <meta
+      name="twitter:image"
+      content="https://impastophotography.com/assets/images/og-events.jpg"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/logo-fav.png" />
+    <link rel="apple-touch-icon" href="assets/images/logo.png" />
+
+    <!--Default Styles-->
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/components/navhero.css" />
+    <link rel="stylesheet" href="assets/styles/components/footer.css" />
+
+    <!-- Custom Styles for Events Page -->
+    <style>
+      /* ===========================================
+          EVENTS PAGE STYLES
+         =========================================== */
+      .events-hero {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        text-align: center;
+        padding: var(--spacing-xl) var(--spacing-md);
+        overflow: hidden;
+      }
+
+      .events-hero-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .events-hero-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .events-hero-slide.active {
+        opacity: 1;
+      }
+
+      .events-hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(var(--overlay), var(--overlay));
+        z-index: -1;
+      }
+
+      .events-hero-content {
+        max-width: 100%;
+        animation: fadeInUp 1s ease-out;
+        position: relative;
+        z-index: 1;
+      }
+
+      .events-hero-title {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 600;
+        color: white;
+        margin-bottom: var(--spacing-lg);
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        line-height: 1.3;
+        font-family: var(--font-secondary);
+      }
+
+      .events-hero-subtitle {
+        font-size: 1.25rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: var(--spacing-2xl);
+        font-weight: 300;
+        line-height: 1.5;
+      }
+
+      .feature-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--spacing-lg);
+        margin-top: var(--spacing-2xl);
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-xl);
+        width: 280px;
+        text-align: center;
+        transition: transform var(--transition-normal);
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .feature-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--accent-color);
+        margin-bottom: var(--spacing-md);
+      }
+
+      .feature-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: white;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .feature-description {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+      }
+
+      .section {
+        padding: var(--spacing-3xl) 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: var(--spacing-2xl);
+        position: relative;
+      }
+
+      .section-title h2 {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .section-title p {
+        max-width: 700px;
+        margin: 0 auto;
+        color: var(--text-secondary);
+      }
+
+      .booking-form {
+        max-width: 800px;
+        margin: 0 auto;
+        background: var(--card-bg);
+        border-radius: var(--radius-xl);
+        padding: var(--spacing-2xl);
+        box-shadow: 0 10px 30px var(--shadow);
+      }
+
+      .form-group {
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: var(--spacing-sm);
+        font-weight: 500;
+        color: var(--text-primary);
+      }
+
+      .form-control {
+        width: 100%;
+        padding: var(--spacing-md);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        font-family: var(--font-primary);
+        font-size: 1rem;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        transition: border-color var(--transition-normal);
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--link-color);
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-lg);
+      }
+
+      @media (max-width: 768px) {
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .pricing-section {
+        margin-bottom: var(--spacing-3xl);
+      }
+
+      .pricing-header {
+        text-align: center;
+        margin-bottom: var(--spacing-2xl);
+      }
+
+      .pricing-header h3 {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .pricing-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-xl);
+      }
+
+      .pricing-card {
+        background: var(--card-bg);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-xl);
+        box-shadow: 0 5px 15px var(--shadow);
+        transition: transform var(--transition-normal),
+          box-shadow var(--transition-normal);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px var(--shadow-hover);
+      }
+
+      .pricing-card-header {
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .pricing-card-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .pricing-card-price {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--link-color);
+      }
+
+      .pricing-card-features {
+        list-style: none;
+        margin-bottom: var(--spacing-lg);
+        flex-grow: 1;
+      }
+
+      .pricing-card-features li {
+        margin-bottom: var(--spacing-sm);
+        padding-left: var(--spacing-lg);
+        position: relative;
+        color: var(--text-secondary);
+      }
+
+      .pricing-card-features li::before {
+        content: "\f00c";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        position: absolute;
+        left: 0;
+        color: var(--link-color);
+      }
+
+      .pricing-card-note {
+        font-size: 0.85rem;
+        color: var(--text-tertiary);
+        font-style: italic;
+        margin-top: auto;
+      }
+
+      .extras-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: var(--spacing-lg);
+      }
+
+      .extra-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--spacing-md);
+        background: var(--bg-tertiary);
+        border-radius: var(--radius-md);
+      }
+
+      .extra-name {
+        font-weight: 500;
+        color: var(--text-primary);
+      }
+
+      .extra-price {
+        font-weight: 600;
+        color: var(--link-color);
+      }
+
+      .contact-section {
+        background: var(--bg-secondary);
+        padding: var(--spacing-3xl) 0;
+        text-align: center;
+      }
+
+      .contact-buttons {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-lg);
+        margin-top: var(--spacing-2xl);
+        flex-wrap: wrap;
+      }
+
+      .whatsapp-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        background: #25d366;
+        color: white;
+        padding: var(--spacing-md) var(--spacing-xl);
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: transform var(--transition-normal),
+          box-shadow var(--transition-normal);
+      }
+
+      .whatsapp-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        color: white;
+      }
+
+      .gallery-section {
+        padding: var(--spacing-3xl) 0;
+      }
+
+      .gallery-container {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .gallery-slider {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-lg);
+        box-shadow: 0 10px 30px var(--shadow);
+      }
+
+      .gallery-slide {
+        display: none;
+        width: 100%;
+      }
+
+      .gallery-slide.active {
+        display: block;
+      }
+
+      .gallery-slide img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .gallery-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: var(--spacing-lg);
+        gap: var(--spacing-md);
+      }
+
+      .gallery-indicator {
+        font-size: 1rem;
+        color: var(--text-secondary);
+      }
+
+      .gallery-nav {
+        background: var(--bg-tertiary);
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: var(--text-primary);
+        transition: background var(--transition-normal);
+      }
+
+      .gallery-nav:hover {
+        background: var(--link-color);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="mobile-menu-overlay"
+      id="mobileMenuOverlay"
+      onclick="toggleMobileMenu()"
+    ></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <img
+            src="assets/images/logo2.png"
+            alt="Impasto logo"
+            class="logo-icon"
+          />
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link" onclick="setActiveNav(this)"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="information.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Information
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="about.html" class="dropdown-link">About Us</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="team.html" class="dropdown-link">Our Team</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="services.html" class="dropdown-link">Services</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="testimonials.html" class="dropdown-link"
+                  >Testimonials</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="ratecards.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Ratecards
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="portrait-rates.html" class="dropdown-link"
+                  >Portrait Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="wedding-rates.html" class="dropdown-link"
+                  >Wedding Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="event-rates.html" class="dropdown-link active"
+                  >Event Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="commercial-rates.html" class="dropdown-link"
+                  >Commercial Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="special-packages.html" class="dropdown-link"
+                  >Special Packages</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="store.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Store
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="prints.html" class="dropdown-link">Prints</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="digital-products.html" class="dropdown-link"
+                  >Digital Products</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link" onclick="setActiveNav(this)"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="blog.html" class="nav-link" onclick="setActiveNav(this)"
+              >Blog</a
+            >
+          </li>
+        </ul>
+        <div class="nav-controls">
+          <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon theme-icon"></i>
+            <span class="theme-text">Dark</span>
+          </button>
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="events-hero fade-in">
+      <div class="events-hero-slider">
+        <div
+          class="events-hero-slide active"
+          style="background-image: url('assets/images/family-portrait.jpg')"
+          data-title="Family Portraits"
+        ></div>
+        <div
+          class="events-hero-slide"
+          style="background-image: url('assets/images/headshot.jpg')"
+          data-title="Head Shots"
+        ></div>
+        <div
+          class="events-hero-slide"
+          style="background-image: url('assets/images/party-event.jpg')"
+          data-title="Party Events"
+        ></div>
+      </div>
+      <div class="events-hero-overlay"></div>
+      <div class="events-hero-content">
+        <h1 class="events-hero-title" id="heroTitle">Family Portraits</h1>
+        <p class="events-hero-subtitle">Allow us do life with you!</p>
+
+        <div class="feature-cards">
+          <div class="feature-card">
+            <div class="feature-number">01</div>
+            <h3 class="feature-title">Family Portraits</h3>
+            <p class="feature-description">
+              Capture timeless moments with your loved ones
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-number">02</div>
+            <h3 class="feature-title">Head Shots</h3>
+            <p class="feature-description">
+              Professional portraits for your career
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-number">03</div>
+            <h3 class="feature-title">Party Events</h3>
+            <p class="feature-description">
+              Vibrant memories of your celebrations
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Book Your Session</h2>
+          <p>
+            Reserve your spot with us today and let's create beautiful memories
+            together
+          </p>
+        </div>
+
+        <div class="booking-form">
+          <form id="bookingForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input
+                  type="text"
+                  id="name"
+                  class="form-control"
+                  required
+                  placeholder="Enter your full name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  class="form-control"
+                  required
+                  placeholder="Enter your phone number"
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  required
+                  placeholder="Enter your email address"
+                />
+              </div>
+              <div class="form-group">
+                <label for="service">Type of Service *</label>
+                <select id="service" class="form-control" required>
+                  <option value="">Select a service</option>
+                  <option value="family-portrait">Family Portrait</option>
+                  <option value="headshot">Head Shot</option>
+                  <option value="party-event">Party Event</option>
+                  <option value="graduation">Graduation Session</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="date">Date of Shoot/Event *</label>
+                <input type="date" id="date" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="discount">Discount Code</label>
+                <input
+                  type="text"
+                  id="discount"
+                  class="form-control"
+                  placeholder="Enter discount code if any"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                class="form-control"
+                rows="4"
+                placeholder="Tell us more about your session requirements"
+              ></textarea>
+            </div>
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-paper-plane"></i>
+                Send Message
+              </button>
+            </div>
+
+            <p
+              class="text-center mt-3"
+              style="color: var(--text-tertiary); font-size: 0.9rem"
+            >
+              We will have a rep reach out to you in less than 24 hours to
+              confirm your booking.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Graduation Sessions</h2>
+          <p>
+            Celebrate your achievement with our professional graduation
+            photography
+          </p>
+        </div>
+
+        <div class="gallery-container">
+          <div class="gallery-slider">
+            <div class="gallery-slide active">
+              <img
+                src="assets/images/graduation1.jpg"
+                alt="Graduate in purple gown holding diploma"
+              />
+            </div>
+            <div class="gallery-slide">
+              <img
+                src="assets/images/graduation2.jpg"
+                alt="Graduate throwing cap in the air"
+              />
+            </div>
+          </div>
+
+          <div class="gallery-controls">
+            <button class="gallery-nav" id="prevSlide">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <span class="gallery-indicator" id="slideIndicator">1 / 2</span>
+            <button class="gallery-nav" id="nextSlide">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Pricing Packages</h2>
+          <p>
+            Choose the perfect package for your portrait or event photography
+            needs
+          </p>
+        </div>
+
+        <!-- Personal Portrait Sessions -->
+        <div class="pricing-section">
+          <div class="pricing-header">
+            <h3>Personal Portrait Sessions</h3>
+          </div>
+
+          <div class="pricing-cards">
+            <div class="pricing-card">
+              <div class="pricing-card-header">
+                <h4 class="pricing-card-title">Basic Studio Session</h4>
+                <div class="pricing-card-price">₵350.00</div>
+              </div>
+              <ul class="pricing-card-features">
+                <li>30 minutes session</li>
+                <li>1 look/outfit change</li>
+                <li>5 digital photos</li>
+                <li>2 retouched images</li>
+              </ul>
+              <p class="pricing-card-note">Offer does not come with props</p>
+            </div>
+
+            <div class="pricing-card">
+              <div class="pricing-card-header">
+                <h4 class="pricing-card-title">Solo Spotlight</h4>
+                <div class="pricing-card-price">₵550.00</div>
+              </div>
+              <ul class="pricing-card-features">
+                <li>1 hour session</li>
+                <li>2 looks/outfit changes</li>
+                <li>10 digital photos</li>
+                <li>5 retouched images</li>
+              </ul>
+              <p class="pricing-card-note">Includes basic props</p>
+            </div>
+
+            <div class="pricing-card">
+              <div class="pricing-card-header">
+                <h4 class="pricing-card-title">Luxury Layers</h4>
+                <div class="pricing-card-price">₵850.00</div>
+              </div>
+              <ul class="pricing-card-features">
+                <li>2 hours session</li>
+                <li>3 looks/outfit changes</li>
+                <li>20 digital photos</li>
+                <li>10 retouched images</li>
+              </ul>
+              <p class="pricing-card-note">
+                Includes premium props and set design
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Family Portrait Sessions -->
+        <div class="pricing-section">
+          <div class="pricing-header">
+            <h3>Family Portrait Sessions</h3>
+          </div>
+
+          <div class="pricing-cards">
+            <div class="pricing-card">
+              <div class="pricing-card-header">
+                <h4 class="pricing-card-title">Baby/Family</h4>
+                <div class="pricing-card-price">₵650.00</div>
+              </div>
+              <ul class="pricing-card-features">
+                <li>1 hour session</li>
+                <li>Family groupings</li>
+                <li>15 digital photos</li>
+                <li>8 retouched images</li>
+              </ul>
+              <p class="pricing-card-note">
+                Perfect for families with young children
+              </p>
+            </div>
+
+            <div class="pricing-card">
+              <div class="pricing-card-header">
+                <h4 class="pricing-card-title">Maternity</h4>
+                <div class="pricing-card-price">₵750.00</div>
+              </div>
+              <ul class="pricing-card-features">
+                <li>1.5 hours session</li>
+                <li>Partner & sibling shots</li>
+                <li>20 digital photos</li>
+                <li>10 retouched images</li>
+              </ul>
+              <p class="pricing-card-note">Includes maternity gown selection</p>
+            </div>
+
+            <div class="pricing-card">
+              <div class="pricing-card-header">
+                <h4 class="pricing-card-title">
+                  Baby Christening/Naming Ceremony
+                </h4>
+                <div class="pricing-card-price">₵950.00</div>
+              </div>
+              <ul class="pricing-card-features">
+                <li>2 hours session</li>
+                <li>Ceremony coverage</li>
+                <li>Family & group portraits</li>
+                <li>30 digital photos</li>
+                <li>15 retouched images</li>
+              </ul>
+              <p class="pricing-card-note">
+                Includes ceremony and celebration coverage
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Graduation Sessions -->
+        <div class="pricing-section">
+          <div class="pricing-header">
+            <h3>Graduation Sessions</h3>
+          </div>
+
+          <div class="pricing-cards">
+            <div class="pricing-card">
+              <div class="pricing-card-header">
+                <h4 class="pricing-card-title">Graduation Basic</h4>
+                <div class="pricing-card-price">Starting at ₵450.00</div>
+              </div>
+              <ul class="pricing-card-features">
+                <li>30 minutes session</li>
+                <li>1 location</li>
+                <li>Cap & gown portraits</li>
+                <li>10 digital photos</li>
+                <li>5 retouched images</li>
+              </ul>
+              <p class="pricing-card-note">
+                Perfect for quick graduation portraits
+              </p>
+            </div>
+
+            <div class="pricing-card">
+              <div class="pricing-card-header">
+                <h4 class="pricing-card-title">Graduation Premium</h4>
+                <div class="pricing-card-price">Starting at ₵750.00</div>
+              </div>
+              <ul class="pricing-card-features">
+                <li>1 hour session</li>
+                <li>2 locations</li>
+                <li>Cap & gown & casual portraits</li>
+                <li>Family & friend portraits</li>
+                <li>20 digital photos</li>
+                <li>10 retouched images</li>
+              </ul>
+              <p class="pricing-card-note">
+                Includes location change within campus
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Extras / À la carte -->
+        <div class="pricing-section">
+          <div class="pricing-header">
+            <h3>Extras / À la carte</h3>
+          </div>
+
+          <div class="extras-grid">
+            <div class="extra-item">
+              <span class="extra-name">Additional Photography Hour</span>
+              <span class="extra-price">₵350.00</span>
+            </div>
+            <div class="extra-item">
+              <span class="extra-name">Videography Hour</span>
+              <span class="extra-price">₵450.00</span>
+            </div>
+            <div class="extra-item">
+              <span class="extra-name">Make Up & Hair</span>
+              <span class="extra-price">₵250.00</span>
+            </div>
+            <div class="extra-item">
+              <span class="extra-name">Studio Rental (Hourly)</span>
+              <span class="extra-price">₵150.00</span>
+            </div>
+            <div class="extra-item">
+              <span class="extra-name">Social Media Reel</span>
+              <span class="extra-price">₵200.00</span>
+            </div>
+            <div class="extra-item">
+              <span class="extra-name">Additional Outfit</span>
+              <span class="extra-price">₵100.00</span>
+            </div>
+            <div class="extra-item">
+              <span class="extra-name">Additional Headshot</span>
+              <span class="extra-price">₵150.00</span>
+            </div>
+            <div class="extra-item">
+              <span class="extra-name">Additional Photographer</span>
+              <span class="extra-price">₵400.00</span>
+            </div>
+            <div class="extra-item">
+              <span class="extra-name">Additional Retouched Image</span>
+              <span class="extra-price">₵50.00</span>
+            </div>
+            <div class="extra-item">
+              <span class="extra-name">Prints (8x10)</span>
+              <span class="extra-price">₵80.00</span>
+            </div>
+            <div class="extra-item">
+              <span class="extra-name">Photo Book (20 pages)</span>
+              <span class="extra-price">₵450.00</span>
+            </div>
+            <div class="extra-item">
+              <span class="extra-name">Frame (A4 size)</span>
+              <span class="extra-price">₵120.00</span>
+            </div>
+            <div class="extra-item">
+              <span class="extra-name">Set Design (On Request)</span>
+              <span class="extra-price">Quote</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Get In Touch</h2>
+          <p>Have questions? Reach out to us through any of these channels</p>
+        </div>
+
+        <div class="contact-buttons">
+          <a
+            href="https://wa.me/233242641305"
+            target="_blank"
+            class="whatsapp-btn"
+          >
+            <i class="fab fa-whatsapp"></i>
+            Chat on WhatsApp
+          </a>
+
+          <a
+            href="https://instagram.com/impastophotography"
+            target="_blank"
+            class="btn btn-primary"
+          >
+            <i class="fab fa-instagram"></i>
+            Follow on Instagram
+          </a>
+        </div>
+
+        <div
+          class="social-links"
+          style="justify-content: center; margin-top: var(--spacing-2xl)"
+        >
+          <a
+            href="https://facebook.com/impastophotography"
+            target="_blank"
+            class="social-link"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a
+            href="https://instagram.com/impastophotography"
+            target="_blank"
+            class="social-link"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://twitter.com/impastophoto"
+            target="_blank"
+            class="social-link"
+          >
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a
+            href="https://linkedin.com/company/impastophotography"
+            target="_blank"
+            class="social-link"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a
+            href="https://youtube.com/impastophotography"
+            target="_blank"
+            class="social-link"
+          >
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a
+            href="https://pinterest.com/impastophotography"
+            target="_blank"
+            class="social-link"
+          >
+            <i class="fab fa-pinterest-p"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer scale-in">
+      <div class="footer-content container">
+        <div class="footer-grid">
+          <!-- Logo Section -->
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img
+                src="assets/images/logo2.png"
+                class="footer-logo-icon"
+                alt="Impasto Photography"
+              />
+            </div>
+            <p class="footer-description">
+              At Impasto Photography, we specialize in capturing life's precious
+              moments with artistry and precision. Our team of professional
+              photographers is dedicated to creating timeless memories that
+              you'll cherish for generations to come.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="footer-section slide-in-left">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="index.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="information.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Information
+                </a>
+              </li>
+              <li>
+                <a href="ratecards.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Ratecards
+                </a>
+              </li>
+              <li>
+                <a href="store.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Store
+                </a>
+              </li>
+              <li>
+                <a href="contact.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a href="blog.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Services -->
+          <div class="footer-section fade-in">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="event-rates.html">
+                  <i class="fas fa-camera"></i>
+                  Pre-Birthday Shoots
+                </a>
+              </li>
+              <li>
+                <a href="portrait-rates.html">
+                  <i class="fas fa-user"></i>
+                  Studio Portraits
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-building"></i>
+                  Large Format Print and Cut
+                </a>
+              </li>
+              <li>
+                <a href="event-rates.html">
+                  <i class="fas fa-calendar-alt"></i>
+                  Event Coverage
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-plane"></i>
+                  Passport Pictures
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-palette"></i>
+                  Graphic Design
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-ellipsis-h"></i>
+                  etc
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div class="footer-section slide-in-right">
+            <h3>Get In Touch</h3>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dome - Accra. Opposite Adehyeman Bank.</span>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>+233 (0) 242-641-305</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <span>potrit1@gmail.com</span>
+              </li>
+              <li>
+                <i class="fas fa-clock"></i>
+                <span>Mon-Fri: 8AM-5PM, Sat: 9:30AM-6PM, Sun: 1PM-6PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-content container">
+          <div class="footer-copyright">
+            <p>© 2025 Impasto Photography. All rights reserved.</p>
+          </div>
+          <div class="kenzy-credit">
+            <p>Website developed with 💖 by Kenzyverse</p>
+          </div>
+          <div class="social-links">
+            <a
+              href="https://facebook.com/impastophotography"
+              target="_blank"
+              class="social-link"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a
+              href="https://instagram.com/impastophotography"
+              target="_blank"
+              class="social-link"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="https://twitter.com/impastophoto"
+              target="_blank"
+              class="social-link"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a
+              href="https://linkedin.com/company/impastophotography"
+              target="_blank"
+              class="social-link"
+            >
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a
+              href="https://youtube.com/impastophotography"
+              target="_blank"
+              class="social-link"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a
+              href="https://pinterest.com/impastophotography"
+              target="_blank"
+              class="social-link"
+            >
+              <i class="fab fa-pinterest-p"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/src/general.js"></script>
+    <script src="assets/src/navhero.js"></script>
+
+    <!-- Custom JavaScript for Events Page -->
+    <script>
+      // ===========================================
+      // EVENTS PAGE HERO SLIDER
+      // ===========================================
+      document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".events-hero-slide");
+        const heroTitle = document.getElementById("heroTitle");
+        let currentSlide = 0;
+
+        // Function to update the slide and title
+        function updateSlide() {
+          // Remove active class from all slides
+          slides.forEach((slide) => slide.classList.remove("active"));
+
+          // Add active class to current slide
+          slides[currentSlide].classList.add("active");
+
+          // Update the title based on the current slide
+          heroTitle.textContent =
+            slides[currentSlide].getAttribute("data-title");
+
+          // Move to next slide
+          currentSlide = (currentSlide + 1) % slides.length;
+        }
+
+        // Set initial slide
+        updateSlide();
+
+        // Change slide every 5 seconds
+        setInterval(updateSlide, 5000);
+      });
+
+      // ===========================================
+      // GALLERY SLIDER
+      // ===========================================
+      document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".gallery-slide");
+        const prevBtn = document.getElementById("prevSlide");
+        const nextBtn = document.getElementById("nextSlide");
+        const indicator = document.getElementById("slideIndicator");
+        let currentSlide = 0;
+
+        // Function to update the gallery slide
+        function updateGallerySlide() {
+          // Remove active class from all slides
+          slides.forEach((slide) => slide.classList.remove("active"));
+
+          // Add active class to current slide
+          slides[currentSlide].classList.add("active");
+
+          // Update the indicator
+          indicator.textContent = `${currentSlide + 1} / ${slides.length}`;
+        }
+
+        // Event listeners for navigation buttons
+        prevBtn.addEventListener("click", function () {
+          currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+          updateGallerySlide();
+        });
+
+        nextBtn.addEventListener("click", function () {
+          currentSlide = (currentSlide + 1) % slides.length;
+          updateGallerySlide();
+        });
+
+        // Initialize the gallery
+        updateGallerySlide();
+      });
+
+      // ===========================================
+      // BOOKING FORM SUBMISSION
+      // ===========================================
+      document.addEventListener("DOMContentLoaded", function () {
+        const bookingForm = document.getElementById("bookingForm");
+
+        bookingForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get form values
+          const name = document.getElementById("name").value;
+          const phone = document.getElementById("phone").value;
+          const email = document.getElementById("email").value;
+          const service = document.getElementById("service").value;
+          const date = document.getElementById("date").value;
+          const discount = document.getElementById("discount").value;
+          const message = document.getElementById("message").value;
+
+          // Here you would normally send the data to a server
+          // For this example, we'll just show a success message
+
+          // Create a success message element
+          const successMessage = document.createElement("div");
+          successMessage.className = "alert alert-success";
+          successMessage.style.padding = "var(--spacing-md)";
+          successMessage.style.backgroundColor = "var(--accent-color)";
+          successMessage.style.color = "white";
+          successMessage.style.borderRadius = "var(--radius-md)";
+          successMessage.style.marginTop = "var(--spacing-md)";
+          successMessage.style.textAlign = "center";
+          successMessage.textContent = `Thank you, ${name}! Your booking request has been received. We will contact you within 24 hours.`;
+
+          // Insert the success message after the form
+          bookingForm.parentNode.insertBefore(
+            successMessage,
+            bookingForm.nextSibling
+          );
+
+          // Reset the form
+          bookingForm.reset();
+
+          // Remove the success message after 5 seconds
+          setTimeout(function () {
+            successMessage.remove();
+          }, 5000);
+        });
+      });
+    </script>
+  </body>
+</html>
