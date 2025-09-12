@@ -3,9 +3,1767 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Impasto || Information</title>
+    <meta
+      name="description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta
+      name="keywords"
+      content="photography, studio, professional, memories, artistry, technology"
+    />
+    <meta name="author" content="Impasto Photography Studio" />
+    <title>
+      Impasto Photography Studio | Professional Photography Services
+    </title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Open Graph Meta Tags for SEO -->
+    <meta
+      property="og:title"
+      content="Impasto Photography Studio | Professional Photography Services"
+    />
+    <meta
+      property="og:description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://impastophotography.com" />
+    <meta
+      property="og:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Impasto Photography Studio | Professional Photography Services"
+    />
+    <meta
+      name="twitter:description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta
+      name="twitter:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/logo-fav.png" />
+    <link rel="apple-touch-icon" href="../assets/images/logo.png" />
+    <!--Default Styles-->
+    <link rel="stylesheet" href="../assets/styles/modern-normalize.css" />
+    <link rel="stylesheet" href="../assets/styles/style.css" />
+    <link rel="stylesheet" href="../assets/styles/utils.css" />
+    <link rel="stylesheet" href="../assets/styles/components/navhero.css" />
+    <link rel="stylesheet" href="../assets/styles/components/footer.css" />
+    <style>
+      /* ===========================================
+    ABOUT US PAGE STYLES
+   =========================================== */
+      /* About Hero Section - Fixed positioning issue */
+      .about-hero {
+        background: linear-gradient(135deg, var(--gradient-primary));
+        padding: var(--spacing-3xl) 0;
+        position: relative;
+        overflow: hidden;
+        margin-top: 60px; /* Added to account for fixed navbar */
+      }
+      .about-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        opacity: 0.5;
+      }
+      .about-hero-content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        color: white;
+      }
+      .about-title {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 700;
+        margin-bottom: var(--spacing-md);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      .about-subtitle {
+        font-size: clamp(1.1rem, 3vw, 1.5rem);
+        font-weight: 300;
+        margin-bottom: var(--spacing-lg);
+        opacity: 0.9;
+      }
+      .about-breadcrumb {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-sm);
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+      .about-breadcrumb a {
+        color: white;
+        text-decoration: none;
+        transition: opacity var(--transition-fast);
+      }
+      .about-breadcrumb a:hover {
+        opacity: 1;
+      }
+      .about-breadcrumb i {
+        font-size: 0.8rem;
+      }
+      /* Section Styles */
+      .section {
+        padding: var(--spacing-4xl) 0;
+      }
+      .section-header {
+        margin-bottom: var(--spacing-3xl);
+      }
+      .section-title {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-md);
+      }
+      .section-subtitle {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .section-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-md);
+        margin: var(--spacing-lg) 0;
+      }
+      .divider-line {
+        height: 2px;
+        width: 60px;
+        background: var(--accent-color);
+      }
+      .divider-icon {
+        color: var(--accent-color);
+        font-size: 1.2rem;
+      }
+
+      /* ===========================================
+           STATS SECTION - MATCHING FIRST FILE DESIGN
+           =========================================== */
+      .stats-section {
+        background: var(--bg-secondary);
+        padding: var(--spacing-4xl) 0;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--spacing-xl);
+        text-align: center;
+      }
+      .stat-number {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        font-weight: 700;
+        color: var(--accent-color);
+        margin-bottom: var(--spacing-sm);
+        font-family: var(--font-secondary);
+        display: block;
+      }
+      .stat-label {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* ===========================================
+           OUR STORY SECTION - MATCHING FIRST FILE DESIGN
+           =========================================== */
+      .story-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+        align-items: center;
+      }
+      .story-image {
+        position: relative;
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .story-image img {
+        width: 200px;
+        object-fit: cover;
+        transition: transform var(--transition-slow);
+      }
+      .story-image:hover img {
+        transform: scale(1.05);
+      }
+      .story-text {
+        padding: var(--spacing-lg) 0;
+      }
+      .story-text p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: var(--spacing-lg);
+        color: var(--text-secondary);
+      }
+      .story-text p:last-child {
+        margin-bottom: 0;
+      }
+      .story-highlight {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin: var(--spacing-lg) 0 var(--spacing-md);
+        font-family: var(--font-secondary);
+        font-style: italic;
+        border-left: 4px solid var(--accent-color);
+        padding-left: var(--spacing-lg);
+      }
+
+      /* ===========================================
+           MISSION & VISION SECTION - MATCHING FIRST FILE DESIGN
+           =========================================== */
+      .mission-vision-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+      }
+      .mission-card,
+      .vision-card {
+        background: var(--bg-primary);
+        padding: var(--spacing-2xl);
+        border-radius: var(--radius-xl);
+        text-align: center;
+        transition: all var(--transition-normal);
+        border: 1px solid var(--border);
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .mission-card::before,
+      .vision-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--accent-color);
+      }
+      .vision-card::before {
+        background: var(--accent-color2);
+      }
+      .mission-card:hover,
+      .vision-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+      .card-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto var(--spacing-lg);
+        background: var(--accent-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+        transition: all var(--transition-normal);
+      }
+      .vision-card .card-icon {
+        background: var(--accent-color2);
+      }
+      .mission-card:hover .card-icon,
+      .vision-card:hover .card-icon {
+        transform: scale(1.1) rotate(10deg);
+      }
+      .mission-card h3,
+      .vision-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: var(--spacing-md);
+        color: var(--text-primary);
+        font-family: var(--font-secondary);
+      }
+      .mission-card p,
+      .vision-card p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      /* Our Values Section */
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-xl);
+      }
+      .value-item {
+        text-align: center;
+        padding: var(--spacing-xl);
+        background: var(--bg-secondary);
+        border-radius: var(--radius-lg);
+        transition: transform var(--transition-normal),
+          box-shadow var(--transition-normal);
+        border: 1px solid var(--border);
+      }
+      .value-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+      .value-icon {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto var(--spacing-md);
+        background: var(--accent-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        transition: transform var(--transition-normal);
+      }
+      .value-item:hover .value-icon {
+        transform: scale(1.1) rotate(5deg);
+      }
+      .value-item h4 {
+        font-size: 1.2rem;
+        margin-bottom: var(--spacing-sm);
+        color: var(--text-primary);
+      }
+      .value-item p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: var(--text-secondary);
+      }
+      /* Meet the Team Section */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--spacing-2xl);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .team-member {
+        text-align: center;
+        transition: transform var(--transition-normal);
+      }
+      .team-member:hover {
+        transform: translateY(-10px);
+      }
+      .member-image {
+        position: relative;
+        width: 250px;
+        height: 250px;
+        margin: 0 auto var(--spacing-lg);
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid var(--accent-color);
+      }
+      .member-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform var(--transition-normal);
+      }
+      .member-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity var(--transition-normal);
+      }
+      .member-image:hover .member-overlay {
+        opacity: 1;
+      }
+      .member-image:hover img {
+        transform: scale(1.1);
+      }
+      .member-overlay .social-links {
+        display: flex;
+        gap: var(--spacing-md);
+      }
+      .member-overlay .social-link {
+        width: 40px;
+        height: 40px;
+        background: var(--accent-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: transform var(--transition-fast),
+          background var(--transition-fast);
+      }
+      .member-overlay .social-link:hover {
+        transform: scale(1.1);
+        background: var(--accent-color2);
+      }
+      .team-member h4 {
+        font-size: 1.3rem;
+        margin-bottom: var(--spacing-xs);
+        color: var(--text-primary);
+      }
+      .member-role {
+        font-size: 1rem;
+        color: var(--accent-color);
+        font-weight: 600;
+        margin-bottom: var(--spacing-sm);
+      }
+      .member-bio {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        max-width: 300px;
+        margin: 0 auto;
+      }
+      /* Journey Timeline */
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--accent-color);
+        transform: translateX(-50%);
+      }
+      .timeline-item {
+        position: relative;
+        margin-bottom: var(--spacing-3xl);
+        width: 50%;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .timeline-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .timeline-item:nth-child(odd) {
+        left: 0;
+        padding-right: var(--spacing-2xl);
+        text-align: right;
+      }
+      .timeline-item:nth-child(even) {
+        left: 50%;
+        padding-left: var(--spacing-2xl);
+        text-align: left;
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        top: 20px;
+        width: 20px;
+        height: 20px;
+        background: var(--accent-color);
+        border-radius: 50%;
+        border: 4px solid var(--bg-primary);
+      }
+      .timeline-item:nth-child(odd)::before {
+        right: -10px;
+      }
+      .timeline-item:nth-child(even)::before {
+        left: -10px;
+      }
+      .timeline-content {
+        background: var(--bg-secondary);
+        padding: var(--spacing-xl);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+        transition: transform var(--transition-normal),
+          box-shadow var(--transition-normal);
+      }
+      .timeline-content:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+      .timeline-year {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--accent-color);
+        margin-bottom: var(--spacing-sm);
+        transition: transform var(--transition-fast),
+          color var(--transition-fast);
+      }
+      .timeline-content:hover .timeline-year {
+        transform: scale(1.1);
+        color: var(--accent-color2);
+      }
+      .timeline-content h4 {
+        font-size: 1.1rem;
+        margin-bottom: var(--spacing-sm);
+        color: var(--text-primary);
+      }
+      .timeline-content p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        margin: 0;
+      }
+      /* CTA Section */
+      .cta-section {
+        background: linear-gradient(135deg, var(--gradient-primary));
+        padding: var(--spacing-3xl) 0;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        opacity: 1 !important; /* Ensure visibility */
+        transform: none !important; /* Remove any transform that might hide it */
+      }
+      .cta-content h2 {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        margin-bottom: var(--spacing-lg);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        color: var(
+          --text-primary
+        ); /* Use CSS variable instead of fixed white */
+      }
+      .cta-content p {
+        font-size: 1.2rem;
+        margin-bottom: var(--spacing-2xl);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        color: var(
+          --text-primary
+        ); /* Use CSS variable instead of fixed white */
+        opacity: 0.9;
+      }
+      .cta-buttons {
+        display: flex;
+        gap: var(--spacing-lg);
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .cta-buttons .btn {
+        min-width: 200px;
+        position: relative;
+        z-index: 2;
+      }
+      /* Responsive Design */
+      @media (min-width: 475px) {
+        .about-hero {
+          padding: var(--spacing-4xl) 0;
+        }
+        .about-title {
+          font-size: clamp(2.5rem, 5vw, 4rem);
+        }
+        .section {
+          padding: var(--spacing-4xl) 0;
+        }
+      }
+      @media (min-width: 640px) {
+        .about-hero {
+          padding: var(--spacing-5xl) 0;
+        }
+        .about-title {
+          font-size: clamp(2.5rem, 5vw, 4.5rem);
+        }
+        .story-text p {
+          font-size: 1.2rem;
+        }
+        .section {
+          padding: var(--spacing-5xl) 0;
+        }
+      }
+      @media (min-width: 768px) {
+        .story-content {
+          grid-template-columns: 1fr;
+        }
+        .mission-vision-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .values-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .team-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .about-hero {
+          padding: var(--spacing-6xl) 0;
+        }
+        .section {
+          padding: var(--spacing-6xl) 0;
+        }
+      }
+      @media (min-width: 1024px) {
+        .story-content {
+          grid-template-columns: 1fr 1fr;
+        }
+        .values-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .team-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .about-hero {
+          padding: var(--spacing-7xl) 0;
+        }
+        .section {
+          padding: var(--spacing-7xl) 0;
+        }
+      }
+      @media (min-width: 1280px) {
+        .about-hero {
+          padding: var(--spacing-8xl) 0;
+        }
+        .section {
+          padding: var(--spacing-8xl) 0;
+        }
+      }
+      @media (min-width: 1536px) {
+        .about-hero {
+          padding: var(--spacing-9xl) 0;
+        }
+        .section {
+          padding: var(--spacing-9xl) 0;
+        }
+      }
+      @media (max-width: 767px) {
+        .timeline::before {
+          left: 20px;
+        }
+        .timeline-item {
+          width: 100%;
+          left: 0 !important;
+          padding-left: 60px !important;
+          padding-right: 0 !important;
+          text-align: left !important;
+        }
+        .timeline-item::before {
+          left: 10px !important;
+        }
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+      /* Dark Theme Support */
+      [data-theme="dark"] .about-hero {
+        background: linear-gradient(135deg, var(--gradient-secondary));
+      }
+      [data-theme="dark"] .mission-card,
+      [data-theme="dark"] .vision-card,
+      [data-theme="dark"] .value-item,
+      [data-theme="dark"] .timeline-content {
+        background: var(--bg-tertiary);
+        border-color: var(--border);
+      }
+      /* Animation Classes */
+      .slide-in-up {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      .slide-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      /* Fixed Hero Section - Prevents floating/movement issue */
+      .hero {
+        position: relative; /* Changed from absolute/fixed */
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0; /* Reset any margin that might cause issues */
+      }
+    </style>
   </head>
   <body>
-    Impasto || Information
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="mobile-menu-overlay"
+      id="mobileMenuOverlay"
+      onclick="toggleMobileMenu()"
+    ></div>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="logo">
+          <img
+            src="../assets/images/logo2.png"
+            alt="Impasto logo"
+            class="logo-icon"
+          />
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a
+              href="../index.html"
+              class="nav-link"
+              onclick="setActiveNav(this)"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="/pages/information.html"
+                class="nav-link active"
+                onclick="setActiveNav(this)"
+              >
+                Information
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="/pages/about.html" class="dropdown-link">About Us</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/team.html" class="dropdown-link">Our Team</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/services.html" class="dropdown-link"
+                  >Services</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/testimonials.html" class="dropdown-link"
+                  >Testimonials</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="/pages/ratecards.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Ratecards
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="/pages/portrait-rates.html" class="dropdown-link"
+                  >Portrait Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/wedding-rates.html" class="dropdown-link"
+                  >Wedding Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/event-rates.html" class="dropdown-link"
+                  >Event Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/commercial-rates.html" class="dropdown-link"
+                  >Commercial Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/special-packages.html" class="dropdown-link"
+                  >Special Packages</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="/pages/store.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Store
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="/pages/prints.html" class="dropdown-link">Prints</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="/pages/digital-products.html" class="dropdown-link"
+                  >Digital Products</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a
+              href="/pages/contact.html"
+              class="nav-link"
+              onclick="setActiveNav(this)"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              href="/pages/blog.html"
+              class="nav-link"
+              onclick="setActiveNav(this)"
+              >Blog</a
+            >
+          </li>
+        </ul>
+        <div class="nav-controls">
+          <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon theme-icon"></i>
+            <span class="theme-text">Dark</span>
+          </button>
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- Hero Section - Updated with camera icon and new content -->
+    <section id="home" class="hero fade-in">
+      <div class="hero-slider">
+        <div
+          class="hero-slide active"
+          style="background-image: url('../assets/images/img5.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('../assets/images/img6.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('../assets/images/img7.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('../assets/images/img8.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('../assets/images/img9.jpg')"
+        ></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-camera"></i>
+          Since 2010
+        </div>
+        <h1 class="hero-title">About Impasto Photography</h1>
+        <p class="hero-subtitle">
+          Capturing Life's Beautiful Moments Since 2010
+        </p>
+      </div>
+      <!-- Hero Slider Indicators -->
+      <div class="hero-indicators">
+        <div class="hero-indicator active" onclick="goToSlide(0)"></div>
+        <div class="hero-indicator" onclick="goToSlide(1)"></div>
+        <div class="hero-indicator" onclick="goToSlide(2)"></div>
+        <div class="hero-indicator" onclick="goToSlide(3)"></div>
+        <div class="hero-indicator" onclick="goToSlide(4)"></div>
+      </div>
+      <div class="scroll-indicator" onclick="scrollToSection('next-section')">
+        <i class="fas fa-chevron-down fa-2x"></i>
+      </div>
+    </section>
+
+    <!-- Stats Section - Matching First File Design -->
+    <section id="stats" class="stats-section fade-in-up">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number" data-count="15">0</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="10000">0</span>
+            <span class="stat-label">Happy Clients</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="50000">0</span>
+            <span class="stat-label">Photos Captured</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="750">0</span>
+            <span class="stat-label">Projects Completed</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content container">
+      <!-- Our Story Section - Matching First File Design -->
+      <section class="our-story section slide-in-left" id="next-section">
+        <div class="container">
+          <div class="section-header text-center">
+            <h2 class="section-title">Our Story</h2>
+            <div class="section-divider">
+              <span class="divider-line"></span>
+              <i class="fas fa-camera divider-icon"></i>
+              <span class="divider-line"></span>
+            </div>
+            <p class="section-subtitle">
+              From a passion project to a premier photography studio
+            </p>
+          </div>
+          <div class="story-content">
+            <div class="story-image">
+              <img
+                src="../assets/images/logo2.png"
+                alt="Our Photography Studio"
+                class="no-context-menu logo-icon2"
+              />
+            </div>
+            <div class="story-text">
+              <p>
+                Impasto Photography began as a dream in 2010, founded with a
+                simple yet powerful vision: to capture life's most precious
+                moments with authenticity and artistry. What started as a small
+                studio in Dome, Accra, has blossomed into one of Ghana's most
+                sought-after photography destinations.
+              </p>
+              <div class="story-highlight">
+                "Every photograph tells a story, and we're here to help you tell
+                yours beautifully."
+              </div>
+              <p>
+                Our name "Impasto" reflects our artistic approach – just as
+                impasto technique in painting creates texture and depth, we
+                capture photographs that tell rich, layered stories. Each image
+                we create is a masterpiece, carefully crafted to preserve
+                emotions and memories that will be cherished for generations.
+              </p>
+              <p>
+                Over the years, we've had the privilege of capturing thousands
+                of stories – from intimate family portraits to grand weddings,
+                from corporate events to artistic projects. Every client who
+                walks through our doors becomes part of our extended family, and
+                every photograph we take becomes a testament to our commitment
+                to excellence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Our Mission & Vision Section - Matching First File Design -->
+      <section class="mission-vision section slide-in-right">
+        <div class="container">
+          <div class="section-header text-center">
+            <h2 class="section-title">Our Mission & Vision</h2>
+            <div class="section-divider">
+              <span class="divider-line"></span>
+              <i class="fas fa-bullseye divider-icon"></i>
+              <span class="divider-line"></span>
+            </div>
+            <p class="section-subtitle">
+              The driving force behind our passion for photography
+            </p>
+          </div>
+          <div class="mission-vision-grid">
+            <div class="mission-card">
+              <div class="card-icon">
+                <i class="fas fa-bullseye"></i>
+              </div>
+              <h3>Our Mission</h3>
+              <p>
+                To provide exceptional photography services that capture
+                authentic emotions and create timeless memories. We strive to
+                exceed client expectations through artistic excellence,
+                cutting-edge technology, and personalized service that makes
+                every photoshoot experience memorable and enjoyable.
+              </p>
+            </div>
+            <div class="vision-card">
+              <div class="card-icon">
+                <i class="fas fa-eye"></i>
+              </div>
+              <h3>Our Vision</h3>
+              <p>
+                To be Africa's leading photography studio, recognized for our
+                artistic innovation, technical excellence, and commitment to
+                preserving life's precious moments. We aim to set industry
+                standards while nurturing the next generation of photographic
+                talent.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Our Values Section -->
+      <section class="our-values section fade-in">
+        <div class="container">
+          <div class="section-header text-center">
+            <h2 class="section-title">Our Core Values</h2>
+            <div class="section-divider">
+              <span class="divider-line"></span>
+              <i class="fas fa-heart divider-icon"></i>
+              <span class="divider-line"></span>
+            </div>
+            <p class="section-subtitle">
+              The principles that guide every frame we capture
+            </p>
+          </div>
+          <div class="values-grid">
+            <div class="value-item">
+              <div class="value-icon">
+                <i class="fas fa-palette"></i>
+              </div>
+              <h4>Artistic Excellence</h4>
+              <p>
+                We approach every project with an artist's eye, ensuring each
+                photograph is a masterpiece of composition, lighting, and
+                emotion.
+              </p>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h4>Client-Centered Service</h4>
+              <p>
+                Your vision is our priority. We listen, understand, and deliver
+                beyond expectations with personalized attention to detail.
+              </p>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">
+                <i class="fas fa-microscope"></i>
+              </div>
+              <h4>Technical Precision</h4>
+              <p>
+                We combine artistic vision with technical expertise, utilizing
+                state-of-the-art equipment and cutting-edge techniques.
+              </p>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <h4>Timeless Quality</h4>
+              <p>
+                We create images that stand the test of time, preserving
+                memories that will be cherished for generations to come.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Meet the Team Section -->
+      <section class="meet-team section slide-in-right">
+        <div class="container">
+          <div class="section-header text-center">
+            <h2 class="section-title">Meet Our Team</h2>
+            <div class="section-divider">
+              <span class="divider-line"></span>
+              <i class="fas fa-users divider-icon"></i>
+              <span class="divider-line"></span>
+            </div>
+            <p class="section-subtitle">
+              The passionate artists behind the lens
+            </p>
+          </div>
+          <div class="team-grid">
+            <div class="team-member">
+              <div class="member-image">
+                <img
+                  src="../assets/images/image2.jpg"
+                  alt="Lead Photographer"
+                  class="no-context-menu"
+                />
+                <div class="member-overlay">
+                  <div class="social-links">
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-instagram"></i
+                    ></a>
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-linkedin-in"></i
+                    ></a>
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-twitter"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+              <h4>Kwame Asante</h4>
+              <p class="member-role">Lead Photographer & Founder</p>
+              <p class="member-bio">
+                With over 15 years of experience, Kwame brings artistic vision
+                and technical expertise to every project.
+              </p>
+            </div>
+            <div class="team-member">
+              <div class="member-image">
+                <img
+                  src="../assets/images/image3.jpg"
+                  alt="Studio Manager"
+                  class="no-context-menu"
+                />
+                <div class="member-overlay">
+                  <div class="social-links">
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-instagram"></i
+                    ></a>
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-linkedin-in"></i
+                    ></a>
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-twitter"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+              <h4>Adjoa Mensah</h4>
+              <p class="member-role">Studio Manager</p>
+              <p class="member-bio">
+                Adjoa ensures smooth operations and exceptional client
+                experiences from booking to delivery.
+              </p>
+            </div>
+            <div class="team-member">
+              <div class="member-image">
+                <img
+                  src="../assets/images/image4.jpg"
+                  alt="Photographer"
+                  class="no-context-menu"
+                />
+                <div class="member-overlay">
+                  <div class="social-links">
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-instagram"></i
+                    ></a>
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-linkedin-in"></i
+                    ></a>
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-twitter"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+              <h4>Kofi Osei</h4>
+              <p class="member-role">Senior Photographer</p>
+              <p class="member-bio">
+                Kofi specializes in portrait and event photography, capturing
+                authentic emotions with creative flair.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Our Journey Timeline -->
+      <section class="journey-timeline section fade-in">
+        <div class="container">
+          <div class="section-header text-center">
+            <h2 class="section-title">Our Journey</h2>
+            <div class="section-divider">
+              <span class="divider-line"></span>
+              <i class="fas fa-route divider-icon"></i>
+              <span class="divider-line"></span>
+            </div>
+            <p class="section-subtitle">Milestones that shaped our story</p>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-year">2010</div>
+                <h4>Studio Founded</h4>
+                <p>
+                  Impasto Photography opened its doors in Dome, Accra, with a
+                  passion for capturing life's beautiful moments.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-year">2013</div>
+                <h4>First Award</h4>
+                <p>
+                  Received "Best Emerging Photography Studio" award at the Ghana
+                  Photography Awards.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-year">2016</div>
+                <h4>Studio Expansion</h4>
+                <p>
+                  Moved to a larger, state-of-the-art facility to better serve
+                  our growing clientele.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-year">2019</div>
+                <h4>International Recognition</h4>
+                <p>
+                  Featured in international photography magazines for our unique
+                  artistic approach.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-year">2022</div>
+                <h4>10,000+ Clients</h4>
+                <p>
+                  Celebrated serving over 10,000 happy clients and capturing
+                  countless precious memories.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-year">2025</div>
+                <h4>Continuing Excellence</h4>
+                <p>
+                  Still dedicated to our mission of creating timeless
+                  photographic art for generations to come.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="cta-section section slide-in-up">
+        <div class="container">
+          <div class="cta-content">
+            <h2>Ready to Create Timeless Memories?</h2>
+            <p>
+              Let us capture your special moments with our artistic vision and
+              professional expertise.
+            </p>
+            <div class="cta-buttons">
+              <a href="/pages/contact.html" class="btn btn-primary">
+                <i class="fas fa-calendar-alt"></i>
+                Book a Session
+              </a>
+              <a href="/pages/ratecards.html" class="btn btn-primary2">
+                <i class="fas fa-images"></i>
+                View Our Services
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!--footer-->
+    <footer class="footer scale-in">
+      <div class="footer-content container">
+        <div class="footer-grid">
+          <!-- Logo Section -->
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img
+                src="../assets/images/logo2.png"
+                class="footer-logo-icon"
+                alt="Impasto Photography"
+              />
+            </div>
+            <p class="footer-description">
+              At Impasto Photography, we specialize in capturing life's precious
+              moments with artistry and precision. Our team of professional
+              photographers is dedicated to creating timeless memories that
+              you'll cherish for generations to come.
+            </p>
+          </div>
+          <!-- Quick Links -->
+          <div class="footer-section slide-in-left">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#home">
+                  <i class="fas fa-chevron-right"></i>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/pages/information.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Information
+                </a>
+              </li>
+              <li>
+                <a href="/pages/ratecards.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Ratecards
+                </a>
+              </li>
+              <li>
+                <a href="/pages/store.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Store
+                </a>
+              </li>
+              <li>
+                <a href="/pages/contact.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a href="/pages/blog.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Services -->
+          <div class="footer-section fade-in">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#">
+                  <i class="fas fa-camera"></i>
+                  Pre-Birthday Shoots
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-user"></i>
+                  Studio Potraits
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-building"></i>
+                  Large Format Print and Cut
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-calendar-alt"></i>
+                  Event Coverage
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-plane"></i>
+                  Passport Pictures
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-palette"></i>
+                  Graphic Design
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-ellipsis-h"></i>
+                  etc
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Contact -->
+          <div class="footer-section slide-in-right">
+            <h3>Get In Touch</h3>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dome - Accra. Opposite Adehyeman Bank.</span>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>+233 (0) 242-641-305</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <span>potrit1@gmail.com</span>
+              </li>
+              <li>
+                <i class="fas fa-clock"></i>
+                <span>Mon-Fri: 8AM-5PM, Sat: 9:30AM-6PM, Sun: 1PM-6PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content container">
+          <div class="footer-copyright">
+            <p>© 2025 Impasto Photography. All rights reserved.</p>
+          </div>
+          <div class="kenzy-credit">
+            <p>Website developed with 💖 by Kenzyverse</p>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-pinterest-p"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/src/general.js"></script>
+    <script src="../assets/src/navhero.js"></script>
+    <script>
+      // ===========================================
+      // COUNTER ANIMATIONS FOR STATS SECTION
+      // ===========================================
+      function animateCounter(counter, target) {
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+        const updateCounter = () => {
+          current += increment;
+          if (current < target) {
+            counter.textContent = Math.floor(current).toLocaleString();
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target.toLocaleString();
+          }
+        };
+        updateCounter();
+      }
+
+      function initCounters() {
+        const counters = document.querySelectorAll(".stat-number");
+        counters.forEach((counter) => {
+          if (
+            isElementInViewport(counter) &&
+            !counter.classList.contains("animated")
+          ) {
+            counter.classList.add("animated");
+            const target = parseInt(counter.getAttribute("data-count"));
+            animateCounter(counter, target);
+          }
+        });
+      }
+
+      // ===========================================
+      // ABOUT PAGE SPECIFIC FUNCTIONALITY
+      // ===========================================
+      /**
+       * Initialize About Page specific animations and interactions
+       */
+      function initAboutPage() {
+        // Initialize scroll animations for about page elements
+        initAboutScrollAnimations();
+        // Add smooth scrolling for internal links
+        initSmoothScrolling();
+        // Initialize timeline animations
+        initTimelineAnimations();
+        // Initialize team member hover effects
+        initTeamMemberEffects();
+        // Initialize value cards hover effects
+        initValueCardEffects();
+        // Initialize counter animations
+        initCounters();
+      }
+      /**
+       * Initialize scroll animations specific to about page
+       */
+      function initAboutScrollAnimations() {
+        const animatedElements = document.querySelectorAll(
+          ".our-story .fade-in, .mission-vision .slide-in-left, " +
+            ".our-values .fade-in, .meet-team .slide-in-right, .journey-timeline .fade-in"
+        );
+        // Trigger initial check
+        handleAboutScrollAnimations();
+        // Add scroll event listener
+        window.addEventListener("scroll", handleAboutScrollAnimations);
+        // Make CTA section visible immediately
+        const ctaSection = document.querySelector(".cta-section");
+        if (ctaSection) {
+          ctaSection.classList.add("visible");
+          ctaSection.style.opacity = "1";
+          ctaSection.style.transform = "translateY(0)";
+        }
+      }
+      /**
+       * Handle about page scroll animations
+       */
+      function handleAboutScrollAnimations() {
+        const animatedElements = document.querySelectorAll(
+          ".our-story .fade-in:not(.visible), " +
+            ".mission-vision .slide-in-left:not(.visible), .our-values .fade-in:not(.visible), " +
+            ".meet-team .slide-in-right:not(.visible), .journey-timeline .fade-in:not(.visible)"
+        );
+        animatedElements.forEach((element) => {
+          if (isElementInViewport(element)) {
+            element.classList.add("visible");
+          }
+        });
+      }
+      /**
+       * Initialize smooth scrolling for internal navigation
+       */
+      function initSmoothScrolling() {
+        // Add smooth scrolling to all internal links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+        });
+      }
+      /**
+       * Initialize timeline animations
+       */
+      function initTimelineAnimations() {
+        const timelineItems = document.querySelectorAll(".timeline-item");
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        }, observerOptions);
+        timelineItems.forEach((item) => {
+          observer.observe(item);
+        });
+      }
+      /**
+       * Initialize team member hover effects
+       */
+      function initTeamMemberEffects() {
+        const teamMembers = document.querySelectorAll(".team-member");
+        teamMembers.forEach((member) => {
+          const overlay = member.querySelector(".member-overlay");
+          const socialLinks = member.querySelectorAll(
+            ".member-overlay .social-link"
+          );
+          // Add hover effect for the entire team member card
+          member.addEventListener("mouseenter", () => {
+            member.style.transform = "translateY(-10px)";
+          });
+          member.addEventListener("mouseleave", () => {
+            member.style.transform = "translateY(0)";
+          });
+          // Add staggered animation for social links
+          if (overlay) {
+            overlay.addEventListener("mouseenter", () => {
+              socialLinks.forEach((link, index) => {
+                setTimeout(() => {
+                  link.style.transform = "scale(1.1)";
+                }, index * 100);
+              });
+            });
+            overlay.addEventListener("mouseleave", () => {
+              socialLinks.forEach((link) => {
+                link.style.transform = "scale(1)";
+              });
+            });
+          }
+        });
+      }
+      /**
+       * Initialize value cards hover effects
+       */
+      function initValueCardEffects() {
+        const valueItems = document.querySelectorAll(".value-item");
+        valueItems.forEach((item) => {
+          const icon = item.querySelector(".value-icon");
+          item.addEventListener("mouseenter", () => {
+            item.style.transform = "translateY(-5px)";
+            if (icon) {
+              icon.style.transform = "scale(1.1) rotate(5deg)";
+            }
+          });
+          item.addEventListener("mouseleave", () => {
+            item.style.transform = "translateY(0)";
+            if (icon) {
+              icon.style.transform = "scale(1) rotate(0deg)";
+            }
+          });
+        });
+      }
+      /**
+       * Check if element is in viewport
+       * @param {HTMLElement} element - The element to check
+       * @return {boolean} - True if element is in viewport
+       */
+      function isElementInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        const windowHeight =
+          window.innerHeight || document.documentElement.clientHeight;
+        const offset = windowHeight * 0.2;
+        return rect.top <= windowHeight - offset && rect.bottom >= offset;
+      }
+      /**
+       * Add parallax effect to hero section - DISABLED to prevent movement
+       */
+      function initParallaxEffect() {
+        // Parallax effect disabled to prevent unwanted movement
+        // const heroSection = document.querySelector(".about-hero");
+        // if (heroSection) {
+        //   window.addEventListener("scroll", () => {
+        //     const scrolled = window.pageYOffset;
+        //     const parallax = scrolled * 0.2; // Reduced parallax effect for better performance
+        //     heroSection.style.transform = `translateY(${parallax}px)`;
+        //   });
+        // }
+        console.log("Parallax effect disabled for about-hero section");
+      }
+      /**
+       * Initialize counter animation for timeline years
+       */
+      function initTimelineCounters() {
+        const timelineYears = document.querySelectorAll(".timeline-year");
+        const observerOptions = {
+          threshold: 0.5,
+        };
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const yearElement = entry.target;
+              // Simple animation effect
+              yearElement.style.transform = "scale(1.2)";
+              yearElement.style.color = "var(--accent-color2)";
+              setTimeout(() => {
+                yearElement.style.transform = "scale(1)";
+                yearElement.style.color = "var(--accent-color)";
+              }, 300);
+              // Unobserve after animation
+              observer.unobserve(yearElement);
+            }
+          });
+        }, observerOptions);
+        timelineYears.forEach((year) => {
+          observer.observe(year);
+        });
+      }
+      /**
+       * Add interactive elements to mission/vision cards
+       */
+      function initMissionVisionInteractions() {
+        const missionCard = document.querySelector(".mission-card");
+        const visionCard = document.querySelector(".vision-card");
+        if (missionCard) {
+          missionCard.addEventListener("click", () => {
+            missionCard.style.transform = "scale(1.02)";
+            setTimeout(() => {
+              missionCard.style.transform = "translateY(-5px)";
+            }, 200);
+          });
+        }
+        if (visionCard) {
+          visionCard.addEventListener("click", () => {
+            visionCard.style.transform = "scale(1.02)";
+            setTimeout(() => {
+              visionCard.style.transform = "translateY(-5px)";
+            }, 200);
+          });
+        }
+      }
+      /**
+       * Initialize all about page functionality when DOM is loaded
+       */
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize about page specific functionality
+        initAboutPage();
+        // Initialize parallax effect
+        initParallaxEffect();
+        // Initialize counter animations
+        initTimelineCounters();
+        // Initialize mission/vision interactions
+        initMissionVisionInteractions();
+        // Add scroll event listener for counters
+        window.addEventListener("scroll", initCounters);
+        // Initial check for counters
+        initCounters();
+        // Set active nav item for about page
+        const aboutLinks = document.querySelectorAll('a[href="about.html"]');
+        aboutLinks.forEach((link) => {
+          link.classList.add("active");
+        });
+      });
+      /**
+       * Cleanup event listeners when page is unloaded
+       */
+      window.addEventListener("beforeunload", function () {
+        // Remove scroll event listener
+        window.removeEventListener("scroll", handleAboutScrollAnimations);
+      });
+      // Export functions for external use if needed
+      window.AboutPage = {
+        init: initAboutPage,
+        refreshAnimations: handleAboutScrollAnimations,
+      };
+      console.log("About Page Loaded Successfully! 📸");
+    </script>
   </body>
 </html>

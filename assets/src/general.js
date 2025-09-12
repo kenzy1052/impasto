@@ -8,7 +8,9 @@ function toggleTheme() {
   const body = document.body;
   const themeIcon = document.querySelector(".theme-icon");
   const themeText = document.querySelector(".theme-text");
-  const logos = document.querySelectorAll(".logo-icon, .footer-logo-icon");
+  const logos = document.querySelectorAll(
+    ".logo-icon, .footer-logo-icon, .logo-icon2"
+  );
   // Check current theme
   if (body.getAttribute("data-theme") === "dark") {
     // Switch to light theme
@@ -39,7 +41,9 @@ function loadSavedTheme() {
     document.body.setAttribute("data-theme", "dark");
     document.querySelector(".theme-icon").className = "fas fa-sun theme-icon";
     document.querySelector(".theme-text").textContent = "Light";
-    const logos = document.querySelectorAll(".logo-icon, .footer-logo-icon");
+    const logos = document.querySelectorAll(
+      ".logo-icon, .footer-logo-icon, .logo-icon2"
+    );
     logos.forEach((logo) => {
       logo.src = "assets/images/logo2d.png";
     });

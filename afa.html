@@ -203,14 +203,15 @@
       }
       .story-image {
         position: relative;
-        border-radius: var(--radius-xl);
+        border-radius: var(--radius-sm);
         overflow: hidden;
-        box-shadow: var(--shadow);
-        height: 400px;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       .story-image img {
-        width: 100%;
-        height: 100%;
+        width: 200px;
         object-fit: cover;
         transition: transform var(--transition-slow);
       }
@@ -368,6 +369,9 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: var(--spacing-2xl);
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       .team-member {
         text-align: center;
@@ -606,7 +610,7 @@
       }
       @media (min-width: 768px) {
         .story-content {
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr;
         }
         .mission-vision-grid {
           grid-template-columns: 1fr 1fr;
@@ -625,6 +629,9 @@
         }
       }
       @media (min-width: 1024px) {
+        .story-content {
+          grid-template-columns: 1fr 1fr;
+        }
         .values-grid {
           grid-template-columns: repeat(4, 1fr);
         }
@@ -944,9 +951,9 @@
           <div class="story-content">
             <div class="story-image">
               <img
-                src="assets/images/img10.jpg"
+                src="assets/images/logo2.png"
                 alt="Our Photography Studio"
-                class="no-context-menu"
+                class="no-context-menu logo-icon2"
               />
             </div>
             <div class="story-text">
@@ -1185,34 +1192,6 @@
                 authentic emotions with creative flair.
               </p>
             </div>
-            <div class="team-member">
-              <div class="member-image">
-                <img
-                  src="assets/images/image2.jpg"
-                  alt="Photo Editor"
-                  class="no-context-menu"
-                />
-                <div class="member-overlay">
-                  <div class="social-links">
-                    <a href="#" class="social-link"
-                      ><i class="fab fa-instagram"></i
-                    ></a>
-                    <a href="#" class="social-link"
-                      ><i class="fab fa-linkedin-in"></i
-                    ></a>
-                    <a href="#" class="social-link"
-                      ><i class="fab fa-twitter"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-              <h4>Ama Boateng</h4>
-              <p class="member-role">Photo Editor & Retoucher</p>
-              <p class="member-bio">
-                Ama's expert post-processing skills bring out the best in every
-                image with precision and artistry.
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -1308,7 +1287,7 @@
                 <i class="fas fa-calendar-alt"></i>
                 Book a Session
               </a>
-              <a href="/pages/ratecards.html" class="btn btn-secondary">
+              <a href="/pages/ratecards.html" class="btn btn-primary2">
                 <i class="fas fa-images"></i>
                 View Our Services
               </a>

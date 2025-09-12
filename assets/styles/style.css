@@ -248,6 +248,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
 body {
   font-family: var(--font-primary);
   background-color: var(--bg-primary);
@@ -255,7 +260,6 @@ body {
   line-height: 1.6;
   transition: background-color var(--transition-normal),
     color var(--transition-normal);
-  overflow-x: hidden;
 }
 /* Typography */
 h1,

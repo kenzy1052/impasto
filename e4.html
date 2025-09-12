@@ -74,6 +74,173 @@
     <link rel="stylesheet" href="assets/styles/utils.css" />
     <link rel="stylesheet" href="assets/styles/components/navhero.css" />
     <link rel="stylesheet" href="assets/styles/components/footer.css" />
+    <style>
+      /* ========== GENERAL ========== */
+      body {
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #222;
+        background: #fff;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: #111;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        margin: 0.5rem 0;
+        font-weight: bold;
+      }
+
+      p {
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+
+      /* ========== FORM ========== */
+      .reservation-section {
+        margin-bottom: 4rem;
+      }
+
+      .reservation-form {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-width: 600px;
+      }
+
+      .reservation-form label {
+        font-weight: 600;
+      }
+
+      .reservation-form input,
+      .reservation-form select,
+      .reservation-form textarea {
+        width: 100%;
+        padding: 0.6rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1rem;
+      }
+
+      .reservation-form textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      .reservation-form button {
+        padding: 0.8rem 1.2rem;
+        border: none;
+        border-radius: 6px;
+        background: #000;
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .reservation-form button:hover {
+        background: #444;
+      }
+
+      /* ========== SESSION GRIDS ========== */
+      .session-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .session-card {
+        background: #fafafa;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        padding: 1rem;
+        text-align: center;
+        transition: transform 0.3s;
+      }
+
+      .session-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+      }
+
+      .session-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .price {
+        display: block;
+        margin-top: 0.5rem;
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: #111;
+      }
+
+      /* ========== GRADUATION SECTION ========== */
+      .graduation-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+        margin-top: 2rem;
+      }
+
+      .graduation-info ul {
+        list-style: disc;
+        padding-left: 1.2rem;
+        margin: 1rem 0;
+      }
+
+      .graduation-photo img {
+        width: 100%;
+        border-radius: 12px;
+        border: 1px solid #ddd;
+      }
+
+      /* ========== EXTRAS SECTION ========== */
+      .extras-list {
+        list-style: none;
+        padding: 0;
+        margin: 2rem 0;
+      }
+
+      .extras-list li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+        font-size: 1rem;
+      }
+
+      .celebrate-text {
+        font-weight: bold;
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 1.5rem;
+        color: #444;
+      }
+
+      /* ========== RESPONSIVE ========== */
+      @media (max-width: 768px) {
+        .graduation-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- Mobile Menu Overlay -->
@@ -285,6 +452,162 @@
         <i class="fas fa-chevron-down fa-2x"></i>
       </div>
     </section>
+
+    <!-- Main Content -->
+    <main class="events-content container">
+      <!-- Reservation Form -->
+      <section class="reservation-section">
+        <h2>TO MAKE RESERVATIONS.</h2>
+        <p>
+          Kindly fill out the form below to make a reservation for a session
+          with us. We will follow up to confirm your session via call, WhatsApp,
+          or email.
+        </p>
+        <form class="reservation-form">
+          <label for="name">Name *</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" name="phone" required />
+
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="session-type">Type of Session *</label>
+          <select id="session-type" name="session-type" required>
+            <option value="">Select Session</option>
+            <option value="personal">Personal Portrait</option>
+            <option value="family">Family Portrait</option>
+            <option value="graduation">Graduation</option>
+            <option value="event">Event</option>
+          </select>
+
+          <label for="date">Date of Photography *</label>
+          <input type="date" id="date" name="date" required />
+
+          <label for="location">Location *</label>
+          <input type="text" id="location" name="location" required />
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message"></textarea>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </section>
+
+      <!-- Personal Portrait Sessions -->
+      <section class="portrait-sessions">
+        <h2>PERSONAL PORTRAIT SESSIONS</h2>
+        <div class="session-grid">
+          <div class="session-card">
+            <img src="assets/images/image1.jpg" alt="Basic Studio Session" />
+            <h3>BASIC STUDIO SESSION</h3>
+            <p>
+              30 Minutes Shooting Time<br />2 Outfits<br />5 Retouched Images
+            </p>
+            <span class="price">₵ 1000.00</span>
+          </div>
+          <div class="session-card">
+            <img src="assets/images/img10.jpg" alt="Solo Spotlight" />
+            <h3>SOLO SPOTLIGHT</h3>
+            <p>
+              45 Minutes Shooting Time<br />3 Outfits<br />8 Retouched Images
+            </p>
+            <span class="price">₵ 1500.00</span>
+          </div>
+          <div class="session-card">
+            <img src="assets/images/img3.jpg" alt="Luxury Layers" />
+            <h3>LUXURY LAYERS</h3>
+            <p>
+              90 Minutes Shooting Time<br />5 Outfits<br />15 Retouched Images
+            </p>
+            <span class="price">₵ 2500.00</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Family Portrait Sessions -->
+      <section class="family-sessions">
+        <h2>FAMILY PORTRAIT SESSIONS</h2>
+        <div class="session-grid">
+          <div class="session-card">
+            <img src="assets/images/img41.jpg" alt="Baby/Family Shoot" />
+            <h3>BABY/FAMILY SHOOT SESSION</h3>
+            <p>
+              30 Minutes Shooting Time<br />2 Outfits<br />6 Retouched Images
+            </p>
+            <span class="price">₵ 1500.00</span>
+          </div>
+          <div class="session-card">
+            <img src="assets/images/img52.jpg" alt="Maternity Shoot" />
+            <h3>MATERNITY SHOOT SESSION</h3>
+            <p>
+              60 Minutes Shooting Time<br />3 Outfits<br />10 Retouched Images
+            </p>
+            <span class="price">₵ 1800.00</span>
+          </div>
+          <div class="session-card">
+            <img src="assets/images/img43.jpg" alt="Baby Christening" />
+            <h3>BABY CHRISTENING / NAMING CEREMONY</h3>
+            <p>
+              60 Minutes Shooting Time<br />3 Outfits<br />12 Retouched Images
+            </p>
+            <span class="price">₵ 2000.00</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Graduation Sessions -->
+      <section class="graduation-sessions">
+        <h2>GRADUATION SESSIONS</h2>
+        <div class="graduation-grid">
+          <div class="graduation-info">
+            <p>
+              Thank you for your interest in our Graduation Photography Packages
+              at Impasto Studios!<br />
+              We offer a variety of options to capture this special milestone in
+              a way that reflects your unique personality.
+            </p>
+            <ul>
+              <li>30–60 Minutes Shooting Time</li>
+              <li>3 Outfits (including graduation attire)</li>
+              <li>10 Retouched Images</li>
+              <li>Classic Analog & Digital Prints Available</li>
+            </ul>
+            <p><strong>Starting at ₵ 2200</strong></p>
+          </div>
+          <div class="graduation-photo">
+            <img src="assets/images/img6.jpg" alt="Graduation Portrait" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Extras Section -->
+      <section class="extras-section">
+        <h2>EXTRAS / À LA CARTE FOR EVENTS</h2>
+        <ul class="extras-list">
+          <li>Photography Extra Event Hourly Rate - ₵ 1200.00</li>
+          <li>Videography Extra Event Hourly Rate - ₵ 1400.00</li>
+          <li>Studio Make Up & Hair Styling - ₵ 500.00</li>
+          <li>Studio Space Rental (Basic) - ₵ 220.00</li>
+          <li>Celebratory Reels (60 sec) - ₵ 400.00</li>
+          <li>Studio Space Rental (With Lights) - ₵ 380.00</li>
+          <li>Additional Outfit (10 Extra Photos #1) - ₵ 400.00</li>
+          <li>Additional Head to Edit Photos #2 - ₵ 600.00</li>
+          <li>Additional Photographer (Glamor/Other) - ₵ 1000.00</li>
+          <li>Retouching (Per Image) - ₵ 100.00</li>
+          <li>Prints(2x3) - ₵ 2.50</li>
+          <li>Photo Books(20) - ₵ 200.00</li>
+          <li>Photo Books(40) - ₵ 300.00</li>
+          <li>Photo Frames(8x10) - ₵ 180.00</li>
+          <li>Photo Frames(12x16) - ₵ 280.00</li>
+          <li>Photo Frames(16x20) - ₵ 480.00</li>
+          <li>Photo Frames(24x36) - ₵ 700.00</li>
+          <li>Set Design – On Request (Concept Dependent)</li>
+        </ul>
+        <p class="celebrate-text">CELEBRATE THE WINS!</p>
+      </section>
+    </main>
 
     <!--footer-->
     <footer class="footer scale-in">

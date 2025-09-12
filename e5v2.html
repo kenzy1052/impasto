@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Impasto Photography Studio" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="csrf-token"
+      content="E7fMIgCrVM18KI0gDU73uyY9RSHXz5Ac67osNhyX"
+    />
+    <title>Portrait Photography - Impasto Photography Studio</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Portrait Photography - Impasto Photography Studio",
+        "url": "https://impastophotography.com/portrait/"
+      }
+    </script>
+    <style type="text/css">
+      /* Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #ffffff;
+        color: #1c1c1c;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* Typography */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      h3 {
+        font-size: 1.75rem;
+      }
+      h4 {
+        font-size: 1.5rem;
+      }
+      p {
+        margin-bottom: 1rem;
+      }
+
+      /* Header Styles */
+      header {
+        background-color: #ffffff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 50px;
+        margin-right: 10px;
+      }
+
+      .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1c1c1c;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav li {
+        margin-left: 2rem;
+        position: relative;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: #1c1c1c;
+        font-weight: 500;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: color 0.3s;
+      }
+
+      nav a:hover {
+        color: #e63946;
+      }
+
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #ffffff;
+        min-width: 200px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s;
+        z-index: 100;
+      }
+
+      nav li:hover .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .dropdown li {
+        margin: 0;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #f1f1f1;
+      }
+
+      .dropdown li:last-child {
+        border-bottom: none;
+      }
+
+      .dropdown a {
+        display: block;
+      }
+
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      .hero {
+        position: relative;
+        height: 80vh;
+        min-height: 500px;
+        overflow: hidden;
+      }
+
+      .hero-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .hero-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .hero-slide.active {
+        opacity: 1;
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      .hero-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: #ffffff;
+        width: 90%;
+        max-width: 800px;
+      }
+
+      .hero-title {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background-color: #e63946;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #d62828;
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid #ffffff;
+      }
+
+      .btn-outline:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .hero-indicators {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+      }
+
+      .indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+      }
+
+      .indicator.active {
+        background-color: #ffffff;
+      }
+
+      /* Contact Form Section */
+      .contact-section {
+        padding: 5rem 0;
+        background-color: #f9f9f9;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #1c1c1c;
+      }
+
+      .contact-container {
+        display: flex;
+        gap: 3rem;
+        align-items: flex-start;
+      }
+
+      .contact-info {
+        flex: 1;
+      }
+
+      .contact-form {
+        flex: 1;
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #1c1c1c;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: #e63946;
+      }
+
+      .btn-submit {
+        width: 100%;
+        padding: 0.75rem;
+        background-color: #e63946;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .btn-submit:hover {
+        background-color: #d62828;
+      }
+
+      /* Pricing Section */
+      .pricing-section {
+        padding: 5rem 0;
+      }
+
+      .pricing-category {
+        margin-bottom: 4rem;
+      }
+
+      .category-title {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .category-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: #e63946;
+      }
+
+      .pricing-cards {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .pricing-card {
+        width: 300px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s;
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .card-image {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .pricing-card:hover .card-image img {
+        transform: scale(1.05);
+      }
+
+      .card-content {
+        padding: 1.5rem;
+      }
+
+      .card-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .card-features {
+        list-style: none;
+        margin-bottom: 1.5rem;
+      }
+
+      .card-features li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #f1f1f1;
+      }
+
+      .card-features li:last-child {
+        border-bottom: none;
+      }
+
+      .card-price {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #e63946;
+        text-align: center;
+        margin-top: 1rem;
+      }
+
+      /* Extras Section */
+      .extras-section {
+        padding: 5rem 0;
+        background-color: #f9f9f9;
+      }
+
+      .extras-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .extra-item {
+        background-color: #ffffff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .extra-name {
+        font-weight: 600;
+      }
+
+      .extra-price {
+        font-weight: 700;
+        color: #e63946;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 5rem 0;
+        text-align: center;
+      }
+
+      .cta-title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #1c1c1c;
+        color: #ffffff;
+        padding: 4rem 0 2rem;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 3rem;
+      }
+
+      .footer-column {
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 2rem;
+      }
+
+      .footer-column h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 0.75rem;
+      }
+
+      .footer-column h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background-color: #e63946;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.75rem;
+      }
+
+      .footer-links a {
+        color: #cccccc;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: #e63946;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: #ffffff;
+        transition: background-color 0.3s;
+      }
+
+      .social-links a:hover {
+        background-color: #e63946;
+      }
+
+      .instagram-feed {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      .instagram-feed img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #cccccc;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 992px) {
+        .contact-container {
+          flex-direction: column;
+        }
+
+        .pricing-cards {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .instagram-feed {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .mobile-menu-toggle {
+          display: block;
+        }
+
+        nav ul {
+          position: fixed;
+          top: 0;
+          right: -300px;
+          width: 300px;
+          height: 100vh;
+          background-color: #ffffff;
+          flex-direction: column;
+          padding: 2rem;
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+          transition: right 0.3s;
+          z-index: 1001;
+        }
+
+        nav ul.active {
+          right: 0;
+        }
+
+        nav li {
+          margin: 0 0 1rem 0;
+        }
+
+        .dropdown {
+          position: static;
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+          box-shadow: none;
+          background-color: #f9f9f9;
+          margin-top: 0.5rem;
+        }
+
+        .hero-title {
+          font-size: 2rem;
+        }
+
+        .instagram-feed {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+    </style>
+    <link rel="canonical" href="https://impastophotography.com/portrait/" />
+    <meta property="og:site_name" content="Impasto Photography Studio" />
+    <meta
+      property="og:title"
+      content="Portrait Photography - Impasto Photography Studio"
+    />
+    <meta
+      property="og:url"
+      content="https://impastophotography.com/portrait/"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:ttl" content="864000" />
+    <meta
+      property="og:description"
+      content="2025 Pricing and Appointment Submission for Impasto Photography Studio"
+    />
+    <meta
+      property="og:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+    <meta property="og:image:width" content="3000" />
+    <meta property="og:image:height" content="2143" />
+    <meta
+      itemprop="name"
+      content="Portrait Photography - Impasto Photography Studio"
+    />
+    <meta itemprop="url" content="https://impastophotography.com/portrait/" />
+    <meta
+      itemprop="description"
+      content="2025 Pricing and Appointment Submission for Impasto Photography Studio"
+    />
+    <meta
+      itemprop="thumbnailUrl"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+    <meta
+      name="twitter:title"
+      content="Portrait Photography - Impasto Photography Studio"
+    />
+    <meta
+      name="twitter:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+    <meta
+      name="twitter:url"
+      content="https://impastophotography.com/portrait/"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:description"
+      content="2025 Pricing and Appointment Submission for Impasto Photography Studio"
+    />
+    <meta
+      name="description"
+      content="2025 Pricing and Appointment Submission for Impasto Photography Studio"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <div class="logo">
+          <img
+            src="https://impastophotography.com/assets/images/logo.png"
+            alt="Impasto Photography Studio"
+          />
+          <span class="logo-text">IMPASTO</span>
+        </div>
+        <nav>
+          <ul id="main-menu">
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/about/">Information</a>
+              <ul class="dropdown">
+                <li><a href="/about/">About Us</a></li>
+                <li><a href="/team/">Our Team</a></li>
+                <li><a href="/portfolio/">Portfolio</a></li>
+                <li><a href="/testimonials/">Testimonials</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/ratecards/" class="active">Ratecards</a>
+              <ul class="dropdown">
+                <li>
+                  <a href="/portrait/" class="active">Portrait Photography</a>
+                </li>
+                <li><a href="/wedding/">Wedding Photography</a></li>
+                <li><a href="/event/">Event Photography</a></li>
+                <li><a href="/commercial/">Commercial Photography</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/store/">Store</a>
+              <ul class="dropdown">
+                <li><a href="/prints/">Prints</a></li>
+                <li><a href="/digital/">Digital Products</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/contact/">Contact</a>
+            </li>
+            <li>
+              <a href="/blog/">Blog</a>
+            </li>
+          </ul>
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-slider">
+        <div
+          class="hero-slide active"
+          style="
+            background-image: url('https://impastophotography.com/assets/images/hero1.jpg');
+          "
+        ></div>
+        <div
+          class="hero-slide"
+          style="
+            background-image: url('https://impastophotography.com/assets/images/hero2.jpg');
+          "
+        ></div>
+        <div
+          class="hero-slide"
+          style="
+            background-image: url('https://impastophotography.com/assets/images/hero3.jpg');
+          "
+        ></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">PORTRAIT PHOTOGRAPHY</h1>
+        <p class="hero-subtitle">
+          Capture your essence with our professional portrait sessions
+        </p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn">Book a Session</a>
+          <a href="#pricing" class="btn btn-outline">View Packages</a>
+        </div>
+      </div>
+      <div class="hero-indicators">
+        <div class="indicator active" data-slide="0"></div>
+        <div class="indicator" data-slide="1"></div>
+        <div class="indicator" data-slide="2"></div>
+      </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">TO MAKE RESERVATIONS</h2>
+          <p>
+            Kindly fill out this form to make a reservation or book a session
+            with us. We will have a representative reach out in less than 24
+            hours.
+          </p>
+        </div>
+        <div class="contact-container">
+          <div class="contact-info">
+            <h3>Impasto Photography Studio</h3>
+            <p>
+              Professional photography services tailored to your needs. Our
+              experienced photographers capture the essence of your special
+              moments with creativity and precision.
+            </p>
+            <p>
+              <strong>Location:</strong> 123 Photography Street, Accra, Ghana
+            </p>
+            <p><strong>Phone:</strong> +233 123 456 789</p>
+            <p><strong>Email:</strong> info@impastophotography.com</p>
+            <p><strong>Hours:</strong> Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</p>
+          </div>
+          <div class="contact-form">
+            <form id="reservation-form">
+              <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="service">Type of Service *</label>
+                <select id="service" class="form-control" required>
+                  <option value="">Select option</option>
+                  <option value="studio">Studio Rental</option>
+                  <option value="portrait">Portrait Sessions</option>
+                  <option value="graduation">Graduation Sessions</option>
+                  <option value="maternity">Maternity Sessions</option>
+                  <option value="family">Family Sessions</option>
+                  <option value="event">Private Parties/Events</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="date">Date of Shoot/Event *</label>
+                <input type="date" id="date" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="discount">Discount Code</label>
+                <input
+                  type="text"
+                  id="discount"
+                  class="form-control"
+                  placeholder="Enter any discount code"
+                />
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  class="form-control"
+                  rows="4"
+                  placeholder="Tell us about your photography needs..."
+                ></textarea>
+              </div>
+              <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+      <div class="container">
+        <!-- Personal Portrait Sessions -->
+        <div class="pricing-category">
+          <h3 class="category-title">Personal Portrait Sessions</h3>
+          <div class="pricing-cards">
+            <div class="pricing-card">
+              <div class="card-image">
+                <img
+                  src="https://impastophotography.com/assets/images/portrait1.jpg"
+                  alt="Basic Studio Session"
+                />
+              </div>
+              <div class="card-content">
+                <h4 class="card-title">Basic Studio Session</h4>
+                <ul class="card-features">
+                  <li>30 Minutes Shooting Time</li>
+                  <li>One Look</li>
+                  <li>8 Photos (4 Retouched Images)</li>
+                </ul>
+                <div class="card-price">₵ 1050.00</div>
+              </div>
+            </div>
+            <div class="pricing-card">
+              <div class="card-image">
+                <img
+                  src="https://impastophotography.com/assets/images/portrait2.jpg"
+                  alt="Solo Spotlight"
+                />
+              </div>
+              <div class="card-content">
+                <h4 class="card-title">Solo Spotlight</h4>
+                <ul class="card-features">
+                  <li>60 Minutes Shooting Time</li>
+                  <li>Two Looks</li>
+                  <li>12 Photos (6 Retouched Images)</li>
+                </ul>
+                <div class="card-price">₵ 1499.00</div>
+              </div>
+            </div>
+            <div class="pricing-card">
+              <div class="card-image">
+                <img
+                  src="https://impastophotography.com/assets/images/portrait3.jpg"
+                  alt="Luxury Layers"
+                />
+              </div>
+              <div class="card-content">
+                <h4 class="card-title">Luxury Layers</h4>
+                <ul class="card-features">
+                  <li>90 Minutes Shooting Time</li>
+                  <li>Two - Three Looks</li>
+                  <li>20 Photos (10 Retouched Images)</li>
+                </ul>
+                <div class="card-price">₵ 2999.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Family Portrait Sessions -->
+        <div class="pricing-category">
+          <h3 class="category-title">Family Portrait Sessions</h3>
+          <div class="pricing-cards">
+            <div class="pricing-card">
+              <div class="card-image">
+                <img
+                  src="https://impastophotography.com/assets/images/family1.jpg"
+                  alt="Baby/Family Shoot Session"
+                />
+              </div>
+              <div class="card-content">
+                <h4 class="card-title">Baby/Family Shoot Session</h4>
+                <ul class="card-features">
+                  <li>70-Minutes Shooting Session</li>
+                  <li>Two Looks</li>
+                  <li>20 Photos (10 Retouched Images)</li>
+                  <li>Maximum of 3 Persons</li>
+                  <li>(Offer does not come with props)</li>
+                </ul>
+                <div class="card-price">₵ 1799.00</div>
+              </div>
+            </div>
+            <div class="pricing-card">
+              <div class="card-image">
+                <img
+                  src="https://impastophotography.com/assets/images/family2.jpg"
+                  alt="Maternity Shoot Session"
+                />
+              </div>
+              <div class="card-content">
+                <h4 class="card-title">Maternity Shoot Session</h4>
+                <ul class="card-features">
+                  <li>60-minutes Shooting Session</li>
+                  <li>Two Looks</li>
+                  <li>12 Photos (6 Retouched Images)</li>
+                  <li>(Offer does not come with props)</li>
+                </ul>
+                <div class="card-price">₵ 1499.00</div>
+              </div>
+            </div>
+            <div class="pricing-card">
+              <div class="card-image">
+                <img
+                  src="https://impastophotography.com/assets/images/family3.jpg"
+                  alt="Baby Christening/Naming Ceremony"
+                />
+              </div>
+              <div class="card-content">
+                <h4 class="card-title">Baby Christening/Naming Ceremony</h4>
+                <ul class="card-features">
+                  <li>120-minutes Coverage which includes:</li>
+                  <li>Ceremony</li>
+                  <li>Exclusive Session</li>
+                  <li>80 Photos (Softcopies)</li>
+                </ul>
+                <div class="card-price">₵ 2499.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Graduation Sessions -->
+        <div class="pricing-category">
+          <h3 class="category-title">Graduation Sessions</h3>
+          <div class="pricing-cards">
+            <div class="pricing-card">
+              <div class="card-image">
+                <img
+                  src="https://impastophotography.com/assets/images/graduation1.jpg"
+                  alt="Basic Graduation Package"
+                />
+              </div>
+              <div class="card-content">
+                <h4 class="card-title">Basic Graduation Package</h4>
+                <ul class="card-features">
+                  <li>30-minute portrait session</li>
+                  <li>(Studio or Outdoor)</li>
+                  <li>Solo and family portraits</li>
+                  <li>30 professionally captured images</li>
+                  <li>5 expertly retouched images</li>
+                  <li>Digital delivery of high-resolution images</li>
+                </ul>
+                <div class="card-price">₵ 2200.00</div>
+              </div>
+            </div>
+            <div class="pricing-card">
+              <div class="card-image">
+                <img
+                  src="https://impastophotography.com/assets/images/graduation2.jpg"
+                  alt="Premium Graduation Package"
+                />
+              </div>
+              <div class="card-content">
+                <h4 class="card-title">Premium Graduation Package</h4>
+                <ul class="card-features">
+                  <li>60-minute portrait session</li>
+                  <li>(Studio + Outdoor)</li>
+                  <li>Solo and family portraits</li>
+                  <li>40 professionally captured images</li>
+                  <li>15 expertly retouched images</li>
+                  <li>Digital delivery of high-resolution images</li>
+                  <li>1 A4-Sized Printed Photo Frame</li>
+                </ul>
+                <div class="card-price">₵ 3500.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Extras Section -->
+    <section class="extras-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">EXTRAS / À LA CARTE FOR EVENTS</h2>
+        </div>
+        <div class="extras-grid">
+          <div class="extra-item">
+            <span class="extra-name"
+              >(Photography) Extra/Event Hourly Rate</span
+            >
+            <span class="extra-price">₵ 1200.00</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name"
+              >(Videography) Extra/Event Hourly Rate</span
+            >
+            <span class="extra-price">₵ 1400.00</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Studio Make Up & Hair Styling</span>
+            <span class="extra-price">₵ 800.00</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Studio Space Rental (Basic)</span>
+            <span class="extra-price">₵ 250.00</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Celebratory Reels (10 secs)</span>
+            <span class="extra-price">₵ 400.00</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Studio Space Rental (With Lights)</span>
+            <span class="extra-price">₵ 350.00</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Additional Outfit (10 Extra Photos)</span>
+            <span class="extra-price">₵ 400.00</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Additional Head (10 Extra Photos)</span>
+            <span class="extra-price">₵ 600.00</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name"
+              >Additional Photographer/Cinematographer</span
+            >
+            <span class="extra-price">₵ 1500.00</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Retouching (Per Image)</span>
+            <span class="extra-price">₵ 50.00</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Prints (5x7)</span>
+            <span class="extra-price">₵ 30.00</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Photo Book (A3)</span>
+            <span class="extra-price">₵ 2000.00</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Photo Book (A4)</span>
+            <span class="extra-price">₵ 1500.00</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Photo Frames (A4)</span>
+            <span class="extra-price">₵ 350.00</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Photo Frames (A3)</span>
+            <span class="extra-price">₵ 450.00</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Photo Frames (A2)</span>
+            <span class="extra-price">₵ 750.00</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Set Design</span>
+            <span class="extra-price">On Request (Concept Dependent)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="cta-title">CELEBRATE THE WINS!</h2>
+        <a href="https://wa.me/233507269043" class="btn">Chat on WhatsApp</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>About Impasto</h3>
+            <p>
+              Professional photography studio capturing life's precious moments
+              with artistry and technology.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-pinterest"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about/">About Us</a></li>
+              <li><a href="/ratecards/">Ratecards</a></li>
+              <li><a href="/contact/">Contact</a></li>
+              <li><a href="/blog/">Blog</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li><a href="/portrait/">Portrait Photography</a></li>
+              <li><a href="/wedding/">Wedding Photography</a></li>
+              <li><a href="/event/">Event Photography</a></li>
+              <li><a href="/commercial/">Commercial Photography</a></li>
+              <li><a href="/store/">Prints & Products</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Instagram Feed</h3>
+            <div class="instagram-feed">
+              <img
+                src="https://impastophotography.com/assets/images/ig1.jpg"
+                alt="Instagram Feed"
+              />
+              <img
+                src="https://impastophotography.com/assets/images/ig2.jpg"
+                alt="Instagram Feed"
+              />
+              <img
+                src="https://impastophotography.com/assets/images/ig3.jpg"
+                alt="Instagram Feed"
+              />
+              <img
+                src="https://impastophotography.com/assets/images/ig4.jpg"
+                alt="Instagram Feed"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Impasto Photography Studio. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+      const mainMenu = document.getElementById("main-menu");
+
+      mobileMenuToggle.addEventListener("click", () => {
+        mainMenu.classList.toggle("active");
+      });
+
+      // Hero Slider
+      const slides = document.querySelectorAll(".hero-slide");
+      const indicators = document.querySelectorAll(".indicator");
+      let currentSlide = 0;
+
+      function goToSlide(n) {
+        slides[currentSlide].classList.remove("active");
+        indicators[currentSlide].classList.remove("active");
+        currentSlide = (n + slides.length) % slides.length;
+        slides[currentSlide].classList.add("active");
+        indicators[currentSlide].classList.add("active");
+      }
+
+      function nextSlide() {
+        goToSlide(currentSlide + 1);
+      }
+
+      // Auto-advance slides
+      setInterval(nextSlide, 5000);
+
+      // Indicator click events
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener("click", () => {
+          goToSlide(index);
+        });
+      });
+
+      // Form submission
+      const reservationForm = document.getElementById("reservation-form");
+      reservationForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert(
+          "Thank you for your reservation! We will contact you within 24 hours."
+        );
+        reservationForm.reset();
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
