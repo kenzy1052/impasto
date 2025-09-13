@@ -125,10 +125,10 @@ function handleNavbarScroll() {
 }
 
 // ===========================================
-// SCROLL ANIMATION FUNCTIONS
+// IMPROVED SCROLL ANIMATION FUNCTIONS
 // ===========================================
 /**
- * Initialize scroll animations
+ * Initialize scroll animations with professional timing
  */
 function initScrollAnimations() {
   // Make hero section visible immediately
@@ -137,12 +137,19 @@ function initScrollAnimations() {
     heroSection.classList.add("visible");
   }
 
-  // Trigger initial check for elements in view
-  handleScrollAnimations();
+  // Initial check for elements already in viewport
+  setTimeout(() => {
+    handleScrollAnimations();
+  }, 150);
+
+  // Second check to catch any dynamically loaded content
+  setTimeout(() => {
+    handleScrollAnimations();
+  }, 500);
 }
 
 /**
- * Handle scroll animations
+ * Enhanced scroll animation handler with better viewport detection
  */
 function handleScrollAnimations() {
   const animatedElements = document.querySelectorAll(
@@ -157,7 +164,7 @@ function handleScrollAnimations() {
 }
 
 /**
- * Check if element is in viewport
+ * Improved viewport detection with multiple trigger points
  * @param {HTMLElement} element - The element to check
  * @return {boolean} - True if element is in viewport
  */
@@ -166,10 +173,59 @@ function isElementInViewport(element) {
   const windowHeight =
     window.innerHeight || document.documentElement.clientHeight;
 
-  // Add some offset for better timing (trigger when element is 80% visible)
-  const offset = windowHeight * 0.2;
+  // Much more aggressive triggering - animate as soon as any part is visible
+  // This creates a more responsive and professional feel
+  const topVisible = rect.top < windowHeight;
+  const bottomVisible = rect.bottom > 0;
 
-  return rect.top <= windowHeight - offset && rect.bottom >= offset;
+  // Element is considered "in view" if any part is visible
+  return topVisible && bottomVisible;
+}
+
+/**
+ * Alternative function for elements that need earlier triggering
+ * Triggers when element is about to enter viewport
+ * @param {HTMLElement} element - The element to check
+ * @return {boolean} - True if element is about to be in viewport
+ */
+function isElementAboutToBeVisible(element) {
+  const rect = element.getBoundingClientRect();
+  const windowHeight =
+    window.innerHeight || document.documentElement.clientHeight;
+
+  // Trigger when element is 100px before entering viewport
+  const earlyTriggerOffset = 100;
+
+  return (
+    rect.top < windowHeight + earlyTriggerOffset &&
+    rect.bottom > -earlyTriggerOffset
+  );
+}
+
+/**
+ * Enhanced scroll handler with throttling for better performance
+ */
+const throttledScrollHandler = throttle(() => {
+  handleScrollAnimations();
+}, 16); // ~60fps
+
+/**
+ * Throttle function for better performance than debounce for scroll events
+ * @param {Function} func - The function to throttle
+ * @param {number} limit - The time limit in milliseconds
+ * @return {Function} - The throttled function
+ */
+function throttle(func, limit) {
+  let inThrottle;
+  return function () {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  };
 }
 
 // ===========================================
@@ -180,9 +236,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // Load saved theme
   loadSavedTheme();
   // Initialize gallery
-  initializeGallery();
+  if (typeof initializeGallery === "function") {
+    initializeGallery();
+  }
   // Initialize scroll animations
   initScrollAnimations();
+  // Initialize Intersection Observer
+  initIntersectionObserver();
+
   // Add smooth scrolling to all navigation links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
@@ -191,26 +252,47 @@ document.addEventListener("DOMContentLoaded", function () {
       scrollToSection(targetId);
     });
   });
+
+  // Trigger animations on page load for elements already in view
+  setTimeout(() => {
+    handleScrollAnimations();
+    observeNewElements();
+  }, 250);
 });
-// Scroll event listeners
+
+// Optimized scroll event listeners
 window.addEventListener("scroll", handleNavbarScroll);
-window.addEventListener("scroll", handleScrollAnimations);
+window.addEventListener("scroll", throttledScrollHandler);
+
+// Handle resize events to recalculate element positions
+window.addEventListener(
+  "resize",
+  debounce(() => {
+    handleScrollAnimations();
+  }, 250)
+);
+
 // Keyboard navigation for lightbox
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
-    closeLightbox();
+    if (typeof closeLightbox === "function") {
+      closeLightbox();
+    }
   }
   // Close mobile menu on escape
   if (e.key === "Escape") {
     const navMenu = document.getElementById("navMenu");
-    if (navMenu.classList.contains("active")) {
+    if (navMenu && navMenu.classList.contains("active")) {
       navMenu.classList.remove("active");
       const mobileToggle = document.querySelector(".mobile-menu-toggle");
-      mobileToggle.classList.remove("active");
-      mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      if (mobileToggle) {
+        mobileToggle.classList.remove("active");
+        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      }
     }
   }
 });
+
 // ===========================================
 // IMAGE PROTECTION
 // ===========================================
@@ -229,6 +311,7 @@ document.addEventListener("dragstart", function (e) {
     return false;
   }
 });
+
 // ===========================================
 // UTILITY FUNCTIONS
 // ===========================================
@@ -249,5 +332,6 @@ function debounce(func, wait) {
     timeout = setTimeout(later, wait);
   };
 }
+
 // Console log for debugging
 console.log("Impasto Photography Website Loaded Successfully! 📸");
