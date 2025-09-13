@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Portrait Sessions</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f8f8f8;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 2.2rem;
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin-bottom: 50px;
+        color: #333;
+      }
+
+      .sessions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 40px;
+        justify-items: center;
+      }
+
+      .session-card {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: 100%;
+        max-width: 350px;
+        cursor: pointer;
+      }
+
+      .session-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .session-image {
+        width: 100%;
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      .basic-studio {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0.1)
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="%23333"/><rect x="50" y="120" width="300" height="160" fill="%23fff" opacity="0.9"/><circle cx="200" cy="200" r="60" fill="%23d4a574"/></svg>');
+      }
+
+      .solo-spotlight {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0.1)
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="%23e8e8e8"/><rect x="80" y="100" width="240" height="200" fill="%23fff"/><rect x="120" y="140" width="160" height="120" fill="%234a90e2"/><circle cx="200" cy="200" r="40" fill="%23d4a574"/></svg>');
+      }
+
+      .luxury-layers {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0.1)
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="%232d1b2e"/><circle cx="200" cy="200" r="80" fill="%23d4a574"/><rect x="160" y="160" width="80" height="80" fill="%23c41e3a" opacity="0.8"/></svg>');
+      }
+
+      .session-details {
+        padding: 30px 25px;
+        text-align: center;
+      }
+
+      .session-title {
+        font-size: 1.4rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        color: #333;
+        text-transform: uppercase;
+      }
+
+      .session-info {
+        margin-bottom: 8px;
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .session-price {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+        margin-top: 20px;
+        letter-spacing: 0.5px;
+      }
+
+      .price-currency {
+        font-size: 0.9em;
+      }
+
+      @media (max-width: 768px) {
+        .sessions-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        h1 {
+          font-size: 1.8rem;
+          margin-bottom: 40px;
+        }
+
+        .session-card {
+          max-width: 100%;
+        }
+      }
+
+      /* Hover effects */
+      .session-card:hover .session-image {
+        transform: scale(1.02);
+      }
+
+      .session-image {
+        transition: transform 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>PERSONAL PORTRAIT SESSIONS</h1>
+
+      <div class="sessions-grid">
+        <!-- Basic Studio Session -->
+        <div class="session-card" onclick="selectSession('basic')">
+          <div class="session-image basic-studio"></div>
+          <div class="session-details">
+            <h3 class="session-title">Basic Studio Session</h3>
+            <div class="session-info">30 Minutes Shooting Time</div>
+            <div class="session-info">One Look</div>
+            <div class="session-info">8 Photos (8 Retouched Images)</div>
+            <div class="session-price">
+              <span class="price-currency">₵</span> 1650.00
+            </div>
+          </div>
+        </div>
+
+        <!-- Solo Spotlight -->
+        <div class="session-card" onclick="selectSession('solo')">
+          <div class="session-image solo-spotlight"></div>
+          <div class="session-details">
+            <h3 class="session-title">Solo Spotlight</h3>
+            <div class="session-info">60 Minutes Shooting Time</div>
+            <div class="session-info">Two Looks</div>
+            <div class="session-info">12 Photos (8 Retouched Images)</div>
+            <div class="session-price">
+              <span class="price-currency">₵</span> 1499.00
+            </div>
+          </div>
+        </div>
+
+        <!-- Luxury Layers -->
+        <div class="session-card" onclick="selectSession('luxury')">
+          <div class="session-image luxury-layers"></div>
+          <div class="session-details">
+            <h3 class="session-title">Luxury Layers</h3>
+            <div class="session-info">90 Minutes Shooting Time</div>
+            <div class="session-info">Two - Three Looks</div>
+            <div class="session-info">20 Photos (10 Retouched Images)</div>
+            <div class="session-price">
+              <span class="price-currency">₵</span> 2999.00
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function selectSession(sessionType) {
+        // Add selection feedback
+        const cards = document.querySelectorAll(".session-card");
+        cards.forEach((card) => (card.style.transform = "scale(1)"));
+
+        event.currentTarget.style.transform = "scale(0.98)";
+
+        setTimeout(() => {
+          event.currentTarget.style.transform = "scale(1)";
+
+          // You can add booking logic here
+          alert(
+            `Selected: ${
+              sessionType.charAt(0).toUpperCase() + sessionType.slice(1)
+            } Session`
+          );
+        }, 150);
+      }
+
+      // Add some interactive animations on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".session-card");
+
+        cards.forEach((card, index) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(20px)";
+
+          setTimeout(() => {
+            card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+          }, index * 200);
+        });
+      });
+
+      // Add smooth scroll behavior if extending the page
+      document.documentElement.style.scrollBehavior = "smooth";
+    </script>
+  </body>
+</html>

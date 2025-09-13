@@ -195,25 +195,32 @@
       /* ===========================================
            OUR STORY SECTION - MATCHING FIRST FILE DESIGN
            =========================================== */
+      /* Fix 1: Our Story Section - Hide image on mobile */
       .story-content {
         display: grid;
         grid-template-columns: 1fr;
         gap: var(--spacing-2xl);
         align-items: center;
       }
+
       .story-image {
         position: relative;
         border-radius: var(--radius-sm);
         overflow: hidden;
         height: 500px;
-        display: flex;
+        display: none; /* Hidden on mobile by default */
         align-items: center;
         justify-content: center;
       }
+
       .story-image img {
         width: 200px;
         object-fit: cover;
         transition: transform var(--transition-slow);
+      }
+
+      .story-image:hover img {
+        transform: scale(1.05);
       }
       .story-image:hover img {
         transform: scale(1.05);
@@ -367,19 +374,21 @@
       /* Meet the Team Section */
       .team-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: 1fr; /* Single column on mobile */
         gap: var(--spacing-2xl);
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
       .team-member {
         text-align: center;
         transition: transform var(--transition-normal);
+        width: 100%; /* Ensure full width on mobile */
+        max-width: 350px; /* Prevent too wide on larger mobiles */
+        margin: 0 auto; /* Center the team member */
       }
+
       .team-member:hover {
         transform: translateY(-10px);
       }
+
       .member-image {
         position: relative;
         width: 250px;
@@ -593,6 +602,9 @@
         .section {
           padding: var(--spacing-4xl) 0;
         }
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
       }
       @media (min-width: 640px) {
         .about-hero {
@@ -606,6 +618,9 @@
         }
         .section {
           padding: var(--spacing-5xl) 0;
+        }
+        .team-grid {
+          grid-template-columns: repeat(2, 1fr);
         }
       }
       @media (min-width: 768px) {
@@ -635,11 +650,14 @@
         .story-content {
           grid-template-columns: 1fr 1fr;
         }
+        .story-image {
+          display: flex;
+        }
         .values-grid {
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(2, 1fr);
         }
         .team-grid {
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(3, 1fr);
         }
         .about-hero {
           padding: var(--spacing-7xl) 0;
@@ -654,6 +672,9 @@
         }
         .section {
           padding: var(--spacing-8xl) 0;
+        }
+        .values-grid {
+          grid-template-columns: repeat(4, 1fr);
         }
       }
       @media (min-width: 1536px) {
@@ -948,7 +969,7 @@
               <img
                 src="assets/images/logo2.png"
                 alt="Our Photography Studio"
-                class="no-context-menu logo-icon2"
+                class="no-context-menu logo-icon"
               />
             </div>
             <div class="story-text">

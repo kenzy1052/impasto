@@ -1,5 +1,5 @@
 // ===========================================
-// THEME TOGGLE FUNCTIONALITY
+// THEME TOGGLE FUNCTIONALITY - FIXED LOGO SWITCHING
 // ===========================================
 /**
  * Toggle between light and dark themes
@@ -9,8 +9,9 @@ function toggleTheme() {
   const themeIcon = document.querySelector(".theme-icon");
   const themeText = document.querySelector(".theme-text");
   const logos = document.querySelectorAll(
-    ".logo-icon, .footer-logo-icon, .logo-icon2"
+    ".logo-icon, .footer-logo-icon, .logo-icon2" // Fixed selector to match HTML class
   );
+
   // Check current theme
   if (body.getAttribute("data-theme") === "dark") {
     // Switch to light theme
@@ -32,6 +33,7 @@ function toggleTheme() {
     localStorage.setItem("theme", "dark");
   }
 }
+
 /**
  * Load saved theme preference on page load
  */
@@ -39,8 +41,14 @@ function loadSavedTheme() {
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "dark") {
     document.body.setAttribute("data-theme", "dark");
-    document.querySelector(".theme-icon").className = "fas fa-sun theme-icon";
-    document.querySelector(".theme-text").textContent = "Light";
+
+    // Update theme button
+    const themeIcon = document.querySelector(".theme-icon");
+    const themeText = document.querySelector(".theme-text");
+    if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+    if (themeText) themeText.textContent = "Light";
+
+    // Update all logos including the story section logo
     const logos = document.querySelectorAll(
       ".logo-icon, .footer-logo-icon, .logo-icon2"
     );
@@ -49,6 +57,7 @@ function loadSavedTheme() {
     });
   }
 }
+
 // ===========================================
 // NAVIGATION FUNCTIONALITY
 // ===========================================
@@ -73,6 +82,7 @@ function setActiveNav(element) {
     mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
   }
 }
+
 /**
  * Toggle mobile menu
  */
@@ -90,6 +100,7 @@ function toggleMobileMenu() {
     mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
   }
 }
+
 /**
  * Smooth scroll to section
  * @param {string} sectionId - The ID of the section to scroll to
@@ -112,6 +123,7 @@ function scrollToSection(sectionId) {
     });
   }
 }
+
 /**
  * Handle navbar scroll effect
  */
@@ -125,7 +137,7 @@ function handleNavbarScroll() {
 }
 
 // ===========================================
-// IMPROVED SCROLL ANIMATION FUNCTIONS
+// SCROLL ANIMATION FUNCTIONS
 // ===========================================
 /**
  * Initialize scroll animations with professional timing
@@ -149,22 +161,25 @@ function initScrollAnimations() {
 }
 
 /**
- * Enhanced scroll animation handler with better viewport detection
+ * Enhanced scroll animation handler with professional timing
  */
 function handleScrollAnimations() {
   const animatedElements = document.querySelectorAll(
     ".fade-in:not(.visible), .slide-in-left:not(.visible), .slide-in-right:not(.visible), .scale-in:not(.visible)"
   );
 
-  animatedElements.forEach((element) => {
+  animatedElements.forEach((element, index) => {
     if (isElementInViewport(element)) {
-      element.classList.add("visible");
+      // Add small staggered delay for multiple elements for professional effect
+      setTimeout(() => {
+        element.classList.add("visible");
+      }, index * 100); // 100ms delay between each element
     }
   });
 }
 
 /**
- * Improved viewport detection with multiple trigger points
+ * Professional viewport detection with 20% trigger point
  * @param {HTMLElement} element - The element to check
  * @return {boolean} - True if element is in viewport
  */
@@ -173,32 +188,22 @@ function isElementInViewport(element) {
   const windowHeight =
     window.innerHeight || document.documentElement.clientHeight;
 
-  // Much more aggressive triggering - animate as soon as any part is visible
-  // This creates a more responsive and professional feel
-  const topVisible = rect.top < windowHeight;
-  const bottomVisible = rect.bottom > 0;
+  // Professional trigger: when 20% of element is visible from the top
+  const elementHeight = rect.height;
+  const triggerPoint = elementHeight * 0.2; // 20% of element height
 
-  // Element is considered "in view" if any part is visible
-  return topVisible && bottomVisible;
-}
+  // Trigger when element top crosses the 80% viewport line (bottom 20% of viewport)
+  const viewportTriggerLine = windowHeight * 0.8;
 
-/**
- * Alternative function for elements that need earlier triggering
- * Triggers when element is about to enter viewport
- * @param {HTMLElement} element - The element to check
- * @return {boolean} - True if element is about to be in viewport
- */
-function isElementAboutToBeVisible(element) {
-  const rect = element.getBoundingClientRect();
-  const windowHeight =
-    window.innerHeight || document.documentElement.clientHeight;
-
-  // Trigger when element is 100px before entering viewport
-  const earlyTriggerOffset = 100;
+  // Element should animate when:
+  // 1. Its top edge reaches 80% of viewport height, OR
+  // 2. 20% of the element is visible
+  const isTopInTriggerZone = rect.top <= viewportTriggerLine;
+  const isElementPartiallyVisible = rect.top < windowHeight && rect.bottom > 0;
+  const hasMinimumVisibility = rect.top <= windowHeight - triggerPoint;
 
   return (
-    rect.top < windowHeight + earlyTriggerOffset &&
-    rect.bottom > -earlyTriggerOffset
+    isTopInTriggerZone && isElementPartiallyVisible && hasMinimumVisibility
   );
 }
 
@@ -235,14 +240,14 @@ function throttle(func, limit) {
 document.addEventListener("DOMContentLoaded", function () {
   // Load saved theme
   loadSavedTheme();
-  // Initialize gallery
+
+  // Initialize gallery if function exists
   if (typeof initializeGallery === "function") {
     initializeGallery();
   }
+
   // Initialize scroll animations
   initScrollAnimations();
-  // Initialize Intersection Observer
-  initIntersectionObserver();
 
   // Add smooth scrolling to all navigation links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -256,7 +261,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Trigger animations on page load for elements already in view
   setTimeout(() => {
     handleScrollAnimations();
-    observeNewElements();
   }, 250);
 });
 

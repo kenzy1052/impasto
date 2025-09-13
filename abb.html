@@ -5,92 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Professional Photography Studio - Impasto Photography: Where artistry meets technology to create timeless memories. Capturing life's precious moments with excellence since 2010."
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
     />
     <meta
       name="keywords"
-      content="photography, studio, professional, memories, artistry, technology, portrait, wedding, event, commercial, Ghana, Accra"
+      content="photography, studio, professional, memories, artistry, technology"
     />
     <meta name="author" content="Impasto Photography Studio" />
     <title>
-      About Us | Impasto Photography Studio - Professional Photography Services
+      Impasto Photography Studio | Professional Photography Services
     </title>
-
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-
     <!-- Font Awesome for Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <!-- Open Graph Meta Tags for SEO -->
     <meta
       property="og:title"
-      content="About Us | Impasto Photography Studio - Professional Photography Services"
+      content="Impasto Photography Studio | Professional Photography Services"
     />
     <meta
       property="og:description"
-      content="Learn about Impasto Photography Studio's journey, mission, and the team of professionals dedicated to capturing your precious moments with artistry and excellence."
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
     />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="https://impastophotography.com/about.html"
-    />
+    <meta property="og:url" content="https://impastophotography.com" />
     <meta
       property="og:image"
       content="https://impastophotography.com/assets/images/og-image.jpg"
     />
-
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="About Us | Impasto Photography Studio - Professional Photography Services"
+      content="Impasto Photography Studio | Professional Photography Services"
     />
     <meta
       name="twitter:description"
-      content="Learn about Impasto Photography Studio's journey, mission, and the team of professionals dedicated to capturing your precious moments with artistry and excellence."
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
     />
     <meta
       name="twitter:image"
       content="https://impastophotography.com/assets/images/og-image.jpg"
     />
-
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/logo-fav.png" />
     <link rel="apple-touch-icon" href="assets/images/logo.png" />
-
-    <!-- Default Styles -->
+    <!--Default Styles-->
     <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
     <link rel="stylesheet" href="assets/styles/style.css" />
     <link rel="stylesheet" href="assets/styles/utils.css" />
     <link rel="stylesheet" href="assets/styles/components/navhero.css" />
     <link rel="stylesheet" href="assets/styles/components/footer.css" />
-
     <style>
       /* ===========================================
-        ABOUT US PAGE STYLES
-       =========================================== */
-
-      /* About Hero Section */
+    ABOUT US PAGE STYLES
+   =========================================== */
+      /* About Hero Section - Fixed positioning issue */
       .about-hero {
         background: linear-gradient(135deg, var(--gradient-primary));
         padding: var(--spacing-3xl) 0;
         position: relative;
         overflow: hidden;
-        margin-top: 60px; /* Space for fixed navbar */
+        margin-top: 60px; /* Added to account for fixed navbar */
       }
-
       .about-hero::before {
         content: "";
         position: absolute;
@@ -101,28 +91,24 @@
         background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
         opacity: 0.5;
       }
-
       .about-hero-content {
         position: relative;
         z-index: 1;
         text-align: center;
         color: white;
       }
-
       .about-title {
         font-size: clamp(2rem, 5vw, 3.5rem);
         font-weight: 700;
         margin-bottom: var(--spacing-md);
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
-
       .about-subtitle {
         font-size: clamp(1.1rem, 3vw, 1.5rem);
         font-weight: 300;
         margin-bottom: var(--spacing-lg);
         opacity: 0.9;
       }
-
       .about-breadcrumb {
         display: flex;
         align-items: center;
@@ -131,44 +117,36 @@
         font-size: 0.9rem;
         opacity: 0.8;
       }
-
       .about-breadcrumb a {
         color: white;
         text-decoration: none;
         transition: opacity var(--transition-fast);
       }
-
       .about-breadcrumb a:hover {
         opacity: 1;
       }
-
       .about-breadcrumb i {
         font-size: 0.8rem;
       }
-
       /* Section Styles */
       .section {
         padding: var(--spacing-4xl) 0;
       }
-
       .section-header {
         margin-bottom: var(--spacing-3xl);
       }
-
       .section-title {
         font-size: clamp(1.75rem, 4vw, 2.5rem);
         font-weight: 600;
         color: var(--text-primary);
         margin-bottom: var(--spacing-md);
       }
-
       .section-subtitle {
         font-size: 1.1rem;
         color: var(--text-secondary);
         max-width: 600px;
         margin: 0 auto;
       }
-
       .section-divider {
         display: flex;
         align-items: center;
@@ -176,91 +154,135 @@
         gap: var(--spacing-md);
         margin: var(--spacing-lg) 0;
       }
-
       .divider-line {
         height: 2px;
         width: 60px;
         background: var(--accent-color);
       }
-
       .divider-icon {
         color: var(--accent-color);
         font-size: 1.2rem;
       }
 
-      /* Our Story Section */
+      /* ===========================================
+           STATS SECTION - MATCHING FIRST FILE DESIGN
+           =========================================== */
+      .stats-section {
+        background: var(--bg-secondary);
+        padding: var(--spacing-4xl) 0;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--spacing-xl);
+        text-align: center;
+      }
+      .stat-number {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        font-weight: 700;
+        color: var(--accent-color);
+        margin-bottom: var(--spacing-sm);
+        font-family: var(--font-secondary);
+        display: block;
+      }
+      .stat-label {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* ===========================================
+           OUR STORY SECTION - MATCHING FIRST FILE DESIGN
+           =========================================== */
       .story-content {
         display: grid;
         grid-template-columns: 1fr;
         gap: var(--spacing-2xl);
         align-items: center;
       }
-
       .story-image {
         position: relative;
-        border-radius: var(--radius-xl);
+        border-radius: var(--radius-sm);
         overflow: hidden;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        height: 400px;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
-
       .story-image img {
-        width: 100%;
-        height: 100%;
+        width: 200px;
         object-fit: cover;
-        transition: transform var(--transition-normal);
+        transition: transform var(--transition-slow);
       }
-
       .story-image:hover img {
         transform: scale(1.05);
       }
+      .story-text {
+        padding: var(--spacing-lg) 0;
+      }
+      .story-text p {
+        font-size: 0.9rem;
+        line-height: 1.7;
+        margin-bottom: var(--spacing-lg);
+        color: var(--text-secondary);
+      }
+      .story-text p:last-child {
+        margin-bottom: 0;
+      }
+      .story-highlight {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin: var(--spacing-lg) 0 var(--spacing-md);
+        font-family: var(--font-secondary);
+        font-style: italic;
+        border-left: 4px solid var(--accent-color);
+        padding-left: var(--spacing-lg);
+      }
 
-      .story-image::after {
+      /* ===========================================
+           MISSION & VISION SECTION - MATCHING FIRST FILE DESIGN
+           =========================================== */
+      .mission-vision-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+      }
+      .mission-card,
+      .vision-card {
+        background: var(--bg-primary);
+        padding: var(--spacing-2xl);
+        border-radius: var(--radius-xl);
+        text-align: center;
+        transition: all var(--transition-normal);
+        border: 1px solid var(--border);
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .mission-card::before,
+      .vision-card::before {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
-        bottom: 0;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
-        pointer-events: none;
+        height: 4px;
+        background: var(--accent-color);
       }
-
-      .story-text {
-        text-align: left;
+      .vision-card::before {
+        background: var(--accent-color2);
       }
-
-      .story-text p {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        margin-bottom: var(--spacing-lg);
-        color: var(--text-secondary);
-      }
-
-      /* Mission & Vision Section */
-      .mission-vision-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--spacing-xl);
-      }
-
-      .mission-card,
-      .vision-card {
-        background: var(--bg-secondary);
-        padding: var(--spacing-2xl);
-        border-radius: var(--radius-xl);
-        text-align: center;
-        transition: transform var(--transition-normal),
-          box-shadow var(--transition-normal);
-        border: 1px solid var(--border);
-      }
-
       .mission-card:hover,
       .vision-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--shadow-hover);
       }
-
       .card-icon {
         width: 80px;
         height: 80px;
@@ -272,20 +294,29 @@
         justify-content: center;
         color: white;
         font-size: 2rem;
+        transition: all var(--transition-normal);
       }
-
+      .vision-card .card-icon {
+        background: var(--accent-color2);
+      }
+      .mission-card:hover .card-icon,
+      .vision-card:hover .card-icon {
+        transform: scale(1.1) rotate(10deg);
+      }
       .mission-card h3,
       .vision-card h3 {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         margin-bottom: var(--spacing-md);
         color: var(--text-primary);
+        font-family: var(--font-secondary);
       }
-
       .mission-card p,
       .vision-card p {
-        font-size: 1rem;
+        font-size: 0.95rem;
         line-height: 1.6;
         color: var(--text-secondary);
+        max-width: 500px;
+        margin: 0 auto;
       }
 
       /* Our Values Section */
@@ -294,7 +325,6 @@
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: var(--spacing-xl);
       }
-
       .value-item {
         text-align: center;
         padding: var(--spacing-xl);
@@ -304,12 +334,10 @@
           box-shadow var(--transition-normal);
         border: 1px solid var(--border);
       }
-
       .value-item:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
       }
-
       .value-icon {
         width: 60px;
         height: 60px;
@@ -321,36 +349,37 @@
         justify-content: center;
         color: white;
         font-size: 1.5rem;
+        transition: transform var(--transition-normal);
       }
-
+      .value-item:hover .value-icon {
+        transform: scale(1.1) rotate(5deg);
+      }
       .value-item h4 {
         font-size: 1.2rem;
         margin-bottom: var(--spacing-sm);
         color: var(--text-primary);
       }
-
       .value-item p {
         font-size: 0.95rem;
         line-height: 1.6;
         color: var(--text-secondary);
       }
-
       /* Meet the Team Section */
       .team-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: var(--spacing-2xl);
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
-
       .team-member {
         text-align: center;
         transition: transform var(--transition-normal);
       }
-
       .team-member:hover {
         transform: translateY(-10px);
       }
-
       .member-image {
         position: relative;
         width: 250px;
@@ -360,14 +389,12 @@
         overflow: hidden;
         border: 4px solid var(--accent-color);
       }
-
       .member-image img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: transform var(--transition-normal);
       }
-
       .member-overlay {
         position: absolute;
         top: 0;
@@ -381,20 +408,16 @@
         opacity: 0;
         transition: opacity var(--transition-normal);
       }
-
       .member-image:hover .member-overlay {
         opacity: 1;
       }
-
       .member-image:hover img {
         transform: scale(1.1);
       }
-
       .member-overlay .social-links {
         display: flex;
         gap: var(--spacing-md);
       }
-
       .member-overlay .social-link {
         width: 40px;
         height: 40px;
@@ -408,25 +431,21 @@
         transition: transform var(--transition-fast),
           background var(--transition-fast);
       }
-
       .member-overlay .social-link:hover {
         transform: scale(1.1);
         background: var(--accent-color2);
       }
-
       .team-member h4 {
         font-size: 1.3rem;
         margin-bottom: var(--spacing-xs);
         color: var(--text-primary);
       }
-
       .member-role {
         font-size: 1rem;
         color: var(--accent-color);
         font-weight: 600;
         margin-bottom: var(--spacing-sm);
       }
-
       .member-bio {
         font-size: 0.9rem;
         line-height: 1.6;
@@ -434,14 +453,12 @@
         max-width: 300px;
         margin: 0 auto;
       }
-
       /* Journey Timeline */
       .timeline {
         position: relative;
         max-width: 800px;
         margin: 0 auto;
       }
-
       .timeline::before {
         content: "";
         position: absolute;
@@ -452,25 +469,28 @@
         background: var(--accent-color);
         transform: translateX(-50%);
       }
-
       .timeline-item {
         position: relative;
         margin-bottom: var(--spacing-3xl);
         width: 50%;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
       }
-
+      .timeline-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
       .timeline-item:nth-child(odd) {
         left: 0;
         padding-right: var(--spacing-2xl);
         text-align: right;
       }
-
       .timeline-item:nth-child(even) {
         left: 50%;
         padding-left: var(--spacing-2xl);
         text-align: left;
       }
-
       .timeline-item::before {
         content: "";
         position: absolute;
@@ -481,15 +501,12 @@
         border-radius: 50%;
         border: 4px solid var(--bg-primary);
       }
-
       .timeline-item:nth-child(odd)::before {
         right: -10px;
       }
-
       .timeline-item:nth-child(even)::before {
         left: -10px;
       }
-
       .timeline-content {
         background: var(--bg-secondary);
         padding: var(--spacing-xl);
@@ -498,166 +515,159 @@
         transition: transform var(--transition-normal),
           box-shadow var(--transition-normal);
       }
-
       .timeline-content:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
       }
-
       .timeline-year {
         font-size: 1.2rem;
         font-weight: 700;
         color: var(--accent-color);
         margin-bottom: var(--spacing-sm);
+        transition: transform var(--transition-fast),
+          color var(--transition-fast);
       }
-
+      .timeline-content:hover .timeline-year {
+        transform: scale(1.1);
+        color: var(--accent-color2);
+      }
       .timeline-content h4 {
         font-size: 1.1rem;
         margin-bottom: var(--spacing-sm);
         color: var(--text-primary);
       }
-
       .timeline-content p {
         font-size: 0.95rem;
         line-height: 1.6;
         color: var(--text-secondary);
         margin: 0;
       }
-
       /* CTA Section */
       .cta-section {
         background: linear-gradient(135deg, var(--gradient-primary));
         padding: var(--spacing-3xl) 0;
         text-align: center;
-        color: white;
+        position: relative;
+        z-index: 1;
+        opacity: 1 !important; /* Ensure visibility */
+        transform: none !important; /* Remove any transform that might hide it */
       }
-
       .cta-content h2 {
         font-size: clamp(1.75rem, 4vw, 2.5rem);
         margin-bottom: var(--spacing-lg);
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        color: var(
+          --text-primary
+        ); /* Use CSS variable instead of fixed white */
       }
-
       .cta-content p {
         font-size: 1.2rem;
         margin-bottom: var(--spacing-2xl);
-        opacity: 0.9;
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
+        color: var(
+          --text-primary
+        ); /* Use CSS variable instead of fixed white */
+        opacity: 0.9;
       }
-
       .cta-buttons {
         display: flex;
         gap: var(--spacing-lg);
         justify-content: center;
         flex-wrap: wrap;
       }
-
       .cta-buttons .btn {
         min-width: 200px;
+        position: relative;
+        z-index: 2;
       }
-
-      /* Dark Theme Support */
-      [data-theme="dark"] .about-hero {
-        background: linear-gradient(135deg, var(--gradient-secondary));
-      }
-
-      [data-theme="dark"] .mission-card,
-      [data-theme="dark"] .vision-card,
-      [data-theme="dark"] .value-item,
-      [data-theme="dark"] .timeline-content {
-        background: var(--bg-tertiary);
-        border-color: var(--border);
-      }
-
-      /* Animation Classes */
-      .slide-in-up {
-        opacity: 0;
-        transform: translateY(50px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
-      }
-
-      .slide-in-up.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
       /* Responsive Design */
       @media (min-width: 475px) {
-        .section {
-          padding: calc(var(--spacing-4xl) * 0.8) 0;
+        .about-hero {
+          padding: var(--spacing-4xl) 0;
         }
-
         .about-title {
-          font-size: clamp(2.2rem, 5vw, 3.2rem);
+          font-size: clamp(2.5rem, 5vw, 4rem);
         }
-
-        .about-subtitle {
-          font-size: clamp(1.2rem, 3vw, 1.6rem);
-        }
-      }
-
-      @media (min-width: 640px) {
-        .section {
-          padding: calc(var(--spacing-4xl) * 0.9) 0;
-        }
-
-        .story-text p {
-          font-size: 1.15rem;
-        }
-
-        .value-item {
-          padding: calc(var(--spacing-xl) * 1.2);
-        }
-
-        .member-image {
-          width: 270px;
-          height: 270px;
-        }
-      }
-
-      @media (min-width: 768px) {
-        .story-content {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .mission-vision-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .values-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .team-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
         .section {
           padding: var(--spacing-4xl) 0;
         }
       }
-
+      @media (min-width: 640px) {
+        .about-hero {
+          padding: var(--spacing-5xl) 0;
+        }
+        .about-title {
+          font-size: clamp(2.5rem, 5vw, 4.5rem);
+        }
+        .story-text p {
+          font-size: 0.9rem;
+        }
+        .section {
+          padding: var(--spacing-5xl) 0;
+        }
+      }
+      @media (min-width: 768px) {
+        .story-content {
+          grid-template-columns: 1fr;
+        }
+        .mission-vision-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .values-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .team-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .about-hero {
+          padding: var(--spacing-6xl) 0;
+        }
+        .section {
+          padding: var(--spacing-6xl) 0;
+        }
+      }
       @media (min-width: 1024px) {
+        .main-content {
+          padding: 6rem;
+        }
+        .story-content {
+          grid-template-columns: 1fr 1fr;
+        }
         .values-grid {
           grid-template-columns: repeat(4, 1fr);
         }
-
         .team-grid {
           grid-template-columns: repeat(4, 1fr);
         }
-
-        .story-text p {
-          font-size: 1.2rem;
+        .about-hero {
+          padding: var(--spacing-7xl) 0;
+        }
+        .section {
+          padding: var(--spacing-7xl) 0;
         }
       }
-
+      @media (min-width: 1280px) {
+        .about-hero {
+          padding: var(--spacing-8xl) 0;
+        }
+        .section {
+          padding: var(--spacing-8xl) 0;
+        }
+      }
+      @media (min-width: 1536px) {
+        .about-hero {
+          padding: var(--spacing-9xl) 0;
+        }
+        .section {
+          padding: var(--spacing-9xl) 0;
+        }
+      }
       @media (max-width: 767px) {
         .timeline::before {
           left: 20px;
         }
-
         .timeline-item {
           width: 100%;
           left: 0 !important;
@@ -665,15 +675,43 @@
           padding-right: 0 !important;
           text-align: left !important;
         }
-
         .timeline-item::before {
           left: 10px !important;
         }
-
         .cta-buttons {
           flex-direction: column;
           align-items: center;
         }
+      }
+      /* Dark Theme Support */
+      [data-theme="dark"] .about-hero {
+        background: linear-gradient(135deg, var(--gradient-secondary));
+      }
+      [data-theme="dark"] .mission-card,
+      [data-theme="dark"] .vision-card,
+      [data-theme="dark"] .value-item,
+      [data-theme="dark"] .timeline-content {
+        background: var(--bg-tertiary);
+        border-color: var(--border);
+      }
+      /* Animation Classes */
+      .slide-in-up {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      .slide-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      /* Fixed Hero Section - Prevents floating/movement issue */
+      .hero {
+        position: relative; /* Changed from absolute/fixed */
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0; /* Reset any margin that might cause issues */
       }
     </style>
   </head>
@@ -684,7 +722,6 @@
       id="mobileMenuOverlay"
       onclick="toggleMobileMenu()"
     ></div>
-
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
       <div class="nav-container">
@@ -697,15 +734,15 @@
         </a>
         <ul class="nav-menu" id="navMenu">
           <li class="nav-item">
-            <a href="#home" class="nav-link active" onclick="setActiveNav(this)"
+            <a href="index.html" class="nav-link" onclick="setActiveNav(this)"
               >Home</a
             >
           </li>
           <li class="nav-item">
             <div class="nav-link-container">
               <a
-                href="/pages/information.html"
-                class="nav-link"
+                href="information.html"
+                class="nav-link active"
                 onclick="setActiveNav(this)"
               >
                 Information
@@ -716,18 +753,16 @@
             </div>
             <ul class="dropdown-menu">
               <li class="dropdown-item">
-                <a href="/pages/about.html" class="dropdown-link">About Us</a>
+                <a href="about.html" class="dropdown-link">About Us</a>
               </li>
               <li class="dropdown-item">
-                <a href="/pages/team.html" class="dropdown-link">Our Team</a>
+                <a href="team.html" class="dropdown-link">Our Team</a>
               </li>
               <li class="dropdown-item">
-                <a href="/pages/services.html" class="dropdown-link"
-                  >Services</a
-                >
+                <a href="services.html" class="dropdown-link">Services</a>
               </li>
               <li class="dropdown-item">
-                <a href="/pages/testimonials.html" class="dropdown-link"
+                <a href="testimonials.html" class="dropdown-link"
                   >Testimonials</a
                 >
               </li>
@@ -736,7 +771,7 @@
           <li class="nav-item">
             <div class="nav-link-container">
               <a
-                href="/pages/ratecards.html"
+                href="ratecards.html"
                 class="nav-link"
                 onclick="setActiveNav(this)"
               >
@@ -748,27 +783,27 @@
             </div>
             <ul class="dropdown-menu">
               <li class="dropdown-item">
-                <a href="/pages/portrait-rates.html" class="dropdown-link"
+                <a href="portrait-rates.html" class="dropdown-link"
                   >Portrait Photography</a
                 >
               </li>
               <li class="dropdown-item">
-                <a href="/pages/wedding-rates.html" class="dropdown-link"
+                <a href="wedding-rates.html" class="dropdown-link"
                   >Wedding Photography</a
                 >
               </li>
               <li class="dropdown-item">
-                <a href="/pages/event-rates.html" class="dropdown-link"
+                <a href="event-rates.html" class="dropdown-link"
                   >Event Photography</a
                 >
               </li>
               <li class="dropdown-item">
-                <a href="/pages/commercial-rates.html" class="dropdown-link"
+                <a href="commercial-rates.html" class="dropdown-link"
                   >Commercial Photography</a
                 >
               </li>
               <li class="dropdown-item">
-                <a href="/pages/special-packages.html" class="dropdown-link"
+                <a href="special-packages.html" class="dropdown-link"
                   >Special Packages</a
                 >
               </li>
@@ -777,7 +812,7 @@
           <li class="nav-item">
             <div class="nav-link-container">
               <a
-                href="/pages/store.html"
+                href="store.html"
                 class="nav-link"
                 onclick="setActiveNav(this)"
               >
@@ -789,28 +824,22 @@
             </div>
             <ul class="dropdown-menu">
               <li class="dropdown-item">
-                <a href="/pages/prints.html" class="dropdown-link">Prints</a>
+                <a href="prints.html" class="dropdown-link">Prints</a>
               </li>
               <li class="dropdown-item">
-                <a href="/pages/digital-products.html" class="dropdown-link"
+                <a href="digital-products.html" class="dropdown-link"
                   >Digital Products</a
                 >
               </li>
             </ul>
           </li>
           <li class="nav-item">
-            <a
-              href="/pages/contact.html"
-              class="nav-link"
-              onclick="setActiveNav(this)"
+            <a href="contact.html" class="nav-link" onclick="setActiveNav(this)"
               >Contact</a
             >
           </li>
           <li class="nav-item">
-            <a
-              href="/pages/blog.html"
-              class="nav-link"
-              onclick="setActiveNav(this)"
+            <a href="blog.html" class="nav-link" onclick="setActiveNav(this)"
               >Blog</a
             >
           </li>
@@ -826,30 +855,82 @@
         </div>
       </div>
     </nav>
+    <!-- Hero Section - Updated with camera icon and new content -->
+    <section id="home" class="hero fade-in">
+      <div class="hero-slider">
+        <div
+          class="hero-slide active"
+          style="background-image: url('assets/images/img5.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('assets/images/img6.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('assets/images/img7.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('assets/images/img8.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('assets/images/img9.jpg')"
+        ></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-camera"></i>
+          Since 2010
+        </div>
+        <h1 class="hero-title">About Impasto Photography</h1>
+        <p class="hero-subtitle">
+          Capturing Life's Beautiful Moments Since 2010
+        </p>
+      </div>
+      <!-- Hero Slider Indicators -->
+      <div class="hero-indicators">
+        <div class="hero-indicator active" onclick="goToSlide(0)"></div>
+        <div class="hero-indicator" onclick="goToSlide(1)"></div>
+        <div class="hero-indicator" onclick="goToSlide(2)"></div>
+        <div class="hero-indicator" onclick="goToSlide(3)"></div>
+        <div class="hero-indicator" onclick="goToSlide(4)"></div>
+      </div>
+      <div class="scroll-indicator" onclick="scrollToSection('next-section')">
+        <i class="fas fa-chevron-down fa-2x"></i>
+      </div>
+    </section>
 
-    <!-- About Hero Section -->
-    <section class="about-hero fade-in">
+    <!-- Stats Section - Matching First File Design -->
+    <section id="stats" class="stats-section fade-in-up">
       <div class="container">
-        <div class="about-hero-content">
-          <div class="about-hero-text">
-            <h1 class="about-title">About Impasto Photography</h1>
-            <p class="about-subtitle">
-              Capturing Life's Beautiful Moments Since 2010
-            </p>
-            <div class="about-breadcrumb">
-              <a href="#home">Home</a>
-              <i class="fas fa-chevron-right"></i>
-              <span>About Us</span>
-            </div>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number" data-count="15">0</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="10000">0</span>
+            <span class="stat-label">Happy Clients</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="50000">0</span>
+            <span class="stat-label">Photos Captured</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="750">0</span>
+            <span class="stat-label">Projects Completed</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Main Content -->
-    <main class="main-content">
-      <!-- Our Story Section -->
-      <section class="our-story section fade-in">
+    <main class="main-content container">
+      <!-- Our Story Section - Matching First File Design -->
+      <section class="our-story section slide-in-left" id="next-section">
         <div class="container">
           <div class="section-header text-center">
             <h2 class="section-title">Our Story</h2>
@@ -865,9 +946,9 @@
           <div class="story-content">
             <div class="story-image">
               <img
-                src="assets/images/studio.jpg"
-                alt="Impasto Photography Studio"
-                class="no-context-menu"
+                src="assets/images/logo2.png"
+                alt="Our Photography Studio"
+                class="no-context-menu logo-icon2"
               />
             </div>
             <div class="story-text">
@@ -878,6 +959,10 @@
                 studio in Dome, Accra, has blossomed into one of Ghana's most
                 sought-after photography destinations.
               </p>
+              <div class="story-highlight">
+                "Every photograph tells a story, and we're here to help you tell
+                yours beautifully."
+              </div>
               <p>
                 Our name "Impasto" reflects our artistic approach – just as
                 impasto technique in painting creates texture and depth, we
@@ -898,9 +983,20 @@
         </div>
       </section>
 
-      <!-- Our Mission & Vision Section -->
-      <section class="mission-vision section slide-in-left">
+      <!-- Our Mission & Vision Section - Matching First File Design -->
+      <section class="mission-vision section slide-in-right">
         <div class="container">
+          <div class="section-header text-center">
+            <h2 class="section-title">Our Mission & Vision</h2>
+            <div class="section-divider">
+              <span class="divider-line"></span>
+              <i class="fas fa-bullseye divider-icon"></i>
+              <span class="divider-line"></span>
+            </div>
+            <p class="section-subtitle">
+              The driving force behind our passion for photography
+            </p>
+          </div>
           <div class="mission-vision-grid">
             <div class="mission-card">
               <div class="card-icon">
@@ -1011,7 +1107,7 @@
               <div class="member-image">
                 <img
                   src="assets/images/image2.jpg"
-                  alt="Kwame Asante - Lead Photographer & Founder"
+                  alt="Lead Photographer"
                   class="no-context-menu"
                 />
                 <div class="member-overlay">
@@ -1039,7 +1135,7 @@
               <div class="member-image">
                 <img
                   src="assets/images/image3.jpg"
-                  alt="Adjoa Mensah - Studio Manager"
+                  alt="Studio Manager"
                   class="no-context-menu"
                 />
                 <div class="member-overlay">
@@ -1067,7 +1163,7 @@
               <div class="member-image">
                 <img
                   src="assets/images/image4.jpg"
-                  alt="Kofi Osei - Senior Photographer"
+                  alt="Photographer"
                   class="no-context-menu"
                 />
                 <div class="member-overlay">
@@ -1089,34 +1185,6 @@
               <p class="member-bio">
                 Kofi specializes in portrait and event photography, capturing
                 authentic emotions with creative flair.
-              </p>
-            </div>
-            <div class="team-member">
-              <div class="member-image">
-                <img
-                  src="assets/images/image2.jpg"
-                  alt="Ama Boateng - Photo Editor & Retoucher"
-                  class="no-context-menu"
-                />
-                <div class="member-overlay">
-                  <div class="social-links">
-                    <a href="#" class="social-link"
-                      ><i class="fab fa-instagram"></i
-                    ></a>
-                    <a href="#" class="social-link"
-                      ><i class="fab fa-linkedin-in"></i
-                    ></a>
-                    <a href="#" class="social-link"
-                      ><i class="fab fa-twitter"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-              <h4>Ama Boateng</h4>
-              <p class="member-role">Photo Editor & Retoucher</p>
-              <p class="member-bio">
-                Ama's expert post-processing skills bring out the best in every
-                image with precision and artistry.
               </p>
             </div>
           </div>
@@ -1210,11 +1278,11 @@
               professional expertise.
             </p>
             <div class="cta-buttons">
-              <a href="/pages/contact.html" class="btn btn-primary">
+              <a href="contact.html" class="btn btn-primary">
                 <i class="fas fa-calendar-alt"></i>
                 Book a Session
               </a>
-              <a href="/pages/ratecards.html" class="btn btn-secondary">
+              <a href="ratecards.html" class="btn btn-primary2">
                 <i class="fas fa-images"></i>
                 View Our Services
               </a>
@@ -1224,7 +1292,7 @@
       </section>
     </main>
 
-    <!-- Footer -->
+    <!--footer-->
     <footer class="footer scale-in">
       <div class="footer-content container">
         <div class="footer-grid">
@@ -1244,7 +1312,6 @@
               you'll cherish for generations to come.
             </p>
           </div>
-
           <!-- Quick Links -->
           <div class="footer-section slide-in-left">
             <h3>Quick Links</h3>
@@ -1256,38 +1323,37 @@
                 </a>
               </li>
               <li>
-                <a href="/pages/information.html">
+                <a href="information.html">
                   <i class="fas fa-chevron-right"></i>
                   Information
                 </a>
               </li>
               <li>
-                <a href="/pages/ratecards.html">
+                <a href="ratecards.html">
                   <i class="fas fa-chevron-right"></i>
                   Ratecards
                 </a>
               </li>
               <li>
-                <a href="/pages/store.html">
+                <a href="store.html">
                   <i class="fas fa-chevron-right"></i>
                   Store
                 </a>
               </li>
               <li>
-                <a href="/pages/contact.html">
+                <a href="contact.html">
                   <i class="fas fa-chevron-right"></i>
                   Contact
                 </a>
               </li>
               <li>
-                <a href="/pages/blog.html">
+                <a href="blog.html">
                   <i class="fas fa-chevron-right"></i>
                   Blog
                 </a>
               </li>
             </ul>
           </div>
-
           <!-- Services -->
           <div class="footer-section fade-in">
             <h3>Services</h3>
@@ -1336,7 +1402,6 @@
               </li>
             </ul>
           </div>
-
           <!-- Contact -->
           <div class="footer-section slide-in-right">
             <h3>Get In Touch</h3>
@@ -1397,9 +1462,41 @@
     <script src="assets/src/navhero.js"></script>
     <script>
       // ===========================================
+      // COUNTER ANIMATIONS FOR STATS SECTION
+      // ===========================================
+      function animateCounter(counter, target) {
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+        const updateCounter = () => {
+          current += increment;
+          if (current < target) {
+            counter.textContent = Math.floor(current).toLocaleString();
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target.toLocaleString();
+          }
+        };
+        updateCounter();
+      }
+
+      function initCounters() {
+        const counters = document.querySelectorAll(".stat-number");
+        counters.forEach((counter) => {
+          if (
+            isElementInViewport(counter) &&
+            !counter.classList.contains("animated")
+          ) {
+            counter.classList.add("animated");
+            const target = parseInt(counter.getAttribute("data-count"));
+            animateCounter(counter, target);
+          }
+        });
+      }
+
+      // ===========================================
       // ABOUT PAGE SPECIFIC FUNCTIONALITY
       // ===========================================
-
       /**
        * Initialize About Page specific animations and interactions
        */
@@ -1414,43 +1511,44 @@
         initTeamMemberEffects();
         // Initialize value cards hover effects
         initValueCardEffects();
+        // Initialize counter animations
+        initCounters();
       }
-
       /**
        * Initialize scroll animations specific to about page
        */
       function initAboutScrollAnimations() {
         const animatedElements = document.querySelectorAll(
-          ".about-hero .fade-in, .our-story .fade-in, .mission-vision .slide-in-left, " +
-            ".our-values .fade-in, .meet-team .slide-in-right, .journey-timeline .fade-in, " +
-            ".cta-section .slide-in-up"
+          ".our-story .fade-in, .mission-vision .slide-in-left, " +
+            ".our-values .fade-in, .meet-team .slide-in-right, .journey-timeline .fade-in"
         );
-
         // Trigger initial check
         handleAboutScrollAnimations();
-
         // Add scroll event listener
         window.addEventListener("scroll", handleAboutScrollAnimations);
+        // Make CTA section visible immediately
+        const ctaSection = document.querySelector(".cta-section");
+        if (ctaSection) {
+          ctaSection.classList.add("visible");
+          ctaSection.style.opacity = "1";
+          ctaSection.style.transform = "translateY(0)";
+        }
       }
-
       /**
        * Handle about page scroll animations
        */
       function handleAboutScrollAnimations() {
         const animatedElements = document.querySelectorAll(
-          ".about-hero .fade-in:not(.visible), .our-story .fade-in:not(.visible), " +
+          ".our-story .fade-in:not(.visible), " +
             ".mission-vision .slide-in-left:not(.visible), .our-values .fade-in:not(.visible), " +
-            ".meet-team .slide-in-right:not(.visible), .journey-timeline .fade-in:not(.visible), " +
-            ".cta-section .slide-in-up:not(.visible)"
+            ".meet-team .slide-in-right:not(.visible), .journey-timeline .fade-in:not(.visible)"
         );
-
         animatedElements.forEach((element) => {
           if (isElementInViewport(element)) {
             element.classList.add("visible");
           }
         });
       }
-
       /**
        * Initialize smooth scrolling for internal navigation
        */
@@ -1470,7 +1568,6 @@
           });
         });
       }
-
       /**
        * Initialize timeline animations
        */
@@ -1480,48 +1577,34 @@
           threshold: 0.1,
           rootMargin: "0px 0px -50px 0px",
         };
-
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.style.opacity = "1";
-              entry.target.style.transform = "translateY(0)";
+              entry.target.classList.add("visible");
             }
           });
         }, observerOptions);
-
         timelineItems.forEach((item) => {
-          // Set initial state
-          item.style.opacity = "0";
-          item.style.transform = "translateY(30px)";
-          item.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-
-          // Observe the item
           observer.observe(item);
         });
       }
-
       /**
        * Initialize team member hover effects
        */
       function initTeamMemberEffects() {
         const teamMembers = document.querySelectorAll(".team-member");
-
         teamMembers.forEach((member) => {
           const overlay = member.querySelector(".member-overlay");
           const socialLinks = member.querySelectorAll(
             ".member-overlay .social-link"
           );
-
           // Add hover effect for the entire team member card
           member.addEventListener("mouseenter", () => {
             member.style.transform = "translateY(-10px)";
           });
-
           member.addEventListener("mouseleave", () => {
             member.style.transform = "translateY(0)";
           });
-
           // Add staggered animation for social links
           if (overlay) {
             overlay.addEventListener("mouseenter", () => {
@@ -1531,7 +1614,6 @@
                 }, index * 100);
               });
             });
-
             overlay.addEventListener("mouseleave", () => {
               socialLinks.forEach((link) => {
                 link.style.transform = "scale(1)";
@@ -1540,23 +1622,19 @@
           }
         });
       }
-
       /**
        * Initialize value cards hover effects
        */
       function initValueCardEffects() {
         const valueItems = document.querySelectorAll(".value-item");
-
         valueItems.forEach((item) => {
           const icon = item.querySelector(".value-icon");
-
           item.addEventListener("mouseenter", () => {
             item.style.transform = "translateY(-5px)";
             if (icon) {
               icon.style.transform = "scale(1.1) rotate(5deg)";
             }
           });
-
           item.addEventListener("mouseleave", () => {
             item.style.transform = "translateY(0)";
             if (icon) {
@@ -1565,7 +1643,6 @@
           });
         });
       }
-
       /**
        * Check if element is in viewport
        * @param {HTMLElement} element - The element to check
@@ -1576,26 +1653,96 @@
         const windowHeight =
           window.innerHeight || document.documentElement.clientHeight;
         const offset = windowHeight * 0.2;
-
         return rect.top <= windowHeight - offset && rect.bottom >= offset;
       }
-
+      /**
+       * Add parallax effect to hero section - DISABLED to prevent movement
+       */
+      function initParallaxEffect() {
+        // Parallax effect disabled to prevent unwanted movement
+        // const heroSection = document.querySelector(".about-hero");
+        // if (heroSection) {
+        //   window.addEventListener("scroll", () => {
+        //     const scrolled = window.pageYOffset;
+        //     const parallax = scrolled * 0.2; // Reduced parallax effect for better performance
+        //     heroSection.style.transform = `translateY(${parallax}px)`;
+        //   });
+        // }
+        console.log("Parallax effect disabled for about-hero section");
+      }
+      /**
+       * Initialize counter animation for timeline years
+       */
+      function initTimelineCounters() {
+        const timelineYears = document.querySelectorAll(".timeline-year");
+        const observerOptions = {
+          threshold: 0.5,
+        };
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const yearElement = entry.target;
+              // Simple animation effect
+              yearElement.style.transform = "scale(1.2)";
+              yearElement.style.color = "var(--accent-color2)";
+              setTimeout(() => {
+                yearElement.style.transform = "scale(1)";
+                yearElement.style.color = "var(--accent-color)";
+              }, 300);
+              // Unobserve after animation
+              observer.unobserve(yearElement);
+            }
+          });
+        }, observerOptions);
+        timelineYears.forEach((year) => {
+          observer.observe(year);
+        });
+      }
+      /**
+       * Add interactive elements to mission/vision cards
+       */
+      function initMissionVisionInteractions() {
+        const missionCard = document.querySelector(".mission-card");
+        const visionCard = document.querySelector(".vision-card");
+        if (missionCard) {
+          missionCard.addEventListener("click", () => {
+            missionCard.style.transform = "scale(1.02)";
+            setTimeout(() => {
+              missionCard.style.transform = "translateY(-5px)";
+            }, 200);
+          });
+        }
+        if (visionCard) {
+          visionCard.addEventListener("click", () => {
+            visionCard.style.transform = "scale(1.02)";
+            setTimeout(() => {
+              visionCard.style.transform = "translateY(-5px)";
+            }, 200);
+          });
+        }
+      }
       /**
        * Initialize all about page functionality when DOM is loaded
        */
       document.addEventListener("DOMContentLoaded", function () {
         // Initialize about page specific functionality
         initAboutPage();
-
+        // Initialize parallax effect
+        initParallaxEffect();
+        // Initialize counter animations
+        initTimelineCounters();
+        // Initialize mission/vision interactions
+        initMissionVisionInteractions();
+        // Add scroll event listener for counters
+        window.addEventListener("scroll", initCounters);
+        // Initial check for counters
+        initCounters();
         // Set active nav item for about page
-        const aboutLinks = document.querySelectorAll(
-          'a[href="/pages/about.html"]'
-        );
+        const aboutLinks = document.querySelectorAll('a[href="about.html"]');
         aboutLinks.forEach((link) => {
           link.classList.add("active");
         });
       });
-
       /**
        * Cleanup event listeners when page is unloaded
        */
@@ -1603,13 +1750,11 @@
         // Remove scroll event listener
         window.removeEventListener("scroll", handleAboutScrollAnimations);
       });
-
       // Export functions for external use if needed
       window.AboutPage = {
         init: initAboutPage,
         refreshAnimations: handleAboutScrollAnimations,
       };
-
       console.log("About Page Loaded Successfully! 📸");
     </script>
   </body>
