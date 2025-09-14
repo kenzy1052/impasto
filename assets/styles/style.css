@@ -110,9 +110,11 @@
   --gradient-primary: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
   --gradient-secondary: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
   --link-color: #e63946;
+
   /* Typography */
-  --font-primary: "Inter", sans-serif;
-  --font-secondary: "Playfair Display", serif;
+  --font-primary: "Montserrat", sans-serif;
+  --font-secondary: "Roboto", sans-serif;
+
   /* Spacing */
   --spacing-xs: 0.5rem;
   --spacing-sm: 0.75rem;
@@ -187,8 +189,8 @@
   --info: #06b6d4;
 
   /* Typography */
-  --font-primary: "Inter", sans-serif;
-  --font-secondary: "Playfair Display", serif;
+  --font-primary: "Montserrat", sans-serif;
+  --font-secondary: "Roboto", sans-serif;
 
   /* Spacing */
   --spacing-xs: 0.5rem;

@@ -1,0 +1,2502 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/components/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: var(--font-primary);
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        transition: background-color var(--transition-normal),
+          color var(--transition-normal);
+      }
+
+      .container {
+        max-width: 1200px;
+      }
+
+      /* Scroll Animation Classes */
+      .scroll-animate {
+        opacity: 0;
+        transform: translateY(60px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .scroll-animate.animate-slide-left {
+        transform: translateX(-60px) translateY(30px);
+      }
+
+      .scroll-animate.animate-slide-right {
+        transform: translateX(60px) translateY(30px);
+      }
+
+      .scroll-animate.animate-scale {
+        transform: scale(0.8) translateY(30px);
+      }
+
+      .scroll-animate.animate-fade {
+        transform: translateY(30px);
+      }
+
+      .scroll-animate.visible {
+        opacity: 1;
+        transform: translateX(0) translateY(0) scale(1);
+      }
+
+      /* Stagger animation delays */
+      .scroll-animate:nth-child(1) {
+        transition-delay: 0s;
+      }
+      .scroll-animate:nth-child(2) {
+        transition-delay: 0.1s;
+      }
+      .scroll-animate:nth-child(3) {
+        transition-delay: 0.2s;
+      }
+      .scroll-animate:nth-child(4) {
+        transition-delay: 0.3s;
+      }
+      .scroll-animate:nth-child(5) {
+        transition-delay: 0.4s;
+      }
+      .scroll-animate:nth-child(6) {
+        transition-delay: 0.5s;
+      }
+
+      /* ===========================================
+          NAVIGATION - MOBILE FIRST
+         =========================================== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background: var(--nav-bg);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        transition: all var(--transition-normal);
+      }
+      .navbar.scrolled {
+        box-shadow: 0 4px 20px var(--shadow);
+      }
+      .nav-container {
+        margin: 0 auto;
+        padding: 0 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+      }
+      .logo {
+        transition: all var(--transition-normal);
+      }
+      .logo:hover {
+        transform: scale(1.05);
+      }
+      .logo-icon {
+        width: 90px;
+        height: auto;
+      }
+      .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: calc(100vh - 60px);
+        background: var(--nav-bg);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: var(--spacing-xl);
+        transition: left var(--transition-normal);
+        list-style: none;
+        overflow-y: auto;
+        box-shadow: 2px 0 10px var(--shadow);
+      }
+      .nav-menu.active {
+        left: 0;
+      }
+      .nav-item {
+        width: 100%;
+        text-align: left;
+        position: relative;
+      }
+      .nav-link-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+      .nav-link {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        transition: color var(--transition-fast);
+        padding: var(--spacing-md) 0;
+        display: block;
+        position: relative;
+        flex-grow: 1;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--link-color);
+        transition: width var(--transition-normal);
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--link-color);
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 60%;
+      }
+      /* Dropdown Toggle for Mobile */
+      .dropdown-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--spacing-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        color: var(--link-color);
+      }
+      /* Dropdown Arrow for Mobile */
+      .dropdown-arrow {
+        font-size: 12px;
+        transition: transform var(--transition-normal);
+      }
+      .dropdown-arrow.open {
+        transform: rotate(180deg);
+      }
+      /* Dropdown Menu */
+      .dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height var(--transition-normal);
+        padding-left: var(--spacing-md);
+        margin-top: 0;
+      }
+      .dropdown-menu.open {
+        max-height: 500px;
+        margin-top: var(--spacing-sm);
+      }
+      .dropdown-item {
+        margin-bottom: var(--spacing-sm);
+      }
+      .dropdown-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 14px;
+        text-transform: capitalize;
+        transition: color var(--transition-fast);
+        display: block;
+        padding: var(--spacing-xs) 0;
+      }
+      .dropdown-link:hover {
+        color: var(--link-color);
+      }
+      .nav-controls {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+      .theme-toggle {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 50px;
+        padding: 4px 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-primary);
+        transition: all var(--transition-normal);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 12px var(--shadow);
+      }
+      .theme-toggle:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px var(--shadow-hover);
+      }
+      .theme-icon {
+        font-size: 12px;
+        transition: transform var(--transition-normal);
+      }
+      .theme-toggle:hover .theme-icon {
+        transform: rotate(180deg);
+      }
+      .mobile-menu-toggle {
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        font-size: 18px;
+        cursor: pointer;
+        padding: var(--spacing-sm);
+        display: block;
+        z-index: 1000;
+      }
+      .mobile-menu-toggle.active {
+        color: var(--link-color);
+      }
+      /* Mobile Menu Overlay */
+      .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition-normal),
+          visibility var(--transition-normal);
+      }
+      .mobile-menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /*============================
+        Hero Section
+        ===========================*/
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        text-align: center;
+        padding: var(--spacing-xl) var(--spacing-md);
+        overflow: hidden;
+      }
+
+      .hero-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .hero-slide {
+        position: absolute;
+        margin-top: 55px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: 50% 10%;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .hero-slide.active {
+        opacity: 1;
+      }
+
+      .hero-slide-1 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/img0.jpg");
+      }
+
+      .hero-slide-2 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/img62.jpg");
+      }
+
+      .hero-slide-3 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/img64.jpg");
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+        z-index: -1;
+      }
+
+      .hero-content {
+        max-width: 100%;
+        animation: fadeInUp 1s ease-out;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-title {
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+        font-weight: 600;
+        color: white;
+        margin-top: 2rem;
+        margin-bottom: var(--spacing-sm);
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        line-height: 1.3;
+        font-family: var(--font-secondary);
+        font-optical-sizing: auto;
+        transition: opacity 0.5s ease;
+      }
+
+      .hero-subtitle {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: var(--spacing-2xl);
+        font-weight: 300;
+        line-height: 1.5;
+        transition: opacity 0.5s ease;
+        padding: 0 2rem;
+        font-family: var(--font-primary);
+      }
+
+      .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-md) var(--spacing-xl);
+        border-radius: var(--radius-lg);
+        text-decoration: none;
+        font-weight: 600;
+        font-family: var(--font-primary);
+        transition: all var(--transition-normal);
+        cursor: pointer;
+        border: none;
+        font-size: 1rem;
+      }
+
+      .btn-primary {
+        background: var(--gradient-primary);
+        color: white;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+      }
+
+      .btn-secondary:hover {
+        background: white;
+        color: var(--text-primary);
+        transform: translateY(-2px);
+      }
+
+      .h-btn {
+        min-width: 250px;
+      }
+
+      /* Navigation Controls */
+      .hero-nav-controls {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 var(--spacing-md);
+        z-index: 10;
+        pointer-events: none;
+      }
+
+      .hero-nav-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: white;
+        transition: all var(--transition-normal);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        pointer-events: all;
+      }
+
+      .hero-nav-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-nav-icon {
+        font-size: 1.2rem;
+        margin-bottom: 2px;
+      }
+
+      .hero-nav-counter {
+        font-size: 0.8rem;
+        font-weight: 600;
+        line-height: 1;
+      }
+
+      .scroll-indicator {
+        position: absolute;
+        bottom: var(--spacing-xl);
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba(255, 255, 255, 0.7);
+        animation: bounce 2s infinite;
+        cursor: pointer;
+        z-index: 1;
+      }
+
+      /*============================
+        main section - Mobile First
+      =============================*/
+      main {
+        margin-top: 60px;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-primary);
+        background-color: var(--bg-primary);
+      }
+
+      .category-title {
+        font-family: var(--font-secondary);
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-top: 6rem;
+        margin-bottom: 4rem;
+        text-align: center;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .category-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: var(--gradient-primary);
+      }
+
+      .sessions-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 6rem;
+        justify-items: center;
+      }
+
+      .session-card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background: none;
+        overflow: hidden;
+        transition: all var(--transition-normal);
+        cursor: pointer;
+      }
+
+      .session-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .session-image {
+        width: 100%;
+        overflow: hidden;
+        aspect-ratio: 3/4;
+      }
+
+      .session-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 20%;
+        display: block;
+        transition: transform var(--transition-slow);
+      }
+
+      .session-card:hover .session-image img {
+        transform: scale(1.05);
+      }
+
+      .session-details {
+        padding: 1.5rem;
+        background-color: none;
+        text-align: center;
+      }
+      .session-title {
+        font-size: clamp(1.3rem, 4vw, 2.5rem);
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: var(--spacing-md) 0;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        font-family: var(--font-secondary);
+      }
+      .session-info {
+        margin: var(--spacing-sm);
+        font-family: var(--font-primary);
+        color: var(--text-secondary);
+        font-weight: 400;
+      }
+      .session-price {
+        margin-top: var(--spacing-xl);
+        position: relative;
+        padding-top: 15px;
+        font-family: var(--font-primary);
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--accent-color);
+      }
+      .session-price::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 2px;
+        background: var(--gradient-primary);
+      }
+
+      /*======================
+        Graduation section
+      =======================*/
+      .grad-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 60px;
+        align-items: start;
+      }
+
+      .content-section {
+        order: 2;
+      }
+
+      .intro-text {
+        color: var(--text-secondary);
+        margin-bottom: 15px;
+        font-size: 1rem;
+        font-family: var(--font-primary);
+      }
+
+      .package-title {
+        color: var(--text-primary);
+        margin: 30px 0 20px 0;
+        font-weight: 600;
+        font-size: 1.1rem;
+        font-family: var(--font-secondary);
+      }
+
+      .package-list {
+        list-style: none;
+        margin-bottom: 25px;
+      }
+
+      .package-list li {
+        color: var(--text-secondary);
+        margin-bottom: 8px;
+        padding-left: 15px;
+        position: relative;
+        font-size: 0.95rem;
+        font-family: var(--font-primary);
+      }
+
+      .package-list li::before {
+        content: "•";
+        color: var(--accent-color);
+        position: absolute;
+        left: 0;
+      }
+
+      .closing-text {
+        color: var(--text-secondary);
+        margin-bottom: 40px;
+        font-size: 1rem;
+        font-family: var(--font-primary);
+      }
+
+      .pricing-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 2px solid var(--border);
+        padding-top: 20px;
+      }
+
+      .starting-label {
+        color: var(--text-primary);
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-family: var(--font-primary);
+      }
+
+      .price {
+        color: var(--accent-color);
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        font-family: var(--font-primary);
+      }
+
+      .image-carousel {
+        position: relative;
+        width: 100%;
+        height: 600px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px var(--shadow);
+      }
+
+      .carousel-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: top;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      .carousel-slide.active {
+        opacity: 1;
+      }
+
+      .slide-1 {
+        background-image: url("assets/images/img52.jpg");
+      }
+
+      .slide-2 {
+        background-image: url("assets/images/img2.jpg");
+      }
+
+      .carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--bg-primary);
+        transition: all var(--transition-normal);
+        z-index: 10;
+      }
+
+      .prev-btn {
+        left: 15px;
+      }
+
+      .next-btn {
+        right: 15px;
+      }
+
+      .slide-indicator {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        z-index: 10;
+        font-family: var(--font-primary);
+      }
+
+      /* ===========================================
+         EXTRAS SECTION - IMPROVED STYLING
+       =========================================== */
+      .extras {
+        padding: var(--spacing-3xl) var(--spacing-lg);
+        background: var(--bg-secondary);
+        position: relative;
+        overflow: hidden;
+        margin: 5rem 0 0 0;
+      }
+
+      .extras::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--gradient-primary);
+        opacity: 0.5;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: var(--spacing-3xl);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .section-subtitle {
+        color: var(--accent-color);
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: var(--spacing-sm);
+        font-family: var(--font-primary);
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-md);
+        line-height: 1.2;
+        font-family: var(--font-secondary);
+      }
+
+      .section-description {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        font-family: var(--font-primary);
+      }
+
+      .extras-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: var(--spacing-lg);
+        margin-top: var(--spacing-3xl);
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .extra-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--spacing-lg) var(--spacing-xl);
+        background: var(--card-bg);
+        border-radius: var(--radius-lg);
+        box-shadow: 0 4px 20px var(--shadow);
+        transition: all var(--transition-normal);
+        border-left: 4px solid var(--accent-color);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .extra-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-primary);
+        opacity: 0;
+        transition: opacity var(--transition-normal);
+        z-index: 0;
+      }
+
+      .extra-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px var(--shadow-hover);
+        border-left-color: var(--accent-color);
+      }
+
+      .extra-item:hover::before {
+        opacity: 0.05;
+      }
+
+      .extra-name {
+        font-weight: 500;
+        color: var(--text-primary);
+        font-size: 1rem;
+        line-height: 1.4;
+        position: relative;
+        z-index: 1;
+        flex: 1;
+        margin-right: var(--spacing-md);
+        font-family: var(--font-primary);
+      }
+
+      .extra-price {
+        font-weight: 700;
+        color: var(--accent-color);
+        font-size: 1rem;
+        position: relative;
+        z-index: 1;
+        white-space: nowrap;
+        font-family: var(--font-primary);
+      }
+
+      /* ===========================================
+         CTA SECTION - IMPROVED STYLING
+       =========================================== */
+      .cta {
+        padding: var(--spacing-4xl) var(--spacing-lg);
+        background: var(--gradient-primary);
+        color: white;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+      }
+
+      .cta::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("assets/images/image2.jpg") repeat;
+        opacity: 0.1;
+        z-index: 0;
+      }
+
+      .cta .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-title {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 700;
+        margin-bottom: var(--spacing-lg);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        font-family: var(--font-secondary);
+      }
+
+      .cta-description {
+        font-size: 1.2rem;
+        margin-bottom: var(--spacing-3xl);
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 0.95;
+        line-height: 1.6;
+        font-family: var(--font-primary);
+        color: #cfcfcfff;
+      }
+
+      .cta .btn {
+        background: white;
+        color: var(--accent-color);
+        padding: var(--spacing-md) var(--spacing-2xl);
+        font-size: 1.1rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 50px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        transition: all var(--transition-normal);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        font-family: var(--font-primary);
+      }
+
+      .cta .btn:hover {
+        background: var(--bg-primary);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        color: var(--text-primary);
+      }
+
+      .cta .btn i {
+        font-size: 1rem;
+      }
+
+      .footer {
+        margin-top: 0;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        40% {
+          transform: translateX(-50%) translateY(-10px);
+        }
+        60% {
+          transform: translateX(-50%) translateY(-5px);
+        }
+      }
+
+      /* ===========================================
+          RESPONSIVE DESIGN - MOBILE FIRST
+        =========================================== */
+      /* Small screens (475px and up) */
+      @media (min-width: 475px) {
+        .hero-title {
+          font-size: clamp(2rem, 5vw, 3rem);
+          margin-top: 3rem;
+          margin-bottom: var(--spacing-md);
+        }
+        .hero-subtitle {
+          font-size: 0.9rem;
+        }
+        main {
+          padding: 1rem;
+        }
+
+        .extras-grid {
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+      }
+      /* Medium screens (640px and up) */
+      @media (min-width: 640px) {
+        .nav-container {
+          padding: 0 var(--spacing-lg);
+        }
+        .logo-icon {
+          width: 110px;
+        }
+        .hero {
+          padding: var(--spacing-xl) var(--spacing-lg);
+        }
+        .hero-buttons {
+          flex-direction: row;
+          gap: var(--spacing-lg);
+        }
+        .theme-toggle {
+          padding: var(--spacing-xs) var(--spacing-sm);
+        }
+        .mobile-menu-toggle {
+          font-size: 24px;
+        }
+        main {
+          padding: 2rem;
+        }
+
+        .extras-grid {
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+      }
+
+      /* large screens (768px and up) */
+      @media (min-width: 768px) {
+        .hero-nav-btn {
+          display: flex;
+        }
+        .sessions-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 1.5rem;
+        }
+        .session-title {
+          font-size: 1.3rem;
+        }
+        .session-details {
+          padding: 1.5rem;
+        }
+        main {
+          padding: 2rem;
+        }
+        .grad-container {
+          max-width: 1280px;
+          grid-template-columns: 1fr 1fr;
+        }
+        .image-section {
+          order: 2;
+        }
+
+        .extras-grid {
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: var(--spacing-xl);
+        }
+      }
+
+      /* Desktop screens (1024px and up) - DESKTOP NAVIGATION */
+      @media (min-width: 1024px) {
+        .navbar {
+          height: 70px;
+        }
+        .nav-container {
+          height: 70px;
+          padding: 0 var(--spacing-xl);
+        }
+        .logo-icon {
+          width: 120px;
+        }
+        .nav-menu {
+          position: static;
+          width: auto;
+          max-width: none;
+          height: auto;
+          background: transparent;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          padding: 0;
+          transition: none;
+          gap: var(--spacing-xl);
+          margin: 0 auto;
+          box-shadow: none;
+          overflow-y: visible;
+        }
+        .nav-menu.active {
+          left: auto;
+        }
+        .nav-item {
+          width: auto;
+          text-align: center;
+          position: relative;
+        }
+        .nav-link-container {
+          display: block;
+        }
+        .nav-link {
+          font-size: 14px;
+          letter-spacing: 1px;
+          padding: var(--spacing-sm) 0;
+          position: relative;
+          justify-content: center;
+        }
+        .nav-link::after {
+          left: 0;
+          transform: none;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+          width: 100%;
+        }
+        /* Hide dropdown toggle on desktop */
+        .dropdown-toggle {
+          display: none;
+        }
+        /* Desktop Dropdown Menu */
+        .dropdown-arrow {
+          display: none;
+        }
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%) translateY(10px);
+          background: var(--nav-bg);
+          backdrop-filter: blur(10px);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-md);
+          padding: var(--spacing-md);
+          min-width: 200px;
+          box-shadow: 0 4px 20px var(--shadow);
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity var(--transition-normal),
+            visibility var(--transition-normal),
+            transform var(--transition-normal);
+          max-height: none;
+          padding-left: var(--spacing-md);
+          margin-top: 0;
+          text-align: center;
+          list-style: none;
+        }
+        .nav-item:hover .dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-50%) translateY(0);
+        }
+        .dropdown-menu.open {
+          max-height: none;
+          margin-top: 0;
+        }
+        .dropdown-item {
+          margin-bottom: var(--spacing-sm);
+        }
+        .dropdown-item:last-child {
+          margin-bottom: 0;
+        }
+        .dropdown-link {
+          padding: var(--spacing-xs) var(--spacing-sm);
+          border-radius: var(--radius-sm);
+          transition: all var(--transition-fast);
+          display: block;
+          text-align: center;
+        }
+        .dropdown-link:hover {
+          background: var(--bg-tertiary);
+          color: var(--link-color);
+        }
+        .mobile-menu-toggle {
+          display: none;
+        }
+        .mobile-menu-overlay {
+          display: none;
+        }
+        .nav-controls {
+          position: static;
+          transform: none;
+        }
+        .hero {
+          min-height: 100vh;
+          padding: var(--spacing-2xl) var(--spacing-xl);
+        }
+        .hero-content {
+          max-width: 800px;
+        }
+
+        .hero-title {
+          font-size: clamp(2.5rem, 5vw, 3.5rem);
+        }
+        .hero-subtitle {
+          font-size: 1.25rem;
+          margin-bottom: var(--spacing-3xl);
+        }
+        .sessions-grid {
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 1.5rem;
+        }
+        .session-details {
+          padding: 1.5rem 2rem;
+        }
+        main {
+          padding: 3rem;
+        }
+        .session-title {
+          font-size: 1.3rem;
+        }
+
+        .extras-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: var(--spacing-xl);
+        }
+      }
+      /* Extra large screens (1280px and up) */
+      @media (min-width: 1280px) {
+        .nav-container {
+          max-width: 1280px;
+        }
+        .nav-menu {
+          gap: var(--spacing-2xl);
+        }
+        .sessions-grid {
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 2.5rem;
+        }
+        main {
+          padding: 4.5rem;
+        }
+
+        .extras-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: var(--spacing-2xl);
+        }
+      }
+      /* 3XL screens (1536px and up) */
+      @media (min-width: 1536px) {
+        .nav-container {
+          max-width: 1536px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="mobile-menu-overlay"
+      id="mobileMenuOverlay"
+      onclick="toggleMobileMenu()"
+    ></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo">
+          <img
+            src="assets/images/logo2.png"
+            alt="Impasto logo"
+            class="logo-icon"
+          />
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link" onclick="setActiveNav(this)"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="information.html"
+                class="nav-link active"
+                onclick="setActiveNav(this)"
+              >
+                Information
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="about.html" class="dropdown-link">About Us</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="team.html" class="dropdown-link">Our Team</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="services.html" class="dropdown-link">Services</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="testimonials.html" class="dropdown-link"
+                  >Testimonials</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="ratecards.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Ratecards
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="portrait-rates.html" class="dropdown-link"
+                  >Portrait Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="wedding-rates.html" class="dropdown-link"
+                  >Wedding Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="event-rates.html" class="dropdown-link"
+                  >Event Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="commercial-rates.html" class="dropdown-link"
+                  >Commercial Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="special-packages.html" class="dropdown-link"
+                  >Special Packages</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="store.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Store
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="prints.html" class="dropdown-link">Prints</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="digital-products.html" class="dropdown-link"
+                  >Digital Products</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link" onclick="setActiveNav(this)"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="blog.html" class="nav-link" onclick="setActiveNav(this)"
+              >Blog</a
+            >
+          </li>
+        </ul>
+        <div class="nav-controls">
+          <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon theme-icon"></i>
+            <span class="theme-text">Dark</span>
+          </button>
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-slider">
+        <div class="hero-slide hero-slide-1 active"></div>
+        <div class="hero-slide hero-slide-2"></div>
+        <div class="hero-slide hero-slide-3"></div>
+      </div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="hero-title" id="heroTitle">FAMILY PORTRAIT</h1>
+        <p class="hero-subtitle" id="heroSubtitle">
+          Capturing beautiful family memories that last a lifetime
+        </p>
+        <div class="hero-buttons">
+          <a href="#" class="btn btn-primary h-btn">
+            <i class="fas fa-images"></i>
+            View Portfolio
+          </a>
+          <a href="#" class="btn btn-secondary h-btn">
+            <i class="fas fa-calendar"></i>
+            Book Session
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigation Controls -->
+      <div class="hero-nav-controls">
+        <button class="hero-nav-btn" id="prevBtn" onclick="previousHeroSlide()">
+          <i class="fas fa-chevron-left hero-nav-icon"></i>
+          <div class="hero-nav-counter">
+            <div id="currentSlideLeft">3</div>
+          </div>
+        </button>
+        <button class="hero-nav-btn" id="nextBtn" onclick="nextHeroSlide()">
+          <div class="hero-nav-counter">
+            <div id="currentSlideRight">1</div>
+          </div>
+          <i class="fas fa-chevron-right hero-nav-icon"></i>
+        </button>
+      </div>
+
+      <div class="scroll-indicator">
+        <i class="fas fa-chevron-down fa-2x"></i>
+      </div>
+    </section>
+
+    <main>
+      <!--Personal Portrait-->
+      <div class="container">
+        <h1 class="category-title scroll-animate animate-fade">
+          PERSONAL PORTRAIT SESSIONS
+        </h1>
+
+        <div class="sessions-grid">
+          <!-- Basic Studio Session -->
+          <div
+            class="session-card scroll-animate animate-scale"
+            onclick="selectSession('basic')"
+          >
+            <div class="session-image basic-studio">
+              <img
+                src="assets/images/img48.jpg"
+                alt="basic studio session image"
+              />
+            </div>
+            <div class="session-details">
+              <h3 class="session-title">Basic Studio Session</h3>
+              <div class="session-info">30 Minutes Shooting Time</div>
+              <div class="session-info">One Look</div>
+              <div class="session-info">8 Photos (8 Retouched Images)</div>
+              <div class="session-price">
+                <span class="price-currency">₵</span> 1650.00
+              </div>
+            </div>
+          </div>
+
+          <!-- Solo Spotlight -->
+          <div
+            class="session-card scroll-animate animate-scale"
+            onclick="selectSession('solo')"
+          >
+            <div class="session-image solo-spotlight">
+              <img src="assets/images/img43.jpg" alt="solo spotlight image" />
+            </div>
+            <div class="session-details">
+              <h3 class="session-title">Solo Spotlight</h3>
+              <div class="session-info">60 Minutes Shooting Time</div>
+              <div class="session-info">Two Looks</div>
+              <div class="session-info">12 Photos (8 Retouched Images)</div>
+              <div class="session-price">
+                <span class="price-currency">₵</span> 1499.00
+              </div>
+            </div>
+          </div>
+
+          <!-- Luxury Layers -->
+          <div
+            class="session-card scroll-animate animate-scale"
+            onclick="selectSession('luxury')"
+          >
+            <div class="session-image luxury-layers">
+              <img src="assets/images/img57.jpg" alt="luxury Layers image" />
+            </div>
+            <div class="session-details">
+              <h3 class="session-title">Luxury Layers</h3>
+              <div class="session-info">90 Minutes Shooting Time</div>
+              <div class="session-info">Two - Three Looks</div>
+              <div class="session-info">20 Photos (10 Retouched Images)</div>
+              <div class="session-price">
+                <span class="price-currency">₵</span> 2999.00
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Family Portrait-->
+      <div class="container">
+        <h1 class="category-title scroll-animate animate-fade">
+          FAMILY PORTRAIT SESSIONS
+        </h1>
+
+        <div class="sessions-grid">
+          <!-- Baby/Family Shoot Session -->
+          <div
+            class="session-card scroll-animate animate-scale"
+            onclick="selectSession('baby-family')"
+          >
+            <div class="session-image baby-family">
+              <img
+                src="assets/images/img41.jpg"
+                alt="baby/family shoot image"
+              />
+            </div>
+            <div class="session-details">
+              <h3 class="session-title">Baby/Family Shoot<br />Session</h3>
+              <div class="session-info">70-Minutes Shooting Session</div>
+              <div class="session-info">Two Looks</div>
+              <div class="session-info">20 Photos (10 Retouched Images)</div>
+              <div class="session-info">Maximum of 3 Persons</div>
+              <div class="session-info">(Offer does not come with props)</div>
+              <div class="session-price">
+                <span class="price-currency">₵</span> 1799.00
+              </div>
+            </div>
+          </div>
+
+          <!-- Maternity Shoot Session -->
+          <div
+            class="session-card scroll-animate animate-scale"
+            onclick="selectSession('maternity')"
+          >
+            <div class="session-image maternity">
+              <img src="assets/images/img37.jpg" alt="maternity shoot image" />
+            </div>
+            <div class="session-details">
+              <h3 class="session-title">Maternity Shoot<br />Session</h3>
+              <div class="session-info">60-minutes Shooting Session</div>
+              <div class="session-info">Two Looks</div>
+              <div class="session-info">12 Photos (8 Retouched Images)</div>
+              <div class="session-info">Normal session</div>
+              <div class="session-info">(Offer does not come with props)</div>
+              <div class="session-price">
+                <span class="price-currency">₵</span> 1499.00
+              </div>
+            </div>
+          </div>
+
+          <!-- Baby Christening/Naming Ceremony -->
+          <div
+            class="session-card scroll-animate animate-scale"
+            onclick="selectSession('ceremony')"
+          >
+            <div class="session-image baby-ceremony">
+              <img src="assets/images/img9.jpg" alt="naming ceremony image" />
+            </div>
+            <div class="session-details">
+              <h3 class="session-title">Baby Christening/Naming Ceremony</h3>
+              <div class="session-info">
+                120-minutes Coverage which includes:
+              </div>
+              <div class="session-info">Ceremony</div>
+              <div class="session-info">Exclusive Session</div>
+              <div class="session-info">80 Photos (Softcopies)</div>
+              <div class="session-price">
+                <span class="price-currency">₵</span> 2499.00
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Graduation Session-->
+      <div class="container">
+        <h1 class="category-title scroll-animate animate-fade">
+          GRADUATION SESSIONS
+        </h1>
+        <div class="grad-container">
+          <div class="content-section scroll-animate animate-slide-left">
+            <p class="intro-text">
+              Thank you for your interest in our Graduation Photography Packages
+              at Impasto Photography!
+            </p>
+
+            <p class="intro-text">
+              We offer a tailored experience to capture this special milestone
+              in a way that reflects your achievements and personality.
+            </p>
+
+            <div class="package-title">Graduation Package Includes:</div>
+            <ul class="package-list" id="package-details">
+              <li>30-minute portrait session (Studio or Outdoor)</li>
+              <li>Solo and family portraits</li>
+              <li>30 professionally captured images</li>
+              <li>5 expertly retouched images</li>
+              <li>Digital delivery of high-resolution, print-ready images</li>
+            </ul>
+
+            <p class="closing-text">
+              Celebrate your hard work with timeless portraits that you'll
+              cherish forever!
+            </p>
+
+            <div class="pricing-section">
+              <div class="starting-label">Starting</div>
+              <div class="price" id="current-price">
+                <span class="currency">₵</span>
+                <span id="price-amount">2200</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="image-section scroll-animate animate-slide-right">
+            <div class="image-carousel">
+              <div class="carousel-slide slide-1 active"></div>
+              <div class="carousel-slide slide-2"></div>
+
+              <button
+                class="carousel-nav prev-btn"
+                onclick="previousGradSlide()"
+              >
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="carousel-nav next-btn" onclick="nextGradSlide()">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+
+              <div class="slide-indicator">
+                <span id="current-slide">1</span> /
+                <span id="total-slides">2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Extras Section -->
+    <section class="extras">
+      <div class="container">
+        <div class="section-header scroll-animate animate-fade">
+          <p class="section-subtitle">Additional Services</p>
+          <h2 class="section-title">Extras & Add-ons</h2>
+          <p class="section-description">
+            Enhance your photography experience with our premium add-on services
+            and products
+          </p>
+        </div>
+
+        <div class="extras-grid">
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">Photography Extra/Event Hourly Rate</span>
+            <span class="extra-price">₵1800</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Videography Extra/Event Hourly Rate</span>
+            <span class="extra-price">₵2200</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">Professional Make Up & Hair</span>
+            <span class="extra-price">₵350</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Studio Rental (Per Hour)</span>
+            <span class="extra-price">₵200</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">Social Media Reels</span>
+            <span class="extra-price">₵400</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Additional Outfit Change</span>
+            <span class="extra-price">₵150</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">Additional Person/Head</span>
+            <span class="extra-price">₵200</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Additional Photographer</span>
+            <span class="extra-price">₵1000</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">Premium Retouching Per Image</span>
+            <span class="extra-price">₵80</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Professional Prints (8x10)</span>
+            <span class="extra-price">₵120</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">Custom Photo Book (20 pages)</span>
+            <span class="extra-price">₵650</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Premium Frame (A4 size)</span>
+            <span class="extra-price">₵180</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container">
+        <div class="scroll-animate animate-fade">
+          <h2 class="cta-title">Ready to Create Magic?</h2>
+          <p class="cta-description">
+            Let's work together to capture your most precious moments and create
+            lasting memories that tell your unique story
+          </p>
+          <a href="/pages/contact.html" class="btn">
+            <i class="fas fa-calendar-alt"></i>
+            Book Your Session
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!--footer-->
+    <footer class="footer">
+      <div class="footer-content container">
+        <div class="footer-grid">
+          <!-- Logo Section -->
+          <div class="footer-section scroll-animate animate-fade">
+            <div class="footer-logo">
+              <img
+                src="assets/images/logo2.png"
+                class="footer-logo-icon"
+                alt="Impasto Photography"
+              />
+            </div>
+            <p class="footer-description">
+              At Impasto Photography, we specialize in capturing life's precious
+              moments with artistry and precision. Our team of professional
+              photographers is dedicated to creating timeless memories that
+              you'll cherish for generations to come.
+            </p>
+          </div>
+          <!-- Quick Links -->
+          <div class="footer-section scroll-animate animate-slide-left">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#home">
+                  <i class="fas fa-chevron-right"></i>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="information.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Information
+                </a>
+              </li>
+              <li>
+                <a href="ratecards.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Ratecards
+                </a>
+              </li>
+              <li>
+                <a href="store.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Store
+                </a>
+              </li>
+              <li>
+                <a href="contact.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a href="blog.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Services -->
+          <div class="footer-section scroll-animate animate-fade">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#">
+                  <i class="fas fa-camera"></i>
+                  Pre-Birthday Shoots
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-user"></i>
+                  Studio Portraits
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-building"></i>
+                  Large Format Print and Cut
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-calendar-alt"></i>
+                  Event Coverage
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-plane"></i>
+                  Passport Pictures
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-palette"></i>
+                  Graphic Design
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-ellipsis-h"></i>
+                  etc
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Contact -->
+          <div class="footer-section scroll-animate animate-slide-right">
+            <h3>Get In Touch</h3>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dome - Accra. Opposite Adehyeman Bank.</span>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>+233 (0) 242-641-305</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <span>potrit1@gmail.com</span>
+              </li>
+              <li>
+                <i class="fas fa-clock"></i>
+                <span>Mon-Fri: 8AM-5PM, Sat: 9:30AM-6PM, Sun: 1PM-6PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content container">
+          <div class="footer-copyright">
+            <p>© 2025 Impasto Photography. All rights reserved.</p>
+          </div>
+          <div class="kenzy-credit">
+            <p>Website developed with 💖 by Kenzyverse</p>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-pinterest-p"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // ===========================================
+      // GLOBAL VARIABLES
+      // ===========================================
+      let heroCurrentSlide = 0;
+      let gradCurrentSlide = 0;
+
+      // ===========================================
+      // SCROLL ANIMATION FUNCTIONALITY
+      // ===========================================
+      function initScrollAnimations() {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+          }
+        );
+
+        // Observe all elements with scroll-animate class
+        document.querySelectorAll(".scroll-animate").forEach((el) => {
+          observer.observe(el);
+        });
+      }
+
+      // ===========================================
+      // SESSION SELECTION FUNCTIONALITY
+      // ===========================================
+      function selectSession(sessionType) {
+        // Add selection feedback
+        const cards = document.querySelectorAll(".session-card");
+        cards.forEach((card) => (card.style.transform = "scale(1)"));
+
+        event.currentTarget.style.transform = "scale(0.98)";
+
+        setTimeout(() => {
+          event.currentTarget.style.transform = "scale(1)";
+          // You can add booking logic here
+          alert(
+            `Selected: ${
+              sessionType.charAt(0).toUpperCase() + sessionType.slice(1)
+            } Session`
+          );
+        }, 150);
+      }
+
+      // ===========================================
+      // HERO SLIDER FUNCTIONALITY
+      // ===========================================
+      const heroSlides = document.querySelectorAll(".hero-slide");
+      const heroTotalSlides = heroSlides.length;
+      const heroTitles = [
+        "FAMILY PORTRAIT",
+        "PROFESSIONAL HEADSHOTS",
+        "WEDDING PHOTOGRAPHY",
+      ];
+      const heroSubtitles = [
+        "Capturing beautiful family memories that last a lifetime",
+        "Professional portraits that make lasting impressions",
+        "Your perfect day deserves perfect memories",
+      ];
+
+      function updateHeroSlide() {
+        // Remove active class from all slides
+        heroSlides.forEach((slide) => slide.classList.remove("active"));
+        // Add active class to current slide
+        heroSlides[heroCurrentSlide].classList.add("active");
+
+        // Calculate previous and next slide numbers (with 1-based indexing for display)
+        const prevSlideNum =
+          ((heroCurrentSlide - 1 + heroTotalSlides) % heroTotalSlides) + 1;
+        const nextSlideNum = ((heroCurrentSlide + 1) % heroTotalSlides) + 1;
+
+        // Update slide counters
+        document.getElementById("currentSlideLeft").textContent = prevSlideNum;
+        document.getElementById("currentSlideRight").textContent = nextSlideNum;
+
+        // Update title and subtitle
+        const heroTitle = document.getElementById("heroTitle");
+        const heroSubtitle = document.getElementById("heroSubtitle");
+        if (heroTitle && heroSubtitle) {
+          heroTitle.style.opacity = "0";
+          heroSubtitle.style.opacity = "0";
+          setTimeout(() => {
+            heroTitle.textContent = heroTitles[heroCurrentSlide];
+            heroSubtitle.textContent = heroSubtitles[heroCurrentSlide];
+            heroTitle.style.opacity = "1";
+            heroSubtitle.style.opacity = "1";
+          }, 200);
+        }
+      }
+
+      function nextHeroSlide() {
+        heroCurrentSlide = (heroCurrentSlide + 1) % heroTotalSlides;
+        updateHeroSlide();
+      }
+
+      function previousHeroSlide() {
+        heroCurrentSlide =
+          (heroCurrentSlide - 1 + heroTotalSlides) % heroTotalSlides;
+        updateHeroSlide();
+      }
+
+      // ===========================================
+      // GRADUATION CAROUSEL FUNCTIONALITY
+      // ===========================================
+      const gradSlides = document.querySelectorAll(".carousel-slide");
+      const gradTotalSlides = gradSlides.length;
+
+      // Package data for different slides
+      const packageData = [
+        {
+          details: [
+            "30-minute portrait session (Studio or Outdoor)",
+            "Solo and family portraits",
+            "30 professionally captured images",
+            "5 expertly retouched images",
+            "Digital delivery of high-resolution, print-ready images",
+          ],
+          price: "2200",
+        },
+        {
+          details: [
+            "60-minute premium portrait session (Studio or Outdoor)",
+            "Solo, family and group portraits",
+            "50 professionally captured images",
+            "15 expertly retouched images",
+            "Premium album with selected photos",
+            "Digital delivery of high-resolution, print-ready images",
+            "Complimentary props and accessories",
+          ],
+          price: "3500",
+        },
+      ];
+
+      function updateGradSlide() {
+        // Hide all slides
+        gradSlides.forEach((slide) => slide.classList.remove("active"));
+
+        // Show current slide
+        gradSlides[gradCurrentSlide].classList.add("active");
+
+        // Update slide indicator
+        const currentSlideElement = document.getElementById("current-slide");
+        if (currentSlideElement) {
+          currentSlideElement.textContent = gradCurrentSlide + 1;
+        }
+
+        // Update package details and price
+        const currentPackage = packageData[gradCurrentSlide];
+        const packageList = document.getElementById("package-details");
+        const priceAmount = document.getElementById("price-amount");
+
+        if (packageList && priceAmount) {
+          // Clear and update package details
+          packageList.innerHTML = "";
+          currentPackage.details.forEach((detail) => {
+            const li = document.createElement("li");
+            li.textContent = detail;
+            packageList.appendChild(li);
+          });
+
+          // Update price with animation
+          priceAmount.style.opacity = "0.5";
+          setTimeout(() => {
+            priceAmount.textContent = currentPackage.price;
+            priceAmount.style.opacity = "1";
+          }, 200);
+        }
+      }
+
+      function nextGradSlide() {
+        gradCurrentSlide = (gradCurrentSlide + 1) % gradTotalSlides;
+        updateGradSlide();
+      }
+
+      function previousGradSlide() {
+        gradCurrentSlide =
+          (gradCurrentSlide - 1 + gradTotalSlides) % gradTotalSlides;
+        updateGradSlide();
+      }
+
+      // ===========================================
+      // THEME TOGGLE FUNCTIONALITY
+      // ===========================================
+      function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.querySelector(".theme-icon");
+        const themeText = document.querySelector(".theme-text");
+        const logos = document.querySelectorAll(
+          ".logo-icon, .footer-logo-icon"
+        );
+
+        // Check current theme
+        if (body.getAttribute("data-theme") === "dark") {
+          // Switch to light theme
+          body.removeAttribute("data-theme");
+          if (themeIcon) themeIcon.className = "fas fa-moon theme-icon";
+          if (themeText) themeText.textContent = "Dark";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2.png";
+          });
+          localStorage.setItem("theme", "light");
+        } else {
+          // Switch to dark theme
+          body.setAttribute("data-theme", "dark");
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+          localStorage.setItem("theme", "dark");
+        }
+      }
+
+      function loadSavedTheme() {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          document.body.setAttribute("data-theme", "dark");
+
+          const themeIcon = document.querySelector(".theme-icon");
+          const themeText = document.querySelector(".theme-text");
+
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
+
+          const logos = document.querySelectorAll(
+            ".logo-icon, .footer-logo-icon"
+          );
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+        }
+      }
+
+      // ===========================================
+      // NAVIGATION FUNCTIONALITY
+      // ===========================================
+      function setActiveNav(element) {
+        // Don't set active if this is a dropdown toggle
+        if (element.classList.contains("dropdown-toggle")) {
+          return;
+        }
+
+        // Remove active class from all nav links
+        document
+          .querySelectorAll(".nav-link:not(.dropdown-toggle)")
+          .forEach((link) => {
+            link.classList.remove("active");
+          });
+
+        // Add active class to clicked link
+        element.classList.add("active");
+
+        // Close mobile menu if open
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        if (navMenu && navMenu.classList.contains("active")) {
+          navMenu.classList.remove("active");
+          if (mobileToggle) {
+            mobileToggle.classList.remove("active");
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          }
+          if (overlay) {
+            overlay.classList.remove("active");
+          }
+        }
+      }
+
+      function toggleMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        if (navMenu && mobileToggle && overlay) {
+          navMenu.classList.toggle("active");
+          mobileToggle.classList.toggle("active");
+          overlay.classList.toggle("active");
+
+          // Change icon based on menu state
+          if (navMenu.classList.contains("active")) {
+            mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+          } else {
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          }
+        }
+      }
+
+      function toggleDropdown(element) {
+        // Only for mobile view
+        if (window.innerWidth < 1024) {
+          const dropdownMenu =
+            element.parentElement.parentElement.querySelector(".dropdown-menu");
+          const dropdownArrow = element.querySelector(".dropdown-arrow");
+          const parentLink = element.parentElement.querySelector(
+            ".nav-link:not(.dropdown-toggle)"
+          );
+
+          if (dropdownMenu && dropdownArrow) {
+            dropdownMenu.classList.toggle("open");
+            dropdownArrow.classList.toggle("open");
+
+            // Prevent default link behavior
+            if (event) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+
+            // Remove hover/active effects from parent link when dropdown is open
+            if (parentLink && dropdownMenu.classList.contains("open")) {
+              parentLink.style.color = "";
+              parentLink.classList.remove("active");
+            }
+          }
+        }
+      }
+
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          // Close mobile menu if open
+          const navMenu = document.getElementById("navMenu");
+          const mobileToggle = document.querySelector(".mobile-menu-toggle");
+          const overlay = document.getElementById("mobileMenuOverlay");
+
+          if (navMenu && navMenu.classList.contains("active")) {
+            navMenu.classList.remove("active");
+            if (mobileToggle) {
+              mobileToggle.classList.remove("active");
+              mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+            if (overlay) {
+              overlay.classList.remove("active");
+            }
+          }
+
+          section.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }
+
+      function handleNavbarScroll() {
+        const navbar = document.getElementById("navbar");
+        if (navbar) {
+          if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        }
+      }
+
+      // ===========================================
+      // TOUCH/SWIPE SUPPORT
+      // ===========================================
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      function initTouchSupport() {
+        const carousel = document.querySelector(".image-carousel");
+        const heroSection = document.querySelector(".hero");
+
+        if (carousel) {
+          carousel.addEventListener("touchstart", function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+          });
+
+          carousel.addEventListener("touchend", function (e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleGradSwipe();
+          });
+        }
+
+        if (heroSection) {
+          heroSection.addEventListener("touchstart", function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+          });
+
+          heroSection.addEventListener("touchend", function (e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleHeroSwipe();
+          });
+        }
+      }
+
+      function handleGradSwipe() {
+        if (touchEndX < touchStartX - 50) {
+          nextGradSlide();
+        }
+        if (touchEndX > touchStartX + 50) {
+          previousGradSlide();
+        }
+      }
+
+      function handleHeroSwipe() {
+        if (touchEndX < touchStartX - 50) {
+          nextHeroSlide();
+        }
+        if (touchEndX > touchStartX + 50) {
+          previousHeroSlide();
+        }
+      }
+
+      // ===========================================
+      // UTILITY FUNCTIONS
+      // ===========================================
+      function throttle(func, limit) {
+        let inThrottle;
+        return function () {
+          const args = arguments;
+          const context = this;
+          if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => (inThrottle = false), limit);
+          }
+        };
+      }
+
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+
+      // Optimized scroll handlers
+      const throttledScrollHandler = throttle(() => {
+        handleNavbarScroll();
+      }, 16); // ~60fps
+
+      // ===========================================
+      // INITIALIZATION AND EVENT LISTENERS
+      // ===========================================
+      document.addEventListener("DOMContentLoaded", function () {
+        // Load saved theme
+        loadSavedTheme();
+
+        // Initialize sliders
+        updateHeroSlide();
+        updateGradSlide();
+
+        // Initialize scroll animations
+        initScrollAnimations();
+
+        // Initialize touch support
+        initTouchSupport();
+
+        // Set total slides count
+        const totalSlidesElement = document.getElementById("total-slides");
+        if (totalSlidesElement) {
+          totalSlidesElement.textContent = gradTotalSlides;
+        }
+
+        // Add smooth scrolling to navigation links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            scrollToSection(targetId);
+          });
+        });
+
+        // Auto-advance hero slider every 8 seconds
+        setInterval(() => {
+          nextHeroSlide();
+        }, 8000);
+
+        // Auto-advance graduation slider every 10 seconds
+        setInterval(() => {
+          nextGradSlide();
+        }, 10000);
+
+        console.log("Impasto Photography Website Loaded Successfully! 📸");
+      });
+
+      // Optimized scroll event listeners
+      window.addEventListener("scroll", throttledScrollHandler);
+
+      // Handle resize events
+      window.addEventListener(
+        "resize",
+        debounce(() => {
+          // Re-initialize scroll animations if needed
+          initScrollAnimations();
+        }, 250)
+      );
+
+      // Keyboard navigation
+      document.addEventListener("keydown", function (e) {
+        // Close mobile menu on escape
+        if (e.key === "Escape") {
+          const navMenu = document.getElementById("navMenu");
+          const mobileToggle = document.querySelector(".mobile-menu-toggle");
+          const overlay = document.getElementById("mobileMenuOverlay");
+
+          if (navMenu && navMenu.classList.contains("active")) {
+            navMenu.classList.remove("active");
+            if (mobileToggle) {
+              mobileToggle.classList.remove("active");
+              mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+            if (overlay) {
+              overlay.classList.remove("active");
+            }
+          }
+        }
+
+        // Arrow keys for hero slider
+        if (e.key === "ArrowLeft") {
+          previousHeroSlide();
+        }
+        if (e.key === "ArrowRight") {
+          nextHeroSlide();
+        }
+      });
+
+      // ===========================================
+      // IMAGE PROTECTION
+      // ===========================================
+      document.addEventListener("contextmenu", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      document.addEventListener("dragstart", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Add smooth scroll behavior
+      document.documentElement.style.scrollBehavior = "smooth";
+    </script>
+  </body>
+</html>

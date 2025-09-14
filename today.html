@@ -1,0 +1,2424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/components/footer.css" />
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+      }
+      .container {
+        max-width: 1200px;
+      }
+      /* ===========================================
+          NAVIGATION - MOBILE FIRST
+         =========================================== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background: var(--nav-bg);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        transition: all var(--transition-normal);
+      }
+      .navbar.scrolled {
+        box-shadow: 0 4px 20px var(--shadow);
+      }
+      .nav-container {
+        margin: 0 auto;
+        padding: 0 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+      }
+      .logo {
+        transition: all var(--transition-normal);
+      }
+      .logo:hover {
+        transform: scale(1.05);
+      }
+      .logo-icon {
+        width: 90px;
+        height: auto;
+      }
+      .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: calc(100vh - 60px);
+        background: var(--nav-bg);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: var(--spacing-xl);
+        transition: left var(--transition-normal);
+        list-style: none;
+        overflow-y: auto;
+        box-shadow: 2px 0 10px var(--shadow);
+      }
+      .nav-menu.active {
+        left: 0;
+      }
+      .nav-item {
+        width: 100%;
+        text-align: left;
+        position: relative;
+      }
+      .nav-link-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+      .nav-link {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        transition: color var(--transition-fast);
+        padding: var(--spacing-md) 0;
+        display: block;
+        position: relative;
+        flex-grow: 1;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--link-color);
+        transition: width var(--transition-normal);
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--link-color);
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 60%;
+      }
+      /* Dropdown Toggle for Mobile */
+      .dropdown-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--spacing-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        color: var(--link-color);
+      }
+      /* Dropdown Arrow for Mobile */
+      .dropdown-arrow {
+        font-size: 12px;
+        transition: transform var(--transition-normal);
+      }
+      .dropdown-arrow.open {
+        transform: rotate(180deg);
+      }
+      /* Dropdown Menu */
+      .dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height var(--transition-normal);
+        padding-left: var(--spacing-md);
+        margin-top: 0;
+      }
+      .dropdown-menu.open {
+        max-height: 500px;
+        margin-top: var(--spacing-sm);
+      }
+      .dropdown-item {
+        margin-bottom: var(--spacing-sm);
+      }
+      .dropdown-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 14px;
+        text-transform: capitalize;
+        transition: color var(--transition-fast);
+        display: block;
+        padding: var(--spacing-xs) 0;
+      }
+      .dropdown-link:hover {
+        color: var(--link-color);
+      }
+      .nav-controls {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+      .theme-toggle {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 50px;
+        padding: 4px 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-primary);
+        transition: all var(--transition-normal);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 12px var(--shadow);
+      }
+      .theme-toggle:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px var(--shadow-hover);
+      }
+      .theme-icon {
+        font-size: 12px;
+        transition: transform var(--transition-normal);
+      }
+      .theme-toggle:hover .theme-icon {
+        transform: rotate(180deg);
+      }
+      .mobile-menu-toggle {
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        font-size: 18px;
+        cursor: pointer;
+        padding: var(--spacing-sm);
+        display: block;
+        z-index: 1000;
+      }
+      .mobile-menu-toggle.active {
+        color: var(--link-color);
+      }
+      /* Mobile Menu Overlay */
+      .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition-normal),
+          visibility var(--transition-normal);
+      }
+      .mobile-menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /*============================
+        Hero Section
+        ===========================*/
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        text-align: center;
+        padding: var(--spacing-xl) var(--spacing-md);
+        overflow: hidden;
+      }
+
+      .hero-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .hero-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .hero-slide.active {
+        opacity: 1;
+      }
+
+      .hero-slide-1 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/img32.jpg");
+      }
+
+      .hero-slide-2 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/img22.jpg");
+      }
+
+      .hero-slide-3 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/img52.jpg");
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+        z-index: -1;
+      }
+
+      .hero-content {
+        max-width: 100%;
+        animation: fadeInUp 1s ease-out;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-title {
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+        font-weight: 600;
+        color: white;
+        margin-top: 2rem;
+        margin-bottom: var(--spacing-sm);
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        line-height: 1.3;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        transition: opacity 0.5s ease;
+      }
+
+      .hero-subtitle {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: var(--spacing-2xl);
+        font-weight: 300;
+        line-height: 1.5;
+        transition: opacity 0.5s ease;
+        padding: 0 2rem;
+      }
+
+      .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .h-btn {
+        width: 240px;
+      }
+
+      /* Navigation Controls */
+      .hero-nav-controls {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 var(--spacing-md);
+        z-index: 10;
+        pointer-events: none;
+      }
+
+      .hero-nav-btn {
+        background: none;
+        border: 1px solid var(--link-color);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        transition: all var(--transition-normal);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        pointer-events: all;
+      }
+
+      .hero-nav-btn:hover {
+        background: white;
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-nav-icon {
+        font-size: 1.2rem;
+        margin-bottom: 2px;
+      }
+
+      .hero-nav-counter {
+        font-size: 0.7rem;
+        font-weight: 600;
+        line-height: 1;
+      }
+
+      .scroll-indicator {
+        position: absolute;
+        bottom: var(--spacing-xl);
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba(255, 255, 255, 0.7);
+        animation: bounce 2s infinite;
+        cursor: pointer;
+        z-index: 1;
+      }
+
+      /*============================
+        main section - Mobile First
+      =============================*/
+      main {
+        margin-top: 60px;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        font-family: "Arial", sans-serif;
+      }
+
+      .category-title {
+        font-family: var(--font-secondary);
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-top: 6rem;
+        margin-bottom: 4rem;
+        text-align: center;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .category-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--accent-color);
+      }
+
+      .sessions-grid {
+        display: grid;
+        grid-template-columns: (1fr);
+        gap: 6rem;
+        justify-items: center;
+      }
+
+      .session-card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .session-image {
+        width: 100%;
+        overflow: hidden;
+        aspect-ratio: 3/4;
+      }
+
+      .session-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+        display: block;
+      }
+      .session-details {
+        padding: 1rem;
+        background-color: var(--primary-color);
+        text-align: center;
+      }
+      .session-title {
+        font-size: clamp(1.3rem, 4vw, 2.5rem);
+        font-weight: bold;
+        color: var(--text-primary);
+        margin: var(--spacing-md) 0;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-family: "Arial", sans-serif;
+      }
+      .session-info {
+        margin: var(--spacing-sm);
+        font-family: "Arial", sans-serif;
+      }
+      .session-price {
+        margin-top: var(--spacing-xl);
+        position: relative;
+        padding-top: 10px;
+        font-family: "Arial", sans-serif;
+      }
+      .session-price::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 1px;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      /*======================
+        Graduation section
+      =======================*/
+      .grad-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 60px;
+        align-items: start;
+      }
+
+      .content-section {
+        order: 2;
+      }
+
+      .intro-text {
+        color: var(--text-secondary);
+        margin-bottom: 15px;
+        font-size: 1rem;
+      }
+
+      .package-title {
+        color: var(--text-primary);
+        margin: 30px 0 20px 0;
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      .package-list {
+        list-style: none;
+        margin-bottom: 25px;
+      }
+
+      .package-list li {
+        color: var(--text-secondary);
+        margin-bottom: 8px;
+        padding-left: 15px;
+        position: relative;
+        font-size: 0.95rem;
+      }
+
+      .package-list li::before {
+        content: "•";
+        color: var(--text-primary);
+        position: absolute;
+        left: 0;
+      }
+
+      .closing-text {
+        color: var(--text-secondary);
+        margin-bottom: 40px;
+        font-size: 1rem;
+      }
+
+      .pricing-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 2px solid #ddd;
+        padding-top: 20px;
+      }
+
+      .starting-label {
+        color: var(--text-primary);
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .price {
+        color: var(--text-primary);
+        font-size: 1.3rem;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+      }
+
+      .image-carousel {
+        position: relative;
+        width: 100%;
+        height: 600px;
+        border-radius: 0px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .carousel-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      .carousel-slide.active {
+        opacity: 1;
+      }
+
+      .slide-1 {
+        background-image: url("assets/images/image4.jpg");
+      }
+
+      .slide-2 {
+        background-image: url("assets/images/image4.jpg");
+      }
+
+      .carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: #333;
+        transition: all 0.3s ease;
+        z-index: 10;
+      }
+
+      .carousel-nav:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .prev-btn {
+        left: 15px;
+      }
+
+      .next-btn {
+        right: 15px;
+      }
+      .slide-indicator {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        z-index: 10;
+      }
+
+      /* ===========================================
+         EXTRAS SECTION
+       =========================================== */
+      .extras {
+        padding: var(--section-padding);
+        background: var(--white);
+      }
+
+      [data-theme="dark"] .extras {
+        background: var(--primary-color);
+      }
+
+      .extras-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 60px;
+      }
+
+      .extra-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 30px;
+        background: var(--secondary-color);
+        border-radius: var(--border-radius);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        border-left: 4px solid var(--accent-color);
+      }
+
+      .extra-item:hover {
+        transform: translateX(5px);
+        box-shadow: var(--box-shadow);
+      }
+
+      .extra-name {
+        font-weight: 600;
+        color: var(--text-primary);
+        font-size: 16px;
+      }
+
+      .extra-price {
+        font-weight: 700;
+        color: var(--accent-color);
+        font-size: 18px;
+      }
+
+      /* ===========================================
+         CTA SECTION
+       =========================================== */
+      .cta {
+        padding: var(--section-padding);
+        background: linear-gradient(
+          135deg,
+          var(--accent-color) 0%,
+          #b8941f 100%
+        );
+        color: white;
+        text-align: center;
+      }
+
+      .cta-title {
+        font-family: var(--font-secondary);
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 400;
+        margin-bottom: 30px;
+      }
+
+      .cta-description {
+        font-size: 18px;
+        margin-bottom: 50px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 0.9;
+      }
+
+      .cta .btn {
+        background: white;
+        color: var(--accent-color);
+      }
+
+      .cta .btn:hover {
+        background: var(--secondary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        40% {
+          transform: translateX(-50%) translateY(-10px);
+        }
+        60% {
+          transform: translateX(-50%) translateY(-5px);
+        }
+      }
+
+      /* ===========================================
+          RESPONSIVE DESIGN - MOBILE FIRST
+        =========================================== */
+      /* Small screens (475px and up) */
+      @media (min-width: 475px) {
+        .hero-title {
+          font-size: clamp(2rem, 5vw, 3rem);
+          margin-top: 3rem;
+          margin-bottom: var(--spacing-md);
+        }
+        .hero-subtitle {
+          font-size: 0.9rem;
+        }
+        main {
+          padding: 1rem;
+        }
+      }
+      /* Medium screens (640px and up) */
+      @media (min-width: 640px) {
+        .nav-container {
+          padding: 0 var(--spacing-lg);
+        }
+        .logo-icon {
+          width: 110px;
+        }
+        .hero {
+          padding: var(--spacing-xl) var(--spacing-lg);
+        }
+        .hero-buttons {
+          flex-direction: row;
+          gap: var(--spacing-lg);
+        }
+        .theme-toggle {
+          padding: var(--spacing-xs) var(--spacing-sm);
+        }
+        .mobile-menu-toggle {
+          font-size: 24px;
+        }
+        main {
+          padding: 2rem;
+        }
+      }
+
+      /* large screens (768px and up) */
+      @media (min-width: 768px) {
+        .hero-nav-btn {
+          display: flex;
+        }
+        .sessions-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 1.5rem;
+        }
+        .session-title {
+          font-size: 1.3rem;
+        }
+        .session-details {
+          padding: 1rem;
+        }
+        main {
+          padding: 2rem;
+        }
+        .grad-container {
+          max-width: 1280px;
+          grid-template-columns: 1fr 1fr;
+        }
+        .image-section {
+          order: 2;
+        }
+      }
+
+      /* Desktop screens (1024px and up) - DESKTOP NAVIGATION */
+      @media (min-width: 1024px) {
+        .navbar {
+          height: 70px;
+        }
+        .nav-container {
+          height: 70px;
+          padding: 0 var(--spacing-xl);
+        }
+        .logo-icon {
+          width: 120px;
+        }
+        .nav-menu {
+          position: static;
+          width: auto;
+          max-width: none;
+          height: auto;
+          background: transparent;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          padding: 0;
+          transition: none;
+          gap: var(--spacing-xl);
+          margin: 0 auto;
+          box-shadow: none;
+          overflow-y: visible;
+        }
+        .nav-menu.active {
+          left: auto;
+        }
+        .nav-item {
+          width: auto;
+          text-align: center;
+          position: relative;
+        }
+        .nav-link-container {
+          display: block;
+        }
+        .nav-link {
+          font-size: 14px;
+          letter-spacing: 1px;
+          padding: var(--spacing-sm) 0;
+          position: relative;
+          justify-content: center;
+        }
+        .nav-link::after {
+          left: 0;
+          transform: none;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+          width: 100%;
+        }
+        /* Hide dropdown toggle on desktop */
+        .dropdown-toggle {
+          display: none;
+        }
+        /* Desktop Dropdown Menu */
+        .dropdown-arrow {
+          display: none;
+        }
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%) translateY(10px);
+          background: var(--nav-bg);
+          backdrop-filter: blur(10px);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-md);
+          padding: var(--spacing-md);
+          min-width: 200px;
+          box-shadow: 0 4px 20px var(--shadow);
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity var(--transition-normal),
+            visibility var(--transition-normal),
+            transform var(--transition-normal);
+          max-height: none;
+          padding-left: var(--spacing-md);
+          margin-top: 0;
+          text-align: center;
+          list-style: none;
+        }
+        .nav-item:hover .dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-50%) translateY(0);
+        }
+        .dropdown-menu.open {
+          max-height: none;
+          margin-top: 0;
+        }
+        .dropdown-item {
+          margin-bottom: var(--spacing-sm);
+        }
+        .dropdown-item:last-child {
+          margin-bottom: 0;
+        }
+        .dropdown-link {
+          padding: var(--spacing-xs) var(--spacing-sm);
+          border-radius: var(--radius-sm);
+          transition: all var(--transition-fast);
+          display: block;
+          text-align: center;
+        }
+        .dropdown-link:hover {
+          background: var(--bg-tertiary);
+          color: var(--link-color);
+        }
+        .mobile-menu-toggle {
+          display: none;
+        }
+        .mobile-menu-overlay {
+          display: none;
+        }
+        .nav-controls {
+          position: static;
+          transform: none;
+        }
+        .hero {
+          min-height: 100vh;
+          padding: var(--spacing-2xl) var(--spacing-xl);
+        }
+        .hero-content {
+          max-width: 800px;
+        }
+
+        .hero-title {
+          font-size: clamp(2.5rem, 5vw, 3.5rem);
+        }
+        .hero-subtitle {
+          font-size: 1.25rem;
+          margin-bottom: var(--spacing-3xl);
+        }
+        .sessions-grid {
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 1.5rem;
+        }
+        .session-details {
+          padding: 1rem 2rem;
+        }
+        main {
+          padding: 3rem;
+        }
+        .session-title {
+          font-size: 1.3rem;
+        }
+      }
+      /* Extra large screens (1280px and up) */
+      @media (min-width: 1280px) {
+        .nav-container {
+          max-width: 1280px;
+        }
+        .nav-menu {
+          gap: var(--spacing-2xl);
+        }
+        .sessions-grid {
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 2.5rem;
+        }
+        main {
+          padding: 4.5rem;
+        }
+      }
+      /* 3XL screens (1536px and up) */
+      @media (min-width: 1536px) {
+        .nav-container {
+          max-width: 1536px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="mobile-menu-overlay"
+      id="mobileMenuOverlay"
+      onclick="toggleMobileMenu()"
+    ></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo">
+          <img
+            src="assets/images/logo2.png"
+            alt="Impasto logo"
+            class="logo-icon"
+          />
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link" onclick="setActiveNav(this)"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="information.html"
+                class="nav-link active"
+                onclick="setActiveNav(this)"
+              >
+                Information
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="about.html" class="dropdown-link">About Us</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="team.html" class="dropdown-link">Our Team</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="services.html" class="dropdown-link">Services</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="testimonials.html" class="dropdown-link"
+                  >Testimonials</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="ratecards.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Ratecards
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="portrait-rates.html" class="dropdown-link"
+                  >Portrait Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="wedding-rates.html" class="dropdown-link"
+                  >Wedding Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="event-rates.html" class="dropdown-link"
+                  >Event Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="commercial-rates.html" class="dropdown-link"
+                  >Commercial Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="special-packages.html" class="dropdown-link"
+                  >Special Packages</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="store.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Store
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="prints.html" class="dropdown-link">Prints</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="digital-products.html" class="dropdown-link"
+                  >Digital Products</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link" onclick="setActiveNav(this)"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="blog.html" class="nav-link" onclick="setActiveNav(this)"
+              >Blog</a
+            >
+          </li>
+        </ul>
+        <div class="nav-controls">
+          <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon theme-icon"></i>
+            <span class="theme-text">Dark</span>
+          </button>
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-slider">
+        <div class="hero-slide hero-slide-1 active"></div>
+        <div class="hero-slide hero-slide-2"></div>
+        <div class="hero-slide hero-slide-3"></div>
+      </div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="hero-title" id="heroTitle">FAMILY PORTRAIT</h1>
+        <p class="hero-subtitle" id="heroSubtitle">
+          Capturing beautiful family memories that last a lifetime
+        </p>
+        <div class="hero-buttons">
+          <a href="#" class="btn btn-primary">
+            <i class="fas fa-images"></i>
+            View Portfolio
+          </a>
+          <a href="#" class="btn btn-secondary">
+            <i class="fas fa-calendar"></i>
+            Book Session
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigation Controls -->
+      <div class="hero-nav-controls">
+        <button class="hero-nav-btn" id="prevBtn" onclick="previousSlide()">
+          <i class="fas fa-chevron-left hero-nav-icon"></i>
+          <div class="hero-nav-counter">
+            <div id="currentSlideLeft">1</div>
+            <div>3</div>
+          </div>
+        </button>
+        <button class="hero-nav-btn" id="nextBtn" onclick="nextSlide()">
+          <i class="fas fa-chevron-right hero-nav-icon"></i>
+          <div class="hero-nav-counter">
+            <div id="currentSlideRight">1</div>
+            <div>3</div>
+          </div>
+        </button>
+      </div>
+
+      <div class="scroll-indicator">
+        <i class="fas fa-chevron-down fa-2x"></i>
+      </div>
+    </section>
+
+    <main>
+      <!--Personal Portrait-->
+      <div class="container">
+        <h1 class="category-title">PERSONAL PORTRAIT SESSIONS</h1>
+
+        <div class="sessions-grid">
+          <!-- Basic Studio Session -->
+          <div class="session-card" onclick="selectSession('basic')">
+            <div class="session-image basic-studio">
+              <img
+                src="assets/images/image2.jpg"
+                alt="basic studio session image"
+              />
+            </div>
+            <div class="session-details">
+              <h3 class="session-title">Basic Studio Session</h3>
+              <div class="session-info">30 Minutes Shooting Time</div>
+              <div class="session-info">One Look</div>
+              <div class="session-info">8 Photos (8 Retouched Images)</div>
+              <div class="session-price">
+                <span class="price-currency">₵</span> 1650.00
+              </div>
+            </div>
+          </div>
+
+          <!-- Solo Spotlight -->
+          <div class="session-card" onclick="selectSession('solo')">
+            <div class="session-image solo-spotlight">
+              <img src="assets/images/image2.jpg" alt="solo spotlight image" />
+            </div>
+            <div class="session-details">
+              <h3 class="session-title">Solo Spotlight</h3>
+              <div class="session-info">60 Minutes Shooting Time</div>
+              <div class="session-info">Two Looks</div>
+              <div class="session-info">12 Photos (8 Retouched Images)</div>
+              <div class="session-price">
+                <span class="price-currency">₵</span> 1499.00
+              </div>
+            </div>
+          </div>
+
+          <!-- Luxury Layers -->
+          <div class="session-card" onclick="selectSession('luxury')">
+            <div class="session-image luxury-layers">
+              <img src="assets/images/image2.jpg" alt="luxury Layers image" />
+            </div>
+            <div class="session-details">
+              <h3 class="session-title">Luxury Layers</h3>
+              <div class="session-info">90 Minutes Shooting Time</div>
+              <div class="session-info">Two - Three Looks</div>
+              <div class="session-info">20 Photos (10 Retouched Images)</div>
+              <div class="session-price">
+                <span class="price-currency">₵</span> 2999.00
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Family Portrait-->
+      <div class="container">
+        <h1 class="category-title">FAMILY PORTRAIT SESSIONS</h1>
+
+        <div class="sessions-grid">
+          <!-- Baby/Family Shoot Session -->
+          <div class="session-card" onclick="selectSession('baby-family')">
+            <div class="session-image baby-family">
+              <img
+                src="assets/images/image3.jpg"
+                alt="baby/family shoot image"
+              />
+            </div>
+            <div class="session-details">
+              <h3 class="session-title">Baby/Family Shoot<br />Session</h3>
+              <div class="session-info">70-Minutes Shooting Session</div>
+              <div class="session-info">Two Looks</div>
+              <div class="session-info">20 Photos (10 Retouched Images)</div>
+              <div class="session-info">Maximum of 3 Persons</div>
+              <div class="session-info">(Offer does not come with props)</div>
+              <div class="session-price">
+                <span class="price-currency">₵</span> 1799.00
+              </div>
+            </div>
+          </div>
+
+          <!-- Maternity Shoot Session -->
+          <div class="session-card" onclick="selectSession('maternity')">
+            <div class="session-image maternity">
+              <img src="assets/images/image3.jpg" alt="maternity shoot image" />
+            </div>
+            <div class="session-details">
+              <h3 class="session-title">Maternity Shoot<br />Session</h3>
+              <div class="session-info">60-minutes Shooting Session</div>
+              <div class="session-info">Two Looks</div>
+              <div class="session-info">12 Photos (8 Retouched Images)</div>
+              <div class="session-info">(Offer does not come with props)</div>
+              <div class="session-price">
+                <span class="price-currency">₵</span> 1499.00
+              </div>
+            </div>
+          </div>
+
+          <!-- Baby Christening/Naming Ceremony -->
+          <div class="session-card" onclick="selectSession('ceremony')">
+            <div class="session-image baby-ceremony">
+              <img src="assets/images/image3.jpg" alt="naming ceremony image" />
+            </div>
+            <div class="session-details">
+              <h3 class="session-title">Baby Christening/Naming Ceremony</h3>
+              <div class="session-info">
+                120-minutes Coverage which includes:
+              </div>
+              <div class="session-info">Ceremony</div>
+              <div class="session-info">Exclusive Session</div>
+              <div class="session-info">80 Photos (Softcopies)</div>
+              <div class="session-price">
+                <span class="price-currency">₵</span> 2499.00
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Graduation Session-->
+      <div class="container">
+        <h1 class="category-title">GRADUATION SESSIONS</h1>
+        <div class="grad-container">
+          <div class="content-section">
+            <p class="intro-text">
+              Thank you for your interest in our Graduation Photography Packages
+              at Impasto Photography!
+            </p>
+
+            <p class="intro-text">
+              We offer a tailored experience to capture this special milestone
+              in a way that reflects your achievements and personality.
+            </p>
+
+            <div class="package-title">Graduation Package Includes:</div>
+            <ul class="package-list" id="package-details">
+              <li>30-minute portrait session (Studio or Outdoor)</li>
+              <li>Solo and family portraits</li>
+              <li>30 professionally captured images</li>
+              <li>5 expertly retouched images</li>
+              <li>Digital delivery of high-resolution, print-ready images</li>
+            </ul>
+
+            <p class="closing-text">
+              Celebrate your hard work with timeless portraits that you'll
+              cherish forever!
+            </p>
+
+            <div class="pricing-section">
+              <div class="starting-label">Starting</div>
+              <div class="price" id="current-price">
+                <span class="currency">₵</span>
+                <span id="price-amount">2200</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="image-section">
+            <div class="image-carousel">
+              <div class="carousel-slide slide-1 active"></div>
+              <div class="carousel-slide slide-2"></div>
+
+              <button class="carousel-nav prev-btn" onclick="previousSlide()">
+                ‹
+              </button>
+              <button class="carousel-nav next-btn" onclick="nextSlide()">
+                ›
+              </button>
+
+              <div class="slide-indicator">
+                <span id="current-slide">1</span> /
+                <span id="total-slides">2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Extras Section -->
+    <section class="extras">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-subtitle">Additional Services</p>
+          <h2 class="section-title">Extras & Add-ons</h2>
+          <p class="section-description">
+            Enhance your photography experience with our premium add-on services
+            and products
+          </p>
+        </div>
+
+        <div class="extras-grid">
+          <div class="extra-item">
+            <span class="extra-name">Photography Extra/Event Hourly Rate</span>
+            <span class="extra-price">₵1800</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Videography Extra/Event Hourly Rate</span>
+            <span class="extra-price">₵2200</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Professional Make Up & Hair</span>
+            <span class="extra-price">₵350</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Studio Rental (Per Hour)</span>
+            <span class="extra-price">₵200</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Social Media Reels</span>
+            <span class="extra-price">₵400</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Additional Outfit Change</span>
+            <span class="extra-price">₵150</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Additional Person/Head</span>
+            <span class="extra-price">₵200</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Additional Photographer</span>
+            <span class="extra-price">₵1000</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Premium Retouching Per Image</span>
+            <span class="extra-price">₵80</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Professional Prints (8x10)</span>
+            <span class="extra-price">₵120</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Custom Photo Book (20 pages)</span>
+            <span class="extra-price">₵650</span>
+          </div>
+          <div class="extra-item">
+            <span class="extra-name">Premium Frame (A4 size)</span>
+            <span class="extra-price">₵180</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container">
+        <h2 class="cta-title">Ready to Create Magic?</h2>
+        <p class="cta-description">
+          Let's work together to capture your most precious moments and create
+          lasting memories that tell your unique story
+        </p>
+        <a href="/pages/contact.html" class="btn">
+          <i class="fas fa-calendar-alt"></i>
+          Book Your Session
+        </a>
+      </div>
+    </section>
+
+    <!--footer-->
+    <footer class="footer scale-in">
+      <div class="footer-content container">
+        <div class="footer-grid">
+          <!-- Logo Section -->
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img
+                src="assets/images/logo2.png"
+                class="footer-logo-icon"
+                alt="Impasto Photography"
+              />
+            </div>
+            <p class="footer-description">
+              At Impasto Photography, we specialize in capturing life's precious
+              moments with artistry and precision. Our team of professional
+              photographers is dedicated to creating timeless memories that
+              you'll cherish for generations to come.
+            </p>
+          </div>
+          <!-- Quick Links -->
+          <div class="footer-section slide-in-left">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#home">
+                  <i class="fas fa-chevron-right"></i>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="information.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Information
+                </a>
+              </li>
+              <li>
+                <a href="ratecards.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Ratecards
+                </a>
+              </li>
+              <li>
+                <a href="store.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Store
+                </a>
+              </li>
+              <li>
+                <a href="contact.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a href="blog.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Services -->
+          <div class="footer-section fade-in">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#">
+                  <i class="fas fa-camera"></i>
+                  Pre-Birthday Shoots
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-user"></i>
+                  Studio Potraits
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-building"></i>
+                  Large Format Print and Cut
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-calendar-alt"></i>
+                  Event Coverage
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-plane"></i>
+                  Passport Pictures
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-palette"></i>
+                  Graphic Design
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-ellipsis-h"></i>
+                  etc
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Contact -->
+          <div class="footer-section slide-in-right">
+            <h3>Get In Touch</h3>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dome - Accra. Opposite Adehyeman Bank.</span>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>+233 (0) 242-641-305</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <span>potrit1@gmail.com</span>
+              </li>
+              <li>
+                <i class="fas fa-clock"></i>
+                <span>Mon-Fri: 8AM-5PM, Sat: 9:30AM-6PM, Sun: 1PM-6PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content container">
+          <div class="footer-copyright">
+            <p>© 2025 Impasto Photography. All rights reserved.</p>
+          </div>
+          <div class="kenzy-credit">
+            <p>Website developed with 💖 by Kenzyverse</p>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-pinterest-p"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function selectSession(sessionType) {
+        // Add selection feedback
+        const cards = document.querySelectorAll(".session-card");
+        cards.forEach((card) => (card.style.transform = "scale(1)"));
+
+        event.currentTarget.style.transform = "scale(0.98)";
+
+        setTimeout(() => {
+          event.currentTarget.style.transform = "scale(1)";
+
+          // You can add booking logic here
+          alert(
+            `Selected: ${
+              sessionType.charAt(0).toUpperCase() + sessionType.slice(1)
+            } Session`
+          );
+        }, 150);
+      }
+
+      // Add some interactive animations on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".session-card");
+
+        cards.forEach((card, index) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(20px)";
+
+          setTimeout(() => {
+            card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+          }, index * 200);
+        });
+      });
+
+      // Add smooth scroll behavior if extending the page
+      document.documentElement.style.scrollBehavior = "smooth";
+
+      // ===========================================
+      // THEME TOGGLE FUNCTIONALITY - FIXED LOGO SWITCHING
+      // ===========================================
+      /**
+       * Toggle between light and dark themes
+       */
+      function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.querySelector(".theme-icon");
+        const themeText = document.querySelector(".theme-text");
+        const logos = document.querySelectorAll(
+          ".logo-icon, .footer-logo-icon, .logo-icon2" // Fixed selector to match HTML class
+        );
+
+        // Check current theme
+        if (body.getAttribute("data-theme") === "dark") {
+          // Switch to light theme
+          body.removeAttribute("data-theme");
+          themeIcon.className = "fas fa-moon theme-icon";
+          themeText.textContent = "Dark";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2.png";
+          });
+          localStorage.setItem("theme", "light");
+        } else {
+          // Switch to dark theme
+          body.setAttribute("data-theme", "dark");
+          themeIcon.className = "fas fa-sun theme-icon";
+          themeText.textContent = "Light";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+          localStorage.setItem("theme", "dark");
+        }
+      }
+
+      /**
+       * Load saved theme preference on page load
+       */
+      function loadSavedTheme() {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          document.body.setAttribute("data-theme", "dark");
+
+          // Update theme button
+          const themeIcon = document.querySelector(".theme-icon");
+          const themeText = document.querySelector(".theme-text");
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
+
+          // Update all logos including the story section logo
+          const logos = document.querySelectorAll(
+            ".logo-icon, .footer-logo-icon, .logo-icon2"
+          );
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+        }
+      }
+
+      // ===========================================
+      // NAVIGATION FUNCTIONALITY
+      // ===========================================
+      /**
+       * Set active navigation item
+       * @param {HTMLElement} element - The clicked navigation link
+       */
+      function setActiveNav(element) {
+        // Remove active class from all nav links
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.classList.remove("active");
+        });
+        // Add active class to clicked link
+        element.classList.add("active");
+        // Close mobile menu if open
+        const navMenu = document.getElementById("navMenu");
+        if (navMenu.classList.contains("active")) {
+          navMenu.classList.remove("active");
+          // Reset mobile menu toggle icon
+          const mobileToggle = document.querySelector(".mobile-menu-toggle");
+          mobileToggle.classList.remove("active");
+          mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+      }
+
+      /**
+       * Toggle mobile menu
+       */
+      function toggleMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+
+        navMenu.classList.toggle("active");
+        mobileToggle.classList.toggle("active");
+
+        // Change icon based on menu state
+        if (navMenu.classList.contains("active")) {
+          mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+        } else {
+          mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+      }
+
+      /**
+       * Smooth scroll to section
+       * @param {string} sectionId - The ID of the section to scroll to
+       */
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          // Close mobile menu if open
+          const navMenu = document.getElementById("navMenu");
+          if (navMenu.classList.contains("active")) {
+            navMenu.classList.remove("active");
+            const mobileToggle = document.querySelector(".mobile-menu-toggle");
+            mobileToggle.classList.remove("active");
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          }
+
+          section.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }
+
+      /**
+       * Handle navbar scroll effect
+       */
+      function handleNavbarScroll() {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      }
+
+      // ===========================================
+      // SCROLL ANIMATION FUNCTIONS
+      // ===========================================
+      /**
+       * Initialize scroll animations with professional timing
+       */
+      function initScrollAnimations() {
+        // Make hero section visible immediately
+        const heroSection = document.querySelector(".hero");
+        if (heroSection) {
+          heroSection.classList.add("visible");
+        }
+
+        // Initial check for elements already in viewport
+        setTimeout(() => {
+          handleScrollAnimations();
+        }, 150);
+
+        // Second check to catch any dynamically loaded content
+        setTimeout(() => {
+          handleScrollAnimations();
+        }, 500);
+      }
+
+      /**
+       * Enhanced scroll animation handler with professional timing
+       */
+      function handleScrollAnimations() {
+        const animatedElements = document.querySelectorAll(
+          ".fade-in:not(.visible), .slide-in-left:not(.visible), .slide-in-right:not(.visible), .scale-in:not(.visible)"
+        );
+
+        animatedElements.forEach((element, index) => {
+          if (isElementInViewport(element)) {
+            // Add small staggered delay for multiple elements for professional effect
+            setTimeout(() => {
+              element.classList.add("visible");
+            }, index * 100); // 100ms delay between each element
+          }
+        });
+      }
+
+      /**
+       * Professional viewport detection with 20% trigger point
+       * @param {HTMLElement} element - The element to check
+       * @return {boolean} - True if element is in viewport
+       */
+      function isElementInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        const windowHeight =
+          window.innerHeight || document.documentElement.clientHeight;
+
+        // Professional trigger: when 20% of element is visible from the top
+        const elementHeight = rect.height;
+        const triggerPoint = elementHeight * 0.2; // 20% of element height
+
+        // Trigger when element top crosses the 80% viewport line (bottom 20% of viewport)
+        const viewportTriggerLine = windowHeight * 0.8;
+
+        // Element should animate when:
+        // 1. Its top edge reaches 80% of viewport height, OR
+        // 2. 20% of the element is visible
+        const isTopInTriggerZone = rect.top <= viewportTriggerLine;
+        const isElementPartiallyVisible =
+          rect.top < windowHeight && rect.bottom > 0;
+        const hasMinimumVisibility = rect.top <= windowHeight - triggerPoint;
+
+        return (
+          isTopInTriggerZone &&
+          isElementPartiallyVisible &&
+          hasMinimumVisibility
+        );
+      }
+
+      /**
+       * Enhanced scroll handler with throttling for better performance
+       */
+      const throttledScrollHandler = throttle(() => {
+        handleScrollAnimations();
+      }, 16); // ~60fps
+
+      /**
+       * Throttle function for better performance than debounce for scroll events
+       * @param {Function} func - The function to throttle
+       * @param {number} limit - The time limit in milliseconds
+       * @return {Function} - The throttled function
+       */
+      function throttle(func, limit) {
+        let inThrottle;
+        return function () {
+          const args = arguments;
+          const context = this;
+          if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => (inThrottle = false), limit);
+          }
+        };
+      }
+
+      // ===========================================
+      // EVENT LISTENERS
+      // ===========================================
+      // Initialize when DOM is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Load saved theme
+        loadSavedTheme();
+
+        // Initialize gallery if function exists
+        if (typeof initializeGallery === "function") {
+          initializeGallery();
+        }
+
+        // Initialize scroll animations
+        initScrollAnimations();
+
+        // Add smooth scrolling to all navigation links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            scrollToSection(targetId);
+          });
+        });
+
+        // Trigger animations on page load for elements already in view
+        setTimeout(() => {
+          handleScrollAnimations();
+        }, 250);
+      });
+
+      // Optimized scroll event listeners
+      window.addEventListener("scroll", handleNavbarScroll);
+      window.addEventListener("scroll", throttledScrollHandler);
+
+      // Handle resize events to recalculate element positions
+      window.addEventListener(
+        "resize",
+        debounce(() => {
+          handleScrollAnimations();
+        }, 250)
+      );
+
+      // Keyboard navigation for lightbox
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          if (typeof closeLightbox === "function") {
+            closeLightbox();
+          }
+        }
+        // Close mobile menu on escape
+        if (e.key === "Escape") {
+          const navMenu = document.getElementById("navMenu");
+          if (navMenu && navMenu.classList.contains("active")) {
+            navMenu.classList.remove("active");
+            const mobileToggle = document.querySelector(".mobile-menu-toggle");
+            if (mobileToggle) {
+              mobileToggle.classList.remove("active");
+              mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+          }
+        }
+      });
+
+      // ===========================================
+      // IMAGE PROTECTION
+      // ===========================================
+      // Prevent right-click on the entire document
+      document.addEventListener("contextmenu", function (e) {
+        // Check if the target is an image
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+      // Prevent drag and drop of images
+      document.addEventListener("dragstart", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // ===========================================
+      // UTILITY FUNCTIONS
+      // ===========================================
+      /**
+       * Debounce function to limit how often a function can be called
+       * @param {Function} func - The function to debounce
+       * @param {number} wait - The wait time in milliseconds
+       * @return {Function} - The debounced function
+       */
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+
+      // Console log for debugging
+      console.log("Impasto Photography Website Loaded Successfully! 📸");
+
+      // ===========================================
+      // HERO SLIDER FUNCTIONALITY
+      // ===========================================
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".hero-slide");
+      const indicators = document.querySelectorAll(".hero-indicator");
+      const totalSlides = slides.length;
+
+      /**
+       * Go to a specific slide
+       * @param {number} slideIndex - Index of the slide to go to
+       */
+      function goToSlide(slideIndex) {
+        // Remove active class from all slides and indicators
+        slides.forEach((slide) => slide.classList.remove("active"));
+        indicators.forEach((indicator) => indicator.classList.remove("active"));
+
+        // Add active class to the selected slide and indicator
+        slides[slideIndex].classList.add("active");
+        indicators[slideIndex].classList.add("active");
+
+        // Update current slide index
+        currentSlide = slideIndex;
+      }
+
+      /**
+       * Go to the next slide
+       */
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        goToSlide(currentSlide);
+      }
+
+      /**
+       * Initialize the hero slider
+       */
+      function initHeroSlider() {
+        // Auto-advance slides every 5 seconds
+        setInterval(nextSlide, 5000);
+      }
+
+      // ===========================================
+      // THEME TOGGLE FUNCTIONALITY
+      // ===========================================
+      /**
+       * Toggle between light and dark themes
+       */
+      function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.querySelector(".theme-icon");
+        const themeText = document.querySelector(".theme-text");
+        const logos = document.querySelectorAll(
+          ".logo-icon, .footer-logo-icon"
+        );
+        // Check current theme
+        if (body.getAttribute("data-theme") === "dark") {
+          // Switch to light theme
+          body.removeAttribute("data-theme");
+          themeIcon.className = "fas fa-moon theme-icon";
+          themeText.textContent = "Dark";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2.png";
+          });
+          localStorage.setItem("theme", "light");
+        } else {
+          // Switch to dark theme
+          body.setAttribute("data-theme", "dark");
+          themeIcon.className = "fas fa-sun theme-icon";
+          themeText.textContent = "Light";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+          localStorage.setItem("theme", "dark");
+        }
+      }
+
+      /**
+       * Load saved theme preference on page load
+       */
+      function loadSavedTheme() {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          document.body.setAttribute("data-theme", "dark");
+          document.querySelector(".theme-icon").className =
+            "fas fa-sun theme-icon";
+          document.querySelector(".theme-text").textContent = "Light";
+          const logos = document.querySelectorAll(
+            ".logo-icon, .footer-logo-icon"
+          );
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+        }
+      }
+
+      // ===========================================
+      // NAVIGATION FUNCTIONALITY
+      // ===========================================
+      /**
+       * Set active navigation item
+       * @param {HTMLElement} element - The clicked navigation link
+       */
+      function setActiveNav(element) {
+        // Don't set active if this is a dropdown toggle
+        if (element.classList.contains("dropdown-toggle")) {
+          return;
+        }
+
+        // Remove active class from all nav links
+        document
+          .querySelectorAll(".nav-link:not(.dropdown-toggle)")
+          .forEach((link) => {
+            link.classList.remove("active");
+          });
+        // Add active class to clicked link
+        element.classList.add("active");
+        // Close mobile menu if open
+        const navMenu = document.getElementById("navMenu");
+        if (navMenu.classList.contains("active")) {
+          navMenu.classList.remove("active");
+          // Reset mobile menu toggle icon
+          const mobileToggle = document.querySelector(".mobile-menu-toggle");
+          mobileToggle.classList.remove("active");
+          mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          // Hide overlay
+          document
+            .getElementById("mobileMenuOverlay")
+            .classList.remove("active");
+        }
+      }
+
+      /**
+       * Toggle mobile menu
+       */
+      function toggleMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        navMenu.classList.toggle("active");
+        mobileToggle.classList.toggle("active");
+        overlay.classList.toggle("active");
+
+        // Change icon based on menu state
+        if (navMenu.classList.contains("active")) {
+          mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+        } else {
+          mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+      }
+
+      /**
+       * Toggle dropdown menu (for mobile)
+       * @param {HTMLElement} element - The clicked dropdown toggle
+       */
+      function toggleDropdown(element) {
+        // Only for mobile view
+        if (window.innerWidth < 1024) {
+          const dropdownMenu =
+            element.parentElement.parentElement.querySelector(".dropdown-menu");
+          const dropdownArrow = element.querySelector(".dropdown-arrow");
+          const parentLink = element.parentElement.querySelector(
+            ".nav-link:not(.dropdown-toggle)"
+          );
+
+          dropdownMenu.classList.toggle("open");
+          dropdownArrow.classList.toggle("open");
+
+          // Prevent default link behavior
+          event.preventDefault();
+          event.stopPropagation();
+
+          // Remove hover/active effects from parent link when dropdown is open
+          if (dropdownMenu.classList.contains("open")) {
+            parentLink.style.color = "";
+            parentLink.classList.remove("active");
+          }
+        }
+      }
+
+      /**
+       * Smooth scroll to section
+       * @param {string} sectionId - The ID of the section to scroll to
+       */
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          // Close mobile menu if open
+          const navMenu = document.getElementById("navMenu");
+          if (navMenu.classList.contains("active")) {
+            navMenu.classList.remove("active");
+            const mobileToggle = document.querySelector(".mobile-menu-toggle");
+            mobileToggle.classList.remove("active");
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            document
+              .getElementById("mobileMenuOverlay")
+              .classList.remove("active");
+          }
+          section.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }
+
+      /**
+       * Handle navbar scroll effect
+       */
+      function handleNavbarScroll() {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      }
+
+      // ===========================================
+      // SCROLL ANIMATION FUNCTIONS
+      // ===========================================
+      /**
+       * Initialize scroll animations
+       */
+      function initScrollAnimations() {
+        // Make hero section visible immediately
+        const heroSection = document.querySelector(".hero");
+        if (heroSection) {
+          heroSection.classList.add("visible");
+        }
+        // Trigger initial check for elements in view
+        handleScrollAnimations();
+      }
+
+      /**
+       * Handle scroll animations
+       */
+      function handleScrollAnimations() {
+        const animatedElements = document.querySelectorAll(
+          ".fade-in:not(.visible), .slide-in-left:not(.visible), .slide-in-right:not(.visible), .scale-in:not(.visible)"
+        );
+        animatedElements.forEach((element) => {
+          if (isElementInViewport(element)) {
+            element.classList.add("visible");
+          }
+        });
+      }
+
+      /**
+       * Check if element is in viewport
+       * @param {HTMLElement} element - The element to check
+       * @return {boolean} - True if element is in viewport
+       */
+      function isElementInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        const windowHeight =
+          window.innerHeight || document.documentElement.clientHeight;
+        // Add some offset for better timing (trigger when element is 80% visible)
+        const offset = windowHeight * 0.2;
+        return rect.top <= windowHeight - offset && rect.bottom >= offset;
+      }
+
+      // ===========================================
+      // EVENT LISTENERS
+      // ===========================================
+      // Initialize when DOM is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Load saved theme
+        loadSavedTheme();
+        // Initialize hero slider
+        initHeroSlider();
+        // Initialize scroll animations
+        initScrollAnimations();
+        // Add smooth scrolling to all navigation links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            scrollToSection(targetId);
+          });
+        });
+      });
+
+      // Scroll event listeners
+      window.addEventListener("scroll", handleNavbarScroll);
+      window.addEventListener("scroll", handleScrollAnimations);
+
+      // Keyboard navigation for lightbox
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeLightbox();
+        }
+        // Close mobile menu on escape
+        if (e.key === "Escape") {
+          const navMenu = document.getElementById("navMenu");
+          if (navMenu.classList.contains("active")) {
+            navMenu.classList.remove("active");
+            const mobileToggle = document.querySelector(".mobile-menu-toggle");
+            mobileToggle.classList.remove("active");
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            document
+              .getElementById("mobileMenuOverlay")
+              .classList.remove("active");
+          }
+        }
+      });
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".carousel-slide");
+      const totalSlides = slides.length;
+
+      // Package data for different slides
+      const packageData = [
+        {
+          details: [
+            "30-minute portrait session (Studio or Outdoor)",
+            "Solo and family portraits",
+            "30 professionally captured images",
+            "5 expertly retouched images",
+            "Digital delivery of high-resolution, print-ready images",
+          ],
+          price: "2200",
+        },
+        {
+          details: [
+            "60-minute premium portrait session (Studio or Outdoor)",
+            "Solo, family and group portraits",
+            "50 professionally captured images",
+            "15 expertly retouched images",
+            "Premium album with selected photos",
+            "Digital delivery of high-resolution, print-ready images",
+            "Complimentary props and accessories",
+          ],
+          price: "3500",
+        },
+      ];
+
+      function updateSlide() {
+        // Hide all slides
+        slides.forEach((slide) => slide.classList.remove("active"));
+
+        // Show current slide
+        slides[currentSlide].classList.add("active");
+
+        // Update slide indicator
+        document.getElementById("current-slide").textContent = currentSlide + 1;
+
+        // Update package details and price
+        const currentPackage = packageData[currentSlide];
+        const packageList = document.getElementById("package-details");
+        const priceAmount = document.getElementById("price-amount");
+
+        // Clear and update package details
+        packageList.innerHTML = "";
+        currentPackage.details.forEach((detail) => {
+          const li = document.createElement("li");
+          li.textContent = detail;
+          packageList.appendChild(li);
+        });
+
+        // Update price with animation
+        priceAmount.style.opacity = "0.5";
+        setTimeout(() => {
+          priceAmount.textContent = currentPackage.price;
+          priceAmount.style.opacity = "1";
+        }, 200);
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlide();
+      }
+
+      function previousSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSlide();
+      }
+
+      // Auto-advance slides every 8 seconds
+      setInterval(() => {
+        nextSlide();
+      }, 8000);
+
+      // Touch/swipe support for mobile
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      const carousel = document.querySelector(".image-carousel");
+
+      carousel.addEventListener("touchstart", function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+      });
+
+      carousel.addEventListener("touchend", function (e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      });
+
+      function handleSwipe() {
+        if (touchEndX < touchStartX - 50) {
+          nextSlide();
+        }
+        if (touchEndX > touchStartX + 50) {
+          previousSlide();
+        }
+      }
+
+      // Initialize
+      document.getElementById("total-slides").textContent = totalSlides;
+      updateSlide();
+    </script>
+  </body>
+</html>
