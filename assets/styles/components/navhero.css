@@ -298,7 +298,7 @@
   align-items: center;
 }
 .h-btn {
-  width: 240px;
+  min-width: 220px;
 }
 .scroll-indicator {
   position: absolute;

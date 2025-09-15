@@ -3,117 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta
+      name="description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta
+      name="keywords"
+      content="photography, studio, professional, memories, artistry, technology"
+    />
+    <meta name="author" content="Impasto Photography Studio" />
+    <title>Impasto Photography | Portrait Ratecards</title>
+
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Open Graph Meta Tags for SEO -->
+    <meta
+      property="og:title"
+      content="Impasto Photography Studio | Professional Photography Services"
+    />
+    <meta
+      property="og:description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://impastophotography.com" />
+    <meta
+      property="og:image"
+      content="https://impastophotography.comassets/images/og-image.jpg"
+    />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Impasto Photography Studio | Professional Photography Services"
+    />
+    <meta
+      name="twitter:description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta
+      name="twitter:image"
+      content="https://impastophotography.comassets/images/og-image.jpg"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/logo-fav.png" />
+    <link rel="apple-touch-icon" href="assets/images/logo.png" />
+
+    <!--Default Styles-->
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
     <link rel="stylesheet" href="assets/styles/style.css" />
     <link rel="stylesheet" href="assets/styles/utils.css" />
     <link rel="stylesheet" href="assets/styles/components/footer.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
     <style>
-      :root {
-        /* Light Theme Colors - Professional Photography Studio */
-        --bg-primary: #ffffff;
-        --bg-secondary: #f5f7fa;
-        --bg-tertiary: #e9ecef;
-        --text-primary: #1a202c;
-        --text-secondary: #4a5568;
-        --text-tertiary: #718096;
-        --accent-color: #2563eb; /* Professional Blue */
-        --accent-color2: #3b82f6; /* Lighter Blue */
-        --accent: #2d3748;
-        --accent-light: #edf2f7;
-        --border: #e2e8f0;
-        --shadow: rgba(0, 0, 0, 0.08);
-        --shadow-hover: rgba(0, 0, 0, 0.12);
-        --overlay: rgba(0, 0, 0, 0.6);
-        --nav-bg: rgba(255, 255, 255, 0.95);
-        --card-bg: #ffffff;
-        --gradient-primary: linear-gradient(
-          135deg,
-          #1e3a8a 0%,
-          #2563eb 50%,
-          #3b82f6 100%
-        ); /* Professional Blue Gradient */
-        --gradient-secondary: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-        --link-color: #2563eb;
-        --success: #10b981;
-        --warning: #f59e0b;
-        --error: #ef4444;
-        --info: #06b6d4;
-        --primary-color: #ffffff;
-        --secondary-color: #f8fafc;
-        --white: #ffffff;
-
-        /* Typography */
-        --font-primary: "Inter", sans-serif;
-        --font-secondary: "Playfair Display", serif;
-
-        /* Spacing */
-        --spacing-xs: 0.5rem;
-        --spacing-sm: 0.75rem;
-        --spacing-md: 1rem;
-        --spacing-lg: 1.5rem;
-        --spacing-xl: 2rem;
-        --spacing-2xl: 3rem;
-        --spacing-3xl: 4rem;
-        --spacing-4xl: 5rem;
-
-        /* Border Radius */
-        --radius-sm: 0.375rem;
-        --radius-md: 0.5rem;
-        --radius-lg: 0.75rem;
-        --radius-xl: 1rem;
-        --radius-2xl: 1.5rem;
-
-        /* Transitions */
-        --transition-fast: 0.2s ease;
-        --transition-normal: 0.3s ease;
-        --transition-slow: 0.5s ease;
-      }
-
-      /* Dark Theme - Sophisticated & Elegant */
-      [data-theme="dark"] {
-        --bg-primary: #0f172a;
-        --bg-secondary: #1e293b;
-        --bg-tertiary: #334155;
-        --text-primary: #f8fafc;
-        --text-secondary: #cbd5e1;
-        --text-tertiary: #94a3b8;
-        --accent: #e2e8f0;
-        --accent-light: #334155;
-        --accent-color: #60a5fa; /* Soft Blue for Dark Theme */
-        --accent-color2: #3b82f6; /* Consistent Blue Accent */
-        --border: #334155;
-        --shadow: rgba(0, 0, 0, 0.3);
-        --shadow-hover: rgba(0, 0, 0, 0.4);
-        --overlay: rgba(0, 0, 0, 0.7);
-        --nav-bg: rgba(15, 23, 42, 0.95);
-        --card-bg: #1e293b;
-        --link-color: #60a5fa;
-        --success: #34d399;
-        --warning: #fbbf24;
-        --error: #f87171;
-        --info: #22d3ee;
-        --primary-color: #0f172a;
-        --secondary-color: #1e293b;
-        --white: #0f172a;
-        --gradient-primary: linear-gradient(
-          135deg,
-          #1e3a8a 0%,
-          #60a5fa 50%,
-          #3b82f6 100%
-        );
-      }
-
       body {
         font-family: var(--font-primary);
         background-color: var(--bg-primary);
@@ -407,12 +354,13 @@
 
       .hero-slide {
         position: absolute;
+        margin-top: 55px;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         background-size: cover;
-        background-position: center;
+        background-position: 50% 10%;
         background-repeat: no-repeat;
         opacity: 0;
         transition: opacity 1s ease-in-out;
@@ -427,7 +375,7 @@
             rgba(0, 0, 0, 0.4),
             rgba(0, 0, 0, 0.4)
           ),
-          url("assets/images/img32.jpg");
+          url("assets/images/img0.jpg");
       }
 
       .hero-slide-2 {
@@ -435,7 +383,7 @@
             rgba(0, 0, 0, 0.4),
             rgba(0, 0, 0, 0.4)
           ),
-          url("assets/images/img22.jpg");
+          url("assets/images/img62.jpg");
       }
 
       .hero-slide-3 {
@@ -443,7 +391,7 @@
             rgba(0, 0, 0, 0.4),
             rgba(0, 0, 0, 0.4)
           ),
-          url("assets/images/img52.jpg");
+          url("assets/images/img64.jpg");
       }
 
       .hero-overlay {
@@ -529,12 +477,12 @@
 
       .btn-secondary:hover {
         background: white;
-        color: var(--text-primary);
+        color: #131313ff;
         transform: translateY(-2px);
       }
 
       .h-btn {
-        width: 240px;
+        min-width: 250px;
       }
 
       /* Navigation Controls */
@@ -557,7 +505,7 @@
         border-radius: 50%;
         cursor: pointer;
         display: none;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
         font-size: 1.5rem;
@@ -580,7 +528,7 @@
       }
 
       .hero-nav-counter {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         font-weight: 600;
         line-height: 1;
       }
@@ -594,6 +542,479 @@
         animation: bounce 2s infinite;
         cursor: pointer;
         z-index: 1;
+      }
+
+      /*============================
+        main section - Mobile First
+      =============================*/
+      main {
+        margin-top: 60px;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-primary);
+        background-color: var(--bg-primary);
+      }
+
+      .category-title {
+        font-family: var(--font-secondary);
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-top: 6rem;
+        margin-bottom: 4rem;
+        text-align: center;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .category-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: var(--gradient-primary);
+      }
+
+      .sessions-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 6rem;
+        justify-items: center;
+      }
+
+      .session-card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background: none;
+        overflow: hidden;
+        transition: all var(--transition-normal);
+        cursor: pointer;
+      }
+
+      .session-image {
+        width: 100%;
+        overflow: hidden;
+        aspect-ratio: 3/4;
+      }
+
+      .session-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 20%;
+        display: block;
+        transition: transform var(--transition-slow);
+      }
+
+      .session-details {
+        padding: 1.5rem;
+        background-color: none;
+        text-align: center;
+      }
+      .session-title {
+        font-size: clamp(1.3rem, 4vw, 2.5rem);
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: var(--spacing-md) 0;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        font-family: var(--font-secondary);
+      }
+      .session-info {
+        margin: var(--spacing-sm);
+        font-family: var(--font-primary);
+        color: var(--text-secondary);
+        font-weight: 400;
+      }
+      .session-price {
+        margin-top: var(--spacing-xl);
+        position: relative;
+        padding-top: 15px;
+        font-family: var(--font-primary);
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--accent-color);
+      }
+      .session-price::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 2px;
+        background: var(--gradient-primary);
+      }
+
+      /*======================
+        Graduation section
+      =======================*/
+      .grad-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 60px;
+        align-items: start;
+      }
+
+      .content-section {
+        order: 2;
+      }
+
+      .intro-text {
+        color: var(--text-secondary);
+        margin-bottom: 15px;
+        font-size: 1rem;
+        font-family: var(--font-primary);
+      }
+
+      .package-title {
+        color: var(--text-primary);
+        margin: 30px 0 20px 0;
+        font-weight: 600;
+        font-size: 1.1rem;
+        font-family: var(--font-secondary);
+      }
+
+      .package-list {
+        list-style: none;
+        margin-bottom: 25px;
+      }
+
+      .package-list li {
+        color: var(--text-secondary);
+        margin-bottom: 8px;
+        padding-left: 15px;
+        position: relative;
+        font-size: 0.95rem;
+        font-family: var(--font-primary);
+      }
+
+      .package-list li::before {
+        content: "•";
+        color: var(--accent-color);
+        position: absolute;
+        left: 0;
+      }
+
+      .closing-text {
+        color: var(--text-secondary);
+        margin-bottom: 40px;
+        font-size: 1rem;
+        font-family: var(--font-primary);
+      }
+
+      .pricing-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 2px solid var(--border);
+        padding-top: 20px;
+      }
+
+      .starting-label {
+        color: var(--text-primary);
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-family: var(--font-primary);
+      }
+
+      .price {
+        color: var(--accent-color);
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        font-family: var(--font-primary);
+      }
+
+      .image-carousel {
+        position: relative;
+        width: 100%;
+        height: 600px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px var(--shadow);
+      }
+
+      .carousel-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: top;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      .carousel-slide.active {
+        opacity: 1;
+      }
+
+      .slide-1 {
+        background-image: url("assets/images/img52.jpg");
+      }
+
+      .slide-2 {
+        background-image: url("assets/images/img2.jpg");
+      }
+
+      .carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--bg-primary);
+        transition: all var(--transition-normal);
+        z-index: 10;
+      }
+
+      .prev-btn {
+        left: 15px;
+      }
+
+      .next-btn {
+        right: 15px;
+      }
+
+      .slide-indicator {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        z-index: 10;
+        font-family: var(--font-primary);
+      }
+
+      /* ===========================================
+        EXTRAS SECTION - IMPROVED STYLING
+       =========================================== */
+      .extras {
+        padding: var(--spacing-3xl) var(--spacing-lg);
+        background: var(--bg-secondary);
+        position: relative;
+        overflow: hidden;
+        margin: 5rem 0 0 0;
+      }
+
+      .extras::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--gradient-primary);
+        opacity: 0.5;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: var(--spacing-3xl);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .section-subtitle {
+        color: var(--accent-color);
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: var(--spacing-sm);
+        font-family: var(--font-primary);
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-md);
+        line-height: 1.2;
+        font-family: var(--font-secondary);
+      }
+
+      .section-description {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        font-family: var(--font-primary);
+      }
+
+      .extras-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: var(--spacing-lg);
+        margin-top: var(--spacing-3xl);
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .extra-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--spacing-lg) var(--spacing-xl);
+        background: var(--card-bg);
+        border-radius: var(--radius-lg);
+        box-shadow: 0 4px 20px var(--shadow);
+        transition: all var(--transition-normal);
+        border-left: 4px solid var(--accent-color);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .extra-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-primary);
+        opacity: 0;
+        transition: opacity var(--transition-normal);
+        z-index: 0;
+      }
+
+      .extra-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px var(--shadow-hover);
+        border-left-color: var(--accent-color);
+      }
+
+      .extra-item:hover::before {
+        opacity: 0.05;
+      }
+
+      .extra-name {
+        font-weight: 500;
+        color: var(--text-primary);
+        font-size: 1rem;
+        line-height: 1.4;
+        position: relative;
+        z-index: 1;
+        flex: 1;
+        margin-right: var(--spacing-md);
+        font-family: var(--font-primary);
+      }
+
+      .extra-price {
+        font-weight: 700;
+        color: var(--accent-color);
+        font-size: 1rem;
+        position: relative;
+        z-index: 1;
+        white-space: nowrap;
+        font-family: var(--font-primary);
+      }
+
+      /* ===========================================
+         CTA SECTION - IMPROVED STYLING
+       =========================================== */
+      .cta {
+        padding: var(--spacing-4xl) var(--spacing-lg);
+        background: var(--gradient-primary);
+        color: white;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+      }
+
+      .cta::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-position: center;
+        background-size: cover;
+        background: url("assets/images/c2.jpg") repeat;
+        opacity: 0.1;
+        z-index: 0;
+      }
+
+      .cta .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-title {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 700;
+        margin-bottom: var(--spacing-lg);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        font-family: var(--font-secondary);
+      }
+
+      .cta-description {
+        font-size: 1.2rem;
+        margin-bottom: var(--spacing-3xl);
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 0.95;
+        line-height: 1.6;
+        font-family: var(--font-primary);
+        color: #cfcfcfff;
+      }
+
+      .cta .btn {
+        background: white;
+        color: var(--accent-color);
+        padding: var(--spacing-md) var(--spacing-2xl);
+        font-size: 1.1rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 50px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        transition: all var(--transition-normal);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        font-family: var(--font-primary);
+      }
+
+      .cta .btn:hover {
+        background: var(--bg-primary);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        color: var(--text-primary);
+      }
+
+      .cta .btn i {
+        font-size: 1rem;
+      }
+
+      .footer {
+        margin-top: 0;
       }
 
       /* Animations */
@@ -651,6 +1072,10 @@
         main {
           padding: 1rem;
         }
+
+        .extras-grid {
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
       }
       /* Medium screens (640px and up) */
       @media (min-width: 640px) {
@@ -673,6 +1098,13 @@
         .mobile-menu-toggle {
           font-size: 24px;
         }
+        main {
+          padding: 2rem;
+        }
+
+        .extras-grid {
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
       }
 
       /* large screens (768px and up) */
@@ -689,6 +1121,21 @@
         }
         .session-details {
           padding: 1.5rem;
+        }
+        main {
+          padding: 2rem;
+        }
+        .grad-container {
+          max-width: 1280px;
+          grid-template-columns: 1fr 1fr;
+        }
+        .image-section {
+          order: 2;
+        }
+
+        .extras-grid {
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: var(--spacing-xl);
         }
       }
 
@@ -819,7 +1266,7 @@
           padding: var(--spacing-2xl) var(--spacing-xl);
         }
         .hero-content {
-          max-width: 800px;
+          max-width: 900px;
         }
 
         .hero-title {
@@ -836,6 +1283,17 @@
         .session-details {
           padding: 1.5rem 2rem;
         }
+        main {
+          padding: 3rem;
+        }
+        .session-title {
+          font-size: 1.3rem;
+        }
+
+        .extras-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: var(--spacing-xl);
+        }
       }
       /* Extra large screens (1280px and up) */
       @media (min-width: 1280px) {
@@ -848,6 +1306,14 @@
         .sessions-grid {
           grid-template-columns: 1fr 1fr 1fr;
           gap: 2.5rem;
+        }
+        main {
+          padding: 4.5rem;
+        }
+
+        .extras-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: var(--spacing-2xl);
         }
       }
       /* 3XL screens (1536px and up) */
@@ -886,7 +1352,7 @@
             <div class="nav-link-container">
               <a
                 href="information.html"
-                class="nav-link active"
+                class="nav-link"
                 onclick="setActiveNav(this)"
               >
                 Information
@@ -916,7 +1382,7 @@
             <div class="nav-link-container">
               <a
                 href="ratecards.html"
-                class="nav-link"
+                class="nav-link active"
                 onclick="setActiveNav(this)"
               >
                 Ratecards
@@ -926,29 +1392,14 @@
               </button>
             </div>
             <ul class="dropdown-menu">
-              <li class="dropdown-item">
-                <a href="portrait-rates.html" class="dropdown-link"
+              <li class="dropdown-item active">
+                <a href="portrait.html" class="dropdown-link"
                   >Portrait Photography</a
                 >
               </li>
               <li class="dropdown-item">
-                <a href="wedding-rates.html" class="dropdown-link"
+                <a href="wedding.html" class="dropdown-link"
                   >Wedding Photography</a
-                >
-              </li>
-              <li class="dropdown-item">
-                <a href="event-rates.html" class="dropdown-link"
-                  >Event Photography</a
-                >
-              </li>
-              <li class="dropdown-item">
-                <a href="commercial-rates.html" class="dropdown-link"
-                  >Commercial Photography</a
-                >
-              </li>
-              <li class="dropdown-item">
-                <a href="special-packages.html" class="dropdown-link"
-                  >Special Packages</a
                 >
               </li>
             </ul>
@@ -1015,11 +1466,11 @@
           Capturing beautiful family memories that last a lifetime
         </p>
         <div class="hero-buttons">
-          <a href="#" class="btn btn-primary">
+          <a href="#" class="btn btn-primary h-btn">
             <i class="fas fa-images"></i>
             View Portfolio
           </a>
-          <a href="#" class="btn btn-secondary">
+          <a href="#" class="btn btn-secondary h-btn">
             <i class="fas fa-calendar"></i>
             Book Session
           </a>
@@ -1031,16 +1482,14 @@
         <button class="hero-nav-btn" id="prevBtn" onclick="previousHeroSlide()">
           <i class="fas fa-chevron-left hero-nav-icon"></i>
           <div class="hero-nav-counter">
-            <div id="currentSlideLeft">1</div>
-            <div>3</div>
+            <div id="currentSlideLeft">3</div>
           </div>
         </button>
         <button class="hero-nav-btn" id="nextBtn" onclick="nextHeroSlide()">
-          <i class="fas fa-chevron-right hero-nav-icon"></i>
           <div class="hero-nav-counter">
             <div id="currentSlideRight">1</div>
-            <div>3</div>
           </div>
+          <i class="fas fa-chevron-right hero-nav-icon"></i>
         </button>
       </div>
 
@@ -1049,7 +1498,462 @@
       </div>
     </section>
 
-    <main></main>
+    <main>
+      <!--Personal Portrait-->
+      <div class="container">
+        <h1 class="category-title scroll-animate animate-fade">
+          PERSONAL PORTRAIT SESSIONS
+        </h1>
+
+        <div class="sessions-grid">
+          <!-- Basic Studio Session -->
+          <div
+            class="session-card scroll-animate animate-scale"
+            onclick="selectSession('basic')"
+          >
+            <div class="session-image basic-studio">
+              <img
+                src="assets/images/img48.jpg"
+                alt="basic studio session image"
+              />
+            </div>
+            <div class="session-details">
+              <h3 class="session-title">Basic Studio Session</h3>
+              <div class="session-info">30 Minutes Shooting Time</div>
+              <div class="session-info">One Look</div>
+              <div class="session-info">8 Photos (8 Retouched Images)</div>
+              <div class="session-price">
+                <span class="price-currency">₵</span> 1650.00
+              </div>
+            </div>
+          </div>
+
+          <!-- Solo Spotlight -->
+          <div
+            class="session-card scroll-animate animate-scale"
+            onclick="selectSession('solo')"
+          >
+            <div class="session-image solo-spotlight">
+              <img src="assets/images/img43.jpg" alt="solo spotlight image" />
+            </div>
+            <div class="session-details">
+              <h3 class="session-title">Solo Spotlight</h3>
+              <div class="session-info">60 Minutes Shooting Time</div>
+              <div class="session-info">Two Looks</div>
+              <div class="session-info">12 Photos (8 Retouched Images)</div>
+              <div class="session-price">
+                <span class="price-currency">₵</span> 1499.00
+              </div>
+            </div>
+          </div>
+
+          <!-- Luxury Layers -->
+          <div
+            class="session-card scroll-animate animate-scale"
+            onclick="selectSession('luxury')"
+          >
+            <div class="session-image luxury-layers">
+              <img src="assets/images/img57.jpg" alt="luxury Layers image" />
+            </div>
+            <div class="session-details">
+              <h3 class="session-title">Luxury Layers</h3>
+              <div class="session-info">90 Minutes Shooting Time</div>
+              <div class="session-info">Two - Three Looks</div>
+              <div class="session-info">20 Photos (10 Retouched Images)</div>
+              <div class="session-price">
+                <span class="price-currency">₵</span> 2999.00
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Family Portrait-->
+      <div class="container">
+        <h1 class="category-title scroll-animate animate-fade">
+          FAMILY PORTRAIT SESSIONS
+        </h1>
+
+        <div class="sessions-grid">
+          <!-- Baby/Family Shoot Session -->
+          <div
+            class="session-card scroll-animate animate-scale"
+            onclick="selectSession('baby-family')"
+          >
+            <div class="session-image baby-family">
+              <img
+                src="assets/images/img41.jpg"
+                alt="baby/family shoot image"
+              />
+            </div>
+            <div class="session-details">
+              <h3 class="session-title">Baby/Family Shoot<br />Session</h3>
+              <div class="session-info">70-Minutes Shooting Session</div>
+              <div class="session-info">Two Looks</div>
+              <div class="session-info">20 Photos (10 Retouched Images)</div>
+              <div class="session-info">Maximum of 3 Persons</div>
+              <div class="session-info">(Offer does not come with props)</div>
+              <div class="session-price">
+                <span class="price-currency">₵</span> 1799.00
+              </div>
+            </div>
+          </div>
+
+          <!-- Maternity Shoot Session -->
+          <div
+            class="session-card scroll-animate animate-scale"
+            onclick="selectSession('maternity')"
+          >
+            <div class="session-image maternity">
+              <img src="assets/images/img37.jpg" alt="maternity shoot image" />
+            </div>
+            <div class="session-details">
+              <h3 class="session-title">Maternity Shoot<br />Session</h3>
+              <div class="session-info">60-minutes Shooting Session</div>
+              <div class="session-info">Two Looks</div>
+              <div class="session-info">12 Photos (8 Retouched Images)</div>
+              <div class="session-info">Normal session</div>
+              <div class="session-info">(Offer does not come with props)</div>
+              <div class="session-price">
+                <span class="price-currency">₵</span> 1499.00
+              </div>
+            </div>
+          </div>
+
+          <!-- Baby Christening/Naming Ceremony -->
+          <div
+            class="session-card scroll-animate animate-scale"
+            onclick="selectSession('ceremony')"
+          >
+            <div class="session-image baby-ceremony">
+              <img src="assets/images/img9.jpg" alt="naming ceremony image" />
+            </div>
+            <div class="session-details">
+              <h3 class="session-title">Baby Christening/Naming Ceremony</h3>
+              <div class="session-info">
+                120-minutes Coverage which includes:
+              </div>
+              <div class="session-info">Ceremony</div>
+              <div class="session-info">Exclusive Session</div>
+              <div class="session-info">80 Photos (Softcopies)</div>
+              <div class="session-price">
+                <span class="price-currency">₵</span> 2499.00
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Graduation Session-->
+      <div class="container">
+        <h1 class="category-title scroll-animate animate-fade">
+          GRADUATION SESSIONS
+        </h1>
+        <div class="grad-container">
+          <div class="content-section scroll-animate animate-slide-left">
+            <p class="intro-text">
+              Thank you for your interest in our Graduation Photography Packages
+              at Impasto Photography!
+            </p>
+
+            <p class="intro-text">
+              We offer a tailored experience to capture this special milestone
+              in a way that reflects your achievements and personality.
+            </p>
+
+            <div class="package-title">Graduation Package Includes:</div>
+            <ul class="package-list" id="package-details">
+              <li>30-minute portrait session (Studio or Outdoor)</li>
+              <li>Solo and family portraits</li>
+              <li>30 professionally captured images</li>
+              <li>5 expertly retouched images</li>
+              <li>Digital delivery of high-resolution, print-ready images</li>
+            </ul>
+
+            <p class="closing-text">
+              Celebrate your hard work with timeless portraits that you'll
+              cherish forever!
+            </p>
+
+            <div class="pricing-section">
+              <div class="starting-label">Starting</div>
+              <div class="price" id="current-price">
+                <span class="currency">₵</span>
+                <span id="price-amount">2200</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="image-section scroll-animate animate-slide-right">
+            <div class="image-carousel">
+              <div class="carousel-slide slide-1 active"></div>
+              <div class="carousel-slide slide-2"></div>
+
+              <button
+                class="carousel-nav prev-btn"
+                onclick="previousGradSlide()"
+              >
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="carousel-nav next-btn" onclick="nextGradSlide()">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+
+              <div class="slide-indicator">
+                <span id="current-slide">1</span> /
+                <span id="total-slides">2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Extras Section -->
+    <section class="extras">
+      <div class="container">
+        <div class="section-header scroll-animate animate-fade">
+          <p class="section-subtitle">Additional Services</p>
+          <h2 class="section-title">Extras & Add-ons</h2>
+          <p class="section-description">
+            Enhance your photography experience with our premium add-on services
+            and products
+          </p>
+        </div>
+
+        <div class="extras-grid">
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">Photography Extra/Event Hourly Rate</span>
+            <span class="extra-price">₵1800</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Videography Extra/Event Hourly Rate</span>
+            <span class="extra-price">₵2200</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">Professional Make Up & Hair</span>
+            <span class="extra-price">₵350</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Studio Rental (Per Hour)</span>
+            <span class="extra-price">₵200</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">Social Media Reels</span>
+            <span class="extra-price">₵400</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Additional Outfit Change</span>
+            <span class="extra-price">₵150</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">Additional Person/Head</span>
+            <span class="extra-price">₵200</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Additional Photographer</span>
+            <span class="extra-price">₵1000</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">Premium Retouching Per Image</span>
+            <span class="extra-price">₵80</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Professional Prints (8x10)</span>
+            <span class="extra-price">₵120</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">Custom Photo Book (20 pages)</span>
+            <span class="extra-price">₵650</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Premium Frame (A4 size)</span>
+            <span class="extra-price">₵180</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container">
+        <div class="scroll-animate animate-fade">
+          <h2 class="cta-title">Ready to Create Magic?</h2>
+          <p class="cta-description">
+            Let's work together to capture your most precious moments and create
+            lasting memories that tell your unique story
+          </p>
+          <a href="/pages/contact.html" class="btn">
+            <i class="fas fa-calendar-alt"></i>
+            Book Your Session
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!--footer-->
+    <footer class="footer">
+      <div class="footer-content container">
+        <div class="footer-grid">
+          <!-- Logo Section -->
+          <div class="footer-section scroll-animate animate-fade">
+            <div class="footer-logo">
+              <img
+                src="assets/images/logo2.png"
+                class="footer-logo-icon"
+                alt="Impasto Photography"
+              />
+            </div>
+            <p class="footer-description">
+              At Impasto Photography, we specialize in capturing life's precious
+              moments with artistry and precision. Our team of professional
+              photographers is dedicated to creating timeless memories that
+              you'll cherish for generations to come.
+            </p>
+          </div>
+          <!-- Quick Links -->
+          <div class="footer-section scroll-animate animate-slide-left">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#home">
+                  <i class="fas fa-chevron-right"></i>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="information.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Information
+                </a>
+              </li>
+              <li>
+                <a href="ratecards.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Ratecards
+                </a>
+              </li>
+              <li>
+                <a href="store.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Store
+                </a>
+              </li>
+              <li>
+                <a href="contact.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a href="blog.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Services -->
+          <div class="footer-section scroll-animate animate-fade">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#">
+                  <i class="fas fa-camera"></i>
+                  Pre-Birthday Shoots
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-user"></i>
+                  Studio Portraits
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-building"></i>
+                  Large Format Print and Cut
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-calendar-alt"></i>
+                  Event Coverage
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-plane"></i>
+                  Passport Pictures
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-palette"></i>
+                  Graphic Design
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-ellipsis-h"></i>
+                  etc
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Contact -->
+          <div class="footer-section scroll-animate animate-slide-right">
+            <h3>Get In Touch</h3>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dome - Accra. Opposite Adehyeman Bank.</span>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>+233 (0) 242-641-305</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <span>potrit1@gmail.com</span>
+              </li>
+              <li>
+                <i class="fas fa-clock"></i>
+                <span>Mon-Fri: 8AM-5PM, Sat: 9:30AM-6PM, Sun: 1PM-6PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content container">
+          <div class="footer-copyright">
+            <p>© 2025 Impasto Photography. All rights reserved.</p>
+          </div>
+          <div class="kenzy-credit">
+            <p>Website developed with 💖 by Kenzyverse</p>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-pinterest-p"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <script>
       // ===========================================
@@ -1122,24 +2026,24 @@
       function updateHeroSlide() {
         // Remove active class from all slides
         heroSlides.forEach((slide) => slide.classList.remove("active"));
-
         // Add active class to current slide
         heroSlides[heroCurrentSlide].classList.add("active");
 
+        // Calculate previous and next slide numbers (with 1-based indexing for display)
+        const prevSlideNum =
+          ((heroCurrentSlide - 1 + heroTotalSlides) % heroTotalSlides) + 1;
+        const nextSlideNum = ((heroCurrentSlide + 1) % heroTotalSlides) + 1;
+
         // Update slide counters
-        document.getElementById("currentSlideLeft").textContent =
-          heroCurrentSlide + 1;
-        document.getElementById("currentSlideRight").textContent =
-          heroCurrentSlide + 1;
+        document.getElementById("currentSlideLeft").textContent = prevSlideNum;
+        document.getElementById("currentSlideRight").textContent = nextSlideNum;
 
         // Update title and subtitle
         const heroTitle = document.getElementById("heroTitle");
         const heroSubtitle = document.getElementById("heroSubtitle");
-
         if (heroTitle && heroSubtitle) {
           heroTitle.style.opacity = "0";
           heroSubtitle.style.opacity = "0";
-
           setTimeout(() => {
             heroTitle.textContent = heroTitles[heroCurrentSlide];
             heroSubtitle.textContent = heroSubtitles[heroCurrentSlide];
@@ -1158,6 +2062,85 @@
         heroCurrentSlide =
           (heroCurrentSlide - 1 + heroTotalSlides) % heroTotalSlides;
         updateHeroSlide();
+      }
+
+      // ===========================================
+      // GRADUATION CAROUSEL FUNCTIONALITY
+      // ===========================================
+      const gradSlides = document.querySelectorAll(".carousel-slide");
+      const gradTotalSlides = gradSlides.length;
+
+      // Package data for different slides
+      const packageData = [
+        {
+          details: [
+            "30-minute portrait session (Studio or Outdoor)",
+            "Solo and family portraits",
+            "30 professionally captured images",
+            "5 expertly retouched images",
+            "Digital delivery of high-resolution, print-ready images",
+          ],
+          price: "2200",
+        },
+        {
+          details: [
+            "60-minute premium portrait session (Studio or Outdoor)",
+            "Solo, family and group portraits",
+            "50 professionally captured images",
+            "15 expertly retouched images",
+            "Premium album with selected photos",
+            "Digital delivery of high-resolution, print-ready images",
+            "Complimentary props and accessories",
+          ],
+          price: "3500",
+        },
+      ];
+
+      function updateGradSlide() {
+        // Hide all slides
+        gradSlides.forEach((slide) => slide.classList.remove("active"));
+
+        // Show current slide
+        gradSlides[gradCurrentSlide].classList.add("active");
+
+        // Update slide indicator
+        const currentSlideElement = document.getElementById("current-slide");
+        if (currentSlideElement) {
+          currentSlideElement.textContent = gradCurrentSlide + 1;
+        }
+
+        // Update package details and price
+        const currentPackage = packageData[gradCurrentSlide];
+        const packageList = document.getElementById("package-details");
+        const priceAmount = document.getElementById("price-amount");
+
+        if (packageList && priceAmount) {
+          // Clear and update package details
+          packageList.innerHTML = "";
+          currentPackage.details.forEach((detail) => {
+            const li = document.createElement("li");
+            li.textContent = detail;
+            packageList.appendChild(li);
+          });
+
+          // Update price with animation
+          priceAmount.style.opacity = "0.5";
+          setTimeout(() => {
+            priceAmount.textContent = currentPackage.price;
+            priceAmount.style.opacity = "1";
+          }, 200);
+        }
+      }
+
+      function nextGradSlide() {
+        gradCurrentSlide = (gradCurrentSlide + 1) % gradTotalSlides;
+        updateGradSlide();
+      }
+
+      function previousGradSlide() {
+        gradCurrentSlide =
+          (gradCurrentSlide - 1 + gradTotalSlides) % gradTotalSlides;
+        updateGradSlide();
       }
 
       // ===========================================

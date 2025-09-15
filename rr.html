@@ -544,7 +544,7 @@
         display: inline-flex;
         align-items: center;
         gap: var(--spacing-sm);
-        padding: var(--spacing-sm);
+        padding: var(--spacing-md) var(--spacing-xl);
         border-radius: var(--radius-lg);
         text-decoration: none;
         font-weight: 600;
@@ -552,21 +552,7 @@
         transition: all var(--transition-normal);
         cursor: pointer;
         border: none;
-        font-size: 12px;
-      }
-      .bookbtn {
-        display: inline-flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-        padding: var(--spacing-xs) var(--spacing-sm);
-        border-radius: 100px;
-        text-decoration: none;
-        font-weight: 600;
-        font-family: var(--font-primary);
-        cursor: pointer;
-        font-size: 12px;
-        background-color: white;
-        color: #0c0c0c;
+        font-size: 1rem;
       }
 
       .btn-primary {
@@ -588,12 +574,12 @@
 
       .btn-secondary:hover {
         background: white;
-        color: #0c0c0c;
+        color: var(--text-primary);
         transform: translateY(-2px);
       }
 
       .h-btn {
-        min-width: 200px;
+        min-width: 250px;
       }
 
       /* Dot Navigation */
@@ -712,7 +698,7 @@
       }
 
       .section-intro-description {
-        font-size: 14px;
+        font-size: 1.1rem;
         color: var(--text-secondary);
         line-height: 1.6;
         font-family: var(--font-primary);
@@ -760,7 +746,7 @@
       }
 
       .rate-card-text {
-        padding: var(--spacing-lg) var(--spacing-md);
+        padding: var(--spacing-2xl);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -777,7 +763,7 @@
       }
 
       .rate-card-title {
-        font-size: clamp(1.3rem, 4vw, 2rem);
+        font-size: clamp(1.5rem, 4vw, 2rem);
         font-weight: 700;
         color: var(--text-primary);
         margin-bottom: var(--spacing-sm);
@@ -786,7 +772,7 @@
 
       .rate-card-location {
         color: var(--text-secondary);
-        font-size: 14px;
+        font-size: 0.9rem;
         font-weight: 500;
         letter-spacing: 0.5px;
         text-transform: uppercase;
@@ -797,7 +783,7 @@
       }
 
       .rate-card-description {
-        font-size: 12px;
+        font-size: 1rem;
         color: var(--text-secondary);
         line-height: 1.6;
         margin-bottom: var(--spacing-xl);
@@ -808,8 +794,8 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         background: var(--gradient-primary);
         color: white;
         border-radius: 50%;
@@ -824,10 +810,16 @@
         box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
       }
 
+      /* USA Card (Text First - Reversed) */
+      .rate-card-item.reversed .rate-card-content {
+        flex-direction: column-reverse;
+      }
+
       /* Services Overview */
       .services-overview {
         padding: var(--spacing-3xl) 0;
-        background: none;
+        background: var(--bg-secondary);
+        border-radius: var(--radius-lg);
         margin: var(--spacing-4xl) 0;
       }
 
@@ -930,7 +922,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: url("assets/images/cam2.jpg") center/cover;
+        background: url("assets/images/cam3.jpg") center/cover;
         opacity: 0.1;
         z-index: 0;
       }
@@ -956,7 +948,6 @@
         margin-right: auto;
         opacity: 0.95;
         line-height: 1.6;
-        color: #f0f0f0;
         font-family: var(--font-primary);
       }
 
@@ -1007,7 +998,7 @@
         }
 
         .rate-card-text {
-          padding: var(--spacing-md);
+          padding: var(--spacing-xl) var(--spacing-2xl);
         }
 
         .services-grid {
@@ -1051,34 +1042,13 @@
         .stats-grid {
           grid-template-columns: repeat(2, 1fr);
         }
-        .rate-card-content {
-          display: flex;
-          flex-direction: column;
-          max-height: 650px;
-        }
-
-        .rate-card-image img {
-          height: 100%;
-        }
-
-        .bookbtn {
-          gap: var(--spacing-md);
-          padding: var(--spacing-md) var(--spacing-2xl);
-          font-size: 16px;
-          color: #0c0c0c;
-        }
       }
 
       @media (min-width: 768px) {
         /* Desktop Layout for Rate Cards */
         .rate-card-content {
           flex-direction: row;
-          max-height: 520px;
-        }
-
-        /* GH Card (Text First - Reversed) */
-        .rate-card-item.reversed .rate-card-content {
-          flex-direction: column-reverse;
+          min-height: 400px;
         }
 
         .rate-card-image,
@@ -1086,35 +1056,13 @@
           flex: 1;
         }
 
-        .rate-card-year {
-          color: var(--accent-color);
-          font-size: 0.85rem;
-          font-weight: 600;
-          letter-spacing: 1px;
-          text-transform: uppercase;
-          margin-bottom: var(--spacing-xs);
-        }
-
-        .rate-card-title {
-          font-size: clamp(1.5rem, 4vw, 2.2rem);
-        }
-
-        .rate-card-location {
-          color: var(--text-secondary);
-          font-size: 16px;
-        }
-
-        .rate-card-description {
-          font-size: 16px;
-        }
-
-        /* GH Card (Text First - Reversed) */
+        /* USA Card (Text First - Reversed) */
         .rate-card-item.reversed .rate-card-content {
           flex-direction: row-reverse;
         }
 
         .rate-card-text {
-          padding: var(--spacing-lg) var(--spacing-xl);
+          padding: var(--spacing-2xl) var(--spacing-3xl);
         }
 
         .services-grid {
@@ -1123,15 +1071,6 @@
 
         .stats-grid {
           grid-template-columns: repeat(4, 1fr);
-        }
-
-        .section-intro-description {
-          font-size: 16px;
-        }
-
-        .btn {
-          padding: var(--spacing-md) var(--spacing-xl);
-          font-size: 1rem;
         }
       }
 
@@ -1384,7 +1323,7 @@
               </button>
             </div>
             <ul class="dropdown-menu">
-              <li class="dropdown-item active">
+              <li class="dropdown-item">
                 <a href="portrait.html" class="dropdown-link"
                   >Portrait Photography</a
                 >
@@ -1392,6 +1331,21 @@
               <li class="dropdown-item">
                 <a href="wedding.html" class="dropdown-link"
                   >Wedding Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="event-rates.html" class="dropdown-link"
+                  >Event Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="commercial-rates.html" class="dropdown-link"
+                  >Commercial Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="special-packages.html" class="dropdown-link"
+                  >Special Packages</a
                 >
               </li>
             </ul>
@@ -1557,7 +1511,7 @@
           </div>
         </article>
 
-        <!-- GH Rate Card (Text First - Reversed) -->
+        <!-- USA Rate Card (Text First - Reversed) -->
         <article
           class="rate-card-item reversed scroll-animate animate-slide-right"
         >
@@ -1565,21 +1519,21 @@
             <div class="rate-card-image">
               <img
                 src="assets/images/img6.jpg"
-                alt="Wedding Photography - GH Rate Card 2025/26"
+                alt="Wedding Photography - USA Rate Card 2025/26"
               />
             </div>
             <div class="rate-card-text">
-              <p class="rate-card-year text-animate">2025/26 RATE CARD (GH)</p>
+              <p class="rate-card-year text-animate">2025/26 RATE CARD (USA)</p>
               <h3 class="rate-card-title text-animate">Wedding Photography</h3>
               <p class="rate-card-location text-animate">
                 <i class="fas fa-map-marker-alt"></i>
-                WE ARE BOOKING WEDDINGS IN THE GH
+                WE ARE BOOKING WEDDINGS IN THE USA
               </p>
               <p class="rate-card-description text-animate">
                 Your wedding day deserves nothing less than perfection. Our
                 wedding photography services capture every precious moment, from
                 the intimate getting-ready shots to the grand celebration. Our
-                GH rate card features premium packages for destination weddings
+                USA rate card features premium packages for destination weddings
                 and international clients.
               </p>
               <a
@@ -1683,7 +1637,7 @@
           <div class="section-intro">
             <p class="section-intro-subtitle text-animate">Our Impact</p>
             <h2 class="section-intro-title text-animate">
-              Trusted by ThogHnds
+              Trusted by Thousands
             </h2>
             <p class="section-intro-description text-animate">
               Years of experience and countless satisfied clients have made us
@@ -1703,7 +1657,7 @@
             </div>
 
             <div class="stat-item scroll-animate animate-scale">
-              <div class="stat-number text-animate">15</div>
+              <div class="stat-number text-animate">8+</div>
               <div class="stat-label text-animate">Years Experience</div>
             </div>
 
@@ -1726,7 +1680,7 @@
                 Let our experienced team of photographers capture your special
                 moments with the artistry and professionalism you deserve.
               </p>
-              <a href="contact.html" class="bookbtn text-animate">
+              <a href="contact.html" class="btn text-animate">
                 <i class="fas fa-calendar-alt"></i>
                 Book Us Now
               </a>

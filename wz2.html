@@ -3,117 +3,65 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta
+      name="description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta
+      name="keywords"
+      content="photography, studio, professional, memories, artistry, technology"
+    />
+    <meta name="author" content="Impasto Photography Studio" />
+    <title>Impasto Photography | Wedding Ratecards</title>
+
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Open Graph Meta Tags for SEO -->
+    <meta
+      property="og:title"
+      content="Impasto Photography Studio | Professional Photography Services"
+    />
+    <meta
+      property="og:description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://impastophotography.com" />
+    <meta
+      property="og:image"
+      content="https://impastophotography.comassets/images/og-image.jpg"
+    />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Impasto Photography Studio | Professional Photography Services"
+    />
+    <meta
+      name="twitter:description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta
+      name="twitter:image"
+      content="https://impastophotography.comassets/images/og-image.jpg"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/logo-fav.png" />
+    <link rel="apple-touch-icon" href="assets/images/logo.png" />
+
+    <!--Default Styles-->
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
     <link rel="stylesheet" href="assets/styles/style.css" />
     <link rel="stylesheet" href="assets/styles/utils.css" />
     <link rel="stylesheet" href="assets/styles/components/footer.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+
     <style>
-      :root {
-        /* Light Theme Colors - Professional Photography Studio */
-        --bg-primary: #ffffff;
-        --bg-secondary: #f5f7fa;
-        --bg-tertiary: #e9ecef;
-        --text-primary: #1a202c;
-        --text-secondary: #4a5568;
-        --text-tertiary: #718096;
-        --accent-color: #2563eb; /* Professional Blue */
-        --accent-color2: #3b82f6; /* Lighter Blue */
-        --accent: #2d3748;
-        --accent-light: #edf2f7;
-        --border: #e2e8f0;
-        --shadow: rgba(0, 0, 0, 0.08);
-        --shadow-hover: rgba(0, 0, 0, 0.12);
-        --overlay: rgba(0, 0, 0, 0.6);
-        --nav-bg: rgba(255, 255, 255, 0.95);
-        --card-bg: #ffffff;
-        --gradient-primary: linear-gradient(
-          135deg,
-          #1e3a8a 0%,
-          #2563eb 50%,
-          #3b82f6 100%
-        ); /* Professional Blue Gradient */
-        --gradient-secondary: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-        --link-color: #2563eb;
-        --success: #10b981;
-        --warning: #f59e0b;
-        --error: #ef4444;
-        --info: #06b6d4;
-        --primary-color: #ffffff;
-        --secondary-color: #f8fafc;
-        --white: #ffffff;
-
-        /* Typography */
-        --font-primary: "Inter", sans-serif;
-        --font-secondary: "Playfair Display", serif;
-
-        /* Spacing */
-        --spacing-xs: 0.5rem;
-        --spacing-sm: 0.75rem;
-        --spacing-md: 1rem;
-        --spacing-lg: 1.5rem;
-        --spacing-xl: 2rem;
-        --spacing-2xl: 3rem;
-        --spacing-3xl: 4rem;
-        --spacing-4xl: 5rem;
-
-        /* Border Radius */
-        --radius-sm: 0.375rem;
-        --radius-md: 0.5rem;
-        --radius-lg: 0.75rem;
-        --radius-xl: 1rem;
-        --radius-2xl: 1.5rem;
-
-        /* Transitions */
-        --transition-fast: 0.2s ease;
-        --transition-normal: 0.3s ease;
-        --transition-slow: 0.5s ease;
-      }
-
-      /* Dark Theme - Sophisticated & Elegant */
-      [data-theme="dark"] {
-        --bg-primary: #0f172a;
-        --bg-secondary: #1e293b;
-        --bg-tertiary: #334155;
-        --text-primary: #f8fafc;
-        --text-secondary: #cbd5e1;
-        --text-tertiary: #94a3b8;
-        --accent: #e2e8f0;
-        --accent-light: #334155;
-        --accent-color: #60a5fa; /* Soft Blue for Dark Theme */
-        --accent-color2: #3b82f6; /* Consistent Blue Accent */
-        --border: #334155;
-        --shadow: rgba(0, 0, 0, 0.3);
-        --shadow-hover: rgba(0, 0, 0, 0.4);
-        --overlay: rgba(0, 0, 0, 0.7);
-        --nav-bg: rgba(15, 23, 42, 0.95);
-        --card-bg: #1e293b;
-        --link-color: #60a5fa;
-        --success: #34d399;
-        --warning: #fbbf24;
-        --error: #f87171;
-        --info: #22d3ee;
-        --primary-color: #0f172a;
-        --secondary-color: #1e293b;
-        --white: #0f172a;
-        --gradient-primary: linear-gradient(
-          135deg,
-          #1e3a8a 0%,
-          #60a5fa 50%,
-          #3b82f6 100%
-        );
-      }
-
       body {
         font-family: var(--font-primary);
         background-color: var(--bg-primary);
@@ -407,12 +355,13 @@
 
       .hero-slide {
         position: absolute;
+        margin-top: 55px;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         background-size: cover;
-        background-position: center;
+        background-position: 50% 10%;
         background-repeat: no-repeat;
         opacity: 0;
         transition: opacity 1s ease-in-out;
@@ -427,7 +376,7 @@
             rgba(0, 0, 0, 0.4),
             rgba(0, 0, 0, 0.4)
           ),
-          url("assets/images/img32.jpg");
+          url("assets/images/img0.jpg");
       }
 
       .hero-slide-2 {
@@ -435,7 +384,7 @@
             rgba(0, 0, 0, 0.4),
             rgba(0, 0, 0, 0.4)
           ),
-          url("assets/images/img22.jpg");
+          url("assets/images/img62.jpg");
       }
 
       .hero-slide-3 {
@@ -443,7 +392,7 @@
             rgba(0, 0, 0, 0.4),
             rgba(0, 0, 0, 0.4)
           ),
-          url("assets/images/img52.jpg");
+          url("assets/images/img64.jpg");
       }
 
       .hero-overlay {
@@ -534,7 +483,7 @@
       }
 
       .h-btn {
-        width: 240px;
+        min-width: 250px;
       }
 
       /* Navigation Controls */
@@ -557,7 +506,7 @@
         border-radius: 50%;
         cursor: pointer;
         display: none;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
         font-size: 1.5rem;
@@ -580,7 +529,7 @@
       }
 
       .hero-nav-counter {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         font-weight: 600;
         line-height: 1;
       }
@@ -635,10 +584,483 @@
         }
       }
 
+      /* Rate Card Specific Styles */
+      .ratecard-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: var(--spacing-lg);
+      }
+
+      /* Header */
+      .ratecard-header {
+        text-align: center;
+        margin-bottom: var(--spacing-2xl);
+        padding: 30px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .ratecard-header h1 {
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin-bottom: var(--spacing-lg);
+        text-transform: uppercase;
+        color: var(--text-primary);
+      }
+
+      .ratecard-header p {
+        font-size: 14px;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      /* Package Card */
+      .package-card {
+        margin-bottom: 60px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .package-header {
+        text-align: center;
+        padding: 30px 20px;
+      }
+
+      .package-title {
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        color: var(--text-primary);
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .package-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: var(--gradient-primary);
+      }
+
+      .package-subtitle {
+        font-size: 16px;
+        color: var(--text-secondary);
+        font-style: italic;
+        margin-bottom: 10px;
+      }
+
+      .package-image {
+        width: 100%;
+        overflow: hidden;
+        aspect-ratio: 3/4;
+      }
+
+      .package-image img {
+        width: 100%;
+        height: 90%;
+        object-fit: cover;
+        object-position: 50% 0%;
+        display: block;
+        transition: transform var(--transition-slow);
+      }
+
+      .package-content {
+        padding: 0 30px 30px 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .package-description {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+
+      .package-description h3 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-primary);
+      }
+
+      .package-description p {
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .package-details {
+        margin-bottom: 25px;
+      }
+
+      .package-details ul {
+        list-style: none;
+        text-align: center;
+      }
+
+      .package-details li {
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: var(--text-secondary);
+      }
+
+      .package-price {
+        text-align: center;
+        position: relative;
+        color: var(--accent-color);
+        padding-top: 10px;
+      }
+
+      .package-price::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 1px;
+        background: var(--gradient-primary);
+      }
+
+      .price {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .price-note {
+        font-size: 12px;
+        color: var(--text-secondary);
+      }
+
+      /* Two/Three Day Packages Grid */
+      .dual-packages {
+        margin-bottom: 60px;
+      }
+
+      .dual-packages-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .dual-packages-header h2 {
+        font-size: 22px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        color: var(--text-primary);
+      }
+
+      .dual-packages-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .dual-package-card {
+        overflow: hidden;
+      }
+
+      .dual-package-image {
+        width: 100%;
+        overflow: hidden;
+        aspect-ratio: 3/4;
+      }
+
+      .dual-package-image img {
+        width: 100%;
+        height: 90%;
+        object-fit: cover;
+        object-position: 50% 50%;
+        display: block;
+        transition: transform var(--transition-slow);
+      }
+
+      .dual-package-content {
+        padding: 0 25px 25px 25px;
+        text-align: center;
+      }
+
+      .dual-package-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-primary);
+      }
+
+      .dual-package-description {
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .dual-package-price {
+        position: relative;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--accent-color);
+        padding-top: 10px;
+      }
+
+      .dual-package-price::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 1px;
+        background: var(--gradient-primary);
+      }
+
+      /* Combined Packages */
+      .combined-packages {
+        margin-top: 60px;
+      }
+
+      .combined-packages-header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 30px 20px;
+
+        border-radius: 8px;
+      }
+
+      .combined-packages-header h2 {
+        font-size: 22px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        color: var(--text-primary);
+      }
+
+      .combined-packages-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
       /* ===========================================
-          RESPONSIVE DESIGN - MOBILE FIRST
-        =========================================== */
-      /* Small screens (475px and up) */
+        EXTRAS SECTION - IMPROVED STYLING
+       =========================================== */
+      .extras {
+        padding: var(--spacing-3xl) var(--spacing-lg);
+        background: var(--bg-secondary);
+        position: relative;
+        overflow: hidden;
+        margin: 5rem 0 0 0;
+      }
+
+      .extras::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--gradient-primary);
+        opacity: 0.5;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: var(--spacing-3xl);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .section-subtitle {
+        color: var(--accent-color);
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: var(--spacing-sm);
+        font-family: var(--font-primary);
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-md);
+        line-height: 1.2;
+        font-family: var(--font-secondary);
+      }
+
+      .section-description {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        font-family: var(--font-primary);
+      }
+
+      .extras-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: var(--spacing-lg);
+        margin-top: var(--spacing-3xl);
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .extra-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--spacing-lg) var(--spacing-xl);
+        background: var(--card-bg);
+        border-radius: var(--radius-lg);
+        box-shadow: 0 4px 20px var(--shadow);
+        transition: all var(--transition-normal);
+        border-left: 4px solid var(--accent-color);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .extra-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-primary);
+        opacity: 0;
+        transition: opacity var(--transition-normal);
+        z-index: 0;
+      }
+
+      .extra-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px var(--shadow-hover);
+        border-left-color: var(--accent-color);
+      }
+
+      .extra-item:hover::before {
+        opacity: 0.05;
+      }
+
+      .extra-name {
+        font-weight: 500;
+        color: var(--text-primary);
+        font-size: 1rem;
+        line-height: 1.4;
+        position: relative;
+        z-index: 1;
+        flex: 1;
+        margin-right: var(--spacing-md);
+        font-family: var(--font-primary);
+      }
+
+      .extra-price {
+        font-weight: 700;
+        color: var(--accent-color);
+        font-size: 1rem;
+        position: relative;
+        z-index: 1;
+        white-space: nowrap;
+        font-family: var(--font-primary);
+      }
+
+      /* ===========================================
+         CTA SECTION - IMPROVED STYLING
+       =========================================== */
+      .cta {
+        padding: var(--spacing-4xl) var(--spacing-lg);
+        background: var(--gradient-primary);
+        color: white;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+      }
+
+      .cta::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-position: center;
+        background-size: cover;
+        background: url("assets/images/cam3.jpg") repeat;
+        opacity: 0.1;
+        z-index: 0;
+      }
+
+      .cta .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-title {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 700;
+        margin-bottom: var(--spacing-lg);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        font-family: var(--font-secondary);
+      }
+
+      .cta-description {
+        font-size: 1.2rem;
+        margin-bottom: var(--spacing-3xl);
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 0.95;
+        line-height: 1.6;
+        font-family: var(--font-primary);
+        color: #cfcfcfff;
+      }
+
+      .cta .btn {
+        background: white;
+        color: var(--accent-color);
+        padding: var(--spacing-md) var(--spacing-2xl);
+        font-size: 1.1rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 50px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        transition: all var(--transition-normal);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        font-family: var(--font-primary);
+      }
+
+      .cta .btn:hover {
+        background: var(--bg-primary);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        color: var(--text-primary);
+      }
+
+      .cta .btn i {
+        font-size: 1rem;
+      }
+
       @media (min-width: 475px) {
         .hero-title {
           font-size: clamp(2rem, 5vw, 3rem);
@@ -651,8 +1073,23 @@
         main {
           padding: 1rem;
         }
+        .ratecard-header h1 {
+          font-size: 28px;
+        }
+
+        .package-image {
+          height: 500px;
+        }
+
+        .dual-package-image {
+          height: 500px;
+        }
+
+        .extras-grid {
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
       }
-      /* Medium screens (640px and up) */
+
       @media (min-width: 640px) {
         .nav-container {
           padding: 0 var(--spacing-lg);
@@ -673,22 +1110,83 @@
         .mobile-menu-toggle {
           font-size: 24px;
         }
-      }
 
-      /* large screens (768px and up) */
-      @media (min-width: 768px) {
-        .hero-nav-btn {
-          display: flex;
+        main {
+          padding: 2rem;
         }
-        .sessions-grid {
-          grid-template-columns: 1fr 1fr;
-          gap: 1.5rem;
+
+        .ratecard-container {
+          padding: 30px;
         }
-        .session-title {
-          font-size: 1.3rem;
+
+        .ratecard-header {
+          padding: 40px 30px;
         }
-        .session-details {
-          padding: 1.5rem;
+
+        .ratecard-header h1 {
+          font-size: 32px;
+        }
+
+        .package-content {
+          padding: 40px;
+        }
+        .package-image {
+          height: 360px;
+        }
+
+        .dual-package-image {
+          height: 300px;
+        }
+
+        .extras-grid {
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        @media (min-width: 768px) {
+          .hero-nav-btn {
+            display: flex;
+          }
+
+          .package-description h3 {
+            font-size: 20px;
+          }
+
+          .package-description p {
+            font-size: 15px;
+            max-width: 550px;
+          }
+
+          .package-details li {
+            font-size: 16px;
+          }
+
+          .dual-packages-grid {
+            flex-direction: row;
+          }
+
+          .dual-package-card {
+            flex: 1;
+          }
+
+          .dual-package-title {
+            font-size: 18px;
+          }
+          .dual-package-description {
+            font-size: 15;
+          }
+
+          .combined-packages-grid {
+            flex-direction: row;
+          }
+
+          .combined-package-card {
+            flex: 1;
+          }
+        }
+
+        .extras-grid {
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: var(--spacing-xl);
         }
       }
 
@@ -829,14 +1327,37 @@
           font-size: 1.25rem;
           margin-bottom: var(--spacing-3xl);
         }
-        .sessions-grid {
-          grid-template-columns: 1fr 1fr 1fr;
-          gap: 1.5rem;
+
+        .ratecard-container {
+          padding: 40px;
         }
-        .session-details {
-          padding: 1.5rem 2rem;
+
+        .ratecard-header {
+          padding: 60px 40px;
+        }
+
+        .ratecard-header h1 {
+          font-size: 36px;
+        }
+
+        .package-image {
+          height: 350px;
+        }
+
+        .dual-package-image {
+          height: 250px;
+        }
+
+        main {
+          padding: 3rem;
+        }
+
+        .extras-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: var(--spacing-xl);
         }
       }
+
       /* Extra large screens (1280px and up) */
       @media (min-width: 1280px) {
         .nav-container {
@@ -845,16 +1366,165 @@
         .nav-menu {
           gap: var(--spacing-2xl);
         }
-        .sessions-grid {
-          grid-template-columns: 1fr 1fr 1fr;
-          gap: 2.5rem;
+
+        .package-content {
+          padding: 50px;
+        }
+
+        .dual-package-content {
+          padding: 30px;
+        }
+        .extras-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: var(--spacing-2xl);
         }
       }
+
       /* 3XL screens (1536px and up) */
       @media (min-width: 1536px) {
         .nav-container {
           max-width: 1536px;
         }
+
+        .ratecard-header {
+          padding: 80px 40px;
+        }
+
+        .ratecard-header h1 {
+          font-size: 40px;
+        }
+
+        .package-image {
+          height: 400px;
+        }
+      }
+
+      /* Animation Effects */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Instagram Footer Section */
+      .instagram-foot {
+        padding: var(--spacing-3xl) 0;
+        background-color: var(--bg-secondary);
+      }
+
+      .instagram-title {
+        text-align: center;
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        margin-bottom: var(--spacing-2xl);
+        font-family: var(--font-secondary);
+        color: var(--text-primary);
+      }
+
+      .instagram-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-2xl);
+      }
+
+      .instagram-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-md);
+        aspect-ratio: 1 / 1;
+        box-shadow: 0 4px 12px var(--shadow);
+        transition: transform var(--transition-normal);
+      }
+
+      .instagram-item:hover {
+        transform: scale(1.03);
+      }
+
+      .instagram-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform var(--transition-normal);
+      }
+
+      .instagram-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(3px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity var(--transition-normal);
+        color: white;
+        text-align: center;
+        padding: var(--spacing-md);
+      }
+
+      .instagram-item:hover .instagram-overlay {
+        opacity: 1;
+      }
+
+      .instagram-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .instagram-overlay i {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .instagram-overlay p {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .instagram-overlay p:last-child {
+        font-size: 0.875rem;
+        font-weight: 400;
+        margin-top: var(--spacing-xs);
+      }
+
+      .instagram-button {
+        text-align: center;
+      }
+
+      /* Medium screens (640px and up) */
+      @media (min-width: 640px) {
+        .instagram-grid {
+          grid-template-columns: repeat(4, 1fr);
+          grid-template-rows: 1fr;
+        }
+      }
+
+      /* Dark theme adjustments */
+      [data-theme="dark"] .instagram-title {
+        color: var(--text-primary);
+      }
+
+      /* Animation for scroll effect */
+      .instagram-foot {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .instagram-foot.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
     </style>
   </head>
@@ -886,7 +1556,7 @@
             <div class="nav-link-container">
               <a
                 href="information.html"
-                class="nav-link active"
+                class="nav-link"
                 onclick="setActiveNav(this)"
               >
                 Information
@@ -916,7 +1586,7 @@
             <div class="nav-link-container">
               <a
                 href="ratecards.html"
-                class="nav-link"
+                class="nav-link active"
                 onclick="setActiveNav(this)"
               >
                 Ratecards
@@ -1015,11 +1685,11 @@
           Capturing beautiful family memories that last a lifetime
         </p>
         <div class="hero-buttons">
-          <a href="#" class="btn btn-primary">
+          <a href="#" class="btn btn-primary h-btn">
             <i class="fas fa-images"></i>
             View Portfolio
           </a>
-          <a href="#" class="btn btn-secondary">
+          <a href="#" class="btn btn-secondary h-btn">
             <i class="fas fa-calendar"></i>
             Book Session
           </a>
@@ -1031,16 +1701,14 @@
         <button class="hero-nav-btn" id="prevBtn" onclick="previousHeroSlide()">
           <i class="fas fa-chevron-left hero-nav-icon"></i>
           <div class="hero-nav-counter">
-            <div id="currentSlideLeft">1</div>
-            <div>3</div>
+            <div id="currentSlideLeft">3</div>
           </div>
         </button>
         <button class="hero-nav-btn" id="nextBtn" onclick="nextHeroSlide()">
-          <i class="fas fa-chevron-right hero-nav-icon"></i>
           <div class="hero-nav-counter">
             <div id="currentSlideRight">1</div>
-            <div>3</div>
           </div>
+          <i class="fas fa-chevron-right hero-nav-icon"></i>
         </button>
       </div>
 
@@ -1049,8 +1717,314 @@
       </div>
     </section>
 
-    <main></main>
+    <main id="packages">
+      <div class="ratecard-container">
+        <!-- Header -->
+        <div class="ratecard-header fade-in">
+          <h1>2025/26 Photography/Videography Rate Card</h1>
+          <p>
+            Capturing life's most precious moments with artistry and passion.
+            Our comprehensive photography and videography services are designed
+            to tell your unique story with elegance and creativity. Each package
+            is carefully crafted to meet your specific needs while ensuring
+            exceptional quality and memorable experiences.
+          </p>
+        </div>
 
+        <!-- Pre/Post Wedding Package -->
+        <div class="package-card pre-post-wedding fade-in">
+          <div class="package-header">
+            <h2 class="package-title">
+              Pre / Post Wedding Photography Package
+            </h2>
+          </div>
+          <div class="package-image">
+            <img src="assets/images/w2.jpg" alt="post wedding Image" />
+          </div>
+          <div class="package-content">
+            <div class="package-description">
+              <h3>ESSENTIAL WEDDING SESSION</h3>
+              <p>
+                Capture the beauty and romance of your special day with our
+                comprehensive pre and post wedding photography package. Perfect
+                for couples who want to document their journey with
+                professional, artistic imagery.
+              </p>
+            </div>
+            <div class="package-details">
+              <ul>
+                <li>Pre-wedding consultation and planning session</li>
+                <li>2-hour professional photography session</li>
+                <li>Multiple outfit changes allowed</li>
+                <li>50+ high-resolution edited images</li>
+                <li>Online gallery for easy sharing</li>
+                <li>Print release included</li>
+              </ul>
+            </div>
+            <div class="package-price">
+              <div class="price">₵ 2,500.00</div>
+              <div class="price-note">
+                *Prices subject to customization and location
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Same Day Package -->
+        <div class="package-card same-day fade-in">
+          <div class="package-header">
+            <h2 class="package-title">Same Day Photography Package</h2>
+          </div>
+          <div class="package-image">
+            <img src="assets/images/w8.jpg" alt="same day Photography image" />
+          </div>
+          <div class="package-content">
+            <div class="package-description">
+              <h3>ESSENTIAL LOVE</h3>
+              <p>
+                The perfect package for intimate ceremonies and celebrations.
+                Comprehensive coverage of your wedding day from preparation to
+                reception, capturing every precious moment with artistic
+                excellence.
+              </p>
+            </div>
+            <div class="package-details">
+              <ul>
+                <li>8 hours of wedding day coverage</li>
+                <li>Bridal preparation photography</li>
+                <li>Ceremony and reception coverage</li>
+                <li>200+ high-resolution edited images</li>
+                <li>Online gallery with download rights</li>
+                <li>USB drive with all images</li>
+                <li>Print release included</li>
+              </ul>
+            </div>
+            <div class="package-price">
+              <div class="price">₵ 4,500.00</div>
+              <div class="price-note">
+                *Additional hours available at extra cost
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Two/Three Day Packages -->
+        <div class="dual-packages fade-in">
+          <div class="package-header">
+            <h2 class="package-title">Two - Three Day Packages</h2>
+          </div>
+          <div class="dual-packages-grid">
+            <div class="dual-package-card love-chronicles">
+              <div class="dual-package-image love-chronicles">
+                <img src="assets/images/w3.jpg" alt="Two-Three Packages" />
+              </div>
+              <div class="dual-package-content">
+                <h3 class="dual-package-title">Love Chronicles</h3>
+                <p class="dual-package-description">
+                  A comprehensive 2-day photography and videography package
+                  covering your traditional and white wedding ceremonies with
+                  professional excellence.
+                </p>
+                <div class="dual-package-price">₵ 7,500.00</div>
+              </div>
+            </div>
+            <div class="dual-package-card signature-experience">
+              <div class="dual-package-image signature-experience">
+                <img src="assets/images/w4.jpg" alt="Love Chronicles" />
+              </div>
+              <div class="dual-package-content">
+                <h3 class="dual-package-title">Signature Experience</h3>
+                <p class="dual-package-description">
+                  Our premium 3-day package including engagement session,
+                  traditional ceremony, and white wedding with luxury treatment
+                  and exclusive services.
+                </p>
+                <div class="dual-package-price">₵ 12,000.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Combined Photo + Video Packages -->
+        <div class="combined-packages fade-in">
+          <div class="combined-packages-header">
+            <h2 class="package-title">Combined Photo + Video Packages</h2>
+            <p>
+              Complete documentation of your special day with both photography
+              and videography services
+            </p>
+          </div>
+          <div class="combined-packages-grid">
+            <div class="dual-package-card one-stop combined-package-card">
+              <div class="dual-package-image one-stop">
+                <img
+                  src="assets/images/w5.jpg"
+                  alt="Combined Photo + Video Packages"
+                />
+              </div>
+              <div class="dual-package-content">
+                <h3 class="dual-package-title">One-Stop Blast Package</h3>
+                <p class="dual-package-description">
+                  Photography and videography for single day events. Perfect
+                  combination of still images and motion pictures to capture
+                  your complete story.
+                </p>
+                <div class="dual-package-price">₵ 7,500.00</div>
+              </div>
+            </div>
+            <div class="dual-package-card full-board combined-package-card">
+              <div class="dual-package-image full-board">
+                <img src="assets/images/w5.jpg" alt="One-Stop Blast Package" />
+              </div>
+              <div class="dual-package-content">
+                <h3 class="dual-package-title">Full-Board Package</h3>
+                <p class="dual-package-description">
+                  Our most comprehensive offering including photography,
+                  videography, drone footage, and premium editing for multi-day
+                  celebrations.
+                </p>
+                <div class="dual-package-price">₵ 15,000.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Extras Section -->
+    <section class="extras">
+      <div class="container">
+        <div class="section-header scroll-animate animate-fade">
+          <p class="section-subtitle">Additional Services</p>
+          <h2 class="section-title">Extras & Adjustment</h2>
+          <p class="section-description">
+            Enhance your photography experience with our premium adjustment
+            services and products
+          </p>
+        </div>
+
+        <div class="extras-grid">
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">On-site Backdrop Setup/Day</span>
+            <span class="extra-price">₵2,500</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Social Media Blogging/Live Sharing</span>
+            <span class="extra-price">₵3,200</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">Snap and Reels (20-40 seconds) </span>
+            <span class="extra-price">₵1,500</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Retouching (Per Image)</span>
+            <span class="extra-price">₵50</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">Creative Director</span>
+            <span class="extra-price">₵3,000</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Extra Photographer</span>
+            <span class="extra-price">₵1,500</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">Extra Softcopies (100)</span>
+            <span class="extra-price">₵1,000</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Extra Revisions (Video Cut)</span>
+            <span class="extra-price">₵1,500</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name"
+              >Extended Video Cut (every 10-minutes)</span
+            >
+            <span class="extra-price">₵1,000</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Gromm Preparation</span>
+            <span class="extra-price">₵1,500</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">Photo Book (A3)</span>
+            <span class="extra-price">₵2,000</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Photo Book (A4)</span>
+            <span class="extra-price">₵1,500</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">Photo Frames (A2)</span>
+            <span class="extra-price">₵600</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name">Same day Edit (10-15 Images)</span>
+            <span class="extra-price">₵2,000</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-left">
+            <span class="extra-name">Drone Coverage / Video Booth </span>
+            <span class="extra-price">₵3,000</span>
+          </div>
+          <div class="extra-item scroll-animate animate-slide-right">
+            <span class="extra-name"
+              >Express Service (Full Delivery Within 5 Working Days)</span
+            >
+            <span class="extra-price">₵5,000</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="instagram-foot">
+      <div class="container">
+        <h2 class="instagram-title">Follow Us On Instagram</h2>
+        <div class="instagram-grid">
+          <div class="instagram-item">
+            <img src="assets/images/cam1.jpg" alt="Instagram post 1" />
+            <div class="instagram-overlay">
+              <i class="fab fa-instagram"></i>
+              <p>Instagram</p>
+              <p>@impasto_photography</p>
+            </div>
+          </div>
+          <div class="instagram-item">
+            <img src="assets/images/cam1.jpg" alt="Instagram post 2" />
+            <div class="instagram-overlay">
+              <i class="fab fa-instagram"></i>
+              <p>Instagram</p>
+              <p>@impasto_photography</p>
+            </div>
+          </div>
+          <div class="instagram-item">
+            <img src="assets/images/cam1.jpg" alt="Instagram post 3" />
+            <div class="instagram-overlay">
+              <i class="fab fa-instagram"></i>
+              <p>Instagram</p>
+              <p>@impasto_photography</p>
+            </div>
+          </div>
+          <div class="instagram-item">
+            <img src="assets/images/cam1.jpg" alt="Instagram post 4" />
+            <div class="instagram-overlay">
+              <i class="fab fa-instagram"></i>
+              <p>Instagram</p>
+              <p>@impasto_photography</p>
+            </div>
+          </div>
+        </div>
+        <div class="instagram-button">
+          <a
+            href="https://instagram.com/impasto_photography"
+            target="_blank"
+            class="btn btn-primary"
+          >
+            <i class="fab fa-instagram"></i>
+            View More On Instagram
+          </a>
+        </div>
+      </div>
+    </section>
     <script>
       // ===========================================
       // GLOBAL VARIABLES
@@ -1083,40 +2057,19 @@
       }
 
       // ===========================================
-      // SESSION SELECTION FUNCTIONALITY
-      // ===========================================
-      function selectSession(sessionType) {
-        // Add selection feedback
-        const cards = document.querySelectorAll(".session-card");
-        cards.forEach((card) => (card.style.transform = "scale(1)"));
-
-        event.currentTarget.style.transform = "scale(0.98)";
-
-        setTimeout(() => {
-          event.currentTarget.style.transform = "scale(1)";
-          // You can add booking logic here
-          alert(
-            `Selected: ${
-              sessionType.charAt(0).toUpperCase() + sessionType.slice(1)
-            } Session`
-          );
-        }, 150);
-      }
-
-      // ===========================================
       // HERO SLIDER FUNCTIONALITY
       // ===========================================
       const heroSlides = document.querySelectorAll(".hero-slide");
       const heroTotalSlides = heroSlides.length;
       const heroTitles = [
-        "FAMILY PORTRAIT",
-        "PROFESSIONAL HEADSHOTS",
+        "PHOTOGRAPHY RATE CARDS",
+        "PROFESSIONAL PACKAGES",
         "WEDDING PHOTOGRAPHY",
       ];
       const heroSubtitles = [
-        "Capturing beautiful family memories that last a lifetime",
-        "Professional portraits that make lasting impressions",
-        "Your perfect day deserves perfect memories",
+        "Professional photography and videography services designed for your special moments",
+        "Comprehensive packages tailored to capture your unique story",
+        "Your perfect day deserves perfect memories captured with artistic excellence",
       ];
 
       function updateHeroSlide() {
@@ -1341,19 +2294,7 @@
       let touchEndX = 0;
 
       function initTouchSupport() {
-        const carousel = document.querySelector(".image-carousel");
         const heroSection = document.querySelector(".hero");
-
-        if (carousel) {
-          carousel.addEventListener("touchstart", function (e) {
-            touchStartX = e.changedTouches[0].screenX;
-          });
-
-          carousel.addEventListener("touchend", function (e) {
-            touchEndX = e.changedTouches[0].screenX;
-            handleGradSwipe();
-          });
-        }
 
         if (heroSection) {
           heroSection.addEventListener("touchstart", function (e) {
@@ -1364,15 +2305,6 @@
             touchEndX = e.changedTouches[0].screenX;
             handleHeroSwipe();
           });
-        }
-      }
-
-      function handleGradSwipe() {
-        if (touchEndX < touchStartX - 50) {
-          nextGradSlide();
-        }
-        if (touchEndX > touchStartX + 50) {
-          previousGradSlide();
         }
       }
 
@@ -1419,6 +2351,58 @@
       }, 16); // ~60fps
 
       // ===========================================
+      // RATE CARD ANIMATION FUNCTIONS
+      // ===========================================
+      function initRateCardAnimations() {
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll(".fade-in").forEach((el) => {
+          observer.observe(el);
+        });
+      }
+
+      function initPackageCardInteractions() {
+        // Package card hover effects
+        const packageCards = document.querySelectorAll(
+          ".package-card, .dual-package-card"
+        );
+
+        packageCards.forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-5px)";
+          });
+
+          card.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0)";
+          });
+        });
+
+        // Stagger animation for better visual effect
+        setTimeout(() => {
+          document.querySelectorAll(".fade-in").forEach((el, index) => {
+            setTimeout(() => {
+              if (el.getBoundingClientRect().top < window.innerHeight) {
+                el.classList.add("visible");
+              }
+            }, index * 200);
+          });
+        }, 500);
+      }
+
+      // ===========================================
       // INITIALIZATION AND EVENT LISTENERS
       // ===========================================
       document.addEventListener("DOMContentLoaded", function () {
@@ -1427,19 +2411,16 @@
 
         // Initialize sliders
         updateHeroSlide();
-        updateGradSlide();
 
         // Initialize scroll animations
         initScrollAnimations();
+        initRateCardAnimations();
+
+        // Initialize package card interactions
+        initPackageCardInteractions();
 
         // Initialize touch support
         initTouchSupport();
-
-        // Set total slides count
-        const totalSlidesElement = document.getElementById("total-slides");
-        if (totalSlidesElement) {
-          totalSlidesElement.textContent = gradTotalSlides;
-        }
 
         // Add smooth scrolling to navigation links
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -1455,12 +2436,17 @@
           nextHeroSlide();
         }, 8000);
 
-        // Auto-advance graduation slider every 10 seconds
-        setInterval(() => {
-          nextGradSlide();
-        }, 10000);
+        // Add loading animation
+        window.addEventListener("load", function () {
+          const firstElement = document.querySelector(".ratecard-header");
+          if (firstElement) {
+            firstElement.classList.add("visible");
+          }
+        });
 
-        console.log("Impasto Photography Website Loaded Successfully! 📸");
+        console.log(
+          "Impasto Photography Rate Card Website Loaded Successfully! 📸"
+        );
       });
 
       // Optimized scroll event listeners
@@ -1472,6 +2458,7 @@
         debounce(() => {
           // Re-initialize scroll animations if needed
           initScrollAnimations();
+          initRateCardAnimations();
         }, 250)
       );
 

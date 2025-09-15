@@ -74,18 +74,18 @@
 .btn-primary:hover {
   transform: translateY(-6px);
   box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4);
-  color: white;
+  color: var(--text-primary);
 }
 .btn-primary2 {
   background: none;
-  color: var(--link-color);
+  color: white;
   box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
   border-color: var(--link-color);
 }
 .btn-primary2:hover {
   transform: translateY(-6px);
   box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4);
-  color: white;
+  color: var(--text-primary);
 }
 .btn-secondary {
   background: rgba(255, 255, 255, 0.1);
@@ -96,7 +96,7 @@
 .btn-secondary:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-6px);
-  color: white;
+  color: var(--text-primary);
 }
 
 /* Prevent right-click on images */

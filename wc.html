@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>
+      2025/26 Photography/Videography Rate Card - Impasto Photography
+    </title>
     <link rel="stylesheet" href="assets/styles/style.css" />
     <link rel="stylesheet" href="assets/styles/utils.css" />
     <link rel="stylesheet" href="assets/styles/components/footer.css" />
@@ -54,7 +56,7 @@
         --white: #ffffff;
 
         /* Typography */
-        --font-primary: "Inter", sans-serif;
+        --font-primary: "Montserrat", sans-serif;
         --font-secondary: "Playfair Display", serif;
 
         /* Spacing */
@@ -635,11 +637,313 @@
         }
       }
 
-      /* ===========================================
-          RESPONSIVE DESIGN - MOBILE FIRST
-        =========================================== */
-      /* Small screens (475px and up) */
+      /* Rate Card Specific Styles */
+      .ratecard-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* Header */
+      .ratecard-header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 30px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .ratecard-header h1 {
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        color: var(--text-primary);
+      }
+
+      .ratecard-header p {
+        font-size: 14px;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      /* Package Card */
+      .package-card {
+        background: var(--card-bg);
+        margin-bottom: 60px;
+        box-shadow: 0 2px 10px var(--shadow);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .package-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px var(--shadow-hover);
+      }
+
+      .package-header {
+        text-align: center;
+        padding: 30px 20px;
+        background: linear-gradient(
+          135deg,
+          var(--bg-secondary) 0%,
+          var(--bg-tertiary) 100%
+        );
+      }
+
+      .package-title {
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        color: var(--text-primary);
+      }
+
+      .package-subtitle {
+        font-size: 16px;
+        color: var(--text-secondary);
+        font-style: italic;
+        margin-bottom: 10px;
+      }
+
+      .package-image {
+        width: 100%;
+        height: 550px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .pre-post-wedding .package-image {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3)
+          ),
+          url("assets/images/w1.jpg");
+      }
+
+      .same-day .package-image {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3)
+          ),
+          url("assets/images/w2.jpg");
+      }
+
+      .love-chronicles .package-image {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3)
+          ),
+          url("assets/images/w3.jpg");
+      }
+
+      .signature-experience .package-image {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3)
+          ),
+          url("assets/images/w3.jpg");
+      }
+
+      .one-stop .package-image {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3)
+          ),
+          url("assets/images/w4.jpg");
+      }
+
+      .full-board .package-image {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3)
+          ),
+          url("assets/images/w5.jpg");
+      }
+
+      .package-content {
+        padding: 30px;
+      }
+
+      .package-description {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+
+      .package-description h3 {
+        font-size: 18px;
+        margin-bottom: 15px;
+        color: var(--text-primary);
+      }
+
+      .package-description p {
+        color: var(--text-secondary);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .package-details {
+        margin-bottom: 25px;
+      }
+
+      .package-details ul {
+        list-style: none;
+        text-align: center;
+      }
+
+      .package-details li {
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: var(--text-secondary);
+      }
+
+      .package-details li:before {
+        content: "• ";
+        color: #d4af37;
+        font-weight: bold;
+      }
+
+      .package-price {
+        text-align: center;
+        padding: 20px;
+        background: var(--bg-secondary);
+        border-radius: 8px;
+      }
+
+      .price {
+        font-size: 24px;
+        font-weight: bold;
+        color: #d4af37;
+        margin-bottom: 10px;
+      }
+
+      .price-note {
+        font-size: 12px;
+        color: var(--text-secondary);
+      }
+
+      /* Two/Three Day Packages Grid */
+      .dual-packages {
+        margin-bottom: 60px;
+      }
+
+      .dual-packages-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .dual-packages-header h2 {
+        font-size: 22px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        color: var(--text-primary);
+      }
+
+      .dual-packages-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .dual-package-card {
+        background: var(--card-bg);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px var(--shadow);
+        transition: transform 0.3s ease;
+      }
+
+      .dual-package-card:hover {
+        transform: translateY(-3px);
+      }
+
+      .dual-package-image {
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .dual-package-content {
+        padding: 25px;
+        text-align: center;
+      }
+
+      .dual-package-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-primary);
+      }
+
+      .dual-package-description {
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .dual-package-price {
+        font-size: 18px;
+        font-weight: bold;
+        color: #d4af37;
+      }
+
+      /* Combined Packages */
+      .combined-packages {
+        margin-top: 60px;
+      }
+
+      .combined-packages-header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 30px 20px;
+        background: linear-gradient(
+          135deg,
+          var(--bg-secondary) 0%,
+          var(--bg-tertiary) 100%
+        );
+        border-radius: 8px;
+      }
+
+      .combined-packages-header h2 {
+        font-size: 22px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        color: var(--text-primary);
+      }
+
+      .combined-packages-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      /* Responsive Design */
       @media (min-width: 475px) {
+        .ratecard-header h1 {
+          font-size: 28px;
+        }
+
+        .package-image {
+          height: 300px;
+        }
+
+        .dual-package-image {
+          height: 220px;
+        }
+
         .hero-title {
           font-size: clamp(2rem, 5vw, 3rem);
           margin-top: 3rem;
@@ -652,6 +956,7 @@
           padding: 1rem;
         }
       }
+
       /* Medium screens (640px and up) */
       @media (min-width: 640px) {
         .nav-container {
@@ -673,22 +978,43 @@
         .mobile-menu-toggle {
           font-size: 24px;
         }
+
+        .ratecard-container {
+          padding: 30px;
+        }
+
+        .ratecard-header {
+          padding: 40px 30px;
+        }
+
+        .ratecard-header h1 {
+          font-size: 32px;
+        }
+
+        .package-content {
+          padding: 40px;
+        }
       }
 
-      /* large screens (768px and up) */
       @media (min-width: 768px) {
         .hero-nav-btn {
           display: flex;
         }
-        .sessions-grid {
-          grid-template-columns: 1fr 1fr;
-          gap: 1.5rem;
+
+        .dual-packages-grid {
+          flex-direction: row;
         }
-        .session-title {
-          font-size: 1.3rem;
+
+        .dual-package-card {
+          flex: 1;
         }
-        .session-details {
-          padding: 1.5rem;
+
+        .combined-packages-grid {
+          flex-direction: row;
+        }
+
+        .combined-package-card {
+          flex: 1;
         }
       }
 
@@ -829,12 +1155,25 @@
           font-size: 1.25rem;
           margin-bottom: var(--spacing-3xl);
         }
-        .sessions-grid {
-          grid-template-columns: 1fr 1fr 1fr;
-          gap: 1.5rem;
+
+        .ratecard-container {
+          padding: 40px;
         }
-        .session-details {
-          padding: 1.5rem 2rem;
+
+        .ratecard-header {
+          padding: 60px 40px;
+        }
+
+        .ratecard-header h1 {
+          font-size: 36px;
+        }
+
+        .package-image {
+          height: 350px;
+        }
+
+        .dual-package-image {
+          height: 250px;
         }
       }
       /* Extra large screens (1280px and up) */
@@ -845,9 +1184,13 @@
         .nav-menu {
           gap: var(--spacing-2xl);
         }
-        .sessions-grid {
-          grid-template-columns: 1fr 1fr 1fr;
-          gap: 2.5rem;
+
+        .package-content {
+          padding: 50px;
+        }
+
+        .dual-package-content {
+          padding: 30px;
         }
       }
       /* 3XL screens (1536px and up) */
@@ -855,6 +1198,30 @@
         .nav-container {
           max-width: 1536px;
         }
+
+        .ratecard-header {
+          padding: 80px 40px;
+        }
+
+        .ratecard-header h1 {
+          font-size: 40px;
+        }
+
+        .package-image {
+          height: 400px;
+        }
+      }
+
+      /* Animation Effects */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
     </style>
   </head>
@@ -886,7 +1253,7 @@
             <div class="nav-link-container">
               <a
                 href="information.html"
-                class="nav-link active"
+                class="nav-link"
                 onclick="setActiveNav(this)"
               >
                 Information
@@ -916,7 +1283,7 @@
             <div class="nav-link-container">
               <a
                 href="ratecards.html"
-                class="nav-link"
+                class="nav-link active"
                 onclick="setActiveNav(this)"
               >
                 Ratecards
@@ -1010,16 +1377,17 @@
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
-        <h1 class="hero-title" id="heroTitle">FAMILY PORTRAIT</h1>
+        <h1 class="hero-title" id="heroTitle">PHOTOGRAPHY RATE CARDS</h1>
         <p class="hero-subtitle" id="heroSubtitle">
-          Capturing beautiful family memories that last a lifetime
+          Professional photography and videography services designed for your
+          special moments
         </p>
         <div class="hero-buttons">
-          <a href="#" class="btn btn-primary">
+          <a href="#packages" class="btn btn-primary h-btn">
             <i class="fas fa-images"></i>
-            View Portfolio
+            View Packages
           </a>
-          <a href="#" class="btn btn-secondary">
+          <a href="#contact" class="btn btn-secondary h-btn">
             <i class="fas fa-calendar"></i>
             Book Session
           </a>
@@ -1049,7 +1417,164 @@
       </div>
     </section>
 
-    <main></main>
+    <main id="packages">
+      <div class="ratecard-container">
+        <!-- Header -->
+        <div class="ratecard-header fade-in">
+          <h1>2025/26 Photography/Videography Rate Card</h1>
+          <p>
+            Capturing life's most precious moments with artistry and passion.
+            Our comprehensive photography and videography services are designed
+            to tell your unique story with elegance and creativity. Each package
+            is carefully crafted to meet your specific needs while ensuring
+            exceptional quality and memorable experiences.
+          </p>
+        </div>
+
+        <!-- Pre/Post Wedding Package -->
+        <div class="package-card pre-post-wedding fade-in">
+          <div class="package-header">
+            <h2 class="package-title">
+              Pre / Post Wedding Photography Package
+            </h2>
+          </div>
+          <div class="package-image"></div>
+          <div class="package-content">
+            <div class="package-description">
+              <h3>ESSENTIAL WEDDING SESSION</h3>
+              <p>
+                Capture the beauty and romance of your special day with our
+                comprehensive pre and post wedding photography package. Perfect
+                for couples who want to document their journey with
+                professional, artistic imagery.
+              </p>
+            </div>
+            <div class="package-details">
+              <ul>
+                <li>Pre-wedding consultation and planning session</li>
+                <li>2-hour professional photography session</li>
+                <li>Multiple outfit changes allowed</li>
+                <li>50+ high-resolution edited images</li>
+                <li>Online gallery for easy sharing</li>
+                <li>Print release included</li>
+              </ul>
+            </div>
+            <div class="package-price">
+              <div class="price">₵ 2,500.00</div>
+              <div class="price-note">
+                *Prices subject to customization and location
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Same Day Package -->
+        <div class="package-card same-day fade-in">
+          <div class="package-header">
+            <h2 class="package-title">Same Day Photography Package</h2>
+          </div>
+          <div class="package-image"></div>
+          <div class="package-content">
+            <div class="package-description">
+              <h3>ESSENTIAL LOVE</h3>
+              <p>
+                The perfect package for intimate ceremonies and celebrations.
+                Comprehensive coverage of your wedding day from preparation to
+                reception, capturing every precious moment with artistic
+                excellence.
+              </p>
+            </div>
+            <div class="package-details">
+              <ul>
+                <li>8 hours of wedding day coverage</li>
+                <li>Bridal preparation photography</li>
+                <li>Ceremony and reception coverage</li>
+                <li>200+ high-resolution edited images</li>
+                <li>Online gallery with download rights</li>
+                <li>USB drive with all images</li>
+                <li>Print release included</li>
+              </ul>
+            </div>
+            <div class="package-price">
+              <div class="price">₵ 4,500.00</div>
+              <div class="price-note">
+                *Additional hours available at extra cost
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Two/Three Day Packages -->
+        <div class="dual-packages fade-in">
+          <div class="dual-packages-header">
+            <h2>Two - Three Day Packages</h2>
+          </div>
+          <div class="dual-packages-grid">
+            <div class="dual-package-card love-chronicles">
+              <div class="dual-package-image love-chronicles"></div>
+              <div class="dual-package-content">
+                <h3 class="dual-package-title">Love Chronicles</h3>
+                <p class="dual-package-description">
+                  A comprehensive 2-day photography and videography package
+                  covering your traditional and white wedding ceremonies with
+                  professional excellence.
+                </p>
+                <div class="dual-package-price">₵ 7,500.00</div>
+              </div>
+            </div>
+            <div class="dual-package-card signature-experience">
+              <div class="dual-package-image signature-experience"></div>
+              <div class="dual-package-content">
+                <h3 class="dual-package-title">Signature Experience</h3>
+                <p class="dual-package-description">
+                  Our premium 3-day package including engagement session,
+                  traditional ceremony, and white wedding with luxury treatment
+                  and exclusive services.
+                </p>
+                <div class="dual-package-price">₵ 12,000.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Combined Photo + Video Packages -->
+        <div class="combined-packages fade-in">
+          <div class="combined-packages-header">
+            <h2>Combined Photo + Video Packages</h2>
+            <p>
+              Complete documentation of your special day with both photography
+              and videography services
+            </p>
+          </div>
+          <div class="combined-packages-grid">
+            <div class="dual-package-card one-stop combined-package-card">
+              <div class="dual-package-image one-stop"></div>
+              <div class="dual-package-content">
+                <h3 class="dual-package-title">One-Stop Blast Package</h3>
+                <p class="dual-package-description">
+                  Photography and videography for single day events. Perfect
+                  combination of still images and motion pictures to capture
+                  your complete story.
+                </p>
+                <div class="dual-package-price">₵ 7,500.00</div>
+              </div>
+            </div>
+            <div class="dual-package-card full-board combined-package-card">
+              <div class="dual-package-image full-board"></div>
+              <div class="dual-package-content">
+                <h3 class="dual-package-title">Full-Board Package</h3>
+                <p class="dual-package-description">
+                  Our most comprehensive offering including photography,
+                  videography, drone footage, and premium editing for multi-day
+                  celebrations.
+                </p>
+                <div class="dual-package-price">₵ 15,000.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
 
     <script>
       // ===========================================
@@ -1083,40 +1608,19 @@
       }
 
       // ===========================================
-      // SESSION SELECTION FUNCTIONALITY
-      // ===========================================
-      function selectSession(sessionType) {
-        // Add selection feedback
-        const cards = document.querySelectorAll(".session-card");
-        cards.forEach((card) => (card.style.transform = "scale(1)"));
-
-        event.currentTarget.style.transform = "scale(0.98)";
-
-        setTimeout(() => {
-          event.currentTarget.style.transform = "scale(1)";
-          // You can add booking logic here
-          alert(
-            `Selected: ${
-              sessionType.charAt(0).toUpperCase() + sessionType.slice(1)
-            } Session`
-          );
-        }, 150);
-      }
-
-      // ===========================================
       // HERO SLIDER FUNCTIONALITY
       // ===========================================
       const heroSlides = document.querySelectorAll(".hero-slide");
       const heroTotalSlides = heroSlides.length;
       const heroTitles = [
-        "FAMILY PORTRAIT",
-        "PROFESSIONAL HEADSHOTS",
+        "PHOTOGRAPHY RATE CARDS",
+        "PROFESSIONAL PACKAGES",
         "WEDDING PHOTOGRAPHY",
       ];
       const heroSubtitles = [
-        "Capturing beautiful family memories that last a lifetime",
-        "Professional portraits that make lasting impressions",
-        "Your perfect day deserves perfect memories",
+        "Professional photography and videography services designed for your special moments",
+        "Comprehensive packages tailored to capture your unique story",
+        "Your perfect day deserves perfect memories captured with artistic excellence",
       ];
 
       function updateHeroSlide() {
@@ -1341,19 +1845,7 @@
       let touchEndX = 0;
 
       function initTouchSupport() {
-        const carousel = document.querySelector(".image-carousel");
         const heroSection = document.querySelector(".hero");
-
-        if (carousel) {
-          carousel.addEventListener("touchstart", function (e) {
-            touchStartX = e.changedTouches[0].screenX;
-          });
-
-          carousel.addEventListener("touchend", function (e) {
-            touchEndX = e.changedTouches[0].screenX;
-            handleGradSwipe();
-          });
-        }
 
         if (heroSection) {
           heroSection.addEventListener("touchstart", function (e) {
@@ -1364,15 +1856,6 @@
             touchEndX = e.changedTouches[0].screenX;
             handleHeroSwipe();
           });
-        }
-      }
-
-      function handleGradSwipe() {
-        if (touchEndX < touchStartX - 50) {
-          nextGradSlide();
-        }
-        if (touchEndX > touchStartX + 50) {
-          previousGradSlide();
         }
       }
 
@@ -1419,6 +1902,58 @@
       }, 16); // ~60fps
 
       // ===========================================
+      // RATE CARD ANIMATION FUNCTIONS
+      // ===========================================
+      function initRateCardAnimations() {
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll(".fade-in").forEach((el) => {
+          observer.observe(el);
+        });
+      }
+
+      function initPackageCardInteractions() {
+        // Package card hover effects
+        const packageCards = document.querySelectorAll(
+          ".package-card, .dual-package-card"
+        );
+
+        packageCards.forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-5px)";
+          });
+
+          card.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0)";
+          });
+        });
+
+        // Stagger animation for better visual effect
+        setTimeout(() => {
+          document.querySelectorAll(".fade-in").forEach((el, index) => {
+            setTimeout(() => {
+              if (el.getBoundingClientRect().top < window.innerHeight) {
+                el.classList.add("visible");
+              }
+            }, index * 200);
+          });
+        }, 500);
+      }
+
+      // ===========================================
       // INITIALIZATION AND EVENT LISTENERS
       // ===========================================
       document.addEventListener("DOMContentLoaded", function () {
@@ -1427,19 +1962,16 @@
 
         // Initialize sliders
         updateHeroSlide();
-        updateGradSlide();
 
         // Initialize scroll animations
         initScrollAnimations();
+        initRateCardAnimations();
+
+        // Initialize package card interactions
+        initPackageCardInteractions();
 
         // Initialize touch support
         initTouchSupport();
-
-        // Set total slides count
-        const totalSlidesElement = document.getElementById("total-slides");
-        if (totalSlidesElement) {
-          totalSlidesElement.textContent = gradTotalSlides;
-        }
 
         // Add smooth scrolling to navigation links
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -1455,12 +1987,17 @@
           nextHeroSlide();
         }, 8000);
 
-        // Auto-advance graduation slider every 10 seconds
-        setInterval(() => {
-          nextGradSlide();
-        }, 10000);
+        // Add loading animation
+        window.addEventListener("load", function () {
+          const firstElement = document.querySelector(".ratecard-header");
+          if (firstElement) {
+            firstElement.classList.add("visible");
+          }
+        });
 
-        console.log("Impasto Photography Website Loaded Successfully! 📸");
+        console.log(
+          "Impasto Photography Rate Card Website Loaded Successfully! 📸"
+        );
       });
 
       // Optimized scroll event listeners
@@ -1472,6 +2009,7 @@
         debounce(() => {
           // Re-initialize scroll animations if needed
           initScrollAnimations();
+          initRateCardAnimations();
         }, 250)
       );
 
