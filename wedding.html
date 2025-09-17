@@ -17,7 +17,6 @@
     <title>
       Wedding Photography Rate Cards 2025/26 | Impasto Photography Ghana
     </title>
-
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
       {
@@ -40,13 +39,11 @@
         "serviceType": "Wedding Photography"
       }
     </script>
-
     <!-- Font Awesome for Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
     <!-- Open Graph Meta Tags for SEO -->
     <meta
       property="og:title"
@@ -65,7 +62,6 @@
       property="og:image"
       content="https://impastophotography.com/assets/images/og-image.jpg"
     />
-
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -80,45 +76,37 @@
       name="twitter:image"
       content="https://impastophotography.com/assets/images/og-image.jpg"
     />
-
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/logo-fav.png" />
     <link rel="apple-touch-icon" href="assets/images/logo.png" />
-
     <!--Default Styles-->
     <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
     <link rel="stylesheet" href="assets/styles/style.css" />
     <link rel="stylesheet" href="assets/styles/utils.css" />
     <link rel="stylesheet" href="assets/styles/components/footer.css" />
-
     <style>
       /* Custom Scrollbar Styles */
       ::-webkit-scrollbar {
         width: 8px;
         height: 8px;
       }
-
       ::-webkit-scrollbar-track {
         background: var(--bg-secondary);
         border-radius: 10px;
       }
-
       ::-webkit-scrollbar-thumb {
         background: var(--gradient-primary);
         border-radius: 10px;
         transition: all var(--transition-normal);
       }
-
       ::-webkit-scrollbar-thumb:hover {
         background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
       }
-
       /* Firefox Scrollbar */
       html {
         scrollbar-width: thin;
         scrollbar-color: #2563eb var(--bg-secondary);
       }
-
       body {
         font-family: var(--font-primary);
         background-color: var(--bg-primary);
@@ -126,51 +114,41 @@
         transition: background-color var(--transition-normal),
           color var(--transition-normal);
       }
-
       .container {
         max-width: 1200px;
       }
-
       /* Enhanced Scroll Animation Classes */
       .scroll-animate {
         opacity: 0;
         transform: translateY(60px);
         transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
-
       .scroll-animate.animate-slide-left {
         transform: translateX(-60px) translateY(30px);
       }
-
       .scroll-animate.animate-slide-right {
         transform: translateX(60px) translateY(30px);
       }
-
       .scroll-animate.animate-scale {
         transform: scale(0.8) translateY(30px);
       }
-
       .scroll-animate.animate-fade {
         transform: translateY(30px);
       }
-
       .scroll-animate.visible {
         opacity: 1;
         transform: translateX(0) translateY(0) scale(1);
       }
-
       /* Text Animation Classes */
       .text-animate {
         opacity: 0;
         transform: translateY(30px);
         transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
-
       .text-animate.visible {
         opacity: 1;
         transform: translateY(0);
       }
-
       /* Stagger animation delays */
       .scroll-animate:nth-child(1) {
         transition-delay: 0s;
@@ -190,7 +168,6 @@
       .scroll-animate:nth-child(6) {
         transition-delay: 0.5s;
       }
-
       /* Text stagger delays */
       .text-animate:nth-child(1) {
         transition-delay: 0s;
@@ -201,7 +178,6 @@
       .text-animate:nth-child(3) {
         transition-delay: 0.3s;
       }
-
       /* ===========================================
           NAVIGATION - MOBILE FIRST
          =========================================== */
@@ -409,7 +385,6 @@
         opacity: 1;
         visibility: visible;
       }
-
       /*============================
         Hero Section with 5 Images
         ===========================*/
@@ -423,7 +398,6 @@
         padding: var(--spacing-xl) var(--spacing-md);
         overflow: hidden;
       }
-
       .hero-slider {
         position: absolute;
         top: 0;
@@ -432,7 +406,6 @@
         height: 100%;
         z-index: -1;
       }
-
       .hero-slide {
         position: absolute;
         margin-top: 55px;
@@ -446,11 +419,9 @@
         opacity: 0;
         transition: opacity 1s ease-in-out;
       }
-
       .hero-slide.active {
         opacity: 1;
       }
-
       /* Hero slide backgrounds using img5.jpg to img9.jpg */
       .hero-slide-1 {
         background-image: linear-gradient(
@@ -459,7 +430,6 @@
           ),
           url("assets/images/img5.jpg");
       }
-
       .hero-slide-2 {
         background-image: linear-gradient(
             rgba(0, 0, 0, 0.4),
@@ -467,7 +437,6 @@
           ),
           url("assets/images/img6.jpg");
       }
-
       .hero-slide-3 {
         background-image: linear-gradient(
             rgba(0, 0, 0, 0.4),
@@ -475,7 +444,6 @@
           ),
           url("assets/images/img7.jpg");
       }
-
       .hero-slide-4 {
         background-image: linear-gradient(
             rgba(0, 0, 0, 0.4),
@@ -483,7 +451,6 @@
           ),
           url("assets/images/img8.jpg");
       }
-
       .hero-slide-5 {
         background-image: linear-gradient(
             rgba(0, 0, 0, 0.4),
@@ -491,7 +458,6 @@
           ),
           url("assets/images/img9.jpg");
       }
-
       .hero-overlay {
         position: absolute;
         top: 0;
@@ -501,14 +467,12 @@
         background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
         z-index: -1;
       }
-
       .hero-content {
         max-width: 100%;
         animation: fadeInUp 1s ease-out;
         position: relative;
         z-index: 1;
       }
-
       .hero-title {
         font-size: clamp(1.75rem, 5vw, 2.5rem);
         font-weight: 600;
@@ -520,7 +484,6 @@
         font-family: var(--font-secondary);
         font-optical-sizing: auto;
       }
-
       .hero-subtitle {
         font-size: 0.8rem;
         color: rgba(255, 255, 255, 0.9);
@@ -530,7 +493,6 @@
         padding: 0 2rem;
         font-family: var(--font-primary);
       }
-
       .hero-buttons {
         display: flex;
         flex-direction: column;
@@ -538,7 +500,6 @@
         justify-content: center;
         align-items: center;
       }
-
       .btn {
         display: inline-flex;
         align-items: center;
@@ -553,34 +514,28 @@
         border: none;
         font-size: 12px;
       }
-
       .btn-primary {
         background: var(--gradient-primary);
         color: white;
         box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
       }
-
       .btn-primary:hover {
         transform: translateY(-2px);
         box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
       }
-
       .btn-secondary {
         background: transparent;
         color: white;
         border: 2px solid white;
       }
-
       .btn-secondary:hover {
         background: white;
         color: var(--text-primary);
         transform: translateY(-2px);
       }
-
       .h-btn {
         min-width: 200px;
       }
-
       /* Dot Navigation */
       .hero-dots {
         position: absolute;
@@ -591,7 +546,6 @@
         gap: var(--spacing-sm);
         z-index: 10;
       }
-
       .hero-dot {
         width: 12px;
         height: 12px;
@@ -601,18 +555,15 @@
         transition: all var(--transition-normal);
         border: 2px solid rgba(255, 255, 255, 0.6);
       }
-
       .hero-dot.active {
         background: white;
         transform: scale(1.2);
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
       }
-
       .hero-dot:hover {
         background: rgba(255, 255, 255, 0.7);
         transform: scale(1.1);
       }
-
       .scroll-indicator {
         position: absolute;
         bottom: calc(var(--spacing-xl) + 40px);
@@ -623,7 +574,6 @@
         cursor: pointer;
         z-index: 1;
       }
-
       /* Animations */
       @keyframes fadeInUp {
         from {
@@ -635,7 +585,6 @@
           transform: translateY(0);
         }
       }
-
       @keyframes slideInUp {
         from {
           opacity: 0;
@@ -646,7 +595,6 @@
           transform: translateY(0);
         }
       }
-
       @keyframes bounce {
         0%,
         20%,
@@ -662,14 +610,12 @@
           transform: translateX(-50%) translateY(-5px);
         }
       }
-
       /* Rate Card Specific Styles */
       .ratecard-container {
         max-width: 1200px;
         margin: 0 auto;
         padding: var(--spacing-lg);
       }
-
       /* Header */
       .ratecard-header {
         text-align: center;
@@ -677,7 +623,6 @@
         padding: 30px 10px;
         border-bottom: 1px solid var(--border);
       }
-
       .ratecard-header h1 {
         font-size: 24px;
         font-weight: bold;
@@ -686,7 +631,6 @@
         text-transform: uppercase;
         color: var(--text-primary);
       }
-
       .ratecard-header p {
         font-size: 14px;
         color: var(--text-secondary);
@@ -694,19 +638,16 @@
         margin: 0 auto;
         line-height: 1.8;
       }
-
       /* Package Card */
       .package-card {
         margin-bottom: 60px;
         overflow: hidden;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
-
       .package-header {
         text-align: center;
         padding: 30px 20px;
       }
-
       .package-title {
         font-size: 20px;
         font-weight: bold;
@@ -717,7 +658,6 @@
         position: relative;
         padding-bottom: 1rem;
       }
-
       .package-title::after {
         content: "";
         position: absolute;
@@ -728,20 +668,18 @@
         height: 3px;
         background: var(--gradient-primary);
       }
-
       .package-subtitle {
         font-size: 16px;
         color: var(--text-secondary);
         font-style: italic;
         margin-bottom: 10px;
       }
-
       .package-image {
         width: 100%;
         overflow: hidden;
         aspect-ratio: 3/4;
+        cursor: pointer;
       }
-
       .package-image img {
         width: 100%;
         height: 90%;
@@ -750,19 +688,19 @@
         display: block;
         transition: transform var(--transition-slow);
       }
-
+      .package-image:hover img {
+        transform: scale(1.05);
+      }
       .package-content {
         padding: 0 30px 30px 30px;
         display: flex;
         flex-direction: column;
         align-items: center;
       }
-
       .package-description {
         text-align: center;
         margin-bottom: 25px;
       }
-
       .package-description h3 {
         font-size: 16px;
         font-weight: bold;
@@ -771,36 +709,30 @@
         letter-spacing: 1px;
         color: var(--text-primary);
       }
-
       .package-description p {
         font-size: 13px;
         color: var(--text-secondary);
         margin-bottom: 20px;
         line-height: 1.6;
       }
-
       .package-details {
         margin-bottom: 25px;
       }
-
       .package-details ul {
         list-style: none;
         text-align: center;
       }
-
       .package-details li {
         margin-bottom: 8px;
         font-size: 14px;
         color: var(--text-secondary);
       }
-
       .package-price {
         text-align: center;
         position: relative;
         color: var(--accent-color);
         padding-top: 10px;
       }
-
       .package-price::before {
         content: "";
         position: absolute;
@@ -811,28 +743,23 @@
         height: 1px;
         background: var(--gradient-primary);
       }
-
       .price {
         font-size: 14px;
         font-weight: bold;
         margin-bottom: 10px;
       }
-
       .price-note {
         font-size: 12px;
         color: var(--text-secondary);
       }
-
       /* Two/Three Day Packages Grid */
       .dual-packages {
         margin-bottom: 60px;
       }
-
       .dual-packages-header {
         text-align: center;
         margin-bottom: 40px;
       }
-
       .dual-packages-header h2 {
         font-size: 22px;
         font-weight: bold;
@@ -841,23 +768,20 @@
         margin-bottom: 20px;
         color: var(--text-primary);
       }
-
       .dual-packages-grid {
         display: flex;
         flex-direction: column;
         gap: 30px;
       }
-
       .dual-package-card {
         overflow: hidden;
       }
-
       .dual-package-image {
         width: 100%;
         overflow: hidden;
         aspect-ratio: 3/4;
+        cursor: pointer;
       }
-
       .dual-package-image img {
         width: 100%;
         height: 90%;
@@ -866,12 +790,13 @@
         display: block;
         transition: transform var(--transition-slow);
       }
-
+      .dual-package-image:hover img {
+        transform: scale(1.05);
+      }
       .dual-package-content {
         padding: 0 25px 25px 25px;
         text-align: center;
       }
-
       .dual-package-title {
         font-size: 16px;
         font-weight: bold;
@@ -880,14 +805,12 @@
         letter-spacing: 1px;
         color: var(--text-primary);
       }
-
       .dual-package-description {
         font-size: 13px;
         color: var(--text-secondary);
         margin-bottom: 20px;
         line-height: 1.6;
       }
-
       .dual-package-price {
         position: relative;
         font-size: 14px;
@@ -895,7 +818,6 @@
         color: var(--accent-color);
         padding-top: 10px;
       }
-
       .dual-package-price::before {
         content: "";
         position: absolute;
@@ -906,19 +828,16 @@
         height: 1px;
         background: var(--gradient-primary);
       }
-
       /* Combined Packages */
       .combined-packages {
         margin-top: 60px;
       }
-
       .combined-packages-header {
         text-align: center;
         margin-bottom: 40px;
         padding: 30px 20px;
         border-radius: 8px;
       }
-
       .combined-packages-header h2 {
         font-size: 22px;
         font-weight: bold;
@@ -927,13 +846,11 @@
         margin-bottom: 15px;
         color: var(--text-primary);
       }
-
       .combined-packages-grid {
         display: flex;
         flex-direction: column;
         gap: 30px;
       }
-
       /* ===========================================
         EXTRAS SECTION - IMPROVED STYLING
        =========================================== */
@@ -944,7 +861,6 @@
         overflow: hidden;
         margin: 5rem 0 0 0;
       }
-
       .extras::before {
         content: "";
         position: absolute;
@@ -955,7 +871,6 @@
         background: var(--gradient-primary);
         opacity: 0.5;
       }
-
       .section-header {
         text-align: center;
         margin-bottom: var(--spacing-3xl);
@@ -963,7 +878,6 @@
         margin-left: auto;
         margin-right: auto;
       }
-
       .section-subtitle {
         color: var(--accent-color);
         font-size: 0.9rem;
@@ -973,7 +887,6 @@
         margin-bottom: var(--spacing-sm);
         font-family: var(--font-primary);
       }
-
       .section-title {
         font-size: clamp(2rem, 4vw, 2.5rem);
         font-weight: 700;
@@ -982,14 +895,12 @@
         line-height: 1.2;
         font-family: var(--font-secondary);
       }
-
       .section-description {
         font-size: 1.1rem;
         color: var(--text-secondary);
         line-height: 1.6;
         font-family: var(--font-primary);
       }
-
       .extras-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -999,7 +910,6 @@
         margin-left: auto;
         margin-right: auto;
       }
-
       .extra-item {
         display: flex;
         justify-content: space-between;
@@ -1013,7 +923,6 @@
         position: relative;
         overflow: hidden;
       }
-
       .extra-item::before {
         content: "";
         position: absolute;
@@ -1026,17 +935,14 @@
         transition: opacity var(--transition-normal);
         z-index: 0;
       }
-
       .extra-item:hover {
         transform: translateY(-3px);
         box-shadow: 0 8px 30px var(--shadow-hover);
         border-left-color: var(--accent-color);
       }
-
       .extra-item:hover::before {
         opacity: 0.05;
       }
-
       .extra-name {
         font-weight: 500;
         color: var(--text-primary);
@@ -1048,7 +954,6 @@
         margin-right: var(--spacing-md);
         font-family: var(--font-primary);
       }
-
       .extra-price {
         font-weight: 700;
         color: var(--accent-color);
@@ -1058,7 +963,6 @@
         white-space: nowrap;
         font-family: var(--font-primary);
       }
-
       /* ===========================================
          CTA SECTION - IMPROVED STYLING
        =========================================== */
@@ -1071,7 +975,6 @@
         overflow: hidden;
         margin: 0;
       }
-
       .cta::before {
         content: "";
         position: absolute;
@@ -1085,12 +988,10 @@
         opacity: 0.1;
         z-index: 0;
       }
-
       .cta .container {
         position: relative;
         z-index: 1;
       }
-
       .cta-title {
         font-size: clamp(2.5rem, 5vw, 3.5rem);
         font-weight: 700;
@@ -1098,7 +999,6 @@
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         font-family: var(--font-secondary);
       }
-
       .cta-description {
         font-size: 1.2rem;
         margin-bottom: var(--spacing-3xl);
@@ -1110,7 +1010,6 @@
         font-family: var(--font-primary);
         color: #cfcfcfff;
       }
-
       .cta .btn {
         background: white;
         color: var(--accent-color);
@@ -1127,26 +1026,21 @@
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         font-family: var(--font-primary);
       }
-
       .cta .btn:hover {
         background: var(--bg-primary);
         transform: translateY(-3px) scale(1.05);
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         color: var(--text-primary);
       }
-
       .cta .btn i {
         font-size: 1rem;
       }
-
       .footer {
         margin-top: 0;
       }
-
       /* ===========================================
          RESPONSIVE DESIGN - MOBILE FIRST
        =========================================== */
-
       @media (min-width: 475px) {
         .hero-title {
           font-size: clamp(2rem, 5vw, 3rem);
@@ -1162,20 +1056,16 @@
         .ratecard-header h1 {
           font-size: 28px;
         }
-
         .package-image {
           height: 500px;
         }
-
         .dual-package-image {
           height: 500px;
         }
-
         .extras-grid {
           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         }
       }
-
       @media (min-width: 640px) {
         .nav-container {
           padding: 0 var(--spacing-lg);
@@ -1196,97 +1086,77 @@
         .mobile-menu-toggle {
           font-size: 24px;
         }
-
         main {
           padding: 2rem;
         }
-
         .ratecard-container {
           padding: 30px;
         }
-
         .ratecard-header {
           padding: 40px 30px;
         }
-
         .ratecard-header h1 {
           font-size: 32px;
         }
-
         .package-content {
           padding: 40px;
         }
         .package-image {
           height: 360px;
         }
-
         .dual-package-image {
           height: 300px;
         }
-
         .extras-grid {
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         }
       }
-
       @media (min-width: 768px) {
         /* Fixed package-title font size for tablet */
         .package-title {
           font-size: 24px;
         }
-
         .package-description h3 {
           font-size: 20px;
         }
-
         .package-description p {
           font-size: 15px;
           max-width: 550px;
         }
-
         .package-details li {
           font-size: 16px;
         }
-
         .dual-packages-grid {
           flex-direction: row;
         }
-
         .dual-package-card {
           flex: 1;
         }
-
         .dual-package-title {
           font-size: 18px;
         }
         .dual-package-description {
           font-size: 15px;
         }
-
         .combined-packages-grid {
           flex-direction: row;
         }
-
         .combined-package-card {
           flex: 1;
         }
-
         .extras-grid {
           grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
           gap: var(--spacing-xl);
         }
-
         .btn {
           padding: var(--spacing-md) var(--spacing-xl);
           border-radius: var(--radius-lg);
           font-size: 1rem;
         }
-
         .h-btn {
           min-width: 280px;
         }
       }
-
       /* Desktop screens (1024px and up) - DESKTOP NAVIGATION */
       @media (min-width: 1024px) {
         .navbar {
@@ -1416,7 +1286,6 @@
         .hero-content {
           max-width: 800px;
         }
-
         .hero-title {
           font-size: clamp(2.5rem, 5vw, 3.5rem);
         }
@@ -1424,42 +1293,33 @@
           font-size: 1.25rem;
           margin-bottom: var(--spacing-3xl);
         }
-
         .ratecard-container {
           padding: 40px;
         }
-
         .ratecard-header {
           padding: 60px 40px;
         }
-
         .ratecard-header h1 {
           font-size: 36px;
         }
-
         /* Fixed package-title font size for desktop */
         .package-title {
           font-size: 30px;
         }
-
         .package-image {
           height: 460px;
         }
-
         .dual-package-image {
           height: 500px;
         }
-
         main {
           padding: 3rem;
         }
-
         .extras-grid {
           grid-template-columns: repeat(2, 1fr);
           gap: var(--spacing-xl);
         }
       }
-
       /* Extra large screens (1280px and up) */
       @media (min-width: 1280px) {
         .nav-container {
@@ -1468,15 +1328,12 @@
         .nav-menu {
           gap: var(--spacing-2xl);
         }
-
         .package-content {
           padding: 50px;
         }
-
         .package-image {
           height: 560px;
         }
-
         .dual-package-content {
           padding: 30px;
         }
@@ -1485,32 +1342,125 @@
           gap: var(--spacing-2xl);
         }
       }
-
       /* 3XL screens (1536px and up) */
       @media (min-width: 1536px) {
         .nav-container {
           max-width: 1536px;
         }
-
         .ratecard-header {
           padding: 80px 40px;
         }
-
         .ratecard-header h1 {
           font-size: 40px;
         }
       }
-
       /* Animation Effects */
       .fade-in {
         opacity: 0;
         transform: translateY(20px);
         transition: opacity 0.6s ease, transform 0.6s ease;
       }
-
       .fade-in.visible {
         opacity: 1;
         transform: translateY(0);
+      }
+
+      /* ===========================================
+         LIGHTBOX STYLES - NEW ADDITION
+       =========================================== */
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 2000;
+        opacity: 0;
+        transition: opacity var(--transition-normal);
+      }
+      .lightbox.active {
+        display: flex;
+        flex-direction: column;
+        opacity: 1;
+      }
+      .lightbox-close {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        font-size: 18px;
+        z-index: 2002;
+      }
+      .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+      .lightbox-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        touch-action: none;
+      }
+      .lightbox-image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform var(--transition-normal);
+        transform-origin: center center;
+        cursor: zoom-in;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+        -webkit-touch-callout: none;
+      }
+      .lightbox-image-container.no-transition {
+        transition: none;
+      }
+      .lightbox-image-container.zoomed {
+        cursor: grab;
+      }
+      .lightbox-image-container.dragging {
+        cursor: grabbing;
+      }
+      .lightbox-image {
+        width: auto;
+        height: auto;
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+        border-radius: 2px;
+        user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        pointer-events: none;
       }
     </style>
   </head>
@@ -1521,20 +1471,19 @@
       id="mobileMenuOverlay"
       onclick="toggleMobileMenu()"
     ></div>
-
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
       <div class="nav-container">
         <a href="#home" class="logo">
           <img
             src="assets/images/logo2.png"
-            alt="Impasto Photography Studio Logo"
+            alt="Impasto logo"
             class="logo-icon"
           />
         </a>
         <ul class="nav-menu" id="navMenu">
           <li class="nav-item">
-            <a href="index.html" class="nav-link" onclick="setActiveNav(this)"
+            <a href="#home" class="nav-link" onclick="setActiveNav(this)"
               >Home</a
             >
           </li>
@@ -1553,17 +1502,21 @@
             </div>
             <ul class="dropdown-menu">
               <li class="dropdown-item">
-                <a href="about.html" class="dropdown-link">About Us</a>
+                <a href="faq.html" class="dropdown-link"
+                  >Frequently Asked Questions</a
+                >
               </li>
               <li class="dropdown-item">
-                <a href="team.html" class="dropdown-link">Our Team</a>
+                <a href="portfolio.html" class="dropdown-link">Portfolio</a>
               </li>
               <li class="dropdown-item">
-                <a href="services.html" class="dropdown-link">Services</a>
+                <a href="client-questionnaire.html" class="dropdown-link"
+                  >Client Questionnaire</a
+                >
               </li>
               <li class="dropdown-item">
-                <a href="testimonials.html" class="dropdown-link"
-                  >Testimonials</a
+                <a href="reviews.html" class="dropdown-link"
+                  >Review (Clients)</a
                 >
               </li>
             </ul>
@@ -1582,7 +1535,7 @@
               </button>
             </div>
             <ul class="dropdown-menu">
-              <li class="dropdown-item active">
+              <li class="dropdown-item">
                 <a href="portrait.html" class="dropdown-link"
                   >Portrait Photography</a
                 >
@@ -1595,28 +1548,9 @@
             </ul>
           </li>
           <li class="nav-item">
-            <div class="nav-link-container">
-              <a
-                href="store.html"
-                class="nav-link"
-                onclick="setActiveNav(this)"
-              >
-                Store
-              </a>
-              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
-                <i class="fas fa-chevron-down dropdown-arrow"></i>
-              </button>
-            </div>
-            <ul class="dropdown-menu">
-              <li class="dropdown-item">
-                <a href="prints.html" class="dropdown-link">Prints</a>
-              </li>
-              <li class="dropdown-item">
-                <a href="digital-products.html" class="dropdown-link"
-                  >Digital Products</a
-                >
-              </li>
-            </ul>
+            <a href="store.html" class="nav-link" onclick="setActiveNav(this)"
+              >Store</a
+            >
           </li>
           <li class="nav-item">
             <a href="contact.html" class="nav-link" onclick="setActiveNav(this)"
@@ -1630,25 +1564,16 @@
           </li>
         </ul>
         <div class="nav-controls">
-          <button
-            class="theme-toggle"
-            onclick="toggleTheme()"
-            aria-label="Toggle theme"
-          >
+          <button class="theme-toggle" onclick="toggleTheme()">
             <i class="fas fa-moon theme-icon"></i>
             <span class="theme-text">Dark</span>
           </button>
-          <button
-            class="mobile-menu-toggle"
-            onclick="toggleMobileMenu()"
-            aria-label="Toggle mobile menu"
-          >
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
             <i class="fas fa-bars"></i>
           </button>
         </div>
       </div>
     </nav>
-
     <!-- Hero Section with 5 Images and Dot Navigation -->
     <section id="home" class="hero">
       <div class="hero-slider">
@@ -1659,7 +1584,6 @@
         <div class="hero-slide hero-slide-5"></div>
       </div>
       <div class="hero-overlay"></div>
-
       <div class="hero-content">
         <h1 class="hero-title text-animate">WEDDING RATECARD</h1>
         <p class="hero-subtitle text-animate">
@@ -1678,7 +1602,6 @@
           </a>
         </div>
       </div>
-
       <!-- Dot Navigation -->
       <div class="hero-dots">
         <div class="hero-dot active" onclick="goToSlide(0)"></div>
@@ -1687,12 +1610,10 @@
         <div class="hero-dot" onclick="goToSlide(3)"></div>
         <div class="hero-dot" onclick="goToSlide(4)"></div>
       </div>
-
       <div class="scroll-indicator" onclick="scrollToSection('packages')">
         <i class="fas fa-chevron-down fa-2x"></i>
       </div>
     </section>
-
     <!-- Main Content -->
     <main id="packages">
       <div class="ratecard-container">
@@ -1709,7 +1630,6 @@
             exceptional quality and memorable experiences.
           </p>
         </div>
-
         <!-- Pre/Post Wedding Package -->
         <div class="package-card pre-post-wedding scroll-animate animate-fade">
           <div class="package-header">
@@ -1717,7 +1637,10 @@
               Pre / Post Wedding Photography Package
             </h2>
           </div>
-          <div class="package-image scroll-animate animate-scale">
+          <div
+            class="package-image scroll-animate animate-scale"
+            onclick="openLightbox(this.querySelector('img').src)"
+          >
             <img
               src="assets/images/w2.jpg"
               alt="Pre and post wedding photography session"
@@ -1755,7 +1678,6 @@
             </div>
           </div>
         </div>
-
         <!-- Same Day Package -->
         <div class="package-card same-day scroll-animate animate-fade">
           <div class="package-header">
@@ -1763,7 +1685,10 @@
               Same Day Photography Package
             </h2>
           </div>
-          <div class="package-image scroll-animate animate-scale">
+          <div
+            class="package-image scroll-animate animate-scale"
+            onclick="openLightbox(this.querySelector('img').src)"
+          >
             <img
               src="assets/images/w8.jpg"
               alt="Same day wedding photography coverage"
@@ -1800,7 +1725,6 @@
             </div>
           </div>
         </div>
-
         <!-- Two/Three Day Packages -->
         <div class="dual-packages scroll-animate animate-fade">
           <div class="package-header">
@@ -1810,7 +1734,10 @@
             <div
               class="dual-package-card love-chronicles scroll-animate animate-slide-left"
             >
-              <div class="dual-package-image love-chronicles">
+              <div
+                class="dual-package-image love-chronicles"
+                onclick="openLightbox(this.querySelector('img').src)"
+              >
                 <img
                   src="assets/images/w3.jpg"
                   alt="Two day wedding photography package"
@@ -1829,7 +1756,10 @@
             <div
               class="dual-package-card signature-experience scroll-animate animate-slide-right"
             >
-              <div class="dual-package-image signature-experience">
+              <div
+                class="dual-package-image signature-experience"
+                onclick="openLightbox(this.querySelector('img').src)"
+              >
                 <img
                   src="assets/images/w4.jpg"
                   alt="Three day premium wedding package"
@@ -1849,7 +1779,6 @@
             </div>
           </div>
         </div>
-
         <!-- Combined Photo + Video Packages -->
         <div class="combined-packages scroll-animate animate-fade">
           <div class="combined-packages-header">
@@ -1865,7 +1794,10 @@
             <div
               class="dual-package-card one-stop combined-package-card scroll-animate animate-slide-left"
             >
-              <div class="dual-package-image one-stop">
+              <div
+                class="dual-package-image one-stop"
+                onclick="openLightbox(this.querySelector('img').src)"
+              >
                 <img
                   src="assets/images/w5.jpg"
                   alt="Combined photography and videography package"
@@ -1886,7 +1818,10 @@
             <div
               class="dual-package-card full-board combined-package-card scroll-animate animate-slide-right"
             >
-              <div class="dual-package-image full-board">
+              <div
+                class="dual-package-image full-board"
+                onclick="openLightbox(this.querySelector('img').src)"
+              >
                 <img
                   src="assets/images/w6.jpg"
                   alt="Full board wedding package with all services"
@@ -1908,7 +1843,6 @@
         </div>
       </div>
     </main>
-
     <!-- Extras Section -->
     <section class="extras">
       <div class="container">
@@ -1920,7 +1854,6 @@
             and products
           </p>
         </div>
-
         <div class="extras-grid">
           <div class="extra-item scroll-animate animate-slide-left">
             <span class="extra-name text-animate"
@@ -2005,7 +1938,6 @@
         </div>
       </div>
     </section>
-
     <!-- CTA Section -->
     <section class="cta">
       <div class="container">
@@ -2022,7 +1954,6 @@
         </div>
       </div>
     </section>
-
     <!--footer-->
     <footer class="footer">
       <div class="footer-content container">
@@ -2215,6 +2146,18 @@
       </div>
     </footer>
 
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" onclick="closeLightbox()">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="lightbox-content" id="lightboxContent">
+        <div class="lightbox-image-container" id="lightboxImageContainer">
+          <img src="" alt="" class="lightbox-image" id="lightboxImage" />
+        </div>
+      </div>
+    </div>
+
     <script>
       // ===========================================
       // GLOBAL VARIABLES AND CONSTANTS
@@ -2223,6 +2166,29 @@
       const heroTotalSlides = 5; // Updated to 5 slides
       let heroSlideInterval;
       let isAnimating = false;
+
+      // Lightbox variables
+      let currentZoom = 1;
+      let translateX = 0;
+      let translateY = 0;
+      let isDragging = false;
+      let dragStartX = 0;
+      let dragStartY = 0;
+      let startTranslateX = 0;
+      let startTranslateY = 0;
+
+      // Touch device variables
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let touchStartDistance = 0;
+      let isPinching = false;
+      let lastTapTime = 0;
+      const doubleTapDelay = 300;
+
+      // Non-touch device variables
+      let dragThreshold = 5;
+      let mouseDownTime = 0;
+      let hasMoved = false;
 
       // ===========================================
       // ENHANCED SCROLL ANIMATION FUNCTIONALITY
@@ -2249,18 +2215,15 @@
             rootMargin: "0px 0px -30px 0px", // Trigger slightly before element comes into view
           }
         );
-
         // Observe all scroll-animate elements
         document.querySelectorAll(".scroll-animate").forEach((el) => {
           observer.observe(el);
         });
-
         // Observe all text-animate elements
         document.querySelectorAll(".text-animate").forEach((el) => {
           observer.observe(el);
         });
       }
-
       /**
        * Initialize animations on elements already in viewport
        */
@@ -2271,7 +2234,6 @@
         elements.forEach((el, index) => {
           const rect = el.getBoundingClientRect();
           const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-
           if (isVisible) {
             setTimeout(() => {
               el.classList.add("visible");
@@ -2279,35 +2241,28 @@
           }
         });
       }
-
       // ===========================================
       // HERO SLIDER FUNCTIONALITY WITH 5 IMAGES
       // ===========================================
       const heroSlides = document.querySelectorAll(".hero-slide");
       const heroDots = document.querySelectorAll(".hero-dot");
-
       /**
        * Update active hero slide and dot indicator
        */
       function updateHeroSlide() {
         if (isAnimating) return;
-
         isAnimating = true;
-
         // Remove active class from all slides and dots
         heroSlides.forEach((slide) => slide.classList.remove("active"));
         heroDots.forEach((dot) => dot.classList.remove("active"));
-
         // Add active class to current slide and dot
         heroSlides[heroCurrentSlide].classList.add("active");
         heroDots[heroCurrentSlide].classList.add("active");
-
         // Reset animation flag after transition
         setTimeout(() => {
           isAnimating = false;
         }, 1000);
       }
-
       /**
        * Navigate to next hero slide
        */
@@ -2315,7 +2270,6 @@
         heroCurrentSlide = (heroCurrentSlide + 1) % heroTotalSlides;
         updateHeroSlide();
       }
-
       /**
        * Navigate to previous hero slide
        */
@@ -2324,7 +2278,6 @@
           (heroCurrentSlide - 1 + heroTotalSlides) % heroTotalSlides;
         updateHeroSlide();
       }
-
       /**
        * Go to specific slide (for dot navigation)
        * @param {number} slideIndex - Index of slide to navigate to
@@ -2335,7 +2288,6 @@
           updateHeroSlide();
         }
       }
-
       /**
        * Start auto-advance functionality for hero slider
        */
@@ -2344,7 +2296,6 @@
           nextHeroSlide();
         }, 6000); // Changed to 6 seconds for better UX
       }
-
       /**
        * Stop auto-advance functionality
        */
@@ -2353,75 +2304,65 @@
           clearInterval(heroSlideInterval);
         }
       }
-
       // ===========================================
       // TOUCH/SWIPE SUPPORT FOR MOBILE
       // ===========================================
-      let touchStartX = 0;
-      let touchEndX = 0;
-      let touchStartY = 0;
-      let touchEndY = 0;
-
+      let heroTouchStartX = 0;
+      let heroTouchEndX = 0;
+      let heroTouchStartY = 0;
+      let heroTouchEndY = 0;
       /**
        * Initialize comprehensive touch support for hero slider
        */
       function initTouchSupport() {
         const heroSection = document.querySelector(".hero");
-
         if (heroSection) {
-          heroSection.addEventListener("touchstart", handleTouchStart, {
+          heroSection.addEventListener("touchstart", handleHeroTouchStart, {
             passive: true,
           });
-          heroSection.addEventListener("touchmove", handleTouchMove, {
+          heroSection.addEventListener("touchmove", handleHeroTouchMove, {
             passive: true,
           });
-          heroSection.addEventListener("touchend", handleTouchEnd);
+          heroSection.addEventListener("touchend", handleHeroTouchEnd);
         }
       }
-
       /**
        * Handle touch start event
        * @param {TouchEvent} e - Touch event
        */
-      function handleTouchStart(e) {
-        touchStartX = e.changedTouches[0].screenX;
-        touchStartY = e.changedTouches[0].screenY;
+      function handleHeroTouchStart(e) {
+        heroTouchStartX = e.changedTouches[0].screenX;
+        heroTouchStartY = e.changedTouches[0].screenY;
       }
-
       /**
        * Handle touch move event (prevent vertical scrolling during horizontal swipe)
        * @param {TouchEvent} e - Touch event
        */
-      function handleTouchMove(e) {
+      function handleHeroTouchMove(e) {
         const touchCurrentX = e.changedTouches[0].screenX;
         const touchCurrentY = e.changedTouches[0].screenY;
-
-        const diffX = Math.abs(touchCurrentX - touchStartX);
-        const diffY = Math.abs(touchCurrentY - touchStartY);
-
+        const diffX = Math.abs(touchCurrentX - heroTouchStartX);
+        const diffY = Math.abs(touchCurrentY - heroTouchStartY);
         // If horizontal swipe is more prominent, prevent default scroll
         if (diffX > diffY && diffX > 30) {
           e.preventDefault();
         }
       }
-
       /**
        * Handle touch end event and process swipe
        * @param {TouchEvent} e - Touch event
        */
-      function handleTouchEnd(e) {
-        touchEndX = e.changedTouches[0].screenX;
-        touchEndY = e.changedTouches[0].screenY;
-        handleSwipe();
+      function handleHeroTouchEnd(e) {
+        heroTouchEndX = e.changedTouches[0].screenX;
+        heroTouchEndY = e.changedTouches[0].screenY;
+        handleHeroSwipe();
       }
-
       /**
        * Process swipe gesture for hero navigation
        */
-      function handleSwipe() {
-        const diffX = touchEndX - touchStartX;
-        const diffY = touchEndY - touchStartY;
-
+      function handleHeroSwipe() {
+        const diffX = heroTouchEndX - heroTouchStartX;
+        const diffY = heroTouchEndY - heroTouchStartY;
         // Only process horizontal swipes
         if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
           if (diffX > 0) {
@@ -2431,7 +2372,6 @@
           }
         }
       }
-
       // ===========================================
       // THEME TOGGLE FUNCTIONALITY
       // ===========================================
@@ -2445,7 +2385,6 @@
         const logos = document.querySelectorAll(
           ".logo-icon, .footer-logo-icon"
         );
-
         // Check current theme and toggle
         if (body.getAttribute("data-theme") === "dark") {
           // Switch to light theme
@@ -2467,7 +2406,6 @@
           localStorage.setItem("theme", "dark");
         }
       }
-
       /**
        * Load saved theme preference from localStorage
        */
@@ -2475,13 +2413,10 @@
         const savedTheme = localStorage.getItem("theme");
         if (savedTheme === "dark") {
           document.body.setAttribute("data-theme", "dark");
-
           const themeIcon = document.querySelector(".theme-icon");
           const themeText = document.querySelector(".theme-text");
-
           if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
           if (themeText) themeText.textContent = "Light";
-
           const logos = document.querySelectorAll(
             ".logo-icon, .footer-logo-icon"
           );
@@ -2490,7 +2425,6 @@
           });
         }
       }
-
       // ===========================================
       // NAVIGATION FUNCTIONALITY
       // ===========================================
@@ -2503,21 +2437,17 @@
         if (element.classList.contains("dropdown-toggle")) {
           return;
         }
-
         // Remove active class from all nav links
         document
           .querySelectorAll(".nav-link:not(.dropdown-toggle)")
           .forEach((link) => {
             link.classList.remove("active");
           });
-
         // Add active class to clicked link
         element.classList.add("active");
-
         // Close mobile menu if open
         closeMobileMenu();
       }
-
       /**
        * Toggle mobile menu visibility
        */
@@ -2525,10 +2455,8 @@
         const navMenu = document.getElementById("navMenu");
         const mobileToggle = document.querySelector(".mobile-menu-toggle");
         const overlay = document.getElementById("mobileMenuOverlay");
-
         if (navMenu && mobileToggle && overlay) {
           const isActive = navMenu.classList.contains("active");
-
           if (isActive) {
             closeMobileMenu();
           } else {
@@ -2536,7 +2464,6 @@
           }
         }
       }
-
       /**
        * Open mobile menu
        */
@@ -2544,16 +2471,13 @@
         const navMenu = document.getElementById("navMenu");
         const mobileToggle = document.querySelector(".mobile-menu-toggle");
         const overlay = document.getElementById("mobileMenuOverlay");
-
         navMenu.classList.add("active");
         mobileToggle.classList.add("active");
         overlay.classList.add("active");
         mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
-
         // Prevent body scroll when menu is open
         document.body.style.overflow = "hidden";
       }
-
       /**
        * Close mobile menu
        */
@@ -2561,7 +2485,6 @@
         const navMenu = document.getElementById("navMenu");
         const mobileToggle = document.querySelector(".mobile-menu-toggle");
         const overlay = document.getElementById("mobileMenuOverlay");
-
         if (navMenu && navMenu.classList.contains("active")) {
           navMenu.classList.remove("active");
           if (mobileToggle) {
@@ -2571,12 +2494,10 @@
           if (overlay) {
             overlay.classList.remove("active");
           }
-
           // Restore body scroll
           document.body.style.overflow = "";
         }
       }
-
       /**
        * Toggle dropdown menu (mobile only)
        * @param {HTMLElement} element - Dropdown toggle element
@@ -2587,11 +2508,9 @@
           const dropdownMenu =
             element.parentElement.parentElement.querySelector(".dropdown-menu");
           const dropdownArrow = element.querySelector(".dropdown-arrow");
-
           if (dropdownMenu && dropdownArrow) {
             dropdownMenu.classList.toggle("open");
             dropdownArrow.classList.toggle("open");
-
             // Prevent event bubbling
             if (event) {
               event.preventDefault();
@@ -2600,7 +2519,6 @@
           }
         }
       }
-
       /**
        * Smooth scroll to section
        * @param {string} sectionId - ID of section to scroll to
@@ -2609,17 +2527,14 @@
         const section = document.getElementById(sectionId);
         if (section) {
           closeMobileMenu();
-
           const navbarHeight = document.getElementById("navbar").offsetHeight;
           const targetPosition = section.offsetTop - navbarHeight - 20;
-
           window.scrollTo({
             top: targetPosition,
             behavior: "smooth",
           });
         }
       }
-
       /**
        * Handle navbar scroll effects
        */
@@ -2633,7 +2548,6 @@
           }
         }
       }
-
       // ===========================================
       // PACKAGE CARD INTERACTIONS
       // ===========================================
@@ -2644,31 +2558,481 @@
         const packageCards = document.querySelectorAll(
           ".package-card, .dual-package-card"
         );
-
         packageCards.forEach((card) => {
           // Mouse enter effect
           card.addEventListener("mouseenter", function () {
             this.style.transform = "translateY(-5px)";
           });
-
           // Mouse leave effect
           card.addEventListener("mouseleave", function () {
             this.style.transform = "translateY(0)";
             this.style.boxShadow = "";
           });
-
-          // Image hover effect
-          const image = card.querySelector("img");
-          if (image) {
-            card.addEventListener("mouseenter", function () {
-              image.style.transform = "scale(1.05)";
-            });
-
-            card.addEventListener("mouseleave", function () {
-              image.style.transform = "scale(1)";
-            });
-          }
         });
+      }
+      // ===========================================
+      // LIGHTBOX FUNCTIONALITY
+      // ===========================================
+      /**
+       * Open lightbox with specified image
+       * @param {string} imageSrc - Source URL of the image to display
+       */
+      function openLightbox(imageSrc) {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+
+        // Reset zoom and position
+        currentZoom = 1;
+        translateX = 0;
+        translateY = 0;
+
+        // Set image source
+        lightboxImage.src = imageSrc;
+
+        // Show lightbox
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+
+        // Update image transform
+        updateImageTransform();
+
+        // Setup event listeners
+        setupLightboxEvents();
+      }
+
+      /**
+       * Close lightbox
+       */
+      function closeLightbox() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "auto";
+
+        // Reset zoom and position
+        currentZoom = 1;
+        translateX = 0;
+        translateY = 0;
+        updateImageTransform();
+
+        // Remove event listeners
+        removeLightboxEvents();
+      }
+
+      /**
+       * Update image transform based on current zoom and position
+       */
+      function updateImageTransform() {
+        const imageContainer = document.getElementById(
+          "lightboxImageContainer"
+        );
+        imageContainer.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentZoom})`;
+
+        if (currentZoom > 1) {
+          imageContainer.classList.add("zoomed");
+        } else {
+          imageContainer.classList.remove("zoomed");
+        }
+      }
+
+      /**
+       * Calculate boundaries for panning when zoomed
+       */
+      function calculateBoundaries() {
+        const container = document.getElementById("lightboxContent");
+        const image = document.getElementById("lightboxImage");
+        if (!container || !image) return { maxX: 0, maxY: 0 };
+
+        const containerRect = container.getBoundingClientRect();
+        const naturalWidth = image.naturalWidth;
+        const naturalHeight = image.naturalHeight;
+
+        const containerAspect = containerRect.width / containerRect.height;
+        const imageAspect = naturalWidth / naturalHeight;
+
+        let displayedWidth, displayedHeight;
+
+        if (imageAspect > containerAspect) {
+          displayedWidth = containerRect.width * 0.9; // Account for max-width: 90%
+          displayedHeight = displayedWidth / imageAspect;
+        } else {
+          displayedHeight = containerRect.height * 0.9; // Account for max-height: 90%
+          displayedWidth = displayedHeight * imageAspect;
+        }
+
+        const zoomedWidth = displayedWidth * currentZoom;
+        const zoomedHeight = displayedHeight * currentZoom;
+
+        let maxX = 0;
+        let maxY = 0;
+
+        if (zoomedWidth > containerRect.width) {
+          maxX = (zoomedWidth - containerRect.width) / 2;
+        }
+
+        if (zoomedHeight > containerRect.height) {
+          maxY = (zoomedHeight - containerRect.height) / 2;
+        }
+
+        return { maxX, maxY };
+      }
+
+      /**
+       * Clamp position to boundaries
+       */
+      function clampPosition() {
+        const { maxX, maxY } = calculateBoundaries();
+        translateX = Math.max(-maxX, Math.min(maxX, translateX));
+        translateY = Math.max(-maxY, Math.min(maxY, translateY));
+      }
+
+      /**
+       * Toggle zoom on double-click or double-tap
+       * @param {number} x - X coordinate of click/tap
+       * @param {number} y - Y coordinate of click/tap
+       */
+      function toggleZoom(x, y) {
+        const container = document.getElementById("lightboxContent");
+        const containerRect = container.getBoundingClientRect();
+
+        if (currentZoom === 1) {
+          currentZoom = 2;
+          const offsetX =
+            ((containerRect.width / 2 - (x - containerRect.left)) *
+              (currentZoom - 1)) /
+            currentZoom;
+          const offsetY =
+            ((containerRect.height / 2 - (y - containerRect.top)) *
+              (currentZoom - 1)) /
+            currentZoom;
+          translateX = offsetX;
+          translateY = offsetY;
+        } else {
+          currentZoom = 1;
+          translateX = 0;
+          translateY = 0;
+        }
+
+        clampPosition();
+        updateImageTransform();
+      }
+
+      /**
+       * Setup lightbox event listeners
+       */
+      function setupLightboxEvents() {
+        const imageContainer = document.getElementById(
+          "lightboxImageContainer"
+        );
+        const lightbox = document.getElementById("lightbox");
+
+        // Double-click to zoom
+        imageContainer.addEventListener("dblclick", (e) => {
+          e.preventDefault();
+          toggleZoom(e.clientX, e.clientY);
+        });
+
+        // Mouse wheel zoom
+        lightbox.addEventListener("wheel", handleMouseWheel, {
+          passive: false,
+        });
+
+        // Mouse events for panning
+        imageContainer.addEventListener("mousedown", handleMouseDown);
+        document.addEventListener("mousemove", handleMouseMove);
+        document.addEventListener("mouseup", handleMouseUp);
+
+        // Touch events for mobile
+        imageContainer.addEventListener("touchstart", handleTouchStart, {
+          passive: false,
+        });
+        imageContainer.addEventListener("touchmove", handleTouchMove, {
+          passive: false,
+        });
+        imageContainer.addEventListener("touchend", handleTouchEnd, {
+          passive: true,
+        });
+
+        // Keyboard events
+        document.addEventListener("keydown", handleLightboxKeydown);
+
+        // Prevent context menu on images
+        imageContainer.addEventListener("contextmenu", (e) =>
+          e.preventDefault()
+        );
+      }
+
+      /**
+       * Remove lightbox event listeners
+       */
+      function removeLightboxEvents() {
+        const imageContainer = document.getElementById(
+          "lightboxImageContainer"
+        );
+        const lightbox = document.getElementById("lightbox");
+
+        if (imageContainer) {
+          imageContainer.removeEventListener("dblclick", handleDoubleClick);
+          imageContainer.removeEventListener("mousedown", handleMouseDown);
+          imageContainer.removeEventListener("touchstart", handleTouchStart);
+          imageContainer.removeEventListener("touchmove", handleTouchMove);
+          imageContainer.removeEventListener("touchend", handleTouchEnd);
+          imageContainer.removeEventListener("contextmenu", handleContextMenu);
+        }
+
+        if (lightbox) {
+          lightbox.removeEventListener("wheel", handleMouseWheel);
+        }
+
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseup", handleMouseUp);
+        document.removeEventListener("keydown", handleLightboxKeydown);
+      }
+
+      /**
+       * Handle mouse wheel for zooming
+       * @param {WheelEvent} e - Wheel event
+       */
+      function handleMouseWheel(e) {
+        e.preventDefault();
+
+        const minZoom = 1;
+        const maxZoom = 5;
+        const zoomDelta = -e.deltaY * 0.001;
+        const newZoom = currentZoom + zoomDelta;
+
+        if (newZoom >= minZoom && newZoom <= maxZoom) {
+          currentZoom = newZoom;
+
+          if (currentZoom <= 1) {
+            currentZoom = 1;
+            translateX = 0;
+            translateY = 0;
+          }
+
+          clampPosition();
+          updateImageTransform();
+        }
+      }
+
+      /**
+       * Handle mouse down for panning
+       * @param {MouseEvent} e - Mouse event
+       */
+      function handleMouseDown(e) {
+        if (currentZoom <= 1 || e.button !== 0) return;
+
+        isDragging = true;
+        dragStartX = e.clientX;
+        dragStartY = e.clientY;
+        startTranslateX = translateX;
+        startTranslateY = translateY;
+
+        const imageContainer = document.getElementById(
+          "lightboxImageContainer"
+        );
+        imageContainer.classList.add("no-transition", "dragging");
+
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      /**
+       * Handle mouse move for panning
+       * @param {MouseEvent} e - Mouse event
+       */
+      function handleMouseMove(e) {
+        if (!isDragging) return;
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        const moveX = e.clientX - dragStartX;
+        const moveY = e.clientY - dragStartY;
+
+        translateX = startTranslateX + moveX;
+        translateY = startTranslateY + moveY;
+
+        clampPosition();
+        updateImageTransform();
+      }
+
+      /**
+       * Handle mouse up after panning
+       */
+      function handleMouseUp() {
+        if (isDragging) {
+          isDragging = false;
+
+          const imageContainer = document.getElementById(
+            "lightboxImageContainer"
+          );
+          imageContainer.classList.remove("dragging", "no-transition");
+        }
+      }
+
+      /**
+       * Handle touch start for pinch zoom and pan
+       * @param {TouchEvent} e - Touch event
+       */
+      function handleTouchStart(e) {
+        const currentTime = new Date().getTime();
+        const tapLength = currentTime - lastTapTime;
+
+        // Double-tap detection
+        if (
+          tapLength < doubleTapDelay &&
+          tapLength > 0 &&
+          e.touches.length === 1
+        ) {
+          const touch = e.touches[0];
+          toggleZoom(touch.clientX, touch.clientY);
+          e.preventDefault();
+        }
+
+        lastTapTime = currentTime;
+
+        // Single touch - prepare for pan
+        if (e.touches.length === 1) {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+          isDragging = currentZoom > 1;
+        }
+
+        // Two touches - pinch to zoom
+        if (e.touches.length === 2) {
+          isPinching = true;
+          isDragging = false;
+          touchStartDistance = getDistance(e.touches[0], e.touches[1]);
+          e.preventDefault();
+        }
+      }
+
+      /**
+       * Handle touch move for pinch zoom and pan
+       * @param {TouchEvent} e - Touch event
+       */
+      function handleTouchMove(e) {
+        if (isPinching && e.touches.length === 2) {
+          e.preventDefault();
+          const currentDistance = getDistance(e.touches[0], e.touches[1]);
+          const scale = currentDistance / touchStartDistance;
+          let newZoom = currentZoom * scale;
+          newZoom = Math.max(1, Math.min(5, newZoom));
+
+          const oldZoom = currentZoom;
+          currentZoom = newZoom;
+          touchStartDistance = currentDistance;
+
+          const centerX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+          const centerY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+          const container = document.getElementById("lightboxContent");
+          const containerRect = container.getBoundingClientRect();
+
+          const relX = centerX - containerRect.left;
+          const relY = centerY - containerRect.top;
+
+          const offsetX = containerRect.width / 2 - relX;
+          const offsetY = containerRect.height / 2 - relY;
+
+          const zoomFactor = currentZoom / oldZoom;
+
+          if (currentZoom < oldZoom) {
+            const centeringFactor = 1 - (currentZoom - 1) / 4;
+            translateX =
+              translateX * zoomFactor +
+              offsetX * (1 - zoomFactor) * centeringFactor;
+            translateY =
+              translateY * zoomFactor +
+              offsetY * (1 - zoomFactor) * centeringFactor;
+          } else {
+            translateX = translateX * zoomFactor + offsetX * (1 - zoomFactor);
+            translateY = translateY * zoomFactor + offsetY * (1 - zoomFactor);
+          }
+
+          if (currentZoom <= 1) {
+            currentZoom = 1;
+            translateX = 0;
+            translateY = 0;
+          }
+
+          clampPosition();
+          updateImageTransform();
+        } else if (isDragging && e.touches.length === 1) {
+          e.preventDefault();
+          const touch = e.touches[0];
+          const deltaX = touch.clientX - touchStartX;
+          const deltaY = touch.clientY - touchStartY;
+
+          translateX += deltaX;
+          translateY += deltaY;
+
+          clampPosition();
+          updateImageTransform();
+
+          // Update start position for next move
+          touchStartX = touch.clientX;
+          touchStartY = touch.clientY;
+        }
+      }
+
+      /**
+       * Handle touch end
+       * @param {TouchEvent} e - Touch event
+       */
+      function handleTouchEnd(e) {
+        // Reset flags
+        isDragging = false;
+        isPinching = false;
+      }
+
+      /**
+       * Calculate distance between two touch points
+       * @param {Touch} touch1 - First touch point
+       * @param {Touch} touch2 - Second touch point
+       * @returns {number} Distance between points
+       */
+      function getDistance(touch1, touch2) {
+        const dx = touch1.clientX - touch2.clientX;
+        const dy = touch1.clientY - touch2.clientY;
+        return Math.sqrt(dx * dx + dy * dy);
+      }
+
+      /**
+       * Handle keyboard events in lightbox
+       * @param {KeyboardEvent} e - Keyboard event
+       */
+      function handleLightboxKeydown(e) {
+        const lightbox = document.getElementById("lightbox");
+        if (lightbox && lightbox.classList.contains("active")) {
+          if (e.key === "Escape") {
+            closeLightbox();
+          } else if (currentZoom > 1) {
+            const panAmount = 30;
+
+            if (e.key === "ArrowLeft") {
+              translateX -= panAmount;
+            } else if (e.key === "ArrowRight") {
+              translateX += panAmount;
+            } else if (e.key === "ArrowUp") {
+              translateY -= panAmount;
+            } else if (e.key === "ArrowDown") {
+              translateY += panAmount;
+            }
+
+            clampPosition();
+            updateImageTransform();
+          }
+        }
+      }
+
+      // Helper functions for event listeners (to avoid errors when removing)
+      function handleDoubleClick(e) {
+        toggleZoom(e.clientX, e.clientY);
+      }
+
+      function handleContextMenu(e) {
+        e.preventDefault();
       }
 
       // ===========================================
@@ -2691,7 +3055,6 @@
           }
         };
       }
-
       /**
        * Debounce function to delay function calls
        * @param {Function} func - Function to debounce
@@ -2708,7 +3071,6 @@
           timeout = setTimeout(later, wait);
         };
       }
-
       /**
        * Handle visibility change to pause/resume slider
        */
@@ -2719,7 +3081,6 @@
           startHeroAutoSlide();
         }
       }
-
       // ===========================================
       // OPTIMIZED EVENT HANDLERS
       // ===========================================
@@ -2728,7 +3089,6 @@
         initScrollAnimations();
         initVisibleElements();
       }, 250);
-
       // ===========================================
       // INITIALIZATION AND MAIN EVENT LISTENERS
       // ===========================================
@@ -2739,7 +3099,6 @@
         console.log(
           "🎨 Impasto Photography Wedding Ratecard - Initializing..."
         );
-
         // Core initialization
         loadSavedTheme();
         updateHeroSlide();
@@ -2747,10 +3106,8 @@
         initVisibleElements();
         initTouchSupport();
         initPackageCardInteractions();
-
         // Start hero slider auto-advance
         startHeroAutoSlide();
-
         // Add smooth scrolling to anchor links
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
           anchor.addEventListener("click", function (e) {
@@ -2761,7 +3118,6 @@
             }
           });
         });
-
         // Hero dots event listeners
         heroDots.forEach((dot, index) => {
           dot.addEventListener("click", () => {
@@ -2771,26 +3127,20 @@
             setTimeout(startHeroAutoSlide, 3000);
           });
         });
-
         console.log("✅ Wedding Ratecard Website Loaded Successfully!");
       });
-
       // ===========================================
       // WINDOW EVENT LISTENERS
       // ===========================================
       // Optimized scroll handler
       window.addEventListener("scroll", throttledScrollHandler);
-
       // Handle window resize
       window.addEventListener("resize", debouncedResizeHandler);
-
       // Handle page visibility changes
       document.addEventListener("visibilitychange", handleVisibilityChange);
-
       // Handle page focus/blur
       window.addEventListener("focus", startHeroAutoSlide);
       window.addEventListener("blur", stopHeroAutoSlide);
-
       // ===========================================
       // KEYBOARD NAVIGATION SUPPORT
       // ===========================================
@@ -2799,7 +3149,6 @@
         if (e.key === "Escape") {
           closeMobileMenu();
         }
-
         // Arrow key navigation for hero slider
         if (e.key === "ArrowLeft") {
           previousHeroSlide();
@@ -2811,7 +3160,6 @@
           stopHeroAutoSlide();
           setTimeout(startHeroAutoSlide, 3000);
         }
-
         // Space bar to pause/resume slider
         if (e.key === " " && e.target === document.body) {
           e.preventDefault();
@@ -2822,7 +3170,6 @@
           }
         }
       });
-
       // ===========================================
       // IMAGE PROTECTION AND ACCESSIBILITY
       // ===========================================
@@ -2833,7 +3180,6 @@
           return false;
         }
       });
-
       // Disable drag on images
       document.addEventListener("dragstart", function (e) {
         if (e.target.tagName === "IMG") {
@@ -2841,10 +3187,8 @@
           return false;
         }
       });
-
       // Add smooth scroll behavior to HTML
       document.documentElement.style.scrollBehavior = "smooth";
-
       // ===========================================
       // SEO AND PERFORMANCE OPTIMIZATIONS
       // ===========================================
@@ -2855,7 +3199,6 @@
           "assets/images/img6.jpg",
           "assets/images/img7.jpg",
         ];
-
         criticalImages.forEach((src) => {
           const link = document.createElement("link");
           link.rel = "preload";
@@ -2864,7 +3207,6 @@
           document.head.appendChild(link);
         });
       });
-
       // Add structured data update function
       function updateStructuredData() {
         const script = document.querySelector(
@@ -2876,7 +3218,6 @@
           script.textContent = JSON.stringify(data);
         }
       }
-
       // Call on page load
       window.addEventListener("load", updateStructuredData);
     </script>

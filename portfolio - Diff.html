@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta
+      name="keywords"
+      content="photography, studio, professional, memories, artistry, technology"
+    />
+    <meta name="author" content="Impasto Photography Studio" />
+    <title>
+      Impasto Photography Studio | Professional Photography Services
+    </title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Open Graph Meta Tags for SEO -->
+    <meta
+      property="og:title"
+      content="Impasto Photography Studio | Professional Photography Services"
+    />
+    <meta
+      property="og:description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://impastophotography.com" />
+    <meta
+      property="og:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Impasto Photography Studio | Professional Photography Services"
+    />
+    <meta
+      name="twitter:description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta
+      name="twitter:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/logo-fav.png" />
+    <link rel="apple-touch-icon" href="assets/images/logo.png" />
+    <!--Default Styles-->
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/components/navhero.css" />
+    <link rel="stylesheet" href="assets/styles/components/footer.css" />
+    <style>
+      /* ===========================================
+    ABOUT US PAGE STYLES (EXISTING)
+   =========================================== */
+      /* About Hero Section - Fixed positioning issue */
+      .about-hero {
+        background: linear-gradient(135deg, var(--gradient-primary));
+        padding: var(--spacing-3xl) 0;
+        position: relative;
+        overflow: hidden;
+        margin-top: 60px; /* Added to account for fixed navbar */
+      }
+      .about-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        opacity: 0.5;
+      }
+      .about-hero-content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        color: white;
+      }
+      .about-title {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 700;
+        margin-bottom: var(--spacing-md);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      .about-subtitle {
+        font-size: clamp(1.1rem, 3vw, 1.5rem);
+        font-weight: 300;
+        margin-bottom: var(--spacing-lg);
+        opacity: 0.9;
+      }
+      .about-breadcrumb {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-sm);
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+      .about-breadcrumb a {
+        color: white;
+        text-decoration: none;
+        transition: opacity var(--transition-fast);
+      }
+      .about-breadcrumb a:hover {
+        opacity: 1;
+      }
+      .about-breadcrumb i {
+        font-size: 0.8rem;
+      }
+      /* Section Styles */
+      .section {
+        padding: var(--spacing-4xl) 0;
+      }
+      .section-header {
+        margin-bottom: var(--spacing-3xl);
+      }
+      .section-title {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-md);
+      }
+      .section-subtitle {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .section-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-md);
+        margin: var(--spacing-lg) 0;
+      }
+      .divider-line {
+        height: 2px;
+        width: 60px;
+        background: var(--accent-color);
+      }
+      .divider-icon {
+        color: var(--accent-color);
+        font-size: 1.2rem;
+      }
+
+      /* ===========================================
+           STATS SECTION - MATCHING FIRST FILE DESIGN
+           =========================================== */
+      .stats-section {
+        background: var(--bg-secondary);
+        padding: var(--spacing-4xl) 0;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--spacing-xl);
+        text-align: center;
+      }
+      .stat-number {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        font-weight: 700;
+        color: var(--accent-color);
+        margin-bottom: var(--spacing-sm);
+        font-family: var(--font-secondary);
+        display: block;
+      }
+      .stat-label {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* ===========================================
+           PORTFOLIO GALLERY STYLES - NEW
+           =========================================== */
+      .portfolio-section {
+        padding: var(--spacing-5xl) 0;
+        background: var(--bg-primary);
+      }
+
+      .portfolio-header {
+        text-align: center;
+        margin-bottom: var(--spacing-4xl);
+      }
+
+      .portfolio-title {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-md);
+        font-family: var(--font-secondary);
+      }
+
+      .portfolio-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      /* Filter Buttons */
+      .portfolio-filters {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-3xl);
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        padding: var(--spacing-sm) var(--spacing-lg);
+        background: transparent;
+        border: 2px solid var(--accent-color);
+        color: var(--accent-color);
+        border-radius: var(--radius-lg);
+        font-weight: 500;
+        cursor: pointer;
+        transition: all var(--transition-fast);
+        font-size: 0.9rem;
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: var(--accent-color);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Portfolio Grid */
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-4xl);
+      }
+
+      @media (min-width: 768px) {
+        .portfolio-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .portfolio-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (min-width: 1280px) {
+        .portfolio-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      .portfolio-item {
+        position: relative;
+        aspect-ratio: 1;
+        overflow: hidden;
+        border-radius: var(--radius-lg);
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        background: var(--bg-secondary);
+      }
+
+      .portfolio-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .portfolio-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform var(--transition-slow);
+      }
+
+      .portfolio-item:hover img {
+        transform: scale(1.05);
+      }
+
+      .portfolio-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 0, 0, 0.7),
+          rgba(0, 0, 0, 0.5)
+        );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity var(--transition-normal);
+        color: white;
+        text-align: center;
+        padding: var(--spacing-lg);
+      }
+
+      .portfolio-item:hover .portfolio-overlay {
+        opacity: 1;
+      }
+
+      .portfolio-overlay h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .portfolio-overlay p {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .portfolio-overlay .view-icon {
+        width: 50px;
+        height: 50px;
+        border: 2px solid white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        transition: all var(--transition-fast);
+      }
+
+      .portfolio-overlay .view-icon:hover {
+        background: white;
+        color: var(--accent-color);
+        transform: scale(1.1);
+      }
+
+      /* Photo Viewer Modal */
+      .photo-viewer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.95);
+        display: none;
+        z-index: 10000;
+        opacity: 0;
+        transition: opacity var(--transition-normal);
+      }
+
+      .photo-viewer.active {
+        display: flex;
+        opacity: 1;
+      }
+
+      .photo-viewer-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding: var(--spacing-xl);
+      }
+
+      .photo-viewer-image {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: var(--radius-sm);
+        transition: transform var(--transition-normal);
+      }
+
+      /* Viewer Controls */
+      .viewer-controls {
+        position: absolute;
+        top: var(--spacing-lg);
+        right: var(--spacing-lg);
+        display: flex;
+        gap: var(--spacing-sm);
+        z-index: 10001;
+      }
+
+      .viewer-btn {
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all var(--transition-fast);
+        backdrop-filter: blur(10px);
+      }
+
+      .viewer-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+
+      /* Navigation Arrows */
+      .viewer-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all var(--transition-fast);
+        backdrop-filter: blur(10px);
+        font-size: 1.5rem;
+      }
+
+      .viewer-nav:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .viewer-prev {
+        left: var(--spacing-lg);
+      }
+
+      .viewer-next {
+        right: var(--spacing-lg);
+      }
+
+      /* Viewer Info */
+      .viewer-info {
+        position: absolute;
+        bottom: var(--spacing-lg);
+        left: var(--spacing-lg);
+        right: var(--spacing-lg);
+        color: white;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        padding: var(--spacing-lg);
+        border-radius: var(--radius-lg);
+        backdrop-filter: blur(10px);
+      }
+
+      .viewer-info h3 {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .viewer-info p {
+        opacity: 0.9;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .viewer-counter {
+        font-size: 0.9rem;
+        opacity: 0.7;
+      }
+
+      /* Zoom functionality */
+      .photo-viewer-image.zoomed {
+        cursor: grab;
+      }
+
+      .photo-viewer-image.zoomed:active {
+        cursor: grabbing;
+      }
+
+      /* Loading Animation */
+      .portfolio-loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+      }
+
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid var(--bg-secondary);
+        border-top: 4px solid var(--accent-color);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .portfolio-filters {
+          gap: var(--spacing-sm);
+        }
+
+        .filter-btn {
+          padding: var(--spacing-xs) var(--spacing-md);
+          font-size: 0.85rem;
+        }
+
+        .viewer-controls {
+          top: var(--spacing-md);
+          right: var(--spacing-md);
+        }
+
+        .viewer-nav {
+          width: 50px;
+          height: 50px;
+          font-size: 1.25rem;
+        }
+
+        .viewer-prev {
+          left: var(--spacing-md);
+        }
+
+        .viewer-next {
+          right: var(--spacing-md);
+        }
+
+        .viewer-info {
+          bottom: var(--spacing-md);
+          left: var(--spacing-md);
+          right: var(--spacing-md);
+          padding: var(--spacing-md);
+        }
+
+        .viewer-info h3 {
+          font-size: 1.25rem;
+        }
+      }
+
+      /* Dark theme support for portfolio */
+      [data-theme="dark"] .portfolio-section {
+        background: var(--bg-secondary);
+      }
+
+      [data-theme="dark"] .portfolio-item {
+        background: var(--bg-tertiary);
+      }
+
+      [data-theme="dark"] .filter-btn {
+        border-color: var(--accent-color);
+        color: var(--accent-color);
+      }
+
+      /* Animation Classes */
+      .fade-in-portfolio {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-in-portfolio.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Fixed Hero Section - Prevents floating/movement issue */
+      .hero {
+        position: relative; /* Changed from absolute/fixed */
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0; /* Reset any margin that might cause issues */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="mobile-menu-overlay"
+      id="mobileMenuOverlay"
+      onclick="toggleMobileMenu()"
+    ></div>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo">
+          <img
+            src="assets/images/logo2.png"
+            alt="Impasto logo"
+            class="logo-icon"
+          />
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link" onclick="setActiveNav(this)"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="information.html"
+                class="nav-link active"
+                onclick="setActiveNav(this)"
+              >
+                Information
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="about.html" class="dropdown-link">About Us</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="team.html" class="dropdown-link">Our Team</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="services.html" class="dropdown-link">Services</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="testimonials.html" class="dropdown-link"
+                  >Testimonials</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="ratecards.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Ratecards
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="portrait.html" class="dropdown-link"
+                  >Portrait Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="wedding.html" class="dropdown-link"
+                  >Wedding Photography</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="store.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Store
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="prints.html" class="dropdown-link">Prints</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="digital-products.html" class="dropdown-link"
+                  >Digital Products</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link" onclick="setActiveNav(this)"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="blog.html" class="nav-link" onclick="setActiveNav(this)"
+              >Blog</a
+            >
+          </li>
+        </ul>
+        <div class="nav-controls">
+          <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon theme-icon"></i>
+            <span class="theme-text">Dark</span>
+          </button>
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section - Updated with camera icon and new content -->
+    <section id="home" class="hero fade-in">
+      <div class="hero-slider">
+        <div
+          class="hero-slide active"
+          style="background-image: url('assets/images/img5.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('assets/images/img6.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('assets/images/img7.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('assets/images/img8.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('assets/images/img9.jpg')"
+        ></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-camera"></i>
+          Since 2010
+        </div>
+        <h1 class="hero-title">Our Portfolio</h1>
+        <p class="hero-subtitle">A Curated Collection of Our Finest Work</p>
+      </div>
+      <!-- Hero Slider Indicators -->
+      <div class="hero-indicators">
+        <div class="hero-indicator active" onclick="goToSlide(0)"></div>
+        <div class="hero-indicator" onclick="goToSlide(1)"></div>
+        <div class="hero-indicator" onclick="goToSlide(2)"></div>
+        <div class="hero-indicator" onclick="goToSlide(3)"></div>
+        <div class="hero-indicator" onclick="goToSlide(4)"></div>
+      </div>
+      <div class="scroll-indicator" onclick="scrollToSection('next-section')">
+        <i class="fas fa-chevron-down fa-2x"></i>
+      </div>
+    </section>
+
+    <!-- Stats Section - Matching First File Design -->
+    <section id="stats" class="stats-section fade-in-up">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number" data-count="15">0</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="10000">0</span>
+            <span class="stat-label">Happy Clients</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="50000">0</span>
+            <span class="stat-label">Photos Captured</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="750">0</span>
+            <span class="stat-label">Projects Completed</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content - NEW PORTFOLIO GALLERY -->
+    <main class="main-content" id="next-section">
+      <!-- Portfolio Section -->
+      <section class="portfolio-section">
+        <div class="container">
+          <!-- Portfolio Header -->
+          <div class="portfolio-header fade-in-portfolio">
+            <h2 class="portfolio-title">Our Portfolio</h2>
+            <p class="portfolio-subtitle">
+              Every photograph tells a story. Explore our collection of moments
+              captured with passion, creativity, and technical excellence.
+            </p>
+          </div>
+
+          <!-- Portfolio Filters -->
+          <div class="portfolio-filters fade-in-portfolio">
+            <button class="filter-btn active" data-filter="all">
+              All Works
+            </button>
+            <button class="filter-btn" data-filter="wedding">Weddings</button>
+            <button class="filter-btn" data-filter="portrait">Portraits</button>
+            <button class="filter-btn" data-filter="event">Events</button>
+            <button class="filter-btn" data-filter="family">Family</button>
+            <button class="filter-btn" data-filter="commercial">
+              Commercial
+            </button>
+          </div>
+
+          <!-- Portfolio Grid -->
+          <div class="portfolio-grid" id="portfolioGrid">
+            <!-- Loading Animation -->
+            <div class="portfolio-loading" id="portfolioLoading">
+              <div class="loading-spinner"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Photo Viewer Modal -->
+    <div class="photo-viewer" id="photoViewer">
+      <div class="photo-viewer-container">
+        <!-- Controls -->
+        <div class="viewer-controls">
+          <button class="viewer-btn" id="zoomIn" title="Zoom In">
+            <i class="fas fa-search-plus"></i>
+          </button>
+          <button class="viewer-btn" id="zoomOut" title="Zoom Out">
+            <i class="fas fa-search-minus"></i>
+          </button>
+          <button class="viewer-btn" id="resetZoom" title="Reset Zoom">
+            <i class="fas fa-compress-arrows-alt"></i>
+          </button>
+          <button class="viewer-btn" id="closeViewer" title="Close">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <!-- Navigation -->
+        <button class="viewer-nav viewer-prev" id="prevImage" title="Previous">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="viewer-nav viewer-next" id="nextImage" title="Next">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <!-- Main Image -->
+        <img class="photo-viewer-image" id="viewerImage" src="" alt="" />
+
+        <!-- Image Info -->
+        <div class="viewer-info">
+          <h3 id="viewerTitle">Image Title</h3>
+          <p id="viewerDescription">Image description goes here</p>
+          <div class="viewer-counter">
+            <span id="currentIndex">1</span> / <span id="totalImages">1</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--footer-->
+    <footer class="footer scale-in">
+      <div class="footer-content container">
+        <div class="footer-grid">
+          <!-- Logo Section -->
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img
+                src="assets/images/logo2.png"
+                class="footer-logo-icon"
+                alt="Impasto Photography"
+              />
+            </div>
+            <p class="footer-description">
+              At Impasto Photography, we specialize in capturing life's precious
+              moments with artistry and precision. Our team of professional
+              photographers is dedicated to creating timeless memories that
+              you'll cherish for generations to come.
+            </p>
+          </div>
+          <!-- Quick Links -->
+          <div class="footer-section slide-in-left">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#home">
+                  <i class="fas fa-chevron-right"></i>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="information.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Information
+                </a>
+              </li>
+              <li>
+                <a href="ratecards.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Ratecards
+                </a>
+              </li>
+              <li>
+                <a href="store.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Store
+                </a>
+              </li>
+              <li>
+                <a href="contact.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a href="blog.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Services -->
+          <div class="footer-section fade-in">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#">
+                  <i class="fas fa-camera"></i>
+                  Pre-Birthday Shoots
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-user"></i>
+                  Studio Potraits
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-building"></i>
+                  Large Format Print and Cut
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-calendar-alt"></i>
+                  Event Coverage
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-plane"></i>
+                  Passport Pictures
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-palette"></i>
+                  Graphic Design
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-ellipsis-h"></i>
+                  etc
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Contact -->
+          <div class="footer-section slide-in-right">
+            <h3>Get In Touch</h3>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dome - Accra. Opposite Adehyeman Bank.</span>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>+233 (0) 242-641-305</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <span>potrit1@gmail.com</span>
+              </li>
+              <li>
+                <i class="fas fa-clock"></i>
+                <span>Mon-Fri: 8AM-5PM, Sat: 9:30AM-6PM, Sun: 1PM-6PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content container">
+          <div class="footer-copyright">
+            <p>© 2025 Impasto Photography. All rights reserved.</p>
+          </div>
+          <div class="kenzy-credit">
+            <p>Website developed with 💖 by Kenzyverse</p>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-pinterest-p"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/src/general.js"></script>
+    <script src="assets/src/navhero.js"></script>
+    <script>
+      // ===========================================
+      // COUNTER ANIMATIONS FOR STATS SECTION (EXISTING)
+      // ===========================================
+      function animateCounter(counter, target) {
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+        const updateCounter = () => {
+          current += increment;
+          if (current < target) {
+            counter.textContent = Math.floor(current).toLocaleString();
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target.toLocaleString();
+          }
+        };
+        updateCounter();
+      }
+
+      function initCounters() {
+        const counters = document.querySelectorAll(".stat-number");
+        counters.forEach((counter) => {
+          if (
+            isElementInViewport(counter) &&
+            !counter.classList.contains("animated")
+          ) {
+            counter.classList.add("animated");
+            const target = parseInt(counter.getAttribute("data-count"));
+            animateCounter(counter, target);
+          }
+        });
+      }
+
+      // ===========================================
+      // PORTFOLIO GALLERY FUNCTIONALITY - NEW
+      // ===========================================
+
+      // Portfolio Data - Replace with your actual images
+      const portfolioData = [
+        {
+          id: 1,
+          title: "Elegant Wedding Portrait",
+          description:
+            "A beautiful moment captured during a traditional ceremony",
+          category: "wedding",
+          image: "assets/images/img5.jpg",
+          fullImage: "assets/images/img5.jpg",
+        },
+        {
+          id: 2,
+          title: "Professional Headshot",
+          description: "Corporate portrait with natural lighting",
+          category: "portrait",
+          image: "assets/images/img6.jpg",
+          fullImage: "assets/images/img6.jpg",
+        },
+        {
+          id: 3,
+          title: "Family Gathering",
+          description: "Candid moments of joy and laughter",
+          category: "family",
+          image: "assets/images/img7.jpg",
+          fullImage: "assets/images/img7.jpg",
+        },
+        {
+          id: 4,
+          title: "Corporate Event",
+          description: "Professional event photography",
+          category: "event",
+          image: "assets/images/img8.jpg",
+          fullImage: "assets/images/img8.jpg",
+        },
+        {
+          id: 5,
+          title: "Fashion Portrait",
+          description: "Creative studio lighting and composition",
+          category: "portrait",
+          image: "assets/images/img9.jpg",
+          fullImage: "assets/images/img9.jpg",
+        },
+        {
+          id: 6,
+          title: "Wedding Ceremony",
+          description: "Sacred moments beautifully preserved",
+          category: "wedding",
+          image: "assets/images/image2.jpg",
+          fullImage: "assets/images/image2.jpg",
+        },
+        {
+          id: 7,
+          title: "Business Portrait",
+          description: "Professional executive photography",
+          category: "commercial",
+          image: "assets/images/image3.jpg",
+          fullImage: "assets/images/image3.jpg",
+        },
+        {
+          id: 8,
+          title: "Family Portrait",
+          description: "Timeless family memories",
+          category: "family",
+          image: "assets/images/image4.jpg",
+          fullImage: "assets/images/image4.jpg",
+        },
+        {
+          id: 9,
+          title: "Event Coverage",
+          description: "Dynamic event photography",
+          category: "event",
+          image: "assets/images/img5.jpg",
+          fullImage: "assets/images/img5.jpg",
+        },
+        {
+          id: 10,
+          title: "Portrait Session",
+          description: "Creative portrait with artistic lighting",
+          category: "portrait",
+          image: "assets/images/img6.jpg",
+          fullImage: "assets/images/img6.jpg",
+        },
+        {
+          id: 11,
+          title: "Wedding Reception",
+          description: "Celebration moments captured perfectly",
+          category: "wedding",
+          image: "assets/images/img7.jpg",
+          fullImage: "assets/images/img7.jpg",
+        },
+        {
+          id: 12,
+          title: "Corporate Headshots",
+          description: "Professional business photography",
+          category: "commercial",
+          image: "assets/images/img8.jpg",
+          fullImage: "assets/images/img8.jpg",
+        },
+      ];
+
+      // Portfolio State
+      let currentFilter = "all";
+      let currentImageIndex = 0;
+      let filteredImages = [];
+      let zoomLevel = 1;
+      let isDragging = false;
+      let startX = 0;
+      let startY = 0;
+      let translateX = 0;
+      let translateY = 0;
+
+      // DOM Elements
+      const portfolioGrid = document.getElementById("portfolioGrid");
+      const portfolioLoading = document.getElementById("portfolioLoading");
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const photoViewer = document.getElementById("photoViewer");
+      const viewerImage = document.getElementById("viewerImage");
+      const viewerTitle = document.getElementById("viewerTitle");
+      const viewerDescription = document.getElementById("viewerDescription");
+      const currentIndexSpan = document.getElementById("currentIndex");
+      const totalImagesSpan = document.getElementById("totalImages");
+
+      // Control buttons
+      const closeViewerBtn = document.getElementById("closeViewer");
+      const prevImageBtn = document.getElementById("prevImage");
+      const nextImageBtn = document.getElementById("nextImage");
+      const zoomInBtn = document.getElementById("zoomIn");
+      const zoomOutBtn = document.getElementById("zoomOut");
+      const resetZoomBtn = document.getElementById("resetZoom");
+
+      /**
+       * Initialize Portfolio Gallery
+       */
+      function initPortfolio() {
+        // Load initial portfolio
+        loadPortfolio();
+
+        // Setup filter buttons
+        setupFilters();
+
+        // Setup photo viewer
+        setupPhotoViewer();
+
+        // Setup scroll animations
+        setupPortfolioAnimations();
+
+        // Initialize counters
+        initCounters();
+      }
+
+      /**
+       * Load and display portfolio items
+       */
+      function loadPortfolio(filter = "all") {
+        // Show loading
+        portfolioLoading.style.display = "flex";
+
+        // Filter images
+        filteredImages =
+          filter === "all"
+            ? portfolioData
+            : portfolioData.filter((item) => item.category === filter);
+
+        // Simulate loading delay
+        setTimeout(() => {
+          renderPortfolio();
+          portfolioLoading.style.display = "none";
+        }, 500);
+      }
+
+      /**
+       * Render portfolio grid
+       */
+      function renderPortfolio() {
+        const gridHTML = filteredImages
+          .map(
+            (item, index) => `
+          <div class="portfolio-item fade-in-portfolio" data-index="${index}" data-category="${item.category}">
+            <img src="${item.image}" alt="${item.title}" loading="lazy" />
+            <div class="portfolio-overlay">
+              <h3>${item.title}</h3>
+              <p>${item.description}</p>
+              <div class="view-icon">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+          </div>
+        `
+          )
+          .join("");
+
+        portfolioGrid.innerHTML = gridHTML;
+
+        // Add click listeners to portfolio items
+        document.querySelectorAll(".portfolio-item").forEach((item, index) => {
+          item.addEventListener("click", () => openPhotoViewer(index));
+        });
+
+        // Trigger animations
+        setTimeout(() => {
+          document.querySelectorAll(".portfolio-item").forEach((item) => {
+            item.classList.add("visible");
+          });
+        }, 100);
+      }
+
+      /**
+       * Setup filter functionality
+       */
+      function setupFilters() {
+        filterButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            // Update active button
+            filterButtons.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            // Get filter value and load portfolio
+            const filter = btn.getAttribute("data-filter");
+            currentFilter = filter;
+            loadPortfolio(filter);
+          });
+        });
+      }
+
+      /**
+       * Setup photo viewer functionality
+       */
+      function setupPhotoViewer() {
+        // Close viewer
+        closeViewerBtn.addEventListener("click", closePhotoViewer);
+
+        // Navigation
+        prevImageBtn.addEventListener("click", showPrevImage);
+        nextImageBtn.addEventListener("click", showNextImage);
+
+        // Zoom controls
+        zoomInBtn.addEventListener("click", () => zoomImage(1.2));
+        zoomOutBtn.addEventListener("click", () => zoomImage(0.8));
+        resetZoomBtn.addEventListener("click", resetZoom);
+
+        // Keyboard controls
+        document.addEventListener("keydown", handleKeyboard);
+
+        // Click outside to close
+        photoViewer.addEventListener("click", (e) => {
+          if (e.target === photoViewer) closePhotoViewer();
+        });
+
+        // Touch/Mouse events for dragging
+        setupImageDragging();
+      }
+
+      /**
+       * Open photo viewer
+       */
+      function openPhotoViewer(index) {
+        currentImageIndex = index;
+        updateViewerImage();
+        photoViewer.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      /**
+       * Close photo viewer
+       */
+      function closePhotoViewer() {
+        photoViewer.classList.remove("active");
+        document.body.style.overflow = "auto";
+        resetZoom();
+      }
+
+      /**
+       * Update viewer image and info
+       */
+      function updateViewerImage() {
+        const item = filteredImages[currentImageIndex];
+        if (!item) return;
+
+        viewerImage.src = item.fullImage;
+        viewerImage.alt = item.title;
+        viewerTitle.textContent = item.title;
+        viewerDescription.textContent = item.description;
+        currentIndexSpan.textContent = currentImageIndex + 1;
+        totalImagesSpan.textContent = filteredImages.length;
+
+        // Reset zoom and position
+        resetZoom();
+      }
+
+      /**
+       * Show previous image
+       */
+      function showPrevImage() {
+        currentImageIndex =
+          currentImageIndex === 0
+            ? filteredImages.length - 1
+            : currentImageIndex - 1;
+        updateViewerImage();
+      }
+
+      /**
+       * Show next image
+       */
+      function showNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % filteredImages.length;
+        updateViewerImage();
+      }
+
+      /**
+       * Zoom image
+       */
+      function zoomImage(factor) {
+        zoomLevel *= factor;
+        zoomLevel = Math.max(0.5, Math.min(3, zoomLevel)); // Limit zoom between 0.5x and 3x
+
+        viewerImage.style.transform = `scale(${zoomLevel}) translate(${translateX}px, ${translateY}px)`;
+
+        if (zoomLevel > 1) {
+          viewerImage.classList.add("zoomed");
+        } else {
+          viewerImage.classList.remove("zoomed");
+          translateX = 0;
+          translateY = 0;
+        }
+      }
+
+      /**
+       * Reset zoom and position
+       */
+      function resetZoom() {
+        zoomLevel = 1;
+        translateX = 0;
+        translateY = 0;
+        viewerImage.style.transform = "scale(1) translate(0px, 0px)";
+        viewerImage.classList.remove("zoomed");
+      }
+
+      /**
+       * Handle keyboard navigation
+       */
+      function handleKeyboard(e) {
+        if (!photoViewer.classList.contains("active")) return;
+
+        switch (e.key) {
+          case "Escape":
+            closePhotoViewer();
+            break;
+          case "ArrowLeft":
+            showPrevImage();
+            break;
+          case "ArrowRight":
+            showNextImage();
+            break;
+          case "+":
+          case "=":
+            zoomImage(1.2);
+            break;
+          case "-":
+            zoomImage(0.8);
+            break;
+          case "0":
+            resetZoom();
+            break;
+        }
+      }
+
+      /**
+       * Setup image dragging functionality
+       */
+      function setupImageDragging() {
+        // Mouse events
+        viewerImage.addEventListener("mousedown", startDrag);
+        document.addEventListener("mousemove", drag);
+        document.addEventListener("mouseup", endDrag);
+
+        // Touch events
+        viewerImage.addEventListener("touchstart", startDrag);
+        document.addEventListener("touchmove", drag);
+        document.addEventListener("touchend", endDrag);
+
+        // Prevent default drag behavior
+        viewerImage.addEventListener("dragstart", (e) => e.preventDefault());
+      }
+
+      /**
+       * Start dragging
+       */
+      function startDrag(e) {
+        if (zoomLevel <= 1) return;
+
+        isDragging = true;
+        const clientX =
+          e.type === "touchstart" ? e.touches[0].clientX : e.clientX;
+        const clientY =
+          e.type === "touchstart" ? e.touches[0].clientY : e.clientY;
+
+        startX = clientX - translateX;
+        startY = clientY - translateY;
+
+        viewerImage.style.cursor = "grabbing";
+      }
+
+      /**
+       * Drag image
+       */
+      function drag(e) {
+        if (!isDragging || zoomLevel <= 1) return;
+
+        e.preventDefault();
+
+        const clientX =
+          e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
+        const clientY =
+          e.type === "touchmove" ? e.touches[0].clientY : e.clientY;
+
+        translateX = clientX - startX;
+        translateY = clientY - startY;
+
+        // Limit dragging to reasonable bounds
+        const maxTranslate = 200 * zoomLevel;
+        translateX = Math.max(
+          -maxTranslate,
+          Math.min(maxTranslate, translateX)
+        );
+        translateY = Math.max(
+          -maxTranslate,
+          Math.min(maxTranslate, translateY)
+        );
+
+        viewerImage.style.transform = `scale(${zoomLevel}) translate(${translateX}px, ${translateY}px)`;
+      }
+
+      /**
+       * End dragging
+       */
+      function endDrag() {
+        isDragging = false;
+        viewerImage.style.cursor = zoomLevel > 1 ? "grab" : "default";
+      }
+
+      /**
+       * Setup scroll animations for portfolio
+       */
+      function setupPortfolioAnimations() {
+        const animatedElements =
+          document.querySelectorAll(".fade-in-portfolio");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+          }
+        );
+
+        animatedElements.forEach((element) => {
+          observer.observe(element);
+        });
+      }
+
+      /**
+       * Check if element is in viewport (EXISTING FUNCTION)
+       */
+      function isElementInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        const windowHeight =
+          window.innerHeight || document.documentElement.clientHeight;
+        const offset = windowHeight * 0.2;
+        return rect.top <= windowHeight - offset && rect.bottom >= offset;
+      }
+
+      /**
+       * Initialize page when DOM is loaded
+       */
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize portfolio
+        initPortfolio();
+
+        // Add scroll event listener for counters
+        window.addEventListener("scroll", initCounters);
+
+        console.log("Portfolio Page Loaded Successfully! 📸");
+      });
+
+      /**
+       * Cleanup event listeners when page is unloaded
+       */
+      window.addEventListener("beforeunload", function () {
+        document.removeEventListener("keydown", handleKeyboard);
+      });
+
+      // Export functions for external use if needed
+      window.PortfolioGallery = {
+        init: initPortfolio,
+        openViewer: openPhotoViewer,
+        closeViewer: closePhotoViewer,
+      };
+    </script>
+  </body>
+</html>

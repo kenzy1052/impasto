@@ -5,14 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+      content="Professional Wedding Photography Rate Cards 2025/26 - Impasto Photography Studio offers comprehensive wedding photography packages, pre-wedding shoots, and videography services in Ghana."
     />
     <meta
       name="keywords"
-      content="photography, studio, professional, memories, artistry, technology"
+      content="wedding photography, wedding rates, Ghana wedding photographer, pre-wedding shoot, wedding videography, photography packages, wedding rate card 2025"
     />
     <meta name="author" content="Impasto Photography Studio" />
-    <title>Impasto Photography | Wedding Ratecards</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#2563eb" />
+    <title>
+      Wedding Photography Rate Cards 2025/26 | Impasto Photography Ghana
+    </title>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Impasto Photography Studio",
+        "description": "Professional Wedding Photography and Videography Services in Ghana",
+        "url": "https://impastophotography.com/wedding-rates.html",
+        "image": "https://impastophotography.com/assets/images/logo2.png",
+        "telephone": "+233242641305",
+        "email": "potrit1@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Dome - Accra. Opposite Adehyeman Bank",
+          "addressLocality": "Accra",
+          "addressRegion": "Greater Accra",
+          "addressCountry": "Ghana"
+        },
+        "priceRange": "₵2,500 - ₵15,000",
+        "serviceType": "Wedding Photography"
+      }
+    </script>
 
     <!-- Font Awesome for Icons -->
     <link
@@ -23,32 +50,35 @@
     <!-- Open Graph Meta Tags for SEO -->
     <meta
       property="og:title"
-      content="Impasto Photography Studio | Professional Photography Services"
+      content="Wedding Photography Rate Cards 2025/26 | Impasto Photography"
     />
     <meta
       property="og:description"
-      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+      content="Discover our comprehensive wedding photography packages starting from ₵2,500. Professional pre-wedding, same day, and multi-day coverage available."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://impastophotography.com" />
+    <meta
+      property="og:url"
+      content="https://impastophotography.com/wedding-rates.html"
+    />
     <meta
       property="og:image"
-      content="https://impastophotography.comassets/images/og-image.jpg"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
     />
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Impasto Photography Studio | Professional Photography Services"
+      content="Wedding Photography Rate Cards 2025/26 | Impasto Photography"
     />
     <meta
       name="twitter:description"
-      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+      content="Professional wedding photography packages in Ghana. Capturing your special moments with artistry and excellence."
     />
     <meta
       name="twitter:image"
-      content="https://impastophotography.comassets/images/og-image.jpg"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
     />
 
     <!-- Favicon -->
@@ -62,6 +92,33 @@
     <link rel="stylesheet" href="assets/styles/components/footer.css" />
 
     <style>
+      /* Custom Scrollbar Styles */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--gradient-primary);
+        border-radius: 10px;
+        transition: all var(--transition-normal);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      }
+
+      /* Firefox Scrollbar */
+      html {
+        scrollbar-width: thin;
+        scrollbar-color: #2563eb var(--bg-secondary);
+      }
+
       body {
         font-family: var(--font-primary);
         background-color: var(--bg-primary);
@@ -74,7 +131,7 @@
         max-width: 1200px;
       }
 
-      /* Scroll Animation Classes */
+      /* Enhanced Scroll Animation Classes */
       .scroll-animate {
         opacity: 0;
         transform: translateY(60px);
@@ -102,6 +159,18 @@
         transform: translateX(0) translateY(0) scale(1);
       }
 
+      /* Text Animation Classes */
+      .text-animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .text-animate.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
       /* Stagger animation delays */
       .scroll-animate:nth-child(1) {
         transition-delay: 0s;
@@ -120,6 +189,17 @@
       }
       .scroll-animate:nth-child(6) {
         transition-delay: 0.5s;
+      }
+
+      /* Text stagger delays */
+      .text-animate:nth-child(1) {
+        transition-delay: 0s;
+      }
+      .text-animate:nth-child(2) {
+        transition-delay: 0.15s;
+      }
+      .text-animate:nth-child(3) {
+        transition-delay: 0.3s;
       }
 
       /* ===========================================
@@ -331,7 +411,7 @@
       }
 
       /*============================
-        Hero Section
+        Hero Section with 5 Images
         ===========================*/
       .hero {
         min-height: 100vh;
@@ -371,12 +451,13 @@
         opacity: 1;
       }
 
+      /* Hero slide backgrounds using img5.jpg to img9.jpg */
       .hero-slide-1 {
         background-image: linear-gradient(
             rgba(0, 0, 0, 0.4),
             rgba(0, 0, 0, 0.4)
           ),
-          url("assets/images/img0.jpg");
+          url("assets/images/img5.jpg");
       }
 
       .hero-slide-2 {
@@ -384,7 +465,7 @@
             rgba(0, 0, 0, 0.4),
             rgba(0, 0, 0, 0.4)
           ),
-          url("assets/images/img62.jpg");
+          url("assets/images/img6.jpg");
       }
 
       .hero-slide-3 {
@@ -392,7 +473,23 @@
             rgba(0, 0, 0, 0.4),
             rgba(0, 0, 0, 0.4)
           ),
-          url("assets/images/img64.jpg");
+          url("assets/images/img7.jpg");
+      }
+
+      .hero-slide-4 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/img8.jpg");
+      }
+
+      .hero-slide-5 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/img9.jpg");
       }
 
       .hero-overlay {
@@ -422,7 +519,6 @@
         line-height: 1.3;
         font-family: var(--font-secondary);
         font-optical-sizing: auto;
-        transition: opacity 0.5s ease;
       }
 
       .hero-subtitle {
@@ -431,7 +527,6 @@
         margin-bottom: var(--spacing-2xl);
         font-weight: 300;
         line-height: 1.5;
-        transition: opacity 0.5s ease;
         padding: 0 2rem;
         font-family: var(--font-primary);
       }
@@ -448,7 +543,7 @@
         display: inline-flex;
         align-items: center;
         gap: var(--spacing-sm);
-        padding: var(--spacing-md) var(--spacing-xl);
+        padding: var(--spacing-sm);
         border-radius: var(--radius-lg);
         text-decoration: none;
         font-weight: 600;
@@ -456,7 +551,7 @@
         transition: all var(--transition-normal);
         cursor: pointer;
         border: none;
-        font-size: 1rem;
+        font-size: 12px;
       }
 
       .btn-primary {
@@ -483,60 +578,44 @@
       }
 
       .h-btn {
-        min-width: 250px;
+        min-width: 200px;
       }
 
-      /* Navigation Controls */
-      .hero-nav-controls {
+      /* Dot Navigation */
+      .hero-dots {
         position: absolute;
-        top: 50%;
-        width: 100%;
+        bottom: var(--spacing-xl);
+        left: 50%;
+        transform: translateX(-50%);
         display: flex;
-        justify-content: space-between;
-        padding: 0 var(--spacing-md);
+        gap: var(--spacing-sm);
         z-index: 10;
-        pointer-events: none;
       }
 
-      .hero-nav-btn {
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        width: 50px;
-        height: 50px;
+      .hero-dot {
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
         cursor: pointer;
-        display: none;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        color: white;
         transition: all var(--transition-normal);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        pointer-events: all;
+        border: 2px solid rgba(255, 255, 255, 0.6);
       }
 
-      .hero-nav-btn:hover {
-        background: rgba(255, 255, 255, 0.2);
+      .hero-dot.active {
+        background: white;
+        transform: scale(1.2);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+
+      .hero-dot:hover {
+        background: rgba(255, 255, 255, 0.7);
         transform: scale(1.1);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-      }
-
-      .hero-nav-icon {
-        font-size: 1.2rem;
-        margin-bottom: 2px;
-      }
-
-      .hero-nav-counter {
-        font-size: 0.8rem;
-        font-weight: 600;
-        line-height: 1;
       }
 
       .scroll-indicator {
         position: absolute;
-        bottom: var(--spacing-xl);
+        bottom: calc(var(--spacing-xl) + 40px);
         left: 50%;
         transform: translateX(-50%);
         color: rgba(255, 255, 255, 0.7);
@@ -595,7 +674,7 @@
       .ratecard-header {
         text-align: center;
         margin-bottom: var(--spacing-2xl);
-        padding: 30px 20px;
+        padding: 30px 10px;
         border-bottom: 1px solid var(--border);
       }
 
@@ -837,7 +916,6 @@
         text-align: center;
         margin-bottom: 40px;
         padding: 30px 20px;
-
         border-radius: 8px;
       }
 
@@ -1065,6 +1143,10 @@
         margin-top: 0;
       }
 
+      /* ===========================================
+         RESPONSIVE DESIGN - MOBILE FIRST
+       =========================================== */
+
       @media (min-width: 475px) {
         .hero-title {
           font-size: clamp(2rem, 5vw, 3rem);
@@ -1145,56 +1227,63 @@
         .extras-grid {
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         }
+      }
 
-        @media (min-width: 768px) {
-          .hero-nav-btn {
-            display: flex;
-          }
+      @media (min-width: 768px) {
+        /* Fixed package-title font size for tablet */
+        .package-title {
+          font-size: 24px;
+        }
 
-          .package-title {
-            font-size: 24px;
-          }
+        .package-description h3 {
+          font-size: 20px;
+        }
 
-          .package-description h3 {
-            font-size: 20px;
-          }
+        .package-description p {
+          font-size: 15px;
+          max-width: 550px;
+        }
 
-          .package-description p {
-            font-size: 15px;
-            max-width: 550px;
-          }
+        .package-details li {
+          font-size: 16px;
+        }
 
-          .package-details li {
-            font-size: 16px;
-          }
+        .dual-packages-grid {
+          flex-direction: row;
+        }
 
-          .dual-packages-grid {
-            flex-direction: row;
-          }
+        .dual-package-card {
+          flex: 1;
+        }
 
-          .dual-package-card {
-            flex: 1;
-          }
+        .dual-package-title {
+          font-size: 18px;
+        }
+        .dual-package-description {
+          font-size: 15px;
+        }
 
-          .dual-package-title {
-            font-size: 18px;
-          }
-          .dual-package-description {
-            font-size: 15;
-          }
+        .combined-packages-grid {
+          flex-direction: row;
+        }
 
-          .combined-packages-grid {
-            flex-direction: row;
-          }
-
-          .combined-package-card {
-            flex: 1;
-          }
+        .combined-package-card {
+          flex: 1;
         }
 
         .extras-grid {
           grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
           gap: var(--spacing-xl);
+        }
+
+        .btn {
+          padding: var(--spacing-md) var(--spacing-xl);
+          border-radius: var(--radius-lg);
+          font-size: 1rem;
+        }
+
+        .h-btn {
+          min-width: 280px;
         }
       }
 
@@ -1348,6 +1437,7 @@
           font-size: 36px;
         }
 
+        /* Fixed package-title font size for desktop */
         .package-title {
           font-size: 30px;
         }
@@ -1438,7 +1528,7 @@
         <a href="#home" class="logo">
           <img
             src="assets/images/logo2.png"
-            alt="Impasto logo"
+            alt="Impasto Photography Studio Logo"
             class="logo-icon"
           />
         </a>
@@ -1540,70 +1630,78 @@
           </li>
         </ul>
         <div class="nav-controls">
-          <button class="theme-toggle" onclick="toggleTheme()">
+          <button
+            class="theme-toggle"
+            onclick="toggleTheme()"
+            aria-label="Toggle theme"
+          >
             <i class="fas fa-moon theme-icon"></i>
             <span class="theme-text">Dark</span>
           </button>
-          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+          <button
+            class="mobile-menu-toggle"
+            onclick="toggleMobileMenu()"
+            aria-label="Toggle mobile menu"
+          >
             <i class="fas fa-bars"></i>
           </button>
         </div>
       </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with 5 Images and Dot Navigation -->
     <section id="home" class="hero">
       <div class="hero-slider">
         <div class="hero-slide hero-slide-1 active"></div>
         <div class="hero-slide hero-slide-2"></div>
         <div class="hero-slide hero-slide-3"></div>
+        <div class="hero-slide hero-slide-4"></div>
+        <div class="hero-slide hero-slide-5"></div>
       </div>
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
-        <h1 class="hero-title" id="heroTitle">FAMILY PORTRAIT</h1>
-        <p class="hero-subtitle" id="heroSubtitle">
-          Capturing beautiful family memories that last a lifetime
+        <h1 class="hero-title text-animate">WEDDING RATECARD</h1>
+        <p class="hero-subtitle text-animate">
+          Comprehensive wedding photography and videography packages designed to
+          capture your most precious moments with artistic excellence and
+          professional quality
         </p>
         <div class="hero-buttons">
-          <a href="#" class="btn btn-primary h-btn">
+          <a href="#packages" class="btn btn-primary h-btn text-animate">
             <i class="fas fa-images"></i>
-            View Portfolio
+            View Packages
           </a>
-          <a href="#" class="btn btn-secondary h-btn">
+          <a href="contact.html" class="btn btn-secondary h-btn text-animate">
             <i class="fas fa-calendar"></i>
-            Book Session
+            Book Consultation
           </a>
         </div>
       </div>
 
-      <!-- Navigation Controls -->
-      <div class="hero-nav-controls">
-        <button class="hero-nav-btn" id="prevBtn" onclick="previousHeroSlide()">
-          <i class="fas fa-chevron-left hero-nav-icon"></i>
-          <div class="hero-nav-counter">
-            <div id="currentSlideLeft">3</div>
-          </div>
-        </button>
-        <button class="hero-nav-btn" id="nextBtn" onclick="nextHeroSlide()">
-          <div class="hero-nav-counter">
-            <div id="currentSlideRight">1</div>
-          </div>
-          <i class="fas fa-chevron-right hero-nav-icon"></i>
-        </button>
+      <!-- Dot Navigation -->
+      <div class="hero-dots">
+        <div class="hero-dot active" onclick="goToSlide(0)"></div>
+        <div class="hero-dot" onclick="goToSlide(1)"></div>
+        <div class="hero-dot" onclick="goToSlide(2)"></div>
+        <div class="hero-dot" onclick="goToSlide(3)"></div>
+        <div class="hero-dot" onclick="goToSlide(4)"></div>
       </div>
 
-      <div class="scroll-indicator">
+      <div class="scroll-indicator" onclick="scrollToSection('packages')">
         <i class="fas fa-chevron-down fa-2x"></i>
       </div>
     </section>
 
+    <!-- Main Content -->
     <main id="packages">
       <div class="ratecard-container">
         <!-- Header -->
-        <div class="ratecard-header fade-in">
-          <h1>2025/26 Photography/Videography Rate Card</h1>
-          <p>
+        <div class="ratecard-header scroll-animate animate-fade">
+          <h1 class="text-animate">
+            2025/26 Photography Or Videography Rate Card
+          </h1>
+          <p class="text-animate">
             Capturing life's most precious moments with artistry and passion.
             Our comprehensive photography and videography services are designed
             to tell your unique story with elegance and creativity. Each package
@@ -1613,38 +1711,45 @@
         </div>
 
         <!-- Pre/Post Wedding Package -->
-        <div class="package-card pre-post-wedding fade-in">
+        <div class="package-card pre-post-wedding scroll-animate animate-fade">
           <div class="package-header">
-            <h2 class="package-title">
+            <h2 class="package-title text-animate">
               Pre / Post Wedding Photography Package
             </h2>
           </div>
-          <div class="package-image">
-            <img src="assets/images/w2.jpg" alt="post wedding Image" />
+          <div class="package-image scroll-animate animate-scale">
+            <img
+              src="assets/images/w2.jpg"
+              alt="Pre and post wedding photography session"
+            />
           </div>
           <div class="package-content">
-            <div class="package-description">
-              <h3>ESSENTIAL WEDDING SESSION</h3>
-              <p>
+            <div class="package-description scroll-animate animate-fade">
+              <h3 class="text-animate">ESSENTIAL WEDDING SESSION</h3>
+              <p class="text-animate">
                 Capture the beauty and romance of your special day with our
                 comprehensive pre and post wedding photography package. Perfect
                 for couples who want to document their journey with
                 professional, artistic imagery.
               </p>
             </div>
-            <div class="package-details">
+            <div class="package-details scroll-animate animate-slide-left">
               <ul>
-                <li>Pre-wedding consultation and planning session</li>
-                <li>2-hour professional photography session</li>
-                <li>Multiple outfit changes allowed</li>
-                <li>50+ high-resolution edited images</li>
-                <li>Online gallery for easy sharing</li>
-                <li>Print release included</li>
+                <li class="text-animate">
+                  Pre-wedding consultation and planning session
+                </li>
+                <li class="text-animate">
+                  2-hour professional photography session
+                </li>
+                <li class="text-animate">Multiple outfit changes allowed</li>
+                <li class="text-animate">50+ high-resolution edited images</li>
+                <li class="text-animate">Online gallery for easy sharing</li>
+                <li class="text-animate">Print release included</li>
               </ul>
             </div>
-            <div class="package-price">
-              <div class="price">₵ 2,500.00</div>
-              <div class="price-note">
+            <div class="package-price scroll-animate animate-fade">
+              <div class="price text-animate">₵ 2,500.00</div>
+              <div class="price-note text-animate">
                 *Prices subject to customization and location
               </div>
             </div>
@@ -1652,37 +1757,44 @@
         </div>
 
         <!-- Same Day Package -->
-        <div class="package-card same-day fade-in">
+        <div class="package-card same-day scroll-animate animate-fade">
           <div class="package-header">
-            <h2 class="package-title">Same Day Photography Package</h2>
+            <h2 class="package-title text-animate">
+              Same Day Photography Package
+            </h2>
           </div>
-          <div class="package-image">
-            <img src="assets/images/w8.jpg" alt="same day Photography image" />
+          <div class="package-image scroll-animate animate-scale">
+            <img
+              src="assets/images/w8.jpg"
+              alt="Same day wedding photography coverage"
+            />
           </div>
           <div class="package-content">
-            <div class="package-description">
-              <h3>ESSENTIAL LOVE</h3>
-              <p>
+            <div class="package-description scroll-animate animate-fade">
+              <h3 class="text-animate">ESSENTIAL LOVE</h3>
+              <p class="text-animate">
                 The perfect package for intimate ceremonies and celebrations.
                 Comprehensive coverage of your wedding day from preparation to
                 reception, capturing every precious moment with artistic
                 excellence.
               </p>
             </div>
-            <div class="package-details">
+            <div class="package-details scroll-animate animate-slide-right">
               <ul>
-                <li>8 hours of wedding day coverage</li>
-                <li>Bridal preparation photography</li>
-                <li>Ceremony and reception coverage</li>
-                <li>200+ high-resolution edited images</li>
-                <li>Online gallery with download rights</li>
-                <li>USB drive with all images</li>
-                <li>Print release included</li>
+                <li class="text-animate">8 hours of wedding day coverage</li>
+                <li class="text-animate">Bridal preparation photography</li>
+                <li class="text-animate">Ceremony and reception coverage</li>
+                <li class="text-animate">200+ high-resolution edited images</li>
+                <li class="text-animate">
+                  Online gallery with download rights
+                </li>
+                <li class="text-animate">USB drive with all images</li>
+                <li class="text-animate">Print release included</li>
               </ul>
             </div>
-            <div class="package-price">
-              <div class="price">₵ 4,500.00</div>
-              <div class="price-note">
+            <div class="package-price scroll-animate animate-fade">
+              <div class="price text-animate">₵ 4,500.00</div>
+              <div class="price-note text-animate">
                 *Additional hours available at extra cost
               </div>
             </div>
@@ -1690,81 +1802,106 @@
         </div>
 
         <!-- Two/Three Day Packages -->
-        <div class="dual-packages fade-in">
+        <div class="dual-packages scroll-animate animate-fade">
           <div class="package-header">
-            <h2 class="package-title">Two - Three Day Packages</h2>
+            <h2 class="package-title text-animate">Two - Three Day Packages</h2>
           </div>
           <div class="dual-packages-grid">
-            <div class="dual-package-card love-chronicles">
+            <div
+              class="dual-package-card love-chronicles scroll-animate animate-slide-left"
+            >
               <div class="dual-package-image love-chronicles">
-                <img src="assets/images/w3.jpg" alt="Two-Three Packages" />
+                <img
+                  src="assets/images/w3.jpg"
+                  alt="Two day wedding photography package"
+                />
               </div>
               <div class="dual-package-content">
-                <h3 class="dual-package-title">Love Chronicles</h3>
-                <p class="dual-package-description">
+                <h3 class="dual-package-title text-animate">Love Chronicles</h3>
+                <p class="dual-package-description text-animate">
                   A comprehensive 2-day photography and videography package
                   covering your traditional and white wedding ceremonies with
                   professional excellence.
                 </p>
-                <div class="dual-package-price">₵ 7,500.00</div>
+                <div class="dual-package-price text-animate">₵ 7,500.00</div>
               </div>
             </div>
-            <div class="dual-package-card signature-experience">
+            <div
+              class="dual-package-card signature-experience scroll-animate animate-slide-right"
+            >
               <div class="dual-package-image signature-experience">
-                <img src="assets/images/w4.jpg" alt="Love Chronicles" />
+                <img
+                  src="assets/images/w4.jpg"
+                  alt="Three day premium wedding package"
+                />
               </div>
               <div class="dual-package-content">
-                <h3 class="dual-package-title">Signature Experience</h3>
-                <p class="dual-package-description">
+                <h3 class="dual-package-title text-animate">
+                  Signature Experience
+                </h3>
+                <p class="dual-package-description text-animate">
                   Our premium 3-day package including engagement session,
                   traditional ceremony, and white wedding with luxury treatment
                   and exclusive services.
                 </p>
-                <div class="dual-package-price">₵ 12,000.00</div>
+                <div class="dual-package-price text-animate">₵ 12,000.00</div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Combined Photo + Video Packages -->
-        <div class="combined-packages fade-in">
+        <div class="combined-packages scroll-animate animate-fade">
           <div class="combined-packages-header">
-            <h2 class="package-title">Combined Photo + Video Packages</h2>
-            <p>
+            <h2 class="package-title text-animate">
+              Combined Photo + Video Packages
+            </h2>
+            <p class="text-animate">
               Complete documentation of your special day with both photography
               and videography services
             </p>
           </div>
           <div class="combined-packages-grid">
-            <div class="dual-package-card one-stop combined-package-card">
+            <div
+              class="dual-package-card one-stop combined-package-card scroll-animate animate-slide-left"
+            >
               <div class="dual-package-image one-stop">
                 <img
                   src="assets/images/w5.jpg"
-                  alt="Combined Photo + Video Packages"
+                  alt="Combined photography and videography package"
                 />
               </div>
               <div class="dual-package-content">
-                <h3 class="dual-package-title">One-Stop Blast Package</h3>
-                <p class="dual-package-description">
+                <h3 class="dual-package-title text-animate">
+                  One-Stop Blast Package
+                </h3>
+                <p class="dual-package-description text-animate">
                   Photography and videography for single day events. Perfect
                   combination of still images and motion pictures to capture
                   your complete story.
                 </p>
-                <div class="dual-package-price">₵ 7,500.00</div>
+                <div class="dual-package-price text-animate">₵ 7,500.00</div>
               </div>
             </div>
-            <div class="dual-package-card full-board combined-package-card">
+            <div
+              class="dual-package-card full-board combined-package-card scroll-animate animate-slide-right"
+            >
               <div class="dual-package-image full-board">
-                <img src="assets/images/w5.jpg" alt="One-Stop Blast Package" />
+                <img
+                  src="assets/images/w6.jpg"
+                  alt="Full board wedding package with all services"
+                />
               </div>
               <div class="dual-package-content">
-                <h3 class="dual-package-title">Full-Board Package</h3>
-                <p class="dual-package-description">
+                <h3 class="dual-package-title text-animate">
+                  Full-Board Package
+                </h3>
+                <p class="dual-package-description text-animate">
                   Our most comprehensive offering including photography,
                   videography, drone footage, and premium editing for multi-day
                   celebrations.
                 </p>
-                <div class="dual-package-price">₵ 15,000.00</div>
+                <div class="dual-package-price text-animate">₵ 15,000.00</div>
               </div>
             </div>
           </div>
@@ -1776,82 +1913,94 @@
     <section class="extras">
       <div class="container">
         <div class="section-header scroll-animate animate-fade">
-          <p class="section-subtitle">Additional Services</p>
-          <h2 class="section-title">Extras & Adjustment</h2>
-          <p class="section-description">
-            Enhance your photography experience with our premium adjustment
-            services and products
+          <p class="section-subtitle text-animate">Additional Services</p>
+          <h2 class="section-title text-animate">Extras & Adjustments</h2>
+          <p class="section-description text-animate">
+            Enhance your photography experience with our premium add-on services
+            and products
           </p>
         </div>
 
         <div class="extras-grid">
           <div class="extra-item scroll-animate animate-slide-left">
-            <span class="extra-name">On-site Backdrop Setup/Day</span>
-            <span class="extra-price">₵2,500</span>
+            <span class="extra-name text-animate"
+              >On-site Backdrop Setup/Day</span
+            >
+            <span class="extra-price text-animate">₵2,500</span>
           </div>
           <div class="extra-item scroll-animate animate-slide-right">
-            <span class="extra-name">Social Media Blogging/Live Sharing</span>
-            <span class="extra-price">₵3,200</span>
+            <span class="extra-name text-animate"
+              >Social Media Blogging/Live Sharing</span
+            >
+            <span class="extra-price text-animate">₵3,200</span>
           </div>
           <div class="extra-item scroll-animate animate-slide-left">
-            <span class="extra-name">Snap and Reels (20-40 seconds) </span>
-            <span class="extra-price">₵1,500</span>
+            <span class="extra-name text-animate"
+              >Snap and Reels (20-40 seconds)</span
+            >
+            <span class="extra-price text-animate">₵1,500</span>
           </div>
           <div class="extra-item scroll-animate animate-slide-right">
-            <span class="extra-name">Retouching (Per Image)</span>
-            <span class="extra-price">₵50</span>
+            <span class="extra-name text-animate">Retouching (Per Image)</span>
+            <span class="extra-price text-animate">₵50</span>
           </div>
           <div class="extra-item scroll-animate animate-slide-left">
-            <span class="extra-name">Creative Director</span>
-            <span class="extra-price">₵3,000</span>
+            <span class="extra-name text-animate">Creative Director</span>
+            <span class="extra-price text-animate">₵3,000</span>
           </div>
           <div class="extra-item scroll-animate animate-slide-right">
-            <span class="extra-name">Extra Photographer</span>
-            <span class="extra-price">₵1,500</span>
+            <span class="extra-name text-animate">Extra Photographer</span>
+            <span class="extra-price text-animate">₵1,500</span>
           </div>
           <div class="extra-item scroll-animate animate-slide-left">
-            <span class="extra-name">Extra Softcopies (100)</span>
-            <span class="extra-price">₵1,000</span>
+            <span class="extra-name text-animate">Extra Softcopies (100)</span>
+            <span class="extra-price text-animate">₵1,000</span>
           </div>
           <div class="extra-item scroll-animate animate-slide-right">
-            <span class="extra-name">Extra Revisions (Video Cut)</span>
-            <span class="extra-price">₵1,500</span>
+            <span class="extra-name text-animate"
+              >Extra Revisions (Video Cut)</span
+            >
+            <span class="extra-price text-animate">₵1,500</span>
           </div>
           <div class="extra-item scroll-animate animate-slide-left">
-            <span class="extra-name"
+            <span class="extra-name text-animate"
               >Extended Video Cut (every 10-minutes)</span
             >
-            <span class="extra-price">₵1,000</span>
+            <span class="extra-price text-animate">₵1,000</span>
           </div>
           <div class="extra-item scroll-animate animate-slide-right">
-            <span class="extra-name">Gromm Preparation</span>
-            <span class="extra-price">₵1,500</span>
+            <span class="extra-name text-animate">Groom Preparation</span>
+            <span class="extra-price text-animate">₵1,500</span>
           </div>
           <div class="extra-item scroll-animate animate-slide-left">
-            <span class="extra-name">Photo Book (A3)</span>
-            <span class="extra-price">₵2,000</span>
+            <span class="extra-name text-animate">Photo Book (A3)</span>
+            <span class="extra-price text-animate">₵2,000</span>
           </div>
           <div class="extra-item scroll-animate animate-slide-right">
-            <span class="extra-name">Photo Book (A4)</span>
-            <span class="extra-price">₵1,500</span>
+            <span class="extra-name text-animate">Photo Book (A4)</span>
+            <span class="extra-price text-animate">₵1,500</span>
           </div>
           <div class="extra-item scroll-animate animate-slide-left">
-            <span class="extra-name">Photo Frames (A2)</span>
-            <span class="extra-price">₵600</span>
+            <span class="extra-name text-animate">Photo Frames (A2)</span>
+            <span class="extra-price text-animate">₵600</span>
           </div>
           <div class="extra-item scroll-animate animate-slide-right">
-            <span class="extra-name">Same day Edit (10-15 Images)</span>
-            <span class="extra-price">₵2,000</span>
+            <span class="extra-name text-animate"
+              >Same day Edit (10-15 Images)</span
+            >
+            <span class="extra-price text-animate">₵2,000</span>
           </div>
           <div class="extra-item scroll-animate animate-slide-left">
-            <span class="extra-name">Drone Coverage / Video Booth </span>
-            <span class="extra-price">₵3,000</span>
+            <span class="extra-name text-animate"
+              >Drone Coverage / Video Booth</span
+            >
+            <span class="extra-price text-animate">₵3,000</span>
           </div>
           <div class="extra-item scroll-animate animate-slide-right">
-            <span class="extra-name"
+            <span class="extra-name text-animate"
               >Express Service (Full Delivery Within 5 Working Days)</span
             >
-            <span class="extra-price">₵5,000</span>
+            <span class="extra-price text-animate">₵5,000</span>
           </div>
         </div>
       </div>
@@ -1861,12 +2010,12 @@
     <section class="cta">
       <div class="container">
         <div class="scroll-animate animate-fade">
-          <h2 class="cta-title">Ready to Create Magic?</h2>
-          <p class="cta-description">
+          <h2 class="cta-title text-animate">Ready to Create Magic?</h2>
+          <p class="cta-description text-animate">
             Let's work together to capture your most precious moments and create
             lasting memories that tell your unique story
           </p>
-          <a href="/pages/contact.html" class="btn">
+          <a href="contact.html" class="btn text-animate">
             <i class="fas fa-calendar-alt"></i>
             Book Your Session
           </a>
@@ -1884,10 +2033,10 @@
               <img
                 src="assets/images/logo2.png"
                 class="footer-logo-icon"
-                alt="Impasto Photography"
+                alt="Impasto Photography Logo"
               />
             </div>
-            <p class="footer-description">
+            <p class="footer-description text-animate">
               At Impasto Photography, we specialize in capturing life's precious
               moments with artistry and precision. Our team of professional
               photographers is dedicated to creating timeless memories that
@@ -1896,39 +2045,39 @@
           </div>
           <!-- Quick Links -->
           <div class="footer-section scroll-animate animate-slide-left">
-            <h3>Quick Links</h3>
+            <h3 class="text-animate">Quick Links</h3>
             <ul class="footer-links">
-              <li>
+              <li class="text-animate">
                 <a href="#home">
                   <i class="fas fa-chevron-right"></i>
                   Home
                 </a>
               </li>
-              <li>
+              <li class="text-animate">
                 <a href="information.html">
                   <i class="fas fa-chevron-right"></i>
                   Information
                 </a>
               </li>
-              <li>
+              <li class="text-animate">
                 <a href="ratecards.html">
                   <i class="fas fa-chevron-right"></i>
                   Ratecards
                 </a>
               </li>
-              <li>
+              <li class="text-animate">
                 <a href="store.html">
                   <i class="fas fa-chevron-right"></i>
                   Store
                 </a>
               </li>
-              <li>
+              <li class="text-animate">
                 <a href="contact.html">
                   <i class="fas fa-chevron-right"></i>
                   Contact
                 </a>
               </li>
-              <li>
+              <li class="text-animate">
                 <a href="blog.html">
                   <i class="fas fa-chevron-right"></i>
                   Blog
@@ -1938,45 +2087,45 @@
           </div>
           <!-- Services -->
           <div class="footer-section scroll-animate animate-fade">
-            <h3>Services</h3>
+            <h3 class="text-animate">Services</h3>
             <ul class="footer-links">
-              <li>
+              <li class="text-animate">
                 <a href="#">
                   <i class="fas fa-camera"></i>
                   Pre-Birthday Shoots
                 </a>
               </li>
-              <li>
+              <li class="text-animate">
                 <a href="#">
                   <i class="fas fa-user"></i>
                   Studio Portraits
                 </a>
               </li>
-              <li>
+              <li class="text-animate">
                 <a href="#">
                   <i class="fas fa-building"></i>
                   Large Format Print and Cut
                 </a>
               </li>
-              <li>
+              <li class="text-animate">
                 <a href="#">
                   <i class="fas fa-calendar-alt"></i>
                   Event Coverage
                 </a>
               </li>
-              <li>
+              <li class="text-animate">
                 <a href="#">
                   <i class="fas fa-plane"></i>
                   Passport Pictures
                 </a>
               </li>
-              <li>
+              <li class="text-animate">
                 <a href="#">
                   <i class="fas fa-palette"></i>
                   Graphic Design
                 </a>
               </li>
-              <li>
+              <li class="text-animate">
                 <a href="#">
                   <i class="fas fa-ellipsis-h"></i>
                   etc
@@ -1986,21 +2135,21 @@
           </div>
           <!-- Contact -->
           <div class="footer-section scroll-animate animate-slide-right">
-            <h3>Get In Touch</h3>
+            <h3 class="text-animate">Get In Touch</h3>
             <ul class="contact-info">
-              <li>
+              <li class="text-animate">
                 <i class="fas fa-map-marker-alt"></i>
                 <span>Dome - Accra. Opposite Adehyeman Bank.</span>
               </li>
-              <li>
+              <li class="text-animate">
                 <i class="fas fa-phone"></i>
                 <span>+233 (0) 242-641-305</span>
               </li>
-              <li>
+              <li class="text-animate">
                 <i class="fas fa-envelope"></i>
                 <span>potrit1@gmail.com</span>
               </li>
-              <li>
+              <li class="text-animate">
                 <i class="fas fa-clock"></i>
                 <span>Mon-Fri: 8AM-5PM, Sat: 9:30AM-6PM, Sun: 1PM-6PM</span>
               </li>
@@ -2011,125 +2160,284 @@
       <div class="footer-bottom">
         <div class="footer-bottom-content container">
           <div class="footer-copyright">
-            <p>© 2025 Impasto Photography. All rights reserved.</p>
+            <p class="text-animate">
+              © 2025 Impasto Photography. All rights reserved.
+            </p>
           </div>
           <div class="kenzy-credit">
-            <p>Website developed with 💖 by Kenzyverse</p>
+            <p class="text-animate">Website developed with 💖 by Kenzyverse</p>
           </div>
           <div class="social-links">
-            <a href="#" class="social-link">
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Facebook"
+            >
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="#" class="social-link">
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Instagram"
+            >
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="#" class="social-link">
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Twitter"
+            >
               <i class="fab fa-twitter"></i>
             </a>
-            <a href="#" class="social-link">
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on LinkedIn"
+            >
               <i class="fab fa-linkedin-in"></i>
             </a>
-            <a href="#" class="social-link">
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on YouTube"
+            >
               <i class="fab fa-youtube"></i>
             </a>
-            <a href="#" class="social-link">
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Pinterest"
+            >
               <i class="fab fa-pinterest-p"></i>
             </a>
           </div>
         </div>
       </div>
     </footer>
+
     <script>
       // ===========================================
-      // GLOBAL VARIABLES
+      // GLOBAL VARIABLES AND CONSTANTS
       // ===========================================
       let heroCurrentSlide = 0;
-      let gradCurrentSlide = 0;
+      const heroTotalSlides = 5; // Updated to 5 slides
+      let heroSlideInterval;
+      let isAnimating = false;
 
       // ===========================================
-      // SCROLL ANIMATION FUNCTIONALITY
+      // ENHANCED SCROLL ANIMATION FUNCTIONALITY
       // ===========================================
+      /**
+       * Initialize comprehensive scroll animations for all elements
+       * Handles both scroll-animate and text-animate classes
+       */
       function initScrollAnimations() {
+        // Enhanced intersection observer with better threshold
         const observer = new IntersectionObserver(
           (entries) => {
-            entries.forEach((entry) => {
+            entries.forEach((entry, index) => {
               if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
+                // Add staggered delay for better visual effect
+                setTimeout(() => {
+                  entry.target.classList.add("visible");
+                }, index * 100);
               }
             });
           },
           {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px",
+            threshold: 0.1, // Trigger when 10% of element is visible
+            rootMargin: "0px 0px -30px 0px", // Trigger slightly before element comes into view
           }
         );
 
-        // Observe all elements with scroll-animate class
+        // Observe all scroll-animate elements
         document.querySelectorAll(".scroll-animate").forEach((el) => {
+          observer.observe(el);
+        });
+
+        // Observe all text-animate elements
+        document.querySelectorAll(".text-animate").forEach((el) => {
           observer.observe(el);
         });
       }
 
-      // ===========================================
-      // HERO SLIDER FUNCTIONALITY
-      // ===========================================
-      const heroSlides = document.querySelectorAll(".hero-slide");
-      const heroTotalSlides = heroSlides.length;
-      const heroTitles = [
-        "PHOTOGRAPHY RATE CARDS",
-        "PROFESSIONAL PACKAGES",
-        "WEDDING PHOTOGRAPHY",
-      ];
-      const heroSubtitles = [
-        "Professional photography and videography services designed for your special moments",
-        "Comprehensive packages tailored to capture your unique story",
-        "Your perfect day deserves perfect memories captured with artistic excellence",
-      ];
+      /**
+       * Initialize animations on elements already in viewport
+       */
+      function initVisibleElements() {
+        const elements = document.querySelectorAll(
+          ".scroll-animate, .text-animate"
+        );
+        elements.forEach((el, index) => {
+          const rect = el.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
 
-      function updateHeroSlide() {
-        // Remove active class from all slides
-        heroSlides.forEach((slide) => slide.classList.remove("active"));
-
-        // Add active class to current slide
-        heroSlides[heroCurrentSlide].classList.add("active");
-
-        // Update slide counters
-        document.getElementById("currentSlideLeft").textContent =
-          heroCurrentSlide + 1;
-        document.getElementById("currentSlideRight").textContent =
-          heroCurrentSlide + 1;
-
-        // Update title and subtitle
-        const heroTitle = document.getElementById("heroTitle");
-        const heroSubtitle = document.getElementById("heroSubtitle");
-
-        if (heroTitle && heroSubtitle) {
-          heroTitle.style.opacity = "0";
-          heroSubtitle.style.opacity = "0";
-
-          setTimeout(() => {
-            heroTitle.textContent = heroTitles[heroCurrentSlide];
-            heroSubtitle.textContent = heroSubtitles[heroCurrentSlide];
-            heroTitle.style.opacity = "1";
-            heroSubtitle.style.opacity = "1";
-          }, 200);
-        }
+          if (isVisible) {
+            setTimeout(() => {
+              el.classList.add("visible");
+            }, index * 50);
+          }
+        });
       }
 
+      // ===========================================
+      // HERO SLIDER FUNCTIONALITY WITH 5 IMAGES
+      // ===========================================
+      const heroSlides = document.querySelectorAll(".hero-slide");
+      const heroDots = document.querySelectorAll(".hero-dot");
+
+      /**
+       * Update active hero slide and dot indicator
+       */
+      function updateHeroSlide() {
+        if (isAnimating) return;
+
+        isAnimating = true;
+
+        // Remove active class from all slides and dots
+        heroSlides.forEach((slide) => slide.classList.remove("active"));
+        heroDots.forEach((dot) => dot.classList.remove("active"));
+
+        // Add active class to current slide and dot
+        heroSlides[heroCurrentSlide].classList.add("active");
+        heroDots[heroCurrentSlide].classList.add("active");
+
+        // Reset animation flag after transition
+        setTimeout(() => {
+          isAnimating = false;
+        }, 1000);
+      }
+
+      /**
+       * Navigate to next hero slide
+       */
       function nextHeroSlide() {
         heroCurrentSlide = (heroCurrentSlide + 1) % heroTotalSlides;
         updateHeroSlide();
       }
 
+      /**
+       * Navigate to previous hero slide
+       */
       function previousHeroSlide() {
         heroCurrentSlide =
           (heroCurrentSlide - 1 + heroTotalSlides) % heroTotalSlides;
         updateHeroSlide();
       }
 
+      /**
+       * Go to specific slide (for dot navigation)
+       * @param {number} slideIndex - Index of slide to navigate to
+       */
+      function goToSlide(slideIndex) {
+        if (slideIndex >= 0 && slideIndex < heroTotalSlides && !isAnimating) {
+          heroCurrentSlide = slideIndex;
+          updateHeroSlide();
+        }
+      }
+
+      /**
+       * Start auto-advance functionality for hero slider
+       */
+      function startHeroAutoSlide() {
+        heroSlideInterval = setInterval(() => {
+          nextHeroSlide();
+        }, 6000); // Changed to 6 seconds for better UX
+      }
+
+      /**
+       * Stop auto-advance functionality
+       */
+      function stopHeroAutoSlide() {
+        if (heroSlideInterval) {
+          clearInterval(heroSlideInterval);
+        }
+      }
+
+      // ===========================================
+      // TOUCH/SWIPE SUPPORT FOR MOBILE
+      // ===========================================
+      let touchStartX = 0;
+      let touchEndX = 0;
+      let touchStartY = 0;
+      let touchEndY = 0;
+
+      /**
+       * Initialize comprehensive touch support for hero slider
+       */
+      function initTouchSupport() {
+        const heroSection = document.querySelector(".hero");
+
+        if (heroSection) {
+          heroSection.addEventListener("touchstart", handleTouchStart, {
+            passive: true,
+          });
+          heroSection.addEventListener("touchmove", handleTouchMove, {
+            passive: true,
+          });
+          heroSection.addEventListener("touchend", handleTouchEnd);
+        }
+      }
+
+      /**
+       * Handle touch start event
+       * @param {TouchEvent} e - Touch event
+       */
+      function handleTouchStart(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+      }
+
+      /**
+       * Handle touch move event (prevent vertical scrolling during horizontal swipe)
+       * @param {TouchEvent} e - Touch event
+       */
+      function handleTouchMove(e) {
+        const touchCurrentX = e.changedTouches[0].screenX;
+        const touchCurrentY = e.changedTouches[0].screenY;
+
+        const diffX = Math.abs(touchCurrentX - touchStartX);
+        const diffY = Math.abs(touchCurrentY - touchStartY);
+
+        // If horizontal swipe is more prominent, prevent default scroll
+        if (diffX > diffY && diffX > 30) {
+          e.preventDefault();
+        }
+      }
+
+      /**
+       * Handle touch end event and process swipe
+       * @param {TouchEvent} e - Touch event
+       */
+      function handleTouchEnd(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+      }
+
+      /**
+       * Process swipe gesture for hero navigation
+       */
+      function handleSwipe() {
+        const diffX = touchEndX - touchStartX;
+        const diffY = touchEndY - touchStartY;
+
+        // Only process horizontal swipes
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+          if (diffX > 0) {
+            previousHeroSlide(); // Swipe right - go to previous
+          } else {
+            nextHeroSlide(); // Swipe left - go to next
+          }
+        }
+      }
+
       // ===========================================
       // THEME TOGGLE FUNCTIONALITY
       // ===========================================
+      /**
+       * Toggle between light and dark themes
+       */
       function toggleTheme() {
         const body = document.body;
         const themeIcon = document.querySelector(".theme-icon");
@@ -2138,7 +2446,7 @@
           ".logo-icon, .footer-logo-icon"
         );
 
-        // Check current theme
+        // Check current theme and toggle
         if (body.getAttribute("data-theme") === "dark") {
           // Switch to light theme
           body.removeAttribute("data-theme");
@@ -2160,6 +2468,9 @@
         }
       }
 
+      /**
+       * Load saved theme preference from localStorage
+       */
       function loadSavedTheme() {
         const savedTheme = localStorage.getItem("theme");
         if (savedTheme === "dark") {
@@ -2183,6 +2494,10 @@
       // ===========================================
       // NAVIGATION FUNCTIONALITY
       // ===========================================
+      /**
+       * Set active navigation link
+       * @param {HTMLElement} element - Navigation element to set as active
+       */
       function setActiveNav(element) {
         // Don't set active if this is a dropdown toggle
         if (element.classList.contains("dropdown-toggle")) {
@@ -2200,6 +2515,49 @@
         element.classList.add("active");
 
         // Close mobile menu if open
+        closeMobileMenu();
+      }
+
+      /**
+       * Toggle mobile menu visibility
+       */
+      function toggleMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        if (navMenu && mobileToggle && overlay) {
+          const isActive = navMenu.classList.contains("active");
+
+          if (isActive) {
+            closeMobileMenu();
+          } else {
+            openMobileMenu();
+          }
+        }
+      }
+
+      /**
+       * Open mobile menu
+       */
+      function openMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        navMenu.classList.add("active");
+        mobileToggle.classList.add("active");
+        overlay.classList.add("active");
+        mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = "hidden";
+      }
+
+      /**
+       * Close mobile menu
+       */
+      function closeMobileMenu() {
         const navMenu = document.getElementById("navMenu");
         const mobileToggle = document.querySelector(".mobile-menu-toggle");
         const overlay = document.getElementById("mobileMenuOverlay");
@@ -2213,83 +2571,58 @@
           if (overlay) {
             overlay.classList.remove("active");
           }
+
+          // Restore body scroll
+          document.body.style.overflow = "";
         }
       }
 
-      function toggleMobileMenu() {
-        const navMenu = document.getElementById("navMenu");
-        const mobileToggle = document.querySelector(".mobile-menu-toggle");
-        const overlay = document.getElementById("mobileMenuOverlay");
-
-        if (navMenu && mobileToggle && overlay) {
-          navMenu.classList.toggle("active");
-          mobileToggle.classList.toggle("active");
-          overlay.classList.toggle("active");
-
-          // Change icon based on menu state
-          if (navMenu.classList.contains("active")) {
-            mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
-          } else {
-            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
-          }
-        }
-      }
-
+      /**
+       * Toggle dropdown menu (mobile only)
+       * @param {HTMLElement} element - Dropdown toggle element
+       */
       function toggleDropdown(element) {
         // Only for mobile view
         if (window.innerWidth < 1024) {
           const dropdownMenu =
             element.parentElement.parentElement.querySelector(".dropdown-menu");
           const dropdownArrow = element.querySelector(".dropdown-arrow");
-          const parentLink = element.parentElement.querySelector(
-            ".nav-link:not(.dropdown-toggle)"
-          );
 
           if (dropdownMenu && dropdownArrow) {
             dropdownMenu.classList.toggle("open");
             dropdownArrow.classList.toggle("open");
 
-            // Prevent default link behavior
+            // Prevent event bubbling
             if (event) {
               event.preventDefault();
               event.stopPropagation();
             }
-
-            // Remove hover/active effects from parent link when dropdown is open
-            if (parentLink && dropdownMenu.classList.contains("open")) {
-              parentLink.style.color = "";
-              parentLink.classList.remove("active");
-            }
           }
         }
       }
 
+      /**
+       * Smooth scroll to section
+       * @param {string} sectionId - ID of section to scroll to
+       */
       function scrollToSection(sectionId) {
         const section = document.getElementById(sectionId);
         if (section) {
-          // Close mobile menu if open
-          const navMenu = document.getElementById("navMenu");
-          const mobileToggle = document.querySelector(".mobile-menu-toggle");
-          const overlay = document.getElementById("mobileMenuOverlay");
+          closeMobileMenu();
 
-          if (navMenu && navMenu.classList.contains("active")) {
-            navMenu.classList.remove("active");
-            if (mobileToggle) {
-              mobileToggle.classList.remove("active");
-              mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-            if (overlay) {
-              overlay.classList.remove("active");
-            }
-          }
+          const navbarHeight = document.getElementById("navbar").offsetHeight;
+          const targetPosition = section.offsetTop - navbarHeight - 20;
 
-          section.scrollIntoView({
+          window.scrollTo({
+            top: targetPosition,
             behavior: "smooth",
-            block: "start",
           });
         }
       }
 
+      /**
+       * Handle navbar scroll effects
+       */
       function handleNavbarScroll() {
         const navbar = document.getElementById("navbar");
         if (navbar) {
@@ -2302,38 +2635,50 @@
       }
 
       // ===========================================
-      // TOUCH/SWIPE SUPPORT
+      // PACKAGE CARD INTERACTIONS
       // ===========================================
-      let touchStartX = 0;
-      let touchEndX = 0;
+      /**
+       * Initialize package card hover effects and interactions
+       */
+      function initPackageCardInteractions() {
+        const packageCards = document.querySelectorAll(
+          ".package-card, .dual-package-card"
+        );
 
-      function initTouchSupport() {
-        const heroSection = document.querySelector(".hero");
-
-        if (heroSection) {
-          heroSection.addEventListener("touchstart", function (e) {
-            touchStartX = e.changedTouches[0].screenX;
+        packageCards.forEach((card) => {
+          // Mouse enter effect
+          card.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-5px)";
           });
 
-          heroSection.addEventListener("touchend", function (e) {
-            touchEndX = e.changedTouches[0].screenX;
-            handleHeroSwipe();
+          // Mouse leave effect
+          card.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0)";
+            this.style.boxShadow = "";
           });
-        }
-      }
 
-      function handleHeroSwipe() {
-        if (touchEndX < touchStartX - 50) {
-          nextHeroSlide();
-        }
-        if (touchEndX > touchStartX + 50) {
-          previousHeroSlide();
-        }
+          // Image hover effect
+          const image = card.querySelector("img");
+          if (image) {
+            card.addEventListener("mouseenter", function () {
+              image.style.transform = "scale(1.05)";
+            });
+
+            card.addEventListener("mouseleave", function () {
+              image.style.transform = "scale(1)";
+            });
+          }
+        });
       }
 
       // ===========================================
       // UTILITY FUNCTIONS
       // ===========================================
+      /**
+       * Throttle function to limit function calls
+       * @param {Function} func - Function to throttle
+       * @param {number} limit - Time limit in milliseconds
+       */
       function throttle(func, limit) {
         let inThrottle;
         return function () {
@@ -2347,6 +2692,11 @@
         };
       }
 
+      /**
+       * Debounce function to delay function calls
+       * @param {Function} func - Function to debounce
+       * @param {number} wait - Wait time in milliseconds
+       */
       function debounce(func, wait) {
         let timeout;
         return function executedFunction(...args) {
@@ -2359,155 +2709,124 @@
         };
       }
 
-      // Optimized scroll handlers
-      const throttledScrollHandler = throttle(() => {
-        handleNavbarScroll();
-      }, 16); // ~60fps
-
-      // ===========================================
-      // RATE CARD ANIMATION FUNCTIONS
-      // ===========================================
-      function initRateCardAnimations() {
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-          threshold: 0.1,
-          rootMargin: "0px 0px -50px 0px",
-        };
-
-        const observer = new IntersectionObserver(function (entries) {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            }
-          });
-        }, observerOptions);
-
-        // Observe all fade-in elements
-        document.querySelectorAll(".fade-in").forEach((el) => {
-          observer.observe(el);
-        });
+      /**
+       * Handle visibility change to pause/resume slider
+       */
+      function handleVisibilityChange() {
+        if (document.hidden) {
+          stopHeroAutoSlide();
+        } else {
+          startHeroAutoSlide();
+        }
       }
 
-      function initPackageCardInteractions() {
-        // Package card hover effects
-        const packageCards = document.querySelectorAll(
-          ".package-card, .dual-package-card"
+      // ===========================================
+      // OPTIMIZED EVENT HANDLERS
+      // ===========================================
+      const throttledScrollHandler = throttle(handleNavbarScroll, 16); // ~60fps
+      const debouncedResizeHandler = debounce(() => {
+        initScrollAnimations();
+        initVisibleElements();
+      }, 250);
+
+      // ===========================================
+      // INITIALIZATION AND MAIN EVENT LISTENERS
+      // ===========================================
+      /**
+       * Initialize all functionality when DOM is loaded
+       */
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log(
+          "🎨 Impasto Photography Wedding Ratecard - Initializing..."
         );
 
-        packageCards.forEach((card) => {
-          card.addEventListener("mouseenter", function () {
-            this.style.transform = "translateY(-5px)";
-          });
-
-          card.addEventListener("mouseleave", function () {
-            this.style.transform = "translateY(0)";
-          });
-        });
-
-        // Stagger animation for better visual effect
-        setTimeout(() => {
-          document.querySelectorAll(".fade-in").forEach((el, index) => {
-            setTimeout(() => {
-              if (el.getBoundingClientRect().top < window.innerHeight) {
-                el.classList.add("visible");
-              }
-            }, index * 200);
-          });
-        }, 500);
-      }
-
-      // ===========================================
-      // INITIALIZATION AND EVENT LISTENERS
-      // ===========================================
-      document.addEventListener("DOMContentLoaded", function () {
-        // Load saved theme
+        // Core initialization
         loadSavedTheme();
-
-        // Initialize sliders
         updateHeroSlide();
-
-        // Initialize scroll animations
         initScrollAnimations();
-        initRateCardAnimations();
-
-        // Initialize package card interactions
+        initVisibleElements();
+        initTouchSupport();
         initPackageCardInteractions();
 
-        // Initialize touch support
-        initTouchSupport();
+        // Start hero slider auto-advance
+        startHeroAutoSlide();
 
-        // Add smooth scrolling to navigation links
+        // Add smooth scrolling to anchor links
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
           anchor.addEventListener("click", function (e) {
             e.preventDefault();
             const targetId = this.getAttribute("href").substring(1);
-            scrollToSection(targetId);
+            if (targetId) {
+              scrollToSection(targetId);
+            }
           });
         });
 
-        // Auto-advance hero slider every 8 seconds
-        setInterval(() => {
-          nextHeroSlide();
-        }, 8000);
-
-        // Add loading animation
-        window.addEventListener("load", function () {
-          const firstElement = document.querySelector(".ratecard-header");
-          if (firstElement) {
-            firstElement.classList.add("visible");
-          }
+        // Hero dots event listeners
+        heroDots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            goToSlide(index);
+            stopHeroAutoSlide();
+            // Restart auto-slide after user interaction
+            setTimeout(startHeroAutoSlide, 3000);
+          });
         });
 
-        console.log(
-          "Impasto Photography Rate Card Website Loaded Successfully! 📸"
-        );
+        console.log("✅ Wedding Ratecard Website Loaded Successfully!");
       });
 
-      // Optimized scroll event listeners
+      // ===========================================
+      // WINDOW EVENT LISTENERS
+      // ===========================================
+      // Optimized scroll handler
       window.addEventListener("scroll", throttledScrollHandler);
 
-      // Handle resize events
-      window.addEventListener(
-        "resize",
-        debounce(() => {
-          // Re-initialize scroll animations if needed
-          initScrollAnimations();
-          initRateCardAnimations();
-        }, 250)
-      );
+      // Handle window resize
+      window.addEventListener("resize", debouncedResizeHandler);
 
-      // Keyboard navigation
+      // Handle page visibility changes
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+
+      // Handle page focus/blur
+      window.addEventListener("focus", startHeroAutoSlide);
+      window.addEventListener("blur", stopHeroAutoSlide);
+
+      // ===========================================
+      // KEYBOARD NAVIGATION SUPPORT
+      // ===========================================
       document.addEventListener("keydown", function (e) {
         // Close mobile menu on escape
         if (e.key === "Escape") {
-          const navMenu = document.getElementById("navMenu");
-          const mobileToggle = document.querySelector(".mobile-menu-toggle");
-          const overlay = document.getElementById("mobileMenuOverlay");
-
-          if (navMenu && navMenu.classList.contains("active")) {
-            navMenu.classList.remove("active");
-            if (mobileToggle) {
-              mobileToggle.classList.remove("active");
-              mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-            if (overlay) {
-              overlay.classList.remove("active");
-            }
-          }
+          closeMobileMenu();
         }
 
-        // Arrow keys for hero slider
+        // Arrow key navigation for hero slider
         if (e.key === "ArrowLeft") {
           previousHeroSlide();
+          stopHeroAutoSlide();
+          setTimeout(startHeroAutoSlide, 3000);
         }
         if (e.key === "ArrowRight") {
           nextHeroSlide();
+          stopHeroAutoSlide();
+          setTimeout(startHeroAutoSlide, 3000);
+        }
+
+        // Space bar to pause/resume slider
+        if (e.key === " " && e.target === document.body) {
+          e.preventDefault();
+          if (heroSlideInterval) {
+            stopHeroAutoSlide();
+          } else {
+            startHeroAutoSlide();
+          }
         }
       });
 
       // ===========================================
-      // IMAGE PROTECTION
+      // IMAGE PROTECTION AND ACCESSIBILITY
       // ===========================================
+      // Disable right-click on images
       document.addEventListener("contextmenu", function (e) {
         if (e.target.tagName === "IMG") {
           e.preventDefault();
@@ -2515,6 +2834,7 @@
         }
       });
 
+      // Disable drag on images
       document.addEventListener("dragstart", function (e) {
         if (e.target.tagName === "IMG") {
           e.preventDefault();
@@ -2522,8 +2842,43 @@
         }
       });
 
-      // Add smooth scroll behavior
+      // Add smooth scroll behavior to HTML
       document.documentElement.style.scrollBehavior = "smooth";
+
+      // ===========================================
+      // SEO AND PERFORMANCE OPTIMIZATIONS
+      // ===========================================
+      // Preload critical images
+      window.addEventListener("load", function () {
+        const criticalImages = [
+          "assets/images/img5.jpg",
+          "assets/images/img6.jpg",
+          "assets/images/img7.jpg",
+        ];
+
+        criticalImages.forEach((src) => {
+          const link = document.createElement("link");
+          link.rel = "preload";
+          link.as = "image";
+          link.href = src;
+          document.head.appendChild(link);
+        });
+      });
+
+      // Add structured data update function
+      function updateStructuredData() {
+        const script = document.querySelector(
+          'script[type="application/ld+json"]'
+        );
+        if (script) {
+          const data = JSON.parse(script.textContent);
+          data.dateModified = new Date().toISOString();
+          script.textContent = JSON.stringify(data);
+        }
+      }
+
+      // Call on page load
+      window.addEventListener("load", updateStructuredData);
     </script>
   </body>
 </html>

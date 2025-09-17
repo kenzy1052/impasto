@@ -1,240 +1,2179 @@
-<!DOCTYPE html>
+<a href="#home">
+                  <i class="fas fa-chevron-right"></i>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="information.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Information
+                </a>
+              </li>
+              <li>
+                <a href="ratecards.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Ratecards
+                </a>
+              </li>
+              <li>
+                <a href="store.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Store
+                </a>
+              </li>
+              <li>
+                <a href="contact.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a href="blog.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Services -->
+          <div class="footer-section fade-in">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#">
+                  <i class="fas fa-camera"></i>
+                  Pre-Birthday Shoots
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-user"></i>
+                  Studio Portraits
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-building"></i>
+                  Large Format Print and Cut
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-calendar-alt"></i>
+                  Event Coverage
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-plane"></i>
+                  Passport Pictures
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-palette"></i>
+                  Graphic Design
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-ellipsis-h"></i>
+                  etc
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Contact -->
+          <div class="footer-section slide-in-right">
+            <h3>Get In Touch</h3>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dome - Accra. Opposite Adehyeman Bank.</span>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>+233 (0) 242-641-305</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <span>potrit1@gmail.com</span>
+              </li>
+              <li>
+                <i class="fas fa-clock"></i>
+                <span>Mon-Fri: 8AM-5PM, Sat: 9:30AM-6PM, Sun: 1PM-6PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content container">
+          <div class="footer-copyright">
+            <p>© 2025 Impasto Photography. All rights reserved.</p>
+          </div>
+          <div class="kenzy-credit">
+            <p>Website developed with 💖 by Kenzyverse</p>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-pinterest-p"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/src/general.js"></script>
+    <script src="assets/src/navhero.js"></script>
+    <script>
+      // ===========================================
+      // GLOBAL VARIABLES AND CONSTANTS
+      // ===========================================
+      let currentImageIndex = 1;
+      let currentZoom = 1;
+      let translateX = 0;
+      let translateY = 0;
+      const totalImages = 60;
+      const imagesPerLoad = 12;
+      let currentImageCount = 12;
+      let currentFilter = 'all';
+
+      // Enhanced mobile interaction variables for natural feel
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let touchEndX = 0;
+      let touchEndY = 0;
+      let touchStartDistance = 0;
+      let isPinching = false;
+      let isDragging = false;
+      let lastTapTime = 0;
+      const doubleTapDelay = 300;
+
+      // Natural physics variables for enhanced mobile experience
+      let velocityX = 0;
+      let velocityY = 0;
+      let lastTouchX = 0;
+      let lastTouchY = 0;
+      let lastTouchTime = 0;
+      let animationFrameId = null;
+      let touchStartTranslateX = 0;
+      let touchStartTranslateY = 0;
+      let initialPinchZoom = 1;
+      let initialPinchDistance = 0;
+
+      // Desktop drag variables
+      let dragStartX = 0;
+      let dragStartY = 0;
+      let startTranslateX = 0;
+      let startTranslateY = 0;
+      let mouseDownTime = 0;
+      let hasMoved = false;
+      const dragThreshold = 5;
+
+      // Portfolio data with enhanced categorization
+      const portfolioData = [
+        { id: 1, category: 'wedding', title: 'Elegant Wedding Ceremony', description: 'Beautiful couple exchanging vows in intimate setting' },
+        { id: 2, category: 'portrait', title: 'Professional Portrait', description: 'Stunning individual portrait with dramatic lighting' },
+        { id: 3, category: 'event', title: 'Corporate Event', description: 'Professional event documentation and networking' },
+        { id: 4, category: 'artistic', title: 'Artistic Expression', description: 'Creative artistic photography with unique perspective' },
+        { id: 5, category: 'wedding', title: 'Wedding Reception', description: 'Joyful wedding celebration with family and friends' },
+        { id: 6, category: 'portrait', title: 'Family Portrait', description: 'Heartwarming family moments captured naturally' },
+        { id: 7, category: 'event', title: 'Birthday Celebration', description: 'Special birthday moments and milestone celebrations' },
+        { id: 8, category: 'artistic', title: 'Creative Composition', description: 'Innovative artistic visual storytelling' },
+        { id: 9, category: 'wedding', title: 'Bridal Portrait', description: 'Elegant bridal photography with soft lighting' },
+        { id: 10, category: 'portrait', title: 'Professional Headshot', description: 'Corporate headshot session with clean backdrop' },
+        { id: 11, category: 'event', title: 'Graduation Ceremony', description: 'Memorable graduation moments and achievements' },
+        { id: 12, category: 'artistic', title: 'Abstract Beauty', description: 'Creative abstract photography with bold colors' }
+      ];
+
+      // ===========================================
+      // ENHANCED PORTFOLIO GALLERY FUNCTIONALITY
+      // ===========================================
+      function initializePortfolio() {
+        const portfolioGrid = document.getElementById("portfolioGrid");
+        portfolioGrid.innerHTML = '';
+        
+        for (let i = 1; i <= currentImageCount; i++) {
+          const data = portfolioData[i - 1] || { 
+            id: i, 
+            category: 'artistic', 
+            title: `Gallery Image ${i}`, 
+            description: 'Professional photography showcase' 
+          };
+          const portfolioItem = createPortfolioItem(i, data);
+          portfolioGrid.appendChild(portfolioItem);
+        }
+
+        initializeFilters();
+        initScrollAnimations();
+      }
+
+      function createPortfolioItem(imageNumber, data) {
+        const item = document.createElement("div");
+        item.className = "portfolio-item fade-in-up";
+        item.setAttribute('data-category', data.category);
+        item.onclick = () => openLightbox(imageNumber);
+
+        const img = document.createElement("img");
+        img.src = `assets/images/img${imageNumber}.jpg`;
+        img.alt = data.title;
+        img.loading = "lazy";
+        img.draggable = false;
+        img.oncontextmenu = () => false;
+
+        const overlay = document.createElement("div");
+        overlay.className = "portfolio-overlay";
+
+        const overlayContent = document.createElement("div");
+        overlayContent.className = "overlay-content";
+
+        const title = document.createElement("div");
+        title.className = "overlay-title";
+        title.textContent = data.title;
+
+        const category = document.createElement("div");
+        category.className = "overlay-category";
+        category.textContent = data.category;
+
+        const expandIcon = document.createElement("div");
+        expandIcon.className = "overlay-icon";
+        expandIcon.innerHTML = '<i class="fas fa-expand-alt"></i>';
+
+        overlayContent.appendChild(title);
+        overlayContent.appendChild(category);
+        overlayContent.appendChild(expandIcon);
+        overlay.appendChild(overlayContent);
+
+        item.appendChild(img);
+        item.appendChild(overlay);
+
+        // Staggered animation entrance
+        setTimeout(() => {
+          if (isElementInViewport(item)) {
+            item.classList.add("visible");
+          }
+        }, imageNumber * 100);
+
+        return item;
+      }
+
+      function loadMoreImages() {
+        const portfolioGrid = document.getElementById("portfolioGrid");
+        const loadMoreBtn = document.getElementById("loadMoreBtn");
+        
+        loadMoreBtn.disabled = true;
+        loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+
+        setTimeout(() => {
+          const remainingImages = Math.min(imagesPerLoad, totalImages - currentImageCount);
+          
+          for (let i = 1; i <= remainingImages; i++) {
+            const imageNumber = currentImageCount + i;
+            const data = portfolioData[imageNumber - 1] || { 
+              id: imageNumber, 
+              category: 'artistic', 
+              title: `Gallery Image ${imageNumber}`, 
+              description: 'Professional photography showcase' 
+            };
+            const portfolioItem = createPortfolioItem(imageNumber, data);
+            portfolioGrid.appendChild(portfolioItem);
+          }
+
+          currentImageCount += remainingImages;
+
+          if (currentImageCount >= totalImages) {
+            loadMoreBtn.innerHTML = '<i class="fas fa-check"></i> All Images Loaded';
+            loadMoreBtn.disabled = true;
+          } else {
+            loadMoreBtn.disabled = false;
+            loadMoreBtn.innerHTML = '<i class="fas fa-plus"></i> Load More Images';
+          }
+
+          filterImages(currentFilter);
+        }, 1000);
+      }
+
+      function initializeFilters() {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            const filter = e.target.getAttribute('data-filter');
+            currentFilter = filter;
+            filterImages(filter);
+          });
+        });
+      }
+
+      function filterImages(filter) {
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        portfolioItems.forEach((item, index) => {
+          const category = item.getAttribute('data-category');
+          
+          if (filter === 'all' || category === filter) {
+            item.style.display = 'block';
+            setTimeout(() => {
+              item.classList.add('visible');
+            }, index * 50);
+          } else {
+            item.style.display = 'none';
+            item.classList.remove('visible');
+          }
+        });
+      }
+
+      // ===========================================
+      // ENHANCED LIGHTBOX WITH NATURAL MOBILE INTERACTIONS
+      // ===========================================
+      function openLightbox(imageNumber) {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxCounter = document.getElementById("lightboxCounter");
+
+        currentImageIndex = imageNumber;
+        currentZoom = 1;
+        translateX = 0;
+        translateY = 0;
+
+        lightboxImage.src = `assets/images/img${imageNumber}.jpg`;
+        lightboxImage.alt = `Gallery Image ${imageNumber}`;
+        lightboxCounter.textContent = `Image ${imageNumber} of ${totalImages}`;
+
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+
+        updateImageTransform();
+        setupLightboxEvents();
+        updateZoomControls();
+      }
+
+      function closeLightbox() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "auto";
+
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = null;
+        }
+
+        currentZoom = 1;
+        translateX = 0;
+        translateY = 0;
+        updateImageTransform();
+        removeLightboxEvents();
+      }
+
+      function updateLightboxImage() {
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxCounter = document.getElementById("lightboxCounter");
+
+        lightboxImage.src = `assets/images/img${currentImageIndex}.jpg`;
+        lightboxImage.alt = `Gallery Image ${currentImageIndex}`;
+        lightboxCounter.textContent = `Image ${currentImageIndex} of ${totalImages}`;
+
+        currentZoom = 1;
+        translateX = 0;
+        translateY = 0;
+        updateImageTransform();
+        updateZoomControls();
+      }
+
+      function previousImage() {
+        if (currentImageIndex > 1) {
+          currentImageIndex--;
+        } else {
+          currentImageIndex = totalImages;
+        }
+        updateLightboxImage();
+      }
+
+      function nextImage() {
+        if (currentImageIndex < totalImages) {
+          currentImageIndex++;
+        } else {
+          currentImageIndex = 1;
+        }
+        updateLightboxImage();
+      }
+
+      function updateImageTransform() {
+        const imageContainer = document.getElementById("lightboxImageContainer");
+        imageContainer.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentZoom})`;
+
+        if (currentZoom > 1) {
+          imageContainer.classList.add("zoomed");
+        } else {
+          imageContainer.classList.remove("zoomed");
+        }
+      }
+
+      function updateZoomControls() {
+        const zoomInBtn = document.getElementById("zoomInBtn");
+        const zoomOutBtn = document.getElementById("zoomOutBtn");
+
+        if (zoomInBtn && zoomOutBtn) {
+          zoomInBtn.disabled = currentZoom >= 5;
+          zoomOutBtn.disabled = currentZoom <= 1;
+        }
+      }
+
+      function zoomIn() {
+        if (currentZoom < 5) {
+          currentZoom = Math.min(5, currentZoom + 0.5);
+          clampPosition();
+          updateImageTransform();
+          updateZoomControls();
+        }
+      }
+
+      function zoomOut() {
+        if (currentZoom > 1) {
+          currentZoom = Math.max(1, currentZoom - 0.5);
+          if (currentZoom === 1) {
+            translateX = 0;
+            translateY = 0;
+          }
+          clampPosition();
+          updateImageTransform();
+          updateZoomControls();
+        }
+      }
+
+      // ===========================================
+      // ENHANCED BOUNDARY CALCULATIONS
+      // ===========================================
+      function calculateBoundaries() {
+        const container = document.getElementById("lightboxContent");
+        const image = document.getElementById("lightboxImage");
+        
+        if (!container || !image) return { maxX: 0, maxY: 0 };
+
+        const containerRect = container.getBoundingClientRect();
+        const naturalWidth = image.naturalWidth;
+        const naturalHeight = image.naturalHeight;
+
+        if (!naturalWidth || !naturalHeight) return { maxX: 0, maxY: 0 };
+
+        const containerAspect = containerRect.width / containerRect.height;
+        const imageAspect = naturalWidth / naturalHeight;
+
+        let displayedWidth, displayedHeight;
+
+        if (imageAspect > containerAspect) {
+          displayedWidth = containerRect.width;
+          displayedHeight = containerRect.width / imageAspect;
+        } else {
+          displayedHeight = containerRect.height;
+          displayedWidth = containerRect.height * imageAspect;
+        }
+
+        const zoomedWidth = displayedWidth * currentZoom;
+        const zoomedHeight = displayedHeight * currentZoom;
+
+        let maxX = 0;
+        let maxY = 0;
+
+        if (zoomedWidth > containerRect.width) {
+          maxX = (zoomedWidth - containerRect.width) / 2;
+        }
+
+        if (zoomedHeight > containerRect.height) {
+          maxY = (zoomedHeight - containerRect.height) / 2;
+        }
+
+        return { maxX, maxY };
+      }
+
+      function clampPosition() {
+        const { maxX, maxY } = calculateBoundaries();
+        translateX = Math.max(-maxX, Math.min(maxX, translateX));
+        translateY = Math.max(-maxY, Math.min(maxY, translateY));
+      }
+
+      function toggleZoom(x, y) {
+        const container = document.getElementById("lightboxContent");
+        const containerRect = container.getBoundingClientRect();
+
+        if (currentZoom === 1) {
+          currentZoom = 2;
+          const offsetX = ((containerRect.width / 2 - (x - containerRect.left)) * (currentZoom - 1)) / currentZoom;
+          const offsetY = ((containerRect.height / 2 - (y - containerRect.top)) * (currentZoom - 1)) / currentZoom;
+          translateX = offsetX;
+          translateY = offsetY;
+        } else {
+          currentZoom = 1;
+          translateX = 0;
+          translateY = 0;
+        }
+
+        clampPosition();
+        updateImageTransform();
+        updateZoomControls();
+      }
+
+      // ===========================================
+      // ENHANCED MOBILE TOUCH EVENTS WITH NATURAL PHYSICS
+      // ===========================================
+      function setupTouchEvents() {
+        const imageContainer = document.getElementById("lightboxImageContainer");
+        imageContainer.addEventListener("touchstart", handleTouchStart, { passive: false });
+        imageContainer.addEventListener("touchmove", handleTouchMove, { passive: false });
+        imageContainer.addEventListener("touchend", handleTouchEnd, { passive: true });
+      }
+
+      function removeTouchEvents() {
+        const imageContainer = document.getElementById("lightboxImageContainer");
+        if (imageContainer) {
+          imageContainer.removeEventListener("touchstart", handleTouchStart);
+          imageContainer.removeEventListener("touchmove", handleTouchMove);
+          imageContainer.removeEventListener("touchend", handleTouchEnd);
+        }
+      }
+
+      function handleTouchStart(e) {
+        const currentTime = Date.now();
+        const tapLength = currentTime - lastTapTime;
+
+        // Enhanced double-tap detection with better timing
+        if (tapLength < doubleTapDelay && tapLength > 50 && e.touches.length === 1) {
+          const touch = e.touches[0];
+          toggleZoom(touch.clientX, touch.clientY);
+          e.preventDefault();
+          return;
+        }
+
+        lastTapTime = currentTime;
+
+        if (e.touches.length === 1) {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+          lastTouchX = touchStartX;
+          lastTouchY = touchStartY;
+          lastTouchTime = currentTime;
+          touchStartTranslateX = translateX;
+          touchStartTranslateY = translateY;
+
+          isDragging = currentZoom > 1;
+          velocityX = 0;
+          velocityY = 0;
+
+          const imageContainer = document.getElementById("lightboxImageContainer");
+          imageContainer.classList.add("no-transition");
+        } else if (e.touches.length === 2) {
+          isPinching = true;
+          isDragging = false;
+          initialPinchDistance = getDistance(e.touches[0], e.touches[1]);
+          touchStartDistance = initialPinchDistance;
+          initialPinchZoom = currentZoom;
+          e.preventDefault();
+        }
+      }
+
+      function handleTouchMove(e) {
+        const currentTime = Date.now();
+
+        if (isPinching && e.touches.length === 2) {
+          e.preventDefault();
+          
+          const currentDistance = getDistance(e.touches[0], e.touches[1]);
+          const scale = currentDistance / initialPinchDistance;
+          
+          let newZoom = initialPinchZoom * scale;
+          newZoom = Math.max(1, Math.min(5, newZoom));
+          
+          currentZoom = newZoom;
+
+          // Enhanced pinch center calculation for more natural zooming
+          const centerX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+          const centerY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+          
+          const container = document.getElementById("lightboxContent");
+          const containerRect = container.getBoundingClientRect();
+          
+          const relX = centerX - containerRect.left - containerRect.width / 2;
+          const relY = centerY - containerRect.top - containerRect.height / 2;
+          
+          // Apply smooth zoom centering
+          const zoomFactor = currentZoom / initialPinchZoom;
+          translateX = touchStartTranslateX + relX * (1 - zoomFactor);
+          translateY = touchStartTranslateY + relY * (1 - zoomFactor);
+
+          if (currentZoom <= 1) {
+            currentZoom = 1;
+            translateX = 0;
+            translateY = 0;
+          }
+
+          clampPosition();
+          updateImageTransform();
+          updateZoomControls();
+
+        } else if (isDragging && e.touches.length === 1) {
+          e.preventDefault();
+          
+          const touch = e.touches[0];
+          const timeDiff = Math.max(1, currentTime - lastTouchTime);
+          
+          // Enhanced velocity calculation with better smoothing
+          const deltaX = touch.clientX - lastTouchX;
+          const deltaY = touch.clientY - lastTouchY;
+          
+          const newVelocityX = deltaX / timeDiff;
+          const newVelocityY = deltaY / timeDiff;
+          
+          // Apply exponential smoothing for more natural feel
+          const smoothingFactor = 0.7;
+          velocityX = velocityX * smoothingFactor + newVelocityX * (1 - smoothingFactor);
+          velocityY = velocityY * smoothingFactor + newVelocityY * (1 - smoothingFactor);
+
+          // Enhanced direct panning with momentum
+          const resistance = Math.max(0.1, Math.min(1, currentZoom / 3));
+          translateX += deltaX * resistance;
+          translateY += deltaY * resistance;
+
+          clampPosition();
+          updateImageTransform();
+
+          lastTouchX = touch.clientX;
+          lastTouchY = touch.clientY;
+          lastTouchTime = currentTime;
+        }
+      }
+
+      function handleTouchEnd(e) {
+        const imageContainer = document.getElementById("lightboxImageContainer");
+        imageContainer.classList.remove("no-transition");
+
+        // Enhanced swipe navigation with better gesture recognition
+        if (currentZoom === 1 && !isDragging && !isPinching && e.changedTouches.length === 1) {
+          const touch = e.changedTouches[0];
+          const swipeThreshold = 80;
+          const diffX = touchStartX - touch.clientX;
+          const diffY = Math.abs(touchStartY - touch.clientY);
+          const swipeTime = Date.now() - (lastTapTime - doubleTapDelay);
+          
+          // Only trigger swipe if horizontal movement is dominant and gesture is quick enough
+          if (Math.abs(diffX) > swipeThreshold && diffY < swipeThreshold && swipeTime < 500) {
+            if (diffX > 0) {
+              nextImage();
+            } else {
+              previousImage();
+            }
+          }
+        }
+
+        // Enhanced inertia with more natural deceleration
+        if (isDragging && currentZoom > 1 && (Math.abs(velocityX) > 0.1 || Math.abs(velocityY) > 0.1)) {
+          applyNaturalInertia();
+        }
+
+        isDragging = false;
+        isPinching = false;
+      }
+
+      function applyNaturalInertia() {
+        const inertia = () => {
+          const friction = 0.90;
+          const minVelocity = 0.01;
+          const elasticity = 0.15;
+          
+          // Apply velocity with natural momentum
+          translateX += velocityX * 25;
+          translateY += velocityY * 25;
+          
+          // Enhanced boundary handling with elastic bounce
+          const { maxX, maxY } = calculateBoundaries();
+          
+          if (translateX > maxX) {
+            const overflow = translateX - maxX;
+            translateX = maxX - overflow * elasticity;
+            velocityX *= -elasticity;
+          } else if (translateX < -maxX) {
+            const overflow = -maxX - translateX;
+            translateX = -maxX + overflow * elasticity;
+            velocityX *= -elasticity;
+          }
+          
+          if (translateY > maxY) {
+            const overflow = translateY - maxY;
+            translateY = maxY - overflow * elasticity;
+            velocityY *= -elasticity;
+          } else if (translateY < -maxY) {
+            const overflow = -maxY - translateY;
+            translateY = -maxY + overflow * elasticity;
+            velocityY *= -elasticity;
+          }
+
+          // Apply progressive friction
+          velocityX *= friction;
+          velocityY *= friction;
+
+          updateImageTransform();
+
+          if (Math.abs(velocityX) > minVelocity || Math.abs(velocityY) > minVelocity) {
+            animationFrameId = requestAnimationFrame(inertia);
+          } else {
+            // Final position adjustment
+            clampPosition();
+            updateImageTransform();
+          }
+        };
+
+        animationFrameId = requestAnimationFrame(inertia);
+      }
+
+      function getDistance(touch1, touch2) {
+        const dx = touch1.clientX - touch2.clientX;
+        const dy = touch1.clientY - touch2.clientY;
+        return Math.sqrt(dx * dx + dy * dy);
+      }
+
+      // ===========================================
+      // DESKTOP MOUSE EVENTS
+      // ===========================================
+      function setupMouseEvents() {
+        const imageContainer = document.getElementById("lightboxImageContainer");
+        
+        imageContainer.addEventListener("dblclick", handleDoubleClick);
+        imageContainer.addEventListener("mousedown", handleMouseDown);
+        document.addEventListener("mousemove", handleMouseMove);
+        document.addEventListener("mouseup", handleMouseUp);
+        imageContainer.addEventListener("contextmenu", (e) => e.preventDefault());
+      }
+
+      function removeMouseEvents() {
+        const imageContainer = document.getElementById("lightboxImageContainer");
+        if (imageContainer) {
+          imageContainer.removeEventListener("dblclick", handleDoubleClick);
+          imageContainer.removeEventListener("mousedown", handleMouseDown);
+        }
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseup", handleMouseUp);
+      }
+
+      function handleDoubleClick(e) {
+        e.preventDefault();
+        toggleZoom(e.clientX, e.clientY);
+      }
+
+      function handleMouseDown(e) {
+        if (currentZoom <= 1 || e.button !== 0) return;
+
+        mouseDownTime = Date.now();
+        hasMoved = false;
+        dragStartX = e.clientX;
+        dragStartY = e.clientY;
+        startTranslateX = translateX;
+        startTranslateY = translateY;
+
+        const imageContainer = document.getElementById("lightboxImageContainer");
+        imageContainer.classList.add("no-transition");
+        
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      function handleMouseMove(e) {
+        if (mouseDownTime > 0) {
+          const deltaX = Math.abs(e.clientX - dragStartX);
+          const deltaY = Math.abs(e.clientY - dragStartY);
+          
+          if (!hasMoved && (deltaX > dragThreshold || deltaY > dragThreshold)) {
+            hasMoved = true;
+            isDragging = true;
+            const imageContainer = document.getElementById("lightboxImageContainer");
+            imageContainer.classList.add("dragging");
+          }
+
+          if (isDragging) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const moveX = e.clientX - dragStartX;
+            const moveY = e.clientY - dragStartY;
+            
+            translateX = startTranslateX + moveX;
+            translateY = startTranslateY + moveY;
+            
+            clampPosition();
+            updateImageTransform();
+          }
+        }
+      }
+
+      function handleMouseUp() {
+        if (mouseDownTime > 0) {
+          mouseDownTime = 0;
+          if (isDragging) {
+            isDragging = false;
+            const imageContainer = document.getElementById("lightboxImageContainer");
+            imageContainer.classList.remove("dragging");
+          }
+          
+          const imageContainer = document.getElementById("lightboxImageContainer");
+          imageContainer.classList.remove("no-transition");
+        }
+      }
+
+      // ===========================================
+      // MOUSE WHEEL ZOOM
+      // ===========================================
+      function setupMouseWheelZoom() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.addEventListener("wheel", handleMouseWheel, { passive: false });
+      }
+
+      function removeMouseWheelZoom() {
+        const lightbox = document.getElementById("lightbox");
+        if (lightbox) {
+          lightbox.removeEventListener("wheel", handleMouseWheel);
+        }
+      }
+
+      function handleMouseWheel(e) {
+        e.preventDefault();
+        
+        const minZoom = 1;
+        const maxZoom = 5;
+        const zoomDelta = -e.deltaY * 0.002;
+        const newZoom = currentZoom + zoomDelta;
+
+        if (newZoom >= minZoom && newZoom <= maxZoom) {
+          currentZoom = newZoom;
+          
+          if (currentZoom <= 1) {
+            currentZoom = 1;
+            translateX = 0;
+            translateY = 0;
+          }
+          
+          clampPosition();
+          updateImageTransform();
+          updateZoomControls();
+        }
+      }
+
+      // ===========================================
+      // KEYBOARD FUNCTIONALITY
+      // ===========================================
+      function setupKeyboardEvents() {
+        document.addEventListener("keydown", handleLightboxKeyDown);
+      }
+
+      function removeKeyboardEvents() {
+        document.removeEventListener("keydown", handleLightboxKeyDown);
+      }
+
+      function handleLightboxKeyDown(e) {
+        const lightbox = document.getElementById("lightbox");
+        if (lightbox && lightbox.classList.contains("active")) {
+          if (e.key === "Escape") {
+            closeLightbox();
+          } else if (currentZoom === 1) {
+            if (e.key === "ArrowLeft") {
+              previousImage();
+            } else if (e.key === "ArrowRight") {
+              nextImage();
+            }
+          } else {
+            const panAmount = 30;
+            if (e.key === "ArrowLeft") {
+              translateX -= panAmount;
+            } else if (e.key === "ArrowRight") {
+              translateX += panAmount;
+            } else if (e.key === "ArrowUp") {
+              translateY -= panAmount;
+            } else if (e.key === "ArrowDown") {
+              translateY += panAmount;
+            }
+            
+            clampPosition();
+            updateImageTransform();
+          }
+        }
+      }
+
+      function setupLightboxEvents() {
+        setupMouseEvents();
+        setupTouchEvents();
+        setupKeyboardEvents();
+        setupMouseWheelZoom();
+      }
+
+      function removeLightboxEvents() {
+        removeMouseEvents();
+        removeTouchEvents();
+        removeKeyboardEvents();
+        removeMouseWheelZoom();
+      }
+
+      // ===========================================
+      // SCROLL ANIMATIONS
+      // ===========================================
+      function initScrollAnimations() {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry, index) => {
+              if (entry.isIntersecting) {
+                setTimeout(() => {
+                  entry.target.classList.add("visible");
+                }, index * 100);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+          }
+        );
+
+        document.querySelectorAll(".fade-in-up, .slide-in-left, .slide-in-right").forEach((el) => {
+          observer.observe(el);
+        });
+      }
+
+      function isElementInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        const offset = windowHeight * 0.2;
+        return rect.top <= windowHeight - offset && rect.bottom >= offset;
+      }
+
+      // ===========================================
+      // THEME AND NAVIGATION (FROM ORIGINAL)
+      // ===========================================
+      function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.querySelector(".theme-icon");
+        const themeText = document.querySelector(".theme-text");
+        const logos = document.querySelectorAll(".logo-icon, .footer-logo-icon");
+
+        if (body.getAttribute("data-theme") === "dark") {
+          body.removeAttribute("data-theme");
+          if (themeIcon) themeIcon.className = "fas fa-moon theme-icon";
+          if (themeText) themeText.textContent = "Dark";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2.png";
+          });
+          localStorage.setItem("theme", "light");
+        } else {
+          body.setAttribute("data-theme", "dark");
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+          localStorage.setItem("theme", "dark");
+        }
+      }
+
+      function loadSavedTheme() {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          document.body.setAttribute("data-theme", "dark");
+
+          const themeIcon = document.querySelector(".theme-icon");
+          const themeText = document.querySelector(".theme-text");
+
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
+
+          const logos = document.querySelectorAll(".logo-icon, .footer-logo-icon");
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+        }
+      }
+
+      function setActiveNav(element) {
+        if (element.classList.contains("dropdown-toggle")) {
+          return;
+        }
+
+        document
+          .querySelectorAll(".nav-link:not(.dropdown-toggle)")
+          .forEach((link) => {
+            link.classList.remove("active");
+          });
+
+        element.classList.add("active");
+        closeMobileMenu();
+      }
+
+      function toggleMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        if (navMenu && mobileToggle && overlay) {
+          const isActive = navMenu.classList.contains("active");
+
+          if (isActive) {
+            closeMobileMenu();
+          } else {
+            openMobileMenu();
+          }
+        }
+      }
+
+      function openMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        navMenu.classList.add("active");
+        mobileToggle.classList.add("active");
+        overlay.classList.add("active");
+        mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        if (navMenu && navMenu.classList.contains("active")) {
+          navMenu.classList.remove("active");
+          if (mobileToggle) {
+            mobileToggle.classList.remove("active");
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          }
+          if (overlay) {
+            overlay.classList.remove("active");
+          }
+
+          document.body.style.overflow = "";
+        }
+      }
+
+      function toggleDropdown(element) {
+        if (window.innerWidth < 1024) {
+          const dropdownMenu =
+            element.parentElement.parentElement.querySelector(".dropdown-menu");
+          const dropdownArrow = element.querySelector(".dropdown-arrow");
+
+          if (dropdownMenu && dropdownArrow) {
+            dropdownMenu.classList.toggle("open");
+            dropdownArrow.classList.toggle("open");
+
+            if (event) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+          }
+        }
+      }
+
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          closeMobileMenu();
+
+          const navbarHeight = document.getElementById("navbar").offsetHeight;
+          const targetPosition = section.offsetTop - navbarHeight - 20;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        }
+      }
+
+      function handleNavbarScroll() {
+        const navbar = document.getElementById("navbar");
+        if (navbar) {
+          if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        }
+      }
+
+      // ===========================================
+      // HERO SLIDER FUNCTIONALITY (FROM ORIGINAL)
+      // ===========================================
+      let heroCurrentSlide = 0;
+      const heroTotalSlides = 5;
+      let heroSlideInterval;
+      let isAnimating = false;
+
+      const heroSlides = document.querySelectorAll(".hero-slide");
+      const heroIndicators = document.querySelectorAll(".hero-indicator");
+
+      function updateHeroSlide() {
+        if (isAnimating) return;
+
+        isAnimating = true;
+
+        heroSlides.forEach((slide) => slide.classList.remove("active"));
+        heroIndicators.forEach((indicator) => indicator.classList.remove("active"));
+
+        heroSlides[heroCurrentSlide].classList.add("active");
+        heroIndicators[heroCurrentSlide].classList.add("active");
+
+        setTimeout(() => {
+          isAnimating = false;
+        }, 1000);
+      }
+
+      function nextHeroSlide() {
+        heroCurrentSlide = (heroCurrentSlide + 1) % heroTotalSlides;
+        updateHeroSlide();
+      }
+
+      function goToSlide(slideIndex) {
+        if (slideIndex >= 0 && slideIndex < heroTotalSlides && !isAnimating) {
+          heroCurrentSlide = slideIndex;
+          updateHeroSlide();
+        }
+      }
+
+      function startHeroAutoSlide() {
+        heroSlideInterval = setInterval(() => {
+          nextHeroSlide();
+        }, 5000);
+      }
+
+      function stopHeroAutoSlide() {
+        if (heroSlideInterval) {
+          clearInterval(heroSlideInterval);
+        }
+      }
+
+      // ===========================================
+      // INITIALIZATION
+      // ===========================================
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("🎨 Enhanced Portfolio Gallery - Initializing...");
+
+        // Load saved theme and initialize core functionality
+        loadSavedTheme();
+        updateHeroSlide();
+        initializePortfolio();
+        startHeroAutoSlide();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            if (targetId) {
+              scrollToSection(targetId);
+            }
+          });
+        });
+
+        // Hero indicators event listeners
+        heroIndicators.forEach((indicator, index) => {
+          indicator.addEventListener("click", () => {
+            goToSlide(index);
+            stopHeroAutoSlide();
+            setTimeout(startHeroAutoSlide, 3000);
+          });
+        });
+
+        console.log("✅ Enhanced Portfolio Gallery Loaded Successfully!");
+      });
+
+      // Window event listeners
+      window.addEventListener("scroll", handleNavbarScroll);
+      window.addEventListener("focus", startHeroAutoSlide);
+      window.addEventListener("blur", stopHeroAutoSlide);
+
+      // Keyboard navigation support
+      document.addEventListener("keydown", function (e) {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxActive = lightbox && lightbox.classList.contains("active");
+        
+        if (!lightboxActive) {
+          if (e.key === "Escape") {
+            closeMobileMenu();
+          }
+        }
+      });
+
+      // Image protection
+      document.addEventListener("contextmenu", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      document.addEventListener("dragstart", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Performance optimizations
+      window.addEventListener("load", function () {
+        const criticalImages = [
+          "assets/images/img5.jpg",
+          "assets/images/img6.jpg",
+          "assets/images/img7.jpg",
+          "assets/images/img1.jpg",
+          "assets/images/img2.jpg",
+          "assets/images/img3.jpg",
+          "assets/images/img4.jpg",
+        ];
+
+        criticalImages.forEach((src) => {
+          const link = document.createElement("link");
+          link.rel = "preload";
+          link.as = "image";
+          link.href = src;
+          document.head.appendChild(link);
+        });
+      });
+
+      // Add smooth scroll behavior
+      document.documentElement.style.scrollBehavior = "smooth";
+    </script>
+  </body>
+</html><!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personal Portrait Sessions</title>
+    <meta
+      name="description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta
+      name="keywords"
+      content="photography, studio, professional, memories, artistry, technology"
+    />
+    <meta name="author" content="Impasto Photography Studio" />
+    <title>
+      Impasto Photography Portfolio | Professional Photography Services
+    </title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Open Graph Meta Tags for SEO -->
+    <meta
+      property="og:title"
+      content="Impasto Photography Portfolio | Professional Photography Services"
+    />
+    <meta
+      property="og:description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://impastophotography.com" />
+    <meta
+      property="og:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Impasto Photography Portfolio | Professional Photography Services"
+    />
+    <meta
+      name="twitter:description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta
+      name="twitter:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/logo-fav.png" />
+    <link rel="apple-touch-icon" href="assets/images/logo.png" />
+    <!--Default Styles-->
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/components/navhero.css" />
+    <link rel="stylesheet" href="assets/styles/components/footer.css" />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+      /* ===========================================
+         ENHANCED PORTFOLIO GALLERY STYLES
+       =========================================== */
+      
+      /* Portfolio Main Container */
+      .portfolio-main {
+        padding: var(--spacing-2xl) 0;
+        min-height: 100vh;
+        margin-top: 60px;
       }
 
-      body {
-        font-family: "Arial", sans-serif;
-        background-color: #f8f8f8;
-        padding: 40px 20px;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      h1 {
+      .portfolio-header {
         text-align: center;
-        font-size: 2.2rem;
-        font-weight: bold;
-        letter-spacing: 2px;
-        margin-bottom: 50px;
-        color: #333;
+        margin-bottom: var(--spacing-3xl);
+        padding: 0 var(--spacing-md);
       }
 
-      .sessions-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 40px;
-        justify-items: center;
-      }
-
-      .session-card {
-        background: white;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        width: 100%;
-        max-width: 350px;
-        cursor: pointer;
-      }
-
-      .session-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-      }
-
-      .session-image {
-        width: 100%;
-        height: 400px;
-        background-size: cover;
-        background-position: center;
+      .portfolio-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        margin-bottom: var(--spacing-md);
+        color: var(--text-primary);
+        font-family: var(--font-secondary);
         position: relative;
+        display: inline-block;
       }
 
-      .basic-studio {
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.1),
-            rgba(0, 0, 0, 0.1)
-          ),
-          url("assets/images/image3.jpg");
-        background-position: 50% 50%;
+      .portfolio-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: var(--accent-color);
+        border-radius: 2px;
       }
 
-      .solo-spotlight {
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.1),
-            rgba(0, 0, 0, 0.1)
-          ),
-          url("assets/images/image4.jpg");
-        background-position: 50% 50%;
-      }
-
-      .luxury-layers {
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.1),
-            rgba(0, 0, 0, 0.1)
-          ),
-          url("assets/images/image2.jpg");
-        background-position: 50% 50%;
-      }
-
-      .session-details {
-        padding: 30px 25px;
-        text-align: center;
-      }
-
-      .session-title {
-        font-size: 1.4rem;
-        font-weight: bold;
-        letter-spacing: 1px;
-        margin-bottom: 20px;
-        color: #333;
-        text-transform: uppercase;
-      }
-
-      .session-info {
-        margin-bottom: 8px;
-        color: #666;
-        font-size: 0.95rem;
+      .portfolio-subtitle {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
         line-height: 1.6;
       }
 
-      .session-price {
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: #333;
-        margin-top: 20px;
+      /* Filter Buttons */
+      .portfolio-filters {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-3xl);
+        padding: 0 var(--spacing-md);
+      }
+
+      .filter-btn {
+        padding: var(--spacing-xs) var(--spacing-lg);
+        background: transparent;
+        border: 2px solid var(--border);
+        color: var(--text-secondary);
+        border-radius: 50px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        text-transform: uppercase;
         letter-spacing: 0.5px;
+        font-family: var(--font-primary);
       }
 
-      .price-currency {
-        font-size: 0.9em;
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: var(--accent-color);
+        color: white;
+        border-color: var(--accent-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
       }
 
-      @media (max-width: 768px) {
-        .sessions-grid {
-          grid-template-columns: 1fr;
-          gap: 30px;
+      /* Gallery Grid */
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-2xl);
+        padding: 0 var(--spacing-md);
+      }
+
+      .portfolio-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-md);
+        aspect-ratio: 4/3;
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        box-shadow: 0 4px 15px var(--shadow);
+        background: var(--bg-secondary);
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .portfolio-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .portfolio-item:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 12px 35px var(--shadow-hover);
+      }
+
+      .portfolio-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform var(--transition-normal);
+        user-select: none;
+        -webkit-user-drag: none;
+      }
+
+      .portfolio-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .portfolio-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.85) 0%,
+          rgba(29, 78, 216, 0.9) 100%
+        );
+        opacity: 0;
+        transition: all var(--transition-normal);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .portfolio-item:hover .portfolio-overlay {
+        opacity: 1;
+      }
+
+      .overlay-content {
+        text-align: center;
+        color: white;
+        transform: translateY(20px);
+        transition: transform var(--transition-normal);
+      }
+
+      .portfolio-item:hover .overlay-content {
+        transform: translateY(0);
+      }
+
+      .overlay-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: var(--spacing-xs);
+      }
+
+      .overlay-category {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .overlay-icon {
+        font-size: 1.5rem;
+        opacity: 0.9;
+      }
+
+      /* Load More Button */
+      .load-more-container {
+        text-align: center;
+        margin-top: var(--spacing-2xl);
+        padding: 0 var(--spacing-md);
+      }
+
+      .btn-load-more {
+        background: transparent;
+        color: var(--accent-color);
+        border: 2px solid var(--accent-color);
+        padding: var(--spacing-md) var(--spacing-2xl);
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        font-family: var(--font-primary);
+      }
+
+      .btn-load-more:hover {
+        background: var(--accent-color);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+      }
+
+      .btn-load-more:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      /* ===========================================
+         ENHANCED LIGHTBOX WITH NATURAL MOBILE INTERACTIONS
+       =========================================== */
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000000;
+        z-index: 2000;
+        opacity: 0;
+        transition: opacity var(--transition-normal);
+      }
+
+      .lightbox.active {
+        display: flex;
+        flex-direction: column;
+        opacity: 1;
+      }
+
+      .lightbox-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 var(--spacing-md);
+        z-index: 2002;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .lightbox-counter {
+        color: white;
+        font-size: 0.95rem;
+        font-weight: 500;
+        font-family: var(--font-primary);
+      }
+
+      .lightbox-close {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        font-size: 1.1rem;
+        backdrop-filter: blur(10px);
+      }
+
+      .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        font-size: 1.2rem;
+        z-index: 2001;
+      }
+
+      .lightbox-nav:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .lightbox-prev {
+        left: var(--spacing-lg);
+      }
+
+      .lightbox-next {
+        right: var(--spacing-lg);
+      }
+
+      .lightbox-content {
+        position: relative;
+        width: 100%;
+        height: calc(100vh - 120px);
+        margin-top: 60px;
+        margin-bottom: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        touch-action: none;
+      }
+
+      .lightbox-image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform-origin: center center;
+        cursor: zoom-in;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-user-drag: none;
+        -webkit-touch-callout: none;
+      }
+
+      .lightbox-image-container.no-transition {
+        transition: none;
+      }
+
+      .lightbox-image-container.zoomed {
+        cursor: grab;
+      }
+
+      .lightbox-image-container.dragging {
+        cursor: grabbing;
+      }
+
+      .lightbox-image {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        border-radius: var(--radius-sm);
+        user-select: none;
+        -webkit-user-drag: none;
+        pointer-events: none;
+      }
+
+      .lightbox-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2002;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .lightbox-info {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.85rem;
+        font-family: var(--font-primary);
+      }
+
+      .zoom-controls {
+        position: absolute;
+        bottom: 80px;
+        right: var(--spacing-lg);
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        z-index: 2001;
+      }
+
+      .zoom-btn {
+        width: 44px;
+        height: 44px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        font-size: 1rem;
+      }
+
+      .zoom-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+
+      .zoom-btn:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      /* Responsive Design */
+      @media (min-width: 640px) {
+        .portfolio-main {
+          padding: var(--spacing-3xl) 0;
         }
 
-        h1 {
-          font-size: 1.8rem;
-          margin-bottom: 40px;
+        .portfolio-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: var(--spacing-lg);
+          padding: 0 var(--spacing-lg);
         }
 
-        .session-card {
-          max-width: 100%;
+        .portfolio-item {
+          aspect-ratio: 3/2;
+        }
+
+        .portfolio-filters {
+          gap: var(--spacing-md);
+        }
+
+        .filter-btn {
+          padding: var(--spacing-sm) var(--spacing-xl);
+          font-size: 1rem;
         }
       }
 
-      /* Hover effects */
-      .session-card:hover .session-image {
-        transform: scale(1.02);
+      @media (min-width: 768px) {
+        .portfolio-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
       }
 
-      .session-image {
-        transition: transform 0.3s ease;
+      @media (min-width: 1024px) {
+        .portfolio-main {
+          padding: var(--spacing-4xl) 0;
+        }
+
+        .portfolio-grid {
+          grid-template-columns: repeat(4, 1fr);
+          padding: 0 var(--spacing-xl);
+        }
+
+        .lightbox-nav {
+          display: flex;
+        }
+
+        .lightbox-content {
+          height: 100vh;
+          margin: 0;
+          padding: var(--spacing-lg);
+        }
+
+        .lightbox-header {
+          position: absolute;
+          top: var(--spacing-lg);
+          left: var(--spacing-lg);
+          height: auto;
+          background: none;
+          padding: 0;
+          width: auto;
+        }
+
+        .lightbox-counter {
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          padding: var(--spacing-sm) var(--spacing-md);
+          border-radius: var(--radius-sm);
+        }
+
+        .lightbox-close {
+          position: absolute;
+          top: var(--spacing-lg);
+          right: var(--spacing-lg);
+          width: 50px;
+          height: 50px;
+        }
+
+        .lightbox-footer {
+          display: none;
+        }
+
+        .zoom-controls {
+          display: none;
+        }
+      }
+
+      @media (min-width: 1280px) {
+        .portfolio-main {
+          max-width: 1400px;
+          margin: 60px auto 0;
+          padding: var(--spacing-4xl) var(--spacing-xl);
+        }
+      }
+
+      /* Animation Classes */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+      }
+
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .slide-in-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.8s ease;
+      }
+
+      .slide-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .slide-in-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.8s ease;
+      }
+
+      .slide-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* Dark Theme Support */
+      [data-theme="dark"] .portfolio-item,
+      [data-theme="dark"] .filter-btn {
+        background: var(--bg-tertiary);
+        border-color: var(--border);
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1 class="container-title">PERSONAL PORTRAIT SESSIONS</h1>
-
-      <div class="sessions-grid">
-        <!-- Basic Studio Session -->
-        <div class="session-card" onclick="selectSession('basic')">
-          <div class="session-image basic-studio"></div>
-          <div class="session-details">
-            <h3 class="session-title">Basic Studio Session</h3>
-            <div class="session-info">30 Minutes Shooting Time</div>
-            <div class="session-info">One Look</div>
-            <div class="session-info">8 Photos (8 Retouched Images)</div>
-            <div class="session-price">
-              <span class="price-currency">₵</span> 1650.00
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="mobile-menu-overlay"
+      id="mobileMenuOverlay"
+      onclick="toggleMobileMenu()"
+    ></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo">
+          <img
+            src="assets/images/logo2.png"
+            alt="Impasto logo"
+            class="logo-icon"
+          />
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link" onclick="setActiveNav(this)"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="information.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Information
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
             </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="about.html" class="dropdown-link">About Us</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="team.html" class="dropdown-link">Our Team</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="services.html" class="dropdown-link">Services</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="testimonials.html" class="dropdown-link"
+                  >Testimonials</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="ratecards.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Ratecards
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="portrait.html" class="dropdown-link"
+                  >Portrait Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="wedding.html" class="dropdown-link"
+                  >Wedding Photography</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="store.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Store
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="prints.html" class="dropdown-link">Prints</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="digital-products.html" class="dropdown-link"
+                  >Digital Products</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link" onclick="setActiveNav(this)"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="blog.html" class="nav-link" onclick="setActiveNav(this)"
+              >Blog</a
+            >
+          </li>
+        </ul>
+        <div class="nav-controls">
+          <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon theme-icon"></i>
+            <span class="theme-text">Dark</span>
+          </button>
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero fade-in">
+      <div class="hero-slider">
+        <div
+          class="hero-slide active"
+          style="background-image: url('assets/images/img5.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('assets/images/img6.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('assets/images/img7.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('assets/images/img8.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('assets/images/img9.jpg')"
+        ></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-camera"></i>
+          Professional Portfolio
+        </div>
+        <h1 class="hero-title">Our Photography Portfolio</h1>
+        <p class="hero-subtitle">
+          Discover our collection of stunning photographs that capture life's most precious moments
+        </p>
+      </div>
+      <!-- Hero Slider Indicators -->
+      <div class="hero-indicators">
+        <div class="hero-indicator active" onclick="goToSlide(0)"></div>
+        <div class="hero-indicator" onclick="goToSlide(1)"></div>
+        <div class="hero-indicator" onclick="goToSlide(2)"></div>
+        <div class="hero-indicator" onclick="goToSlide(3)"></div>
+        <div class="hero-indicator" onclick="goToSlide(4)"></div>
+      </div>
+      <div class="scroll-indicator" onclick="scrollToSection('portfolio')">
+        <i class="fas fa-chevron-down fa-2x"></i>
+      </div>
+    </section>
+
+    <!-- Main Content - Enhanced Portfolio Gallery -->
+    <main class="portfolio-main" id="portfolio">
+      <div class="container">
+        <!-- Portfolio Header -->
+        <div class="portfolio-header fade-in-up">
+          <h1 class="portfolio-title">Our Photography Portfolio</h1>
+          <p class="portfolio-subtitle">
+            Explore our diverse collection of professional photography work spanning 
+            weddings, portraits, events, and artistic captures. Each image represents 
+            our commitment to excellence and passion for storytelling through the lens.
+          </p>
+        </div>
+
+        <!-- Portfolio Filters -->
+        <div class="portfolio-filters slide-in-left">
+          <button class="filter-btn active" data-filter="all">All Work</button>
+          <button class="filter-btn" data-filter="wedding">Weddings</button>
+          <button class="filter-btn" data-filter="portrait">Portraits</button>
+          <button class="filter-btn" data-filter="event">Events</button>
+          <button class="filter-btn" data-filter="artistic">Artistic</button>
+        </div>
+
+        <!-- Portfolio Grid -->
+        <div class="portfolio-grid slide-in-right" id="portfolioGrid">
+          <!-- Portfolio items will be dynamically inserted here -->
+        </div>
+
+        <!-- Load More Button -->
+        <div class="load-more-container fade-in-up">
+          <button
+            class="btn-load-more"
+            id="loadMoreBtn"
+            onclick="loadMoreImages()"
+          >
+            <i class="fas fa-plus"></i>
+            Load More Images
+          </button>
+        </div>
+      </div>
+
+      <!-- Enhanced Lightbox -->
+      <div class="lightbox" id="lightbox">
+        <!-- Header -->
+        <div class="lightbox-header">
+          <div class="lightbox-counter" id="lightboxCounter">Image 1 of 60</div>
+          <button class="lightbox-close" onclick="closeLightbox()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <!-- Navigation Arrows (Desktop Only) -->
+        <button class="lightbox-nav lightbox-prev" onclick="previousImage()">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="lightbox-nav lightbox-next" onclick="nextImage()">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <!-- Image Container -->
+        <div class="lightbox-content" id="lightboxContent">
+          <div class="lightbox-image-container" id="lightboxImageContainer">
+            <img src="" alt="" class="lightbox-image" id="lightboxImage" />
           </div>
         </div>
 
-        <!-- Solo Spotlight -->
-        <div class="session-card" onclick="selectSession('solo')">
-          <div class="session-image solo-spotlight"></div>
-          <div class="session-details">
-            <h3 class="session-title">Solo Spotlight</h3>
-            <div class="session-info">60 Minutes Shooting Time</div>
-            <div class="session-info">Two Looks</div>
-            <div class="session-info">12 Photos (8 Retouched Images)</div>
-            <div class="session-price">
-              <span class="price-currency">₵</span> 1499.00
-            </div>
-          </div>
+        <!-- Zoom Controls (Mobile Only) -->
+        <div class="zoom-controls">
+          <button class="zoom-btn" id="zoomInBtn" onclick="zoomIn()">
+            <i class="fas fa-plus"></i>
+          </button>
+          <button class="zoom-btn" id="zoomOutBtn" onclick="zoomOut()">
+            <i class="fas fa-minus"></i>
+          </button>
         </div>
 
-        <!-- Luxury Layers -->
-        <div class="session-card" onclick="selectSession('luxury')">
-          <div class="session-image luxury-layers"></div>
-          <div class="session-details">
-            <h3 class="session-title">Luxury Layers</h3>
-            <div class="session-info">90 Minutes Shooting Time</div>
-            <div class="session-info">Two - Three Looks</div>
-            <div class="session-info">20 Photos (10 Retouched Images)</div>
-            <div class="session-price">
-              <span class="price-currency">₵</span> 2999.00
-            </div>
+        <!-- Footer -->
+        <div class="lightbox-footer">
+          <div class="lightbox-info">
+            <span id="lightboxTitle">Swipe left/right to navigate • Pinch to zoom</span>
           </div>
         </div>
       </div>
-    </div>
+    </main>
 
-    <script>
-      function selectSession(sessionType) {
-        // Add selection feedback
-        const cards = document.querySelectorAll(".session-card");
-        cards.forEach((card) => (card.style.transform = "scale(1)"));
-
-        event.currentTarget.style.transform = "scale(0.98)";
-
-        setTimeout(() => {
-          event.currentTarget.style.transform = "scale(1)";
-
-          // You can add booking logic here
-          alert(
-            `Selected: ${
-              sessionType.charAt(0).toUpperCase() + sessionType.slice(1)
-            } Session`
-          );
-        }, 150);
-      }
-
-      // Add some interactive animations on page load
-      document.addEventListener("DOMContentLoaded", function () {
-        const cards = document.querySelectorAll(".session-card");
-
-        cards.forEach((card, index) => {
-          card.style.opacity = "0";
-          card.style.transform = "translateY(20px)";
-
-          setTimeout(() => {
-            card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-            card.style.opacity = "1";
-            card.style.transform = "translateY(0)";
-          }, index * 200);
-        });
-      });
-
-      // Add smooth scroll behavior if extending the page
-      document.documentElement.style.scrollBehavior = "smooth";
-    </script>
-  </body>
-</html>
+    <!-- Footer -->
+    <footer class="footer scale-in">
+      <div class="footer-content container">
+        <div class="footer-grid">
+          <!-- Logo Section -->
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img
+                src="assets/images/logo2.png"
+                class="footer-logo-icon"
+                alt="Impasto Photography"
+              />
+            </div>
+            <p class="footer-description">
+              At Impasto Photography, we specialize in capturing life's precious
+              moments with artistry and precision. Our team of professional
+              photographers is dedicated to creating timeless memories that
+              you'll cherish for generations to come.
+            </p>
+          </div>
+          <!-- Quick Links -->
+          <div class="footer-section slide-in-left">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#home">
+                  <i class="fas

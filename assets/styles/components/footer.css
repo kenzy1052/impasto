@@ -228,6 +228,7 @@
     margin-bottom: var(--spacing-3xl);
   }
   .footer-bottom-content {
+    padding: 0 2rem;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;

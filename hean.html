@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Premium Grid Hero — Photography Portfolio</title>
+    <style>
+      :root {
+        --accent: #ff6b35;
+        --accent-secondary: #f7931e;
+        --bg: #0a0a0a;
+        --text: #ffffff;
+        --text-secondary: #a0a0a0;
+        --surface: #1a1a1a;
+        --border: rgba(255, 255, 255, 0.1);
+        --glow: rgba(255, 107, 53, 0.3);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          sans-serif;
+        background: linear-gradient(
+          135deg,
+          #0a0a0a 0%,
+          #1a1a1a 50%,
+          #0f0f0f 100%
+        );
+        color: var(--text);
+        position: relative;
+      }
+
+      /* Animated background particles */
+      .bg-particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.4;
+      }
+
+      .particle {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: var(--accent);
+        border-radius: 50%;
+        animation: float 8s infinite linear;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      /* Main hero container */
+      .hero {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 60px;
+        padding: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Content section */
+      .content {
+        padding: 40px 0;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent-secondary)
+        );
+        color: white;
+        padding: 8px 16px;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 24px;
+        box-shadow: 0 4px 20px var(--glow);
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          box-shadow: 0 4px 20px var(--glow);
+        }
+        50% {
+          box-shadow: 0 8px 30px var(--glow);
+        }
+      }
+
+      .badge::before {
+        content: "✨";
+        animation: rotate 3s linear infinite;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        line-height: 1.1;
+        margin: 0 0 24px;
+        font-weight: 800;
+        background: linear-gradient(135deg, #ffffff, #a0a0a0);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        margin-bottom: 32px;
+        line-height: 1.6;
+        max-width: 500px;
+      }
+
+      .cta-group {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 32px;
+        border: none;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent-secondary)
+        );
+        color: white;
+        box-shadow: 0 8px 25px var(--glow);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 35px var(--glow);
+      }
+
+      .btn-secondary {
+        background: var(--surface);
+        color: var(--text);
+        border: 1px solid var(--border);
+      }
+
+      .btn-secondary:hover {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+        transform: translateY(-2px);
+      }
+
+      /* Image section with 9-grid */
+      .image-section {
+        position: relative;
+        height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        perspective: 2000px;
+      }
+
+      .grid-container {
+        position: relative;
+        width: 500px;
+        height: 500px;
+        cursor: pointer;
+      }
+
+      .grid-piece {
+        position: absolute;
+        width: 33.333%;
+        height: 33.333%;
+        background-image: url("https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=800&q=80");
+        background-size: 300% 300%;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-origin: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(0px);
+        will-change: transform;
+      }
+
+      /* Grid positioning and background positioning */
+      .piece-1 {
+        top: 0;
+        left: 0;
+        background-position: 0% 0%;
+      }
+      .piece-2 {
+        top: 0;
+        left: 33.333%;
+        background-position: 50% 0%;
+      }
+      .piece-3 {
+        top: 0;
+        right: 0;
+        background-position: 100% 0%;
+      }
+      .piece-4 {
+        top: 33.333%;
+        left: 0;
+        background-position: 0% 50%;
+      }
+      .piece-5 {
+        top: 33.333%;
+        left: 33.333%;
+        background-position: 50% 50%;
+      }
+      .piece-6 {
+        top: 33.333%;
+        right: 0;
+        background-position: 100% 50%;
+      }
+      .piece-7 {
+        bottom: 0;
+        left: 0;
+        background-position: 0% 100%;
+      }
+      .piece-8 {
+        bottom: 0;
+        left: 33.333%;
+        background-position: 50% 100%;
+      }
+      .piece-9 {
+        bottom: 0;
+        right: 0;
+        background-position: 100% 100%;
+      }
+
+      /* Dispersed state - each piece moves in different directions */
+      .grid-container.dispersed .piece-1 {
+        transform: translate3d(-180px, -120px, 100px) rotateX(25deg)
+          rotateY(-30deg) rotateZ(15deg);
+      }
+      .grid-container.dispersed .piece-2 {
+        transform: translate3d(0, -200px, 150px) rotateX(-15deg) rotateY(10deg)
+          rotateZ(-10deg);
+      }
+      .grid-container.dispersed .piece-3 {
+        transform: translate3d(180px, -140px, 80px) rotateX(35deg)
+          rotateY(25deg) rotateZ(-20deg);
+      }
+      .grid-container.dispersed .piece-4 {
+        transform: translate3d(-220px, 0, 120px) rotateX(-20deg) rotateY(-35deg)
+          rotateZ(25deg);
+      }
+      .grid-container.dispersed .piece-5 {
+        transform: translate3d(0, 0, 250px) rotateX(45deg) rotateY(0deg)
+          rotateZ(0deg) scale(1.1);
+      }
+      .grid-container.dispersed .piece-6 {
+        transform: translate3d(200px, 20px, 90px) rotateX(-30deg) rotateY(40deg)
+          rotateZ(-15deg);
+      }
+      .grid-container.dispersed .piece-7 {
+        transform: translate3d(-160px, 180px, 110px) rotateX(20deg)
+          rotateY(-25deg) rotateZ(30deg);
+      }
+      .grid-container.dispersed .piece-8 {
+        transform: translate3d(0, 220px, 140px) rotateX(-25deg) rotateY(15deg)
+          rotateZ(-25deg);
+      }
+      .grid-container.dispersed .piece-9 {
+        transform: translate3d(190px, 160px, 70px) rotateX(30deg) rotateY(35deg)
+          rotateZ(20deg);
+      }
+
+      /* Hover effect - align all pieces */
+      .grid-container:hover .grid-piece {
+        transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0)
+          scale(1);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        border-color: var(--accent);
+      }
+
+      /* Automatic animation */
+      .grid-container.animate .grid-piece {
+        animation: gridFloat 6s ease-in-out infinite;
+      }
+
+      @keyframes gridFloat {
+        0%,
+        100% {
+          transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0);
+        }
+        25% {
+          opacity: 0.9;
+        }
+        50% {
+          opacity: 0.8;
+        }
+        75% {
+          opacity: 0.9;
+        }
+      }
+
+      /* Individual piece animations with delays */
+      .animate .piece-1 {
+        animation-delay: 0s;
+      }
+      .animate .piece-2 {
+        animation-delay: 0.1s;
+      }
+      .animate .piece-3 {
+        animation-delay: 0.2s;
+      }
+      .animate .piece-4 {
+        animation-delay: 0.3s;
+      }
+      .animate .piece-5 {
+        animation-delay: 0.4s;
+      }
+      .animate .piece-6 {
+        animation-delay: 0.5s;
+      }
+      .animate .piece-7 {
+        animation-delay: 0.6s;
+      }
+      .animate .piece-8 {
+        animation-delay: 0.7s;
+      }
+      .animate .piece-9 {
+        animation-delay: 0.8s;
+      }
+
+      @keyframes gridFloat {
+        0% {
+          transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0);
+        }
+        33% {
+          transform: var(--dispersed-transform);
+          opacity: 0.8;
+        }
+        66% {
+          transform: var(--dispersed-transform);
+          opacity: 0.8;
+        }
+        100% {
+          transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0);
+        }
+      }
+
+      /* Set custom properties for each piece's dispersed state */
+      .animate .piece-1 {
+        --dispersed-transform: translate3d(-180px, -120px, 100px) rotateX(25deg)
+          rotateY(-30deg) rotateZ(15deg);
+      }
+      .animate .piece-2 {
+        --dispersed-transform: translate3d(0, -200px, 150px) rotateX(-15deg)
+          rotateY(10deg) rotateZ(-10deg);
+      }
+      .animate .piece-3 {
+        --dispersed-transform: translate3d(180px, -140px, 80px) rotateX(35deg)
+          rotateY(25deg) rotateZ(-20deg);
+      }
+      .animate .piece-4 {
+        --dispersed-transform: translate3d(-220px, 0, 120px) rotateX(-20deg)
+          rotateY(-35deg) rotateZ(25deg);
+      }
+      .animate .piece-5 {
+        --dispersed-transform: translate3d(0, 0, 250px) rotateX(45deg)
+          rotateY(0deg) rotateZ(0deg) scale(1.1);
+      }
+      .animate .piece-6 {
+        --dispersed-transform: translate3d(200px, 20px, 90px) rotateX(-30deg)
+          rotateY(40deg) rotateZ(-15deg);
+      }
+      .animate .piece-7 {
+        --dispersed-transform: translate3d(-160px, 180px, 110px) rotateX(20deg)
+          rotateY(-25deg) rotateZ(30deg);
+      }
+      .animate .piece-8 {
+        --dispersed-transform: translate3d(0, 220px, 140px) rotateX(-25deg)
+          rotateY(15deg) rotateZ(-25deg);
+      }
+      .animate .piece-9 {
+        --dispersed-transform: translate3d(190px, 160px, 70px) rotateX(30deg)
+          rotateY(35deg) rotateZ(20deg);
+      }
+
+      /* Glow effect behind the grid */
+      .grid-container::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        right: -20px;
+        bottom: -20px;
+        background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+        border-radius: 20px;
+        opacity: 0.5;
+        z-index: -1;
+        animation: breathe 4s ease-in-out infinite;
+      }
+
+      @keyframes breathe {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.5;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.8;
+        }
+      }
+
+      /* Control buttons */
+      .controls {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 12px;
+        z-index: 10;
+      }
+
+      .control-btn {
+        padding: 12px 20px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .control-btn:hover,
+      .control-btn.active {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: white;
+      }
+
+      /* Responsive design */
+      @media (max-width: 1024px) {
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          text-align: center;
+        }
+
+        .image-section {
+          order: -1;
+          height: 500px;
+        }
+
+        .grid-container {
+          width: 400px;
+          height: 400px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .hero {
+          padding: 20px;
+        }
+
+        .grid-container {
+          width: 300px;
+          height: 300px;
+        }
+
+        .cta-group {
+          justify-content: center;
+        }
+      }
+
+      /* Loading animation */
+      .grid-container.loading .grid-piece {
+        animation: loadIn 1s ease-out forwards;
+        opacity: 0;
+        transform: scale(0) rotate(180deg);
+      }
+
+      @keyframes loadIn {
+        to {
+          opacity: 1;
+          transform: scale(1) rotate(0deg);
+        }
+      }
+
+      .loading .piece-1 {
+        animation-delay: 0.1s;
+      }
+      .loading .piece-2 {
+        animation-delay: 0.2s;
+      }
+      .loading .piece-3 {
+        animation-delay: 0.3s;
+      }
+      .loading .piece-4 {
+        animation-delay: 0.4s;
+      }
+      .loading .piece-5 {
+        animation-delay: 0.5s;
+      }
+      .loading .piece-6 {
+        animation-delay: 0.6s;
+      }
+      .loading .piece-7 {
+        animation-delay: 0.7s;
+      }
+      .loading .piece-8 {
+        animation-delay: 0.8s;
+      }
+      .loading .piece-9 {
+        animation-delay: 0.9s;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Animated background particles -->
+    <div class="bg-particles" id="particles"></div>
+
+    <section class="hero">
+      <div class="content">
+        <div class="badge">Premium Photography</div>
+
+        <h1>Craft Visual Stories That Resonate</h1>
+
+        <p class="subtitle">
+          Experience photography that transcends the ordinary. Each frame tells
+          a story, each moment captured with artistic precision and technical
+          mastery.
+        </p>
+
+        <div class="cta-group">
+          <a href="#portfolio" class="btn btn-primary">
+            Explore Work
+            <span>→</span>
+          </a>
+          <a href="#contact" class="btn btn-secondary"> Let's Connect </a>
+        </div>
+      </div>
+
+      <div class="image-section">
+        <div class="grid-container loading" id="gridContainer">
+          <div class="grid-piece piece-1"></div>
+          <div class="grid-piece piece-2"></div>
+          <div class="grid-piece piece-3"></div>
+          <div class="grid-piece piece-4"></div>
+          <div class="grid-piece piece-5"></div>
+          <div class="grid-piece piece-6"></div>
+          <div class="grid-piece piece-7"></div>
+          <div class="grid-piece piece-8"></div>
+          <div class="grid-piece piece-9"></div>
+        </div>
+
+        <div class="controls">
+          <button class="control-btn active" data-mode="auto">Auto</button>
+          <button class="control-btn" data-mode="dispersed">Explode</button>
+          <button class="control-btn" data-mode="aligned">Align</button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      class PremiumGridHero {
+        constructor() {
+          this.gridContainer = document.getElementById("gridContainer");
+          this.particles = document.getElementById("particles");
+          this.currentMode = "auto";
+          this.isHovered = false;
+
+          this.init();
+        }
+
+        init() {
+          this.createParticles();
+          this.setupEventListeners();
+          this.startLoadingAnimation();
+        }
+
+        createParticles() {
+          for (let i = 0; i < 50; i++) {
+            const particle = document.createElement("div");
+            particle.className = "particle";
+            particle.style.left = Math.random() * 100 + "%";
+            particle.style.animationDelay = Math.random() * 8 + "s";
+            particle.style.animationDuration = 8 + Math.random() * 4 + "s";
+            this.particles.appendChild(particle);
+          }
+        }
+
+        startLoadingAnimation() {
+          setTimeout(() => {
+            this.gridContainer.classList.remove("loading");
+            this.setMode("auto");
+          }, 2000);
+        }
+
+        setupEventListeners() {
+          // Control buttons
+          document.querySelectorAll(".control-btn").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+              const mode = e.target.dataset.mode;
+              this.setMode(mode);
+              this.updateActiveButton(e.target);
+            });
+          });
+
+          // Grid hover effects
+          this.gridContainer.addEventListener("mouseenter", () => {
+            this.isHovered = true;
+            if (this.currentMode === "auto") {
+              this.gridContainer.classList.remove("animate");
+            }
+          });
+
+          this.gridContainer.addEventListener("mouseleave", () => {
+            this.isHovered = false;
+            if (this.currentMode === "auto") {
+              this.gridContainer.classList.add("animate");
+            }
+          });
+
+          // Touch support
+          this.gridContainer.addEventListener("touchstart", () => {
+            this.isHovered = true;
+            if (this.currentMode === "auto") {
+              this.gridContainer.classList.remove("animate");
+            }
+          });
+
+          this.gridContainer.addEventListener("touchend", () => {
+            setTimeout(() => {
+              this.isHovered = false;
+              if (this.currentMode === "auto") {
+                this.gridContainer.classList.add("animate");
+              }
+            }, 500);
+          });
+
+          // Keyboard shortcuts
+          document.addEventListener("keydown", (e) => {
+            switch (e.key) {
+              case "1":
+                this.setMode("auto");
+                this.updateActiveButton(
+                  document.querySelector('[data-mode="auto"]')
+                );
+                break;
+              case "2":
+                this.setMode("dispersed");
+                this.updateActiveButton(
+                  document.querySelector('[data-mode="dispersed"]')
+                );
+                break;
+              case "3":
+                this.setMode("aligned");
+                this.updateActiveButton(
+                  document.querySelector('[data-mode="aligned"]')
+                );
+                break;
+              case " ":
+                e.preventDefault();
+                this.toggleMode();
+                break;
+            }
+          });
+        }
+
+        setMode(mode) {
+          this.currentMode = mode;
+
+          // Remove all classes
+          this.gridContainer.classList.remove("animate", "dispersed");
+
+          switch (mode) {
+            case "auto":
+              if (!this.isHovered) {
+                this.gridContainer.classList.add("animate");
+              }
+              break;
+            case "dispersed":
+              this.gridContainer.classList.add("dispersed");
+              break;
+            case "aligned":
+              // Default state, no additional classes needed
+              break;
+          }
+        }
+
+        updateActiveButton(activeBtn) {
+          document.querySelectorAll(".control-btn").forEach((btn) => {
+            btn.classList.remove("active");
+          });
+          activeBtn.classList.add("active");
+        }
+
+        toggleMode() {
+          const modes = ["auto", "dispersed", "aligned"];
+          const currentIndex = modes.indexOf(this.currentMode);
+          const nextIndex = (currentIndex + 1) % modes.length;
+          const nextMode = modes[nextIndex];
+
+          this.setMode(nextMode);
+          this.updateActiveButton(
+            document.querySelector(`[data-mode="${nextMode}"]`)
+          );
+        }
+      }
+
+      // Initialize when DOM is loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        new PremiumGridHero();
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

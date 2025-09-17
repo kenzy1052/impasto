@@ -1,0 +1,2556 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Contact Impasto Photography Studio - Professional photography services in Ghana. Book your session today for weddings, portraits, events and more. We travel worldwide."
+    />
+    <meta
+      name="keywords"
+      content="contact impasto photography, book photography session Ghana, professional photographers Accra, wedding photography booking, portrait photography contact"
+    />
+    <meta name="author" content="Impasto Photography Studio" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#2563eb" />
+    <title>
+      Contact Us - Book Your Session | Impasto Photography Studio Ghana
+    </title>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Impasto Photography Studio",
+        "description": "Professional Photography Studio specializing in weddings, portraits, and events in Ghana",
+        "url": "https://impastophotography.com/contact.html",
+        "telephone": "+233242641305",
+        "email": "potrit1@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Dome - Accra. Opposite Adehyeman Bank",
+          "addressLocality": "Accra",
+          "addressRegion": "Greater Accra",
+          "addressCountry": "Ghana"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "5.6037",
+          "longitude": "-0.1870"
+        },
+        "openingHours": [
+          "Mo-Fr 08:00-17:00",
+          "Sa 09:30-18:00",
+          "Su 13:00-18:00"
+        ],
+        "sameAs": [
+          "https://instagram.com/impastophotography",
+          "https://facebook.com/impastophotography"
+        ]
+      }
+    </script>
+
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Open Graph Meta Tags for SEO -->
+    <meta
+      property="og:title"
+      content="Contact Impasto Photography - Book Your Session Today"
+    />
+    <meta
+      property="og:description"
+      content="Ready to capture your precious moments? Contact our professional photography studio in Ghana. We offer wedding, portrait, and event photography services worldwide."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://impastophotography.com/contact.html"
+    />
+    <meta
+      property="og:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Contact Impasto Photography - Professional Photography Services"
+    />
+    <meta
+      name="twitter:description"
+      content="Book your photography session with Ghana's premier photography studio. Weddings, portraits, events - we capture your story beautifully."
+    />
+    <meta
+      name="twitter:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/logo-fav.png" />
+    <link rel="apple-touch-icon" href="assets/images/logo.png" />
+
+    <!--Default Styles-->
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/components/footer.css" />
+
+    <style>
+      /* Custom Scrollbar Styles */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--gradient-primary);
+        border-radius: 10px;
+        transition: all var(--transition-normal);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      }
+
+      /* Firefox Scrollbar */
+      html {
+        scrollbar-width: thin;
+        scrollbar-color: #2563eb var(--bg-secondary);
+      }
+
+      body {
+        font-family: var(--font-primary);
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        transition: background-color var(--transition-normal),
+          color var(--transition-normal);
+      }
+
+      .container {
+        max-width: 1200px;
+      }
+
+      /* Enhanced Scroll Animation Classes */
+      .scroll-animate {
+        opacity: 0;
+        transform: translateY(60px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .scroll-animate.animate-slide-left {
+        transform: translateX(-60px) translateY(30px);
+      }
+
+      .scroll-animate.animate-slide-right {
+        transform: translateX(60px) translateY(30px);
+      }
+
+      .scroll-animate.animate-scale {
+        transform: scale(0.8) translateY(30px);
+      }
+
+      .scroll-animate.animate-fade {
+        transform: translateY(30px);
+      }
+
+      .scroll-animate.visible {
+        opacity: 1;
+        transform: translateX(0) translateY(0) scale(1);
+      }
+
+      /* Text Animation Classes */
+      .text-animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .text-animate.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Stagger animation delays */
+      .scroll-animate:nth-child(1) {
+        transition-delay: 0s;
+      }
+      .scroll-animate:nth-child(2) {
+        transition-delay: 0.1s;
+      }
+      .scroll-animate:nth-child(3) {
+        transition-delay: 0.2s;
+      }
+      .scroll-animate:nth-child(4) {
+        transition-delay: 0.3s;
+      }
+      .scroll-animate:nth-child(5) {
+        transition-delay: 0.4s;
+      }
+      .scroll-animate:nth-child(6) {
+        transition-delay: 0.5s;
+      }
+
+      /* Text stagger delays */
+      .text-animate:nth-child(1) {
+        transition-delay: 0s;
+      }
+      .text-animate:nth-child(2) {
+        transition-delay: 0.15s;
+      }
+      .text-animate:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+
+      /* ===========================================
+          NAVIGATION - MOBILE FIRST
+         =========================================== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background: var(--nav-bg);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        transition: all var(--transition-normal);
+      }
+      .navbar.scrolled {
+        box-shadow: 0 4px 20px var(--shadow);
+      }
+      .nav-container {
+        margin: 0 auto;
+        padding: 0 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+      }
+      .logo {
+        transition: all var(--transition-normal);
+      }
+      .logo:hover {
+        transform: scale(1.05);
+      }
+      .logo-icon {
+        width: 90px;
+        height: auto;
+      }
+      .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: calc(100vh - 60px);
+        background: var(--nav-bg);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: var(--spacing-xl);
+        transition: left var(--transition-normal);
+        list-style: none;
+        overflow-y: auto;
+        box-shadow: 2px 0 10px var(--shadow);
+      }
+      .nav-menu.active {
+        left: 0;
+      }
+      .nav-item {
+        width: 100%;
+        text-align: left;
+        position: relative;
+      }
+      .nav-link-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+      .nav-link {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        transition: color var(--transition-fast);
+        padding: var(--spacing-md) 0;
+        display: block;
+        position: relative;
+        flex-grow: 1;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--link-color);
+        transition: width var(--transition-normal);
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--link-color);
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 60%;
+      }
+      /* Dropdown Toggle for Mobile */
+      .dropdown-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--spacing-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        color: var(--link-color);
+      }
+      /* Dropdown Arrow for Mobile */
+      .dropdown-arrow {
+        font-size: 12px;
+        transition: transform var(--transition-normal);
+      }
+      .dropdown-arrow.open {
+        transform: rotate(180deg);
+      }
+      /* Dropdown Menu */
+      .dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height var(--transition-normal);
+        padding-left: var(--spacing-md);
+        margin-top: 0;
+      }
+      .dropdown-menu.open {
+        max-height: 500px;
+        margin-top: var(--spacing-sm);
+      }
+      .dropdown-item {
+        margin-bottom: var(--spacing-sm);
+      }
+      .dropdown-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 14px;
+        text-transform: capitalize;
+        transition: color var(--transition-fast);
+        display: block;
+        padding: var(--spacing-xs) 0;
+      }
+      .dropdown-link:hover {
+        color: var(--link-color);
+      }
+      .nav-controls {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+      .theme-toggle {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 50px;
+        padding: 4px 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-primary);
+        transition: all var(--transition-normal);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 12px var(--shadow);
+      }
+      .theme-toggle:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px var(--shadow-hover);
+      }
+      .theme-icon {
+        font-size: 12px;
+        transition: transform var(--transition-normal);
+      }
+      .theme-toggle:hover .theme-icon {
+        transform: rotate(180deg);
+      }
+      .mobile-menu-toggle {
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        font-size: 18px;
+        cursor: pointer;
+        padding: var(--spacing-sm);
+        display: block;
+        z-index: 1000;
+      }
+      .mobile-menu-toggle.active {
+        color: var(--link-color);
+      }
+      /* Mobile Menu Overlay */
+      .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition-normal),
+          visibility var(--transition-normal);
+      }
+      .mobile-menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /*============================
+        Hero Section - Contact Focus
+        ===========================*/
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        text-align: center;
+        padding: var(--spacing-xl) var(--spacing-md);
+        overflow: hidden;
+      }
+
+      .hero-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .hero-slide {
+        position: absolute;
+        margin-top: 55px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+      }
+
+      .hero-slide.active {
+        opacity: 1;
+      }
+
+      /* Hero slide backgrounds - Contact focused images */
+      .hero-slide-1 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url("assets/images/img10.jpg");
+      }
+
+      .hero-slide-2 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url("assets/images/img11.jpg");
+      }
+
+      .hero-slide-3 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url("assets/images/img12.jpg");
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+        z-index: -1;
+      }
+
+      .hero-content {
+        max-width: 100%;
+        animation: fadeInUp 1s ease-out;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-title {
+        font-size: clamp(2rem, 6vw, 3.5rem);
+        font-weight: 700;
+        color: white;
+        margin-top: 2rem;
+        margin-bottom: var(--spacing-md);
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);
+        line-height: 1.2;
+        font-family: var(--font-secondary);
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1rem, 3vw, 1.25rem);
+        color: rgba(255, 255, 255, 0.95);
+        margin-bottom: var(--spacing-2xl);
+        font-weight: 300;
+        line-height: 1.6;
+        padding: 0 1rem;
+        font-family: var(--font-primary);
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-contact-info {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-2xl);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .contact-item {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm) var(--spacing-md);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: var(--radius-lg);
+        color: white;
+        transition: all var(--transition-normal);
+      }
+
+      .contact-item:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+      }
+
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--gradient-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+
+      .contact-details h4 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin: 0 0 0.25rem 0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .contact-details p {
+        font-size: 0.85rem;
+        margin: 0;
+        opacity: 0.9;
+      }
+
+      .scroll-indicator {
+        position: absolute;
+        bottom: var(--spacing-xl);
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba(255, 255, 255, 0.7);
+        animation: bounce 2s infinite;
+        cursor: pointer;
+        z-index: 1;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        40% {
+          transform: translateX(-50%) translateY(-10px);
+        }
+        60% {
+          transform: translateX(-50%) translateY(-5px);
+        }
+      }
+
+      /* ===========================================
+         MAIN CONTACT SECTION
+       =========================================== */
+
+      .contact-section {
+        padding: var(--spacing-4xl) var(--spacing-md);
+        background: var(--bg-primary);
+      }
+
+      .contact-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Section Header */
+      .section-header {
+        text-align: center;
+        margin-bottom: var(--spacing-4xl);
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .section-subtitle {
+        color: var(--accent-color);
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-lg);
+        line-height: 1.2;
+        font-family: var(--font-secondary);
+      }
+
+      .section-description {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: var(--spacing-xl);
+      }
+
+      /* Contact Grid Layout */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-4xl);
+        margin-top: var(--spacing-3xl);
+      }
+
+      /* Contact Form Section */
+      .contact-form-section {
+        background: var(--card-bg);
+        border-radius: var(--radius-xl);
+        padding: var(--spacing-2xl) var(--spacing-lg);
+        box-shadow: 0 8px 30px var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-form-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-primary);
+      }
+
+      .form-header {
+        text-align: center;
+        margin-bottom: var(--spacing-2xl);
+      }
+
+      .form-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-sm);
+        font-family: var(--font-secondary);
+      }
+
+      .form-subtitle {
+        color: var(--text-secondary);
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      /* Enhanced Form Styling */
+      .contact-form {
+        display: grid;
+        gap: var(--spacing-lg);
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      .form-group.half {
+        flex: 1;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+      }
+
+      .form-label {
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-xs);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .required {
+        color: var(--error);
+      }
+
+      .form-input,
+      .form-select,
+      .form-textarea {
+        width: 100%;
+        padding: var(--spacing-md);
+        border: 2px solid var(--border);
+        border-radius: var(--radius-md);
+        font-size: 1rem;
+        font-family: var(--font-primary);
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        transition: all var(--transition-normal);
+        resize: none;
+      }
+
+      .form-input:focus,
+      .form-select:focus,
+      .form-textarea:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        transform: translateY(-1px);
+      }
+
+      .form-textarea {
+        min-height: 120px;
+        font-family: var(--font-primary);
+      }
+
+      .form-select {
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 0.75rem center;
+        background-repeat: no-repeat;
+        background-size: 1.5em 1.5em;
+        padding-right: 2.5rem;
+      }
+
+      .submit-btn {
+        background: var(--gradient-primary);
+        color: white;
+        padding: var(--spacing-lg) var(--spacing-2xl);
+        border: none;
+        border-radius: var(--radius-lg);
+        font-size: 1.1rem;
+        font-weight: 600;
+        font-family: var(--font-primary);
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-sm);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        margin-top: var(--spacing-lg);
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+      }
+
+      .submit-btn:active {
+        transform: translateY(0);
+      }
+
+      /* Contact Information Section */
+      .contact-info-section {
+        display: grid;
+        gap: var(--spacing-xl);
+      }
+
+      .info-card {
+        background: var(--card-bg);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-xl);
+        box-shadow: 0 4px 20px var(--shadow);
+        transition: all var(--transition-normal);
+        border-left: 4px solid var(--accent-color);
+      }
+
+      .info-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px var(--shadow-hover);
+      }
+
+      .info-card-header {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .info-icon {
+        width: 50px;
+        height: 50px;
+        background: var(--gradient-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      .info-card-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0;
+        font-family: var(--font-secondary);
+      }
+
+      .info-details {
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      .info-details p {
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .info-details strong {
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      /* Social Media Links */
+      .social-section {
+        background: var(--card-bg);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-xl);
+        box-shadow: 0 4px 20px var(--shadow);
+        text-align: center;
+      }
+
+      .social-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-md);
+        font-family: var(--font-secondary);
+      }
+
+      .social-subtitle {
+        color: var(--text-secondary);
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-md);
+        flex-wrap: wrap;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background: var(--bg-secondary);
+        border-radius: 50%;
+        color: var(--text-primary);
+        text-decoration: none;
+        transition: all var(--transition-normal);
+        font-size: 1.2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .social-link::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-primary);
+        transform: translateY(100%);
+        transition: transform var(--transition-normal);
+      }
+
+      .social-link i {
+        position: relative;
+        z-index: 1;
+        transition: color var(--transition-normal);
+      }
+
+      .social-link:hover::before {
+        transform: translateY(0);
+      }
+
+      .social-link:hover i {
+        color: white;
+      }
+
+      .social-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px var(--shadow-hover);
+      }
+
+      /* Response Time Card */
+      .response-card {
+        background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+        color: white;
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-xl);
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+      }
+
+      .response-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin: 0 0 var(--spacing-sm) 0;
+        font-family: var(--font-secondary);
+      }
+
+      .response-subtitle {
+        margin: 0 0 var(--spacing-md) 0;
+        opacity: 0.9;
+      }
+
+      .response-time {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0;
+        font-family: var(--font-secondary);
+      }
+
+      /* Rate Card Links Section */
+      .rate-card-links {
+        background: var(--card-bg);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-xl);
+        box-shadow: 0 4px 20px var(--shadow);
+        text-align: center;
+      }
+
+      .rate-card-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0 0 var(--spacing-md) 0;
+        font-family: var(--font-secondary);
+      }
+
+      .rate-card-description {
+        color: var(--text-secondary);
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .rate-card-buttons {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+      }
+
+      .rate-card-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-md) var(--spacing-lg);
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        text-decoration: none;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        transition: all var(--transition-normal);
+        border: 1px solid #3b82f6;
+      }
+
+      .rate-card-btn:hover {
+        background: var(--gradient-primary);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+      }
+
+      .rate-card-btn.primary {
+        background: var(--gradient-primary);
+        color: white;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+      }
+
+      .rate-card-btn.primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+      }
+
+      .footer {
+        margin-top: 0;
+      }
+
+      /* ===========================================
+         RESPONSIVE DESIGN - MOBILE FIRST
+       =========================================== */
+
+      @media (min-width: 425px) {
+        .hero-contact-info {
+          grid-template-columns: 1fr;
+          gap: var(--spacing-md);
+        }
+
+        .contact-form-section {
+          padding: var(--spacing-2xl);
+        }
+
+        .form-row {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .contact-item {
+          padding: var(--spacing-md) var(--spacing-lg);
+        }
+
+        .contact-details h4 {
+          font-size: 1rem;
+        }
+
+        .contact-details p {
+          font-size: 0.9rem;
+        }
+      }
+
+      @media (min-width: 640px) {
+        .nav-container {
+          padding: 0 var(--spacing-lg);
+        }
+        .logo-icon {
+          width: 110px;
+        }
+        .hero {
+          padding: var(--spacing-xl) var(--spacing-lg);
+        }
+        .theme-toggle {
+          padding: var(--spacing-xs) var(--spacing-sm);
+        }
+        .mobile-menu-toggle {
+          font-size: 24px;
+        }
+
+        .contact-section {
+          padding: var(--spacing-4xl) var(--spacing-lg);
+        }
+
+        .hero-contact-info {
+          grid-template-columns: 1fr 1fr;
+          max-width: 700px;
+        }
+
+        .contact-grid {
+          gap: var(--spacing-3xl);
+        }
+
+        .rate-card-buttons {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .social-links {
+          gap: var(--spacing-lg);
+        }
+      }
+
+      @media (min-width: 768px) {
+        .hero-contact-info {
+          grid-template-columns: repeat(3, 1fr);
+          max-width: 900px;
+        }
+
+        .contact-grid {
+          grid-template-columns: 2fr 1fr;
+          gap: var(--spacing-4xl);
+        }
+
+        .contact-item {
+          display: flex;
+        }
+
+        .contact-form-section {
+          padding: var(--spacing-3xl);
+        }
+
+        .form-row {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .info-card {
+          padding: var(--spacing-2xl);
+        }
+
+        .social-section {
+          padding: var(--spacing-2xl);
+        }
+      }
+
+      /* Desktop screens (1024px and up) - DESKTOP NAVIGATION */
+      @media (min-width: 1024px) {
+        .navbar {
+          height: 70px;
+        }
+        .nav-container {
+          height: 70px;
+          padding: 0 var(--spacing-xl);
+        }
+        .logo-icon {
+          width: 120px;
+        }
+        .nav-menu {
+          position: static;
+          width: auto;
+          max-width: none;
+          height: auto;
+          background: transparent;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          padding: 0;
+          transition: none;
+          gap: var(--spacing-xl);
+          margin: 0 auto;
+          box-shadow: none;
+          overflow-y: visible;
+        }
+        .nav-menu.active {
+          left: auto;
+        }
+        .nav-item {
+          width: auto;
+          text-align: center;
+          position: relative;
+        }
+        .nav-link-container {
+          display: block;
+        }
+        .nav-link {
+          font-size: 14px;
+          letter-spacing: 1px;
+          padding: var(--spacing-sm) 0;
+          position: relative;
+          justify-content: center;
+        }
+        .nav-link::after {
+          left: 0;
+          transform: none;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+          width: 100%;
+        }
+        /* Hide dropdown toggle on desktop */
+        .dropdown-toggle {
+          display: none;
+        }
+        /* Desktop Dropdown Menu */
+        .dropdown-arrow {
+          display: none;
+        }
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%) translateY(10px);
+          background: var(--nav-bg);
+          backdrop-filter: blur(10px);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-md);
+          padding: var(--spacing-md);
+          min-width: 200px;
+          box-shadow: 0 4px 20px var(--shadow);
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity var(--transition-normal),
+            visibility var(--transition-normal),
+            transform var(--transition-normal);
+          max-height: none;
+          padding-left: var(--spacing-md);
+          margin-top: 0;
+          text-align: center;
+          list-style: none;
+        }
+        .nav-item:hover .dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-50%) translateY(0);
+        }
+        .dropdown-menu.open {
+          max-height: none;
+          margin-top: 0;
+        }
+        .dropdown-item {
+          margin-bottom: var(--spacing-sm);
+        }
+        .dropdown-item:last-child {
+          margin-bottom: 0;
+        }
+        .dropdown-link {
+          padding: var(--spacing-xs) var(--spacing-sm);
+          border-radius: var(--radius-sm);
+          transition: all var(--transition-fast);
+          display: block;
+          text-align: center;
+        }
+        .dropdown-link:hover {
+          background: var(--bg-tertiary);
+          color: var(--link-color);
+        }
+        .mobile-menu-toggle {
+          display: none;
+        }
+        .mobile-menu-overlay {
+          display: none;
+        }
+        .nav-controls {
+          position: static;
+          transform: none;
+        }
+        .hero {
+          min-height: 100vh;
+          padding: var(--spacing-2xl) var(--spacing-xl);
+        }
+        .hero-content {
+          max-width: 1000px;
+        }
+
+        .hero-title {
+          font-size: clamp(3rem, 5vw, 4rem);
+        }
+        .hero-subtitle {
+          font-size: 1.5rem;
+          margin-bottom: var(--spacing-3xl);
+        }
+
+        .contact-section {
+          padding: var(--spacing-4xl) var(--spacing-2xl);
+        }
+
+        .contact-container {
+          padding: 0 var(--spacing-xl);
+        }
+
+        .contact-grid {
+          grid-template-columns: 2fr 1fr;
+          gap: var(--spacing-4xl);
+        }
+
+        .contact-form-section {
+          padding: var(--spacing-4xl);
+        }
+
+        .form-title {
+          font-size: 2.2rem;
+        }
+
+        .form-subtitle {
+          font-size: 1.1rem;
+        }
+      }
+
+      /* Extra large screens (1280px and up) */
+      @media (min-width: 1280px) {
+        .nav-container {
+          max-width: 1280px;
+        }
+        .nav-menu {
+          gap: var(--spacing-2xl);
+        }
+
+        .contact-container {
+          max-width: 1280px;
+          padding: 0 var(--spacing-2xl);
+        }
+
+        .contact-grid {
+          gap: var(--spacing-4xl);
+        }
+      }
+
+      /* 3XL screens (1536px and up) */
+      @media (min-width: 1536px) {
+        .nav-container {
+          max-width: 1536px;
+        }
+
+        .contact-container {
+          max-width: 1536px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="mobile-menu-overlay"
+      id="mobileMenuOverlay"
+      onclick="toggleMobileMenu()"
+    ></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <img
+            src="assets/images/logo2.png"
+            alt="Impasto Photography Logo"
+            class="logo-icon"
+          />
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link" onclick="setActiveNav(this)"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="information.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Information
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="faq.html" class="dropdown-link"
+                  >Frequently Asked Questions</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="portfolio.html" class="dropdown-link">Portfolio</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="client-questionnaire.html" class="dropdown-link"
+                  >Client Questionnaire</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="reviews.html" class="dropdown-link"
+                  >Review (Clients)</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="ratecards.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Ratecards
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="portrait.html" class="dropdown-link"
+                  >Portrait Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="wedding.html" class="dropdown-link"
+                  >Wedding Photography</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="store.html" class="nav-link" onclick="setActiveNav(this)"
+              >Store</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              href="contact.html"
+              class="nav-link active"
+              onclick="setActiveNav(this)"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="blog.html" class="nav-link" onclick="setActiveNav(this)"
+              >Blog</a
+            >
+          </li>
+        </ul>
+        <div class="nav-controls">
+          <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon theme-icon"></i>
+            <span class="theme-text">Dark</span>
+          </button>
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-slider">
+        <div class="hero-slide hero-slide-1 active"></div>
+        <div class="hero-slide hero-slide-2"></div>
+        <div class="hero-slide hero-slide-3"></div>
+      </div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="hero-title text-animate">Let's Begin Your Journey</h1>
+        <p class="hero-subtitle text-animate">
+          We definitely can't wait to hear from you! Ready to capture your most
+          precious moments? Get in touch with our professional photography team
+          and let's create something beautiful together.
+        </p>
+
+        <div class="hero-contact-info">
+          <div class="contact-item text-animate">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Call Us</h4>
+              <p>+233 (0) 242-641-305</p>
+            </div>
+          </div>
+
+          <div class="contact-item text-animate">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Email Us</h4>
+              <p>potrit1@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="contact-item text-animate">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Visit Us</h4>
+              <p>Dome - Accra, Ghana</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-indicator" onclick="scrollToSection('contact')">
+        <i class="fas fa-chevron-down fa-2x"></i>
+      </div>
+    </section>
+
+    <!-- Main Contact Section -->
+    <main id="contact" class="contact-section">
+      <div class="contact-container">
+        <!-- Section Header -->
+        <div class="section-header scroll-animate animate-fade">
+          <p class="section-subtitle text-animate">Get In Touch</p>
+          <h2 class="section-title text-animate">
+            Ready to Create Magic Together?
+          </h2>
+          <p class="section-description text-animate">
+            For all inquiries, kindly fill out the form below and we'll reach
+            out to you within 48 hours to commence your booking process. Find
+            links to our 2025 Ratecards below or visit the Ratecard section of
+            our website.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Form Section -->
+          <div class="contact-form-section scroll-animate animate-slide-left">
+            <div class="form-header">
+              <h3 class="form-title text-animate">Inquiry/Booking Form</h3>
+              <p class="form-subtitle text-animate">
+                Tell us about your vision and let's bring it to life
+              </p>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+              <div class="form-row">
+                <div class="form-group half">
+                  <label class="form-label" for="fullName">
+                    Your Full Name <span class="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    class="form-input"
+                    required
+                    placeholder="Enter your full name"
+                  />
+                </div>
+                <div class="form-group half">
+                  <label class="form-label" for="contact">
+                    Contact <span class="required">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    id="contact"
+                    name="contact"
+                    class="form-input"
+                    required
+                    placeholder="Include country code e.g. +233"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="email">
+                  Email Address <span class="required">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-input"
+                  required
+                  placeholder="your.email@example.com"
+                />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group half">
+                  <label class="form-label" for="service">
+                    Service Type <span class="required">*</span>
+                  </label>
+                  <select
+                    id="service"
+                    name="service"
+                    class="form-select"
+                    required
+                  >
+                    <option value="">Select option</option>
+                    <option value="photography">Photography Only</option>
+                    <option value="videography">Videography Only</option>
+                    <option value="both">Both Photography & Videography</option>
+                  </select>
+                </div>
+                <div class="form-group half">
+                  <label class="form-label" for="country">
+                    Country (Where Service is Needed)
+                    <span class="required">*</span>
+                  </label>
+                  <select
+                    id="country"
+                    name="country"
+                    class="form-select"
+                    required
+                  >
+                    <option value="">Select option</option>
+                    <option value="ghana">Ghana</option>
+                    <option value="usa">United States of America</option>
+                    <option value="canada">Canada</option>
+                    <option value="europe">Europe</option>
+                    <option value="others">Others</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group half">
+                  <label class="form-label" for="eventDate">
+                    Date of Shoot/Event <span class="required">*</span>
+                  </label>
+                  <input
+                    type="date"
+                    id="eventDate"
+                    name="eventDate"
+                    class="form-input"
+                    required
+                  />
+                </div>
+                <div class="form-group half">
+                  <label class="form-label" for="hearAbout">
+                    How Did You Know About Us? <span class="required">*</span>
+                  </label>
+                  <select
+                    id="hearAbout"
+                    name="hearAbout"
+                    class="form-select"
+                    required
+                  >
+                    <option value="">Select option</option>
+                    <option value="referrals">Referrals</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="friend">From a friend</option>
+                    <option value="google">Google search</option>
+                    <option value="others">Others</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="attraction">
+                  What Draws You to Our Work? <span class="required">*</span>
+                </label>
+                <textarea
+                  id="attraction"
+                  name="attraction"
+                  class="form-textarea"
+                  required
+                  placeholder="Tell us what specifically attracts you to our photography style and work..."
+                  rows="4"
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="additionalInfo">
+                  Additional Information
+                </label>
+                <textarea
+                  id="additionalInfo"
+                  name="additionalInfo"
+                  class="form-textarea"
+                  placeholder="Any special requests, venue details, or additional information you'd like to share..."
+                  rows="3"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i>
+                Send Inquiry
+              </button>
+            </form>
+          </div>
+
+          <!-- Contact Information Section -->
+          <div class="contact-info-section">
+            <!-- Contact Details Card -->
+            <div class="info-card scroll-animate animate-slide-right">
+              <div class="info-card-header">
+                <div class="info-icon">
+                  <i class="fas fa-info-circle"></i>
+                </div>
+                <h3 class="info-card-title text-animate">
+                  Contact Information
+                </h3>
+              </div>
+              <div class="info-details">
+                <p>
+                  <strong>Studio Address:</strong><br />
+                  Dome - Accra, Opposite Adehyeman Bank, Ghana
+                </p>
+
+                <p>
+                  <strong>Phone:</strong><br />
+                  +233 (0) 242-641-305
+                </p>
+
+                <p>
+                  <strong>Email:</strong><br />
+                  potrit1@gmail.com
+                </p>
+
+                <p>
+                  <strong>Business Hours:</strong><br />
+                  Mon-Fri: 8:00AM - 5:00PM<br />
+                  Saturday: 9:30AM - 6:00PM<br />
+                  Sunday: 1:00PM - 6:00PM
+                </p>
+              </div>
+            </div>
+
+            <!-- Response Time Card -->
+            <div class="response-card scroll-animate animate-scale">
+              <h3 class="response-title text-animate">Quick Response</h3>
+              <p class="response-subtitle text-animate">
+                We typically respond within
+              </p>
+              <div class="response-time text-animate">48 Hours</div>
+            </div>
+
+            <!-- Social Media Section -->
+            <div class="social-section scroll-animate animate-slide-right">
+              <h3 class="social-title text-animate">Follow Our Journey</h3>
+              <p class="social-subtitle text-animate">
+                Stay connected for updates and inspiration
+              </p>
+              <div class="social-links">
+                <a
+                  href="#"
+                  class="social-link text-animate"
+                  aria-label="Follow us on Facebook"
+                >
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a
+                  href="#"
+                  class="social-link text-animate"
+                  aria-label="Follow us on Instagram"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a
+                  href="#"
+                  class="social-link text-animate"
+                  aria-label="Follow us on Twitter"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a
+                  href="#"
+                  class="social-link text-animate"
+                  aria-label="Follow us on LinkedIn"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="social-link text-animate"
+                  aria-label="Follow us on YouTube"
+                >
+                  <i class="fab fa-youtube"></i>
+                </a>
+                <a
+                  href="#"
+                  class="social-link text-animate"
+                  aria-label="Follow us on Pinterest"
+                >
+                  <i class="fab fa-pinterest-p"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Rate Card Links -->
+            <div class="rate-card-links scroll-animate animate-fade">
+              <h3 class="rate-card-title text-animate">Explore Our Services</h3>
+              <p class="rate-card-description text-animate">
+                Check out our comprehensive rate cards and service packages
+              </p>
+              <div class="rate-card-buttons">
+                <a
+                  href="portrait.html"
+                  class="rate-card-btn primary text-animate"
+                >
+                  <i class="fas fa-user"></i>
+                  Portrait Photography
+                </a>
+                <a href="wedding.html" class="rate-card-btn text-animate">
+                  <i class="fas fa-heart"></i>
+                  Wedding Photography
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!--footer-->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-grid">
+          <!-- Logo Section -->
+          <div class="footer-section scroll-animate animate-fade">
+            <div class="footer-logo">
+              <img
+                src="assets/images/logo2.png"
+                class="footer-logo-icon"
+                alt="Impasto Photography Logo"
+              />
+            </div>
+            <p class="footer-description text-animate">
+              At Impasto Photography, we specialize in capturing life's precious
+              moments with artistry and precision. Our team of professional
+              photographers is dedicated to creating timeless memories that
+              you'll cherish for generations to come.
+            </p>
+          </div>
+          <!-- Quick Links -->
+          <div class="footer-section scroll-animate animate-slide-left">
+            <h3 class="text-animate">Quick Links</h3>
+            <ul class="footer-links">
+              <li class="text-animate">
+                <a href="index.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Home
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="information.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Information
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="ratecards.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Ratecards
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="store.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Store
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="contact.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Contact
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="blog.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Services -->
+          <div class="footer-section scroll-animate animate-fade">
+            <h3 class="text-animate">Services</h3>
+            <ul class="footer-links">
+              <li class="text-animate">
+                <a href="portrait.html">
+                  <i class="fas fa-camera"></i>
+                  Portrait Photography
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="wedding.html">
+                  <i class="fas fa-heart"></i>
+                  Wedding Photography
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-building"></i>
+                  Event Photography
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-video"></i>
+                  Videography Services
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-print"></i>
+                  Print Services
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-palette"></i>
+                  Photo Editing
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Contact -->
+          <div class="footer-section scroll-animate animate-slide-right">
+            <h3 class="text-animate">Get In Touch</h3>
+            <ul class="contact-info">
+              <li class="text-animate">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dome - Accra. Opposite Adehyeman Bank.</span>
+              </li>
+              <li class="text-animate">
+                <i class="fas fa-phone"></i>
+                <span>+233 (0) 242-641-305</span>
+              </li>
+              <li class="text-animate">
+                <i class="fas fa-envelope"></i>
+                <span>potrit1@gmail.com</span>
+              </li>
+              <li class="text-animate">
+                <i class="fas fa-clock"></i>
+                <span>Mon-Fri: 8AM-5PM, Sat: 9:30AM-6PM, Sun: 1PM-6PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <div class="footer-copyright">
+            <p class="text-animate">
+              © 2025 Impasto Photography. All rights reserved.
+            </p>
+          </div>
+          <div class="kenzy-credit">
+            <p class="text-animate">Website developed with 💖 by Kenzyverse</p>
+          </div>
+          <div class="social-links">
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Facebook"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Instagram"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Twitter"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on LinkedIn"
+            >
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on YouTube"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Pinterest"
+            >
+              <i class="fab fa-pinterest-p"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // ===========================================
+      // GLOBAL VARIABLES AND CONSTANTS
+      // ===========================================
+      let heroCurrentSlide = 0;
+      const heroTotalSlides = 3;
+      let heroSlideInterval;
+      let isAnimating = false;
+
+      // ===========================================
+      // ENHANCED SCROLL ANIMATION FUNCTIONALITY
+      // ===========================================
+      function initScrollAnimations() {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry, index) => {
+              if (entry.isIntersecting) {
+                setTimeout(() => {
+                  entry.target.classList.add("visible");
+                }, index * 100);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -30px 0px",
+          }
+        );
+
+        document.querySelectorAll(".scroll-animate").forEach((el) => {
+          observer.observe(el);
+        });
+
+        document.querySelectorAll(".text-animate").forEach((el) => {
+          observer.observe(el);
+        });
+      }
+
+      function initVisibleElements() {
+        const elements = document.querySelectorAll(
+          ".scroll-animate, .text-animate"
+        );
+        elements.forEach((el, index) => {
+          const rect = el.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+          if (isVisible) {
+            setTimeout(() => {
+              el.classList.add("visible");
+            }, index * 50);
+          }
+        });
+      }
+
+      // ===========================================
+      // HERO SLIDER FUNCTIONALITY
+      // ===========================================
+      const heroSlides = document.querySelectorAll(".hero-slide");
+
+      function updateHeroSlide() {
+        if (isAnimating) return;
+
+        isAnimating = true;
+
+        heroSlides.forEach((slide) => slide.classList.remove("active"));
+        heroSlides[heroCurrentSlide].classList.add("active");
+
+        setTimeout(() => {
+          isAnimating = false;
+        }, 1000);
+      }
+
+      function nextHeroSlide() {
+        heroCurrentSlide = (heroCurrentSlide + 1) % heroTotalSlides;
+        updateHeroSlide();
+      }
+
+      function startHeroAutoSlide() {
+        heroSlideInterval = setInterval(() => {
+          nextHeroSlide();
+        }, 5000);
+      }
+
+      function stopHeroAutoSlide() {
+        if (heroSlideInterval) {
+          clearInterval(heroSlideInterval);
+        }
+      }
+
+      // ===========================================
+      // FORM FUNCTIONALITY
+      // ===========================================
+      function initFormFunctionality() {
+        const form = document.getElementById("contactForm");
+        const submitBtn = form.querySelector(".submit-btn");
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Add loading state
+          submitBtn.innerHTML =
+            '<i class="fas fa-spinner fa-spin"></i> Sending...';
+          submitBtn.disabled = true;
+
+          // Simulate form submission (replace with actual form handling)
+          setTimeout(() => {
+            // Reset button
+            submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+            submitBtn.style.background = "var(--success)";
+
+            // Show success message
+            showNotification(
+              "Thank you! Your message has been sent successfully. We'll get back to you within 48 hours.",
+              "success"
+            );
+
+            // Reset form
+            form.reset();
+
+            // Reset button after delay
+            setTimeout(() => {
+              submitBtn.innerHTML =
+                '<i class="fas fa-paper-plane"></i> Send Inquiry';
+              submitBtn.style.background = "var(--gradient-primary)";
+              submitBtn.disabled = false;
+            }, 3000);
+          }, 2000);
+        });
+
+        // Enhanced form validation
+        const inputs = form.querySelectorAll(
+          ".form-input, .form-select, .form-textarea"
+        );
+        inputs.forEach((input) => {
+          input.addEventListener("blur", validateField);
+          input.addEventListener("input", clearFieldError);
+        });
+      }
+
+      function validateField(e) {
+        const field = e.target;
+        const value = field.value.trim();
+
+        // Remove existing error styling
+        field.classList.remove("error");
+        removeFieldError(field);
+
+        // Validate based on field type
+        let isValid = true;
+        let errorMessage = "";
+
+        if (field.hasAttribute("required") && !value) {
+          isValid = false;
+          errorMessage = "This field is required";
+        } else if (field.type === "email" && value && !isValidEmail(value)) {
+          isValid = false;
+          errorMessage = "Please enter a valid email address";
+        } else if (field.type === "tel" && value && !isValidPhone(value)) {
+          isValid = false;
+          errorMessage = "Please include country code (e.g. +233)";
+        }
+
+        if (!isValid) {
+          field.classList.add("error");
+          showFieldError(field, errorMessage);
+        }
+
+        return isValid;
+      }
+
+      function clearFieldError(e) {
+        const field = e.target;
+        field.classList.remove("error");
+        removeFieldError(field);
+      }
+
+      function showFieldError(field, message) {
+        removeFieldError(field);
+
+        const errorDiv = document.createElement("div");
+        errorDiv.className = "field-error";
+        errorDiv.textContent = message;
+        errorDiv.style.color = "var(--error)";
+        errorDiv.style.fontSize = "0.8rem";
+        errorDiv.style.marginTop = "0.25rem";
+
+        field.parentNode.appendChild(errorDiv);
+      }
+
+      function removeFieldError(field) {
+        const existingError = field.parentNode.querySelector(".field-error");
+        if (existingError) {
+          existingError.remove();
+        }
+      }
+
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      function isValidPhone(phone) {
+        // Check if phone starts with + and has at least 10 digits
+        const phoneRegex = /^\+\d{10,}$/;
+        return phoneRegex.test(phone.replace(/\s/g, ""));
+      }
+
+      function showNotification(message, type = "info") {
+        // Create notification element
+        const notification = document.createElement("div");
+        notification.className = `notification ${type}`;
+        notification.innerHTML = `
+          <div class="notification-content">
+            <i class="fas ${
+              type === "success" ? "fa-check-circle" : "fa-info-circle"
+            }"></i>
+            <span>${message}</span>
+          </div>
+          <button class="notification-close" onclick="this.parentElement.remove()">
+            <i class="fas fa-times"></i>
+          </button>
+        `;
+
+        // Add styles
+        notification.style.cssText = `
+          position: fixed;
+          top: 100px;
+          right: 20px;
+          background: ${type === "success" ? "var(--success)" : "var(--info)"};
+          color: white;
+          padding: 1rem 1.5rem;
+          border-radius: var(--radius-lg);
+          box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+          z-index: 1000;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          max-width: 400px;
+          animation: slideInRight 0.3s ease;
+        `;
+
+        document.body.appendChild(notification);
+
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.remove();
+          }
+        }, 5000);
+      }
+
+      // ===========================================
+      // THEME TOGGLE FUNCTIONALITY
+      // ===========================================
+      function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.querySelector(".theme-icon");
+        const themeText = document.querySelector(".theme-text");
+        const logos = document.querySelectorAll(
+          ".logo-icon, .footer-logo-icon"
+        );
+
+        if (body.getAttribute("data-theme") === "dark") {
+          body.removeAttribute("data-theme");
+          if (themeIcon) themeIcon.className = "fas fa-moon theme-icon";
+          if (themeText) themeText.textContent = "Dark";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2.png";
+          });
+          localStorage.setItem("theme", "light");
+        } else {
+          body.setAttribute("data-theme", "dark");
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+          localStorage.setItem("theme", "dark");
+        }
+      }
+
+      function loadSavedTheme() {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          document.body.setAttribute("data-theme", "dark");
+
+          const themeIcon = document.querySelector(".theme-icon");
+          const themeText = document.querySelector(".theme-text");
+
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
+
+          const logos = document.querySelectorAll(
+            ".logo-icon, .footer-logo-icon"
+          );
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+        }
+      }
+
+      // ===========================================
+      // NAVIGATION FUNCTIONALITY
+      // ===========================================
+      function setActiveNav(element) {
+        if (element.classList.contains("dropdown-toggle")) {
+          return;
+        }
+
+        document
+          .querySelectorAll(".nav-link:not(.dropdown-toggle)")
+          .forEach((link) => {
+            link.classList.remove("active");
+          });
+
+        element.classList.add("active");
+        closeMobileMenu();
+      }
+
+      function toggleMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        if (navMenu && mobileToggle && overlay) {
+          const isActive = navMenu.classList.contains("active");
+
+          if (isActive) {
+            closeMobileMenu();
+          } else {
+            openMobileMenu();
+          }
+        }
+      }
+
+      function openMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        navMenu.classList.add("active");
+        mobileToggle.classList.add("active");
+        overlay.classList.add("active");
+        mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        if (navMenu && navMenu.classList.contains("active")) {
+          navMenu.classList.remove("active");
+          if (mobileToggle) {
+            mobileToggle.classList.remove("active");
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          }
+          if (overlay) {
+            overlay.classList.remove("active");
+          }
+
+          document.body.style.overflow = "";
+        }
+      }
+
+      function toggleDropdown(element) {
+        if (window.innerWidth < 1024) {
+          const dropdownMenu =
+            element.parentElement.parentElement.querySelector(".dropdown-menu");
+          const dropdownArrow = element.querySelector(".dropdown-arrow");
+
+          if (dropdownMenu && dropdownArrow) {
+            dropdownMenu.classList.toggle("open");
+            dropdownArrow.classList.toggle("open");
+
+            if (event) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+          }
+        }
+      }
+
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          closeMobileMenu();
+
+          const navbarHeight = document.getElementById("navbar").offsetHeight;
+          const targetPosition = section.offsetTop - navbarHeight - 20;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        }
+      }
+
+      function handleNavbarScroll() {
+        const navbar = document.getElementById("navbar");
+        if (navbar) {
+          if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        }
+      }
+
+      // ===========================================
+      // UTILITY FUNCTIONS
+      // ===========================================
+      function throttle(func, limit) {
+        let inThrottle;
+        return function () {
+          const args = arguments;
+          const context = this;
+          if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => (inThrottle = false), limit);
+          }
+        };
+      }
+
+      function handleVisibilityChange() {
+        if (document.hidden) {
+          stopHeroAutoSlide();
+        } else {
+          startHeroAutoSlide();
+        }
+      }
+
+      // ===========================================
+      // INITIALIZATION AND EVENT LISTENERS
+      // ===========================================
+      const throttledScrollHandler = throttle(handleNavbarScroll, 16);
+
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("🎨 Impasto Photography Contact Page - Initializing...");
+
+        loadSavedTheme();
+        updateHeroSlide();
+        initScrollAnimations();
+        initVisibleElements();
+        initFormFunctionality();
+        startHeroAutoSlide();
+
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            if (targetId) {
+              scrollToSection(targetId);
+            }
+          });
+        });
+
+        console.log("✅ Contact Page Loaded Successfully!");
+      });
+
+      // Window event listeners
+      window.addEventListener("scroll", throttledScrollHandler);
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+      window.addEventListener("focus", startHeroAutoSlide);
+      window.addEventListener("blur", stopHeroAutoSlide);
+
+      // Keyboard navigation
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeMobileMenu();
+        }
+      });
+
+      // Image protection
+      document.addEventListener("contextmenu", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      document.addEventListener("dragstart", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Add CSS for form errors and notifications
+      const additionalStyles = `
+        <style>
+          .form-input.error,
+          .form-select.error,
+          .form-textarea.error {
+            border-color: var(--error);
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+          }
+
+          .field-error {
+            color: var(--error);
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+          }
+
+          @keyframes slideInRight {
+            from {
+              transform: translateX(100%);
+              opacity: 0;
+            }
+            to {
+              transform: translateX(0);
+              opacity: 1;
+            }
+          }
+
+          .notification {
+            animation: slideInRight 0.3s ease;
+          }
+
+          .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+          }
+
+          .notification-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0.25rem;
+            margin-left: auto;
+          }
+
+          .notification-close:hover {
+            opacity: 0.8;
+          }
+        </style>
+      `;
+
+      document.head.insertAdjacentHTML("beforeend", additionalStyles);
+
+      document.documentElement.style.scrollBehavior = "smooth";
+    </script>
+  </body>
+</html>

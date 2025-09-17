@@ -1,0 +1,2558 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Photography Client Questionnaire - Impasto Photography Studio. Help us understand your vision and preferences for your upcoming photography session."
+    />
+    <meta
+      name="keywords"
+      content="photography questionnaire, client form, photo session planning, wedding photography, portrait photography, Ghana photographer"
+    />
+    <meta name="author" content="Impasto Photography Studio" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#2563eb" />
+    <title>Photography Client Questionnaire | Impasto Photography Ghana</title>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Impasto Photography Studio",
+        "description": "Professional Photography Client Questionnaire Form in Ghana",
+        "url": "https://impastophotography.com/client-questionnaire.html",
+        "image": "https://impastophotography.com/assets/images/logo2.png",
+        "telephone": "+233242641305",
+        "email": "potrit1@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Dome - Accra. Opposite Adehyeman Bank",
+          "addressLocality": "Accra",
+          "addressRegion": "Greater Accra",
+          "addressCountry": "Ghana"
+        },
+        "serviceType": "Photography Services"
+      }
+    </script>
+
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Open Graph Meta Tags for SEO -->
+    <meta
+      property="og:title"
+      content="Photography Client Questionnaire | Impasto Photography"
+    />
+    <meta
+      property="og:description"
+      content="Help us understand your photography needs and preferences with our comprehensive client questionnaire form."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://impastophotography.com/client-questionnaire.html"
+    />
+    <meta
+      property="og:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/logo-fav.png" />
+    <link rel="apple-touch-icon" href="assets/images/logo.png" />
+
+    <!--Default Styles-->
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/components/footer.css" />
+
+    <style>
+      /* Custom Scrollbar Styles */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--gradient-primary);
+        border-radius: 10px;
+        transition: all var(--transition-normal);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      }
+
+      /* Firefox Scrollbar */
+      html {
+        scrollbar-width: thin;
+        scrollbar-color: #2563eb var(--bg-secondary);
+      }
+
+      body {
+        font-family: var(--font-primary);
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        transition: background-color var(--transition-normal),
+          color var(--transition-normal);
+      }
+
+      .container {
+        max-width: 1200px;
+      }
+
+      /* Enhanced Scroll Animation Classes */
+      .scroll-animate {
+        opacity: 0;
+        transform: translateY(60px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .scroll-animate.animate-slide-left {
+        transform: translateX(-60px) translateY(30px);
+      }
+
+      .scroll-animate.animate-slide-right {
+        transform: translateX(60px) translateY(30px);
+      }
+
+      .scroll-animate.animate-scale {
+        transform: scale(0.8) translateY(30px);
+      }
+
+      .scroll-animate.animate-fade {
+        transform: translateY(30px);
+      }
+
+      .scroll-animate.visible {
+        opacity: 1;
+        transform: translateX(0) translateY(0) scale(1);
+      }
+
+      /* Text Animation Classes */
+      .text-animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .text-animate.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Stagger animation delays */
+      .scroll-animate:nth-child(1) {
+        transition-delay: 0s;
+      }
+      .scroll-animate:nth-child(2) {
+        transition-delay: 0.1s;
+      }
+      .scroll-animate:nth-child(3) {
+        transition-delay: 0.2s;
+      }
+      .scroll-animate:nth-child(4) {
+        transition-delay: 0.3s;
+      }
+      .scroll-animate:nth-child(5) {
+        transition-delay: 0.4s;
+      }
+      .scroll-animate:nth-child(6) {
+        transition-delay: 0.5s;
+      }
+
+      /* Text stagger delays */
+      .text-animate:nth-child(1) {
+        transition-delay: 0s;
+      }
+      .text-animate:nth-child(2) {
+        transition-delay: 0.15s;
+      }
+      .text-animate:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+
+      /* ===========================================
+          NAVIGATION - MOBILE FIRST
+         =========================================== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background: var(--nav-bg);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        transition: all var(--transition-normal);
+      }
+      .navbar.scrolled {
+        box-shadow: 0 4px 20px var(--shadow);
+      }
+      .nav-container {
+        margin: 0 auto;
+        padding: 0 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+      }
+      .logo {
+        transition: all var(--transition-normal);
+      }
+      .logo:hover {
+        transform: scale(1.05);
+      }
+      .logo-icon {
+        width: 90px;
+        height: auto;
+      }
+      .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: calc(100vh - 60px);
+        background: var(--nav-bg);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: var(--spacing-xl);
+        transition: left var(--transition-normal);
+        list-style: none;
+        overflow-y: auto;
+        box-shadow: 2px 0 10px var(--shadow);
+      }
+      .nav-menu.active {
+        left: 0;
+      }
+      .nav-item {
+        width: 100%;
+        text-align: left;
+        position: relative;
+      }
+      .nav-link-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+      .nav-link {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        transition: color var(--transition-fast);
+        padding: var(--spacing-md) 0;
+        display: block;
+        position: relative;
+        flex-grow: 1;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--link-color);
+        transition: width var(--transition-normal);
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--link-color);
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 60%;
+      }
+      /* Dropdown Toggle for Mobile */
+      .dropdown-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--spacing-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        color: var(--link-color);
+      }
+      /* Dropdown Arrow for Mobile */
+      .dropdown-arrow {
+        font-size: 12px;
+        transition: transform var(--transition-normal);
+      }
+      .dropdown-arrow.open {
+        transform: rotate(180deg);
+      }
+      /* Dropdown Menu */
+      .dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height var(--transition-normal);
+        padding-left: var(--spacing-md);
+        margin-top: 0;
+      }
+      .dropdown-menu.open {
+        max-height: 500px;
+        margin-top: var(--spacing-sm);
+      }
+      .dropdown-item {
+        margin-bottom: var(--spacing-sm);
+      }
+      .dropdown-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 14px;
+        text-transform: capitalize;
+        transition: color var(--transition-fast);
+        display: block;
+        padding: var(--spacing-xs) 0;
+      }
+      .dropdown-link:hover {
+        color: var(--link-color);
+      }
+      .nav-controls {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+      .theme-toggle {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 50px;
+        padding: 4px 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-primary);
+        transition: all var(--transition-normal);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 12px var(--shadow);
+      }
+      .theme-toggle:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px var(--shadow-hover);
+      }
+      .theme-icon {
+        font-size: 12px;
+        transition: transform var(--transition-normal);
+      }
+      .theme-toggle:hover .theme-icon {
+        transform: rotate(180deg);
+      }
+      .mobile-menu-toggle {
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        font-size: 18px;
+        cursor: pointer;
+        padding: var(--spacing-sm);
+        display: block;
+        z-index: 1000;
+      }
+      .mobile-menu-toggle.active {
+        color: var(--link-color);
+      }
+      /* Mobile Menu Overlay */
+      .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition-normal),
+          visibility var(--transition-normal);
+      }
+      .mobile-menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /*============================
+        Hero Section with 5 Images
+        ===========================*/
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        text-align: center;
+        padding: var(--spacing-xl) var(--spacing-md);
+        overflow: hidden;
+      }
+
+      .hero-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .hero-slide {
+        position: absolute;
+        margin-top: 55px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: 50% 10%;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .hero-slide.active {
+        opacity: 1;
+      }
+
+      /* Hero slide backgrounds using img5.jpg to img9.jpg */
+      .hero-slide-1 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/img5.jpg");
+      }
+
+      .hero-slide-2 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/img6.jpg");
+      }
+
+      .hero-slide-3 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/img7.jpg");
+      }
+
+      .hero-slide-4 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/img8.jpg");
+      }
+
+      .hero-slide-5 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/img9.jpg");
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+        z-index: -1;
+      }
+
+      .hero-content {
+        max-width: 100%;
+        animation: fadeInUp 1s ease-out;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-title {
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+        font-weight: 600;
+        color: white;
+        margin-top: 2rem;
+        margin-bottom: var(--spacing-sm);
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        line-height: 1.3;
+        font-family: var(--font-secondary);
+        font-optical-sizing: auto;
+      }
+
+      .hero-subtitle {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: var(--spacing-2xl);
+        font-weight: 300;
+        line-height: 1.5;
+        padding: 0 2rem;
+        font-family: var(--font-primary);
+      }
+
+      .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm);
+        border-radius: var(--radius-lg);
+        text-decoration: none;
+        font-weight: 600;
+        font-family: var(--font-primary);
+        transition: all var(--transition-normal);
+        cursor: pointer;
+        border: none;
+        font-size: 12px;
+      }
+
+      .btn-primary {
+        background: var(--gradient-primary);
+        color: white;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+      }
+
+      .btn-secondary:hover {
+        background: white;
+        color: var(--text-primary);
+        transform: translateY(-2px);
+      }
+
+      .h-btn {
+        min-width: 220px;
+      }
+
+      /* Dot Navigation */
+      .hero-dots {
+        position: absolute;
+        bottom: var(--spacing-xl);
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: var(--spacing-sm);
+        z-index: 10;
+      }
+
+      .hero-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        border: 2px solid rgba(255, 255, 255, 0.6);
+      }
+
+      .hero-dot.active {
+        background: white;
+        transform: scale(1.2);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+
+      .hero-dot:hover {
+        background: rgba(255, 255, 255, 0.7);
+        transform: scale(1.1);
+      }
+
+      .scroll-indicator {
+        position: absolute;
+        bottom: calc(var(--spacing-xl) + 40px);
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba(255, 255, 255, 0.7);
+        animation: bounce 2s infinite;
+        cursor: pointer;
+        z-index: 1;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        40% {
+          transform: translateX(-50%) translateY(-10px);
+        }
+        60% {
+          transform: translateX(-50%) translateY(-5px);
+        }
+      }
+
+      /* ===========================================
+         QUESTIONNAIRE FORM STYLES
+       =========================================== */
+      .questionnaire-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: var(--spacing-xl) var(--spacing-lg);
+
+        backdrop-filter: blur(10px);
+      }
+
+      .questionnaire-header {
+        text-align: center;
+        margin-bottom: var(--spacing-3xl);
+        padding-bottom: var(--spacing-lg);
+        border-bottom: 2px solid var(--border);
+      }
+
+      .questionnaire-title {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        font-weight: 700;
+        margin-bottom: var(--spacing-md);
+        color: var(--text-primary);
+        font-family: var(--font-secondary);
+      }
+
+      .questionnaire-subtitle {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .form-section {
+        margin-bottom: var(--spacing-3xl);
+        padding: var(--spacing-xl);
+        background: var(--bg-secondary);
+        border-radius: var(--radius-lg);
+        border-left: 4px solid var(--accent-color);
+      }
+
+      .section-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: var(--spacing-lg);
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+
+      .section-icon {
+        color: var(--accent-color);
+        font-size: 1.2rem;
+      }
+
+      .form-group {
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .form-label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: var(--spacing-sm);
+        color: var(--text-primary);
+        font-size: 1rem;
+      }
+
+      .required {
+        color: #ef4444;
+      }
+
+      .form-input,
+      .form-textarea,
+      .form-select {
+        width: 100%;
+        padding: var(--spacing-md);
+        border: 2px solid var(--border);
+        border-radius: var(--radius-md);
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        font-size: 1rem;
+        font-family: var(--font-primary);
+        transition: all var(--transition-normal);
+        box-sizing: border-box;
+      }
+
+      .form-input:focus,
+      .form-textarea:focus,
+      .form-select:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        transform: translateY(-1px);
+      }
+
+      .form-textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .checkbox-group,
+      .radio-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+
+      .checkbox-item,
+      .radio-item {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm);
+        border-radius: var(--radius-sm);
+        transition: background-color var(--transition-fast);
+        cursor: pointer;
+      }
+
+      .checkbox-item:hover,
+      .radio-item:hover {
+        background: var(--bg-tertiary);
+      }
+
+      .checkbox-input,
+      .radio-input {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+      }
+
+      .checkbox-label,
+      .radio-label {
+        cursor: pointer;
+        color: var(--text-primary);
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+
+      .form-help {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin-top: var(--spacing-xs);
+        font-style: italic;
+      }
+
+      .submit-section {
+        text-align: center;
+        padding: var(--spacing-2xl) 0;
+        border-top: 2px solid var(--border);
+        margin-top: var(--spacing-3xl);
+      }
+
+      .submit-btn {
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        padding: var(--spacing-md) var(--spacing-3xl);
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: var(--radius-lg);
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        min-width: 200px;
+        font-family: var(--font-primary);
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+      }
+
+      .submit-btn:active {
+        transform: translateY(0);
+      }
+
+      /* Progress indicator */
+      .progress-bar {
+        width: 100%;
+        height: 8px;
+        background: var(--bg-tertiary);
+        border-radius: 4px;
+        margin-bottom: var(--spacing-xl);
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: var(--gradient-primary);
+        border-radius: 4px;
+        transition: width 0.3s ease;
+        width: 0%;
+      }
+
+      /* Responsive Design */
+      @media (min-width: 640px) {
+        .questionnaire-container {
+          padding: var(--spacing-2xl);
+        }
+
+        .form-section {
+          padding: var(--spacing-2xl);
+        }
+
+        .checkbox-group,
+        .radio-group {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: var(--spacing-md);
+        }
+
+        .checkbox-item,
+        .radio-item {
+          flex: 1;
+          min-width: 200px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .hero-buttons {
+          flex-direction: row;
+          gap: var(--spacing-lg);
+        }
+
+        .btn {
+          padding: var(--spacing-md) var(--spacing-xl);
+          font-size: 1rem;
+        }
+
+        .h-btn {
+          min-width: 280px;
+        }
+
+        .nav-container {
+          padding: 0 var(--spacing-lg);
+        }
+        .logo-icon {
+          width: 110px;
+        }
+        .hero {
+          padding: var(--spacing-xl) var(--spacing-lg);
+        }
+        .theme-toggle {
+          padding: var(--spacing-xs) var(--spacing-sm);
+        }
+        .mobile-menu-toggle {
+          font-size: 24px;
+        }
+      }
+
+      /* Desktop screens (1024px and up) - DESKTOP NAVIGATION */
+      @media (min-width: 1024px) {
+        .navbar {
+          height: 70px;
+        }
+        .nav-container {
+          height: 70px;
+          padding: 0 var(--spacing-xl);
+        }
+        .logo-icon {
+          width: 120px;
+        }
+        .nav-menu {
+          position: static;
+          width: auto;
+          max-width: none;
+          height: auto;
+          background: transparent;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          padding: 0;
+          transition: none;
+          gap: var(--spacing-xl);
+          margin: 0 auto;
+          box-shadow: none;
+          overflow-y: visible;
+        }
+        .nav-menu.active {
+          left: auto;
+        }
+        .nav-item {
+          width: auto;
+          text-align: center;
+          position: relative;
+        }
+        .nav-link-container {
+          display: block;
+        }
+        .nav-link {
+          font-size: 14px;
+          letter-spacing: 1px;
+          padding: var(--spacing-sm) 0;
+          position: relative;
+          justify-content: center;
+        }
+        .nav-link::after {
+          left: 0;
+          transform: none;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+          width: 100%;
+        }
+        /* Hide dropdown toggle on desktop */
+        .dropdown-toggle {
+          display: none;
+        }
+        /* Desktop Dropdown Menu */
+        .dropdown-arrow {
+          display: none;
+        }
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%) translateY(10px);
+          background: var(--nav-bg);
+          backdrop-filter: blur(10px);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-md);
+          padding: var(--spacing-md);
+          min-width: 200px;
+          box-shadow: 0 4px 20px var(--shadow);
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity var(--transition-normal),
+            visibility var(--transition-normal),
+            transform var(--transition-normal);
+          max-height: none;
+          padding-left: var(--spacing-md);
+          margin-top: 0;
+          text-align: center;
+          list-style: none;
+        }
+        .nav-item:hover .dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-50%) translateY(0);
+        }
+        .dropdown-menu.open {
+          max-height: none;
+          margin-top: 0;
+        }
+        .dropdown-item {
+          margin-bottom: var(--spacing-sm);
+        }
+        .dropdown-item:last-child {
+          margin-bottom: 0;
+        }
+        .dropdown-link {
+          padding: var(--spacing-xs) var(--spacing-sm);
+          border-radius: var(--radius-sm);
+          transition: all var(--transition-fast);
+          display: block;
+          text-align: center;
+        }
+        .dropdown-link:hover {
+          background: var(--bg-tertiary);
+          color: var(--link-color);
+        }
+        .mobile-menu-toggle {
+          display: none;
+        }
+        .mobile-menu-overlay {
+          display: none;
+        }
+        .nav-controls {
+          position: static;
+          transform: none;
+        }
+        .hero {
+          min-height: 100vh;
+          padding: var(--spacing-2xl) var(--spacing-xl);
+        }
+        .hero-content {
+          max-width: 800px;
+        }
+
+        .hero-title {
+          font-size: clamp(2.5rem, 5vw, 3.5rem);
+        }
+        .hero-subtitle {
+          font-size: 1.25rem;
+          margin-bottom: var(--spacing-3xl);
+        }
+      }
+
+      /* Extra large screens (1280px and up) */
+      @media (min-width: 1280px) {
+        .nav-container {
+          max-width: 1280px;
+        }
+        .nav-menu {
+          gap: var(--spacing-2xl);
+        }
+      }
+
+      /* 3XL screens (1536px and up) */
+      @media (min-width: 1536px) {
+        .nav-container {
+          max-width: 1536px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="mobile-menu-overlay"
+      id="mobileMenuOverlay"
+      onclick="toggleMobileMenu()"
+    ></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo">
+          <img
+            src="assets/images/logo2.png"
+            alt="Impasto logo"
+            class="logo-icon"
+          />
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a href="#home" class="nav-link" onclick="setActiveNav(this)"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="information.html"
+                class="nav-link active"
+                onclick="setActiveNav(this)"
+              >
+                Information
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="faq.html" class="dropdown-link"
+                  >Frequently Asked Questions</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="portfolio.html" class="dropdown-link">Portfolio</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="client-questionnaire.html" class="dropdown-link"
+                  >Client Questionnaire</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="reviews.html" class="dropdown-link"
+                  >Review (Clients)</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="ratecards.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Ratecards
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="portrait.html" class="dropdown-link"
+                  >Portrait Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="wedding.html" class="dropdown-link"
+                  >Wedding Photography</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="store.html" class="nav-link" onclick="setActiveNav(this)"
+              >Store</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link" onclick="setActiveNav(this)"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="blog.html" class="nav-link" onclick="setActiveNav(this)"
+              >Blog</a
+            >
+          </li>
+        </ul>
+        <div class="nav-controls">
+          <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon theme-icon"></i>
+            <span class="theme-text">Dark</span>
+          </button>
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section with 5 Images and Dot Navigation -->
+    <section id="home" class="hero">
+      <div class="hero-slider">
+        <div class="hero-slide hero-slide-1 active"></div>
+        <div class="hero-slide hero-slide-2"></div>
+        <div class="hero-slide hero-slide-3"></div>
+        <div class="hero-slide hero-slide-4"></div>
+        <div class="hero-slide hero-slide-5"></div>
+      </div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="hero-title text-animate">CLIENT QUESTIONNAIRE</h1>
+        <p class="hero-subtitle text-animate">
+          Help us understand your vision and preferences for your photography
+          session. Your detailed responses ensure we capture exactly what you
+          envision for your special moments.
+        </p>
+        <div class="hero-buttons">
+          <a href="#questionnaire" class="btn btn-primary h-btn text-animate">
+            <i class="fas fa-clipboard-list"></i>
+            Start Questionnaire
+          </a>
+          <a href="contact.html" class="btn btn-secondary h-btn text-animate">
+            <i class="fas fa-phone"></i>
+            Contact Us
+          </a>
+        </div>
+      </div>
+
+      <!-- Dot Navigation -->
+      <div class="hero-dots">
+        <div class="hero-dot active" onclick="goToSlide(0)"></div>
+        <div class="hero-dot" onclick="goToSlide(1)"></div>
+        <div class="hero-dot" onclick="goToSlide(2)"></div>
+        <div class="hero-dot" onclick="goToSlide(3)"></div>
+        <div class="hero-dot" onclick="goToSlide(4)"></div>
+      </div>
+
+      <div class="scroll-indicator" onclick="scrollToSection('questionnaire')">
+        <i class="fas fa-chevron-down fa-2x"></i>
+      </div>
+    </section>
+
+    <!-- Main Content - Client Questionnaire -->
+    <main id="questionnaire">
+      <div class="container">
+        <div class="questionnaire-container scroll-animate animate-fade">
+          <!-- Header -->
+          <div class="questionnaire-header">
+            <h1 class="questionnaire-title text-animate">
+              Photography Client Questionnaire
+            </h1>
+            <p class="questionnaire-subtitle text-animate">
+              Please take a few minutes to fill out this questionnaire. Your
+              responses help us understand your vision, preferences, and
+              expectations for your photography session, ensuring we deliver
+              exactly what you're looking for.
+            </p>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="progress-bar scroll-animate animate-fade">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+
+          <form id="clientQuestionnaire" class="questionnaire-form">
+            <!-- Basic Information -->
+            <div class="form-section scroll-animate animate-slide-left">
+              <h2 class="section-title text-animate">
+                <i class="fas fa-user section-icon"></i>
+                Basic Information
+              </h2>
+
+              <div class="form-group">
+                <label class="form-label" for="fullName">
+                  Full Name <span class="required">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  class="form-input"
+                  required
+                  placeholder="Enter your full name"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="email">
+                  Email Address <span class="required">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-input"
+                  required
+                  placeholder="your.email@example.com"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="phone">
+                  Phone Number <span class="required">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="form-input"
+                  required
+                  placeholder="+233 XX XXX XXXX"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="preferredContact">
+                  Preferred Contact Method
+                </label>
+                <select
+                  id="preferredContact"
+                  name="preferredContact"
+                  class="form-select"
+                >
+                  <option value="">Select preferred method</option>
+                  <option value="email">Email</option>
+                  <option value="phone">Phone Call</option>
+                  <option value="whatsapp">WhatsApp</option>
+                  <option value="text">Text Message</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Session Details -->
+            <div class="form-section scroll-animate animate-slide-right">
+              <h2 class="section-title text-animate">
+                <i class="fas fa-calendar section-icon"></i>
+                Session Details
+              </h2>
+
+              <div class="form-group">
+                <label class="form-label" for="sessionType">
+                  Type of Photography Session <span class="required">*</span>
+                </label>
+                <select
+                  id="sessionType"
+                  name="sessionType"
+                  class="form-select"
+                  required
+                >
+                  <option value="">Select session type</option>
+                  <option value="wedding">Wedding Photography</option>
+                  <option value="pre-wedding">Pre-Wedding/Engagement</option>
+                  <option value="portrait">Portrait Session</option>
+                  <option value="family">Family Photography</option>
+                  <option value="maternity">Maternity Photography</option>
+                  <option value="newborn">Newborn Photography</option>
+                  <option value="event">Event Photography</option>
+                  <option value="commercial">Commercial Photography</option>
+                  <option value="other">Other (please specify)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sessionDate">
+                  Preferred Session Date
+                </label>
+                <input
+                  type="date"
+                  id="sessionDate"
+                  name="sessionDate"
+                  class="form-input"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sessionTime">
+                  Preferred Time of Day
+                </label>
+                <div class="radio-group">
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="morning"
+                      name="sessionTime"
+                      value="morning"
+                      class="radio-input"
+                    />
+                    <label for="morning" class="radio-label"
+                      >Morning (8AM - 12PM)</label
+                    >
+                  </div>
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="afternoon"
+                      name="sessionTime"
+                      value="afternoon"
+                      class="radio-input"
+                    />
+                    <label for="afternoon" class="radio-label"
+                      >Afternoon (12PM - 4PM)</label
+                    >
+                  </div>
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="evening"
+                      name="sessionTime"
+                      value="evening"
+                      class="radio-input"
+                    />
+                    <label for="evening" class="radio-label"
+                      >Evening/Golden Hour (4PM - 7PM)</label
+                    >
+                  </div>
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="flexible"
+                      name="sessionTime"
+                      value="flexible"
+                      class="radio-input"
+                    />
+                    <label for="flexible" class="radio-label">Flexible</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="location">
+                  Preferred Location/Venue
+                </label>
+                <input
+                  type="text"
+                  id="location"
+                  name="location"
+                  class="form-input"
+                  placeholder="e.g., Labadi Beach, La Palm Resort, Your home, etc."
+                />
+                <p class="form-help">
+                  If you have a specific venue in mind, please let us know
+                </p>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="duration">
+                  Expected Session Duration
+                </label>
+                <select id="duration" name="duration" class="form-select">
+                  <option value="">Select duration</option>
+                  <option value="1-2 hours">1-2 hours</option>
+                  <option value="3-4 hours">3-4 hours</option>
+                  <option value="5-8 hours">5-8 hours (Full day)</option>
+                  <option value="multiple-days">Multiple days</option>
+                  <option value="unsure">Not sure</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Style & Preferences -->
+            <div class="form-section scroll-animate animate-slide-left">
+              <h2 class="section-title text-animate">
+                <i class="fas fa-palette section-icon"></i>
+                Style & Preferences
+              </h2>
+
+              <div class="form-group">
+                <label class="form-label">
+                  Photography Style Preferences (Select all that apply)
+                </label>
+                <div class="checkbox-group">
+                  <div class="checkbox-item">
+                    <input
+                      type="checkbox"
+                      id="traditional"
+                      name="photoStyle"
+                      value="traditional"
+                      class="checkbox-input"
+                    />
+                    <label for="traditional" class="checkbox-label"
+                      >Traditional/Classic</label
+                    >
+                  </div>
+                  <div class="checkbox-item">
+                    <input
+                      type="checkbox"
+                      id="photojournalistic"
+                      name="photoStyle"
+                      value="photojournalistic"
+                      class="checkbox-input"
+                    />
+                    <label for="photojournalistic" class="checkbox-label"
+                      >Photojournalistic/ Documentary</label
+                    >
+                  </div>
+                  <div class="checkbox-item">
+                    <input
+                      type="checkbox"
+                      id="artistic"
+                      name="photoStyle"
+                      value="artistic"
+                      class="checkbox-input"
+                    />
+                    <label for="artistic" class="checkbox-label"
+                      >Artistic/Creative</label
+                    >
+                  </div>
+                  <div class="checkbox-item">
+                    <input
+                      type="checkbox"
+                      id="natural"
+                      name="photoStyle"
+                      value="natural"
+                      class="checkbox-input"
+                    />
+                    <label for="natural" class="checkbox-label"
+                      >Natural/Candid</label
+                    >
+                  </div>
+                  <div class="checkbox-item">
+                    <input
+                      type="checkbox"
+                      id="fashion"
+                      name="photoStyle"
+                      value="fashion"
+                      class="checkbox-input"
+                    />
+                    <label for="fashion" class="checkbox-label"
+                      >Fashion/Editorial</label
+                    >
+                  </div>
+                  <div class="checkbox-item">
+                    <input
+                      type="checkbox"
+                      id="vintage"
+                      name="photoStyle"
+                      value="vintage"
+                      class="checkbox-input"
+                    />
+                    <label for="vintage" class="checkbox-label"
+                      >Vintage/Retro</label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="colorPreference">
+                  Color Preference
+                </label>
+                <div class="radio-group">
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="colorful"
+                      name="colorPreference"
+                      value="colorful"
+                      class="radio-input"
+                    />
+                    <label for="colorful" class="radio-label"
+                      >Bright & Colorful</label
+                    >
+                  </div>
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="muted"
+                      name="colorPreference"
+                      value="muted"
+                      class="radio-input"
+                    />
+                    <label for="muted" class="radio-label"
+                      >Soft & Muted Tones</label
+                    >
+                  </div>
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="blackwhite"
+                      name="colorPreference"
+                      value="blackwhite"
+                      class="radio-input"
+                    />
+                    <label for="blackwhite" class="radio-label"
+                      >Black & White</label
+                    >
+                  </div>
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="mixed"
+                      name="colorPreference"
+                      value="mixed"
+                      class="radio-input"
+                    />
+                    <label for="mixed" class="radio-label">Mix of Both</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="inspiration">
+                  Inspiration & References
+                </label>
+                <textarea
+                  id="inspiration"
+                  name="inspiration"
+                  class="form-textarea"
+                  placeholder="Share any Pinterest boards, Instagram accounts, or describe the look you're going for..."
+                ></textarea>
+                <p class="form-help">
+                  Feel free to share links to photos or styles that inspire you
+                </p>
+              </div>
+            </div>
+
+            <!-- Additional Services -->
+            <div class="form-section scroll-animate animate-slide-right">
+              <h2 class="section-title text-animate">
+                <i class="fas fa-plus section-icon"></i>
+                Additional Services
+              </h2>
+
+              <div class="form-group">
+                <label class="form-label">
+                  Additional Services Needed (Select all that apply)
+                </label>
+                <div class="checkbox-group">
+                  <div class="checkbox-item">
+                    <input
+                      type="checkbox"
+                      id="videography"
+                      name="additionalServices"
+                      value="videography"
+                      class="checkbox-input"
+                    />
+                    <label for="videography" class="checkbox-label"
+                      >Videography</label
+                    >
+                  </div>
+                  <div class="checkbox-item">
+                    <input
+                      type="checkbox"
+                      id="drone"
+                      name="additionalServices"
+                      value="drone"
+                      class="checkbox-input"
+                    />
+                    <label for="drone" class="checkbox-label"
+                      >Drone Photography</label
+                    >
+                  </div>
+                  <div class="checkbox-item">
+                    <input
+                      type="checkbox"
+                      id="photobook"
+                      name="additionalServices"
+                      value="photobook"
+                      class="checkbox-input"
+                    />
+                    <label for="photobook" class="checkbox-label"
+                      >Photo Book/Album</label
+                    >
+                  </div>
+                  <div class="checkbox-item">
+                    <input
+                      type="checkbox"
+                      id="prints"
+                      name="additionalServices"
+                      value="prints"
+                      class="checkbox-input"
+                    />
+                    <label for="prints" class="checkbox-label"
+                      >Professional Prints</label
+                    >
+                  </div>
+                  <div class="checkbox-item">
+                    <input
+                      type="checkbox"
+                      id="retouching"
+                      name="additionalServices"
+                      value="retouching"
+                      class="checkbox-input"
+                    />
+                    <label for="retouching" class="checkbox-label"
+                      >Advanced Retouching</label
+                    >
+                  </div>
+                  <div class="checkbox-item">
+                    <input
+                      type="checkbox"
+                      id="socialmedia"
+                      name="additionalServices"
+                      value="socialmedia"
+                      class="checkbox-input"
+                    />
+                    <label for="socialmedia" class="checkbox-label"
+                      >Social Media Package</label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="budget"> Budget Range </label>
+                <select id="budget" name="budget" class="form-select">
+                  <option value="">Select budget range</option>
+                  <option value="under-2500">Under ₵2,500</option>
+                  <option value="2500-5000">₵2,500 - ₵5,000</option>
+                  <option value="5000-10000">₵5,000 - ₵10,000</option>
+                  <option value="10000-15000">₵10,000 - ₵15,000</option>
+                  <option value="over-15000">Over ₵15,000</option>
+                  <option value="discuss">Prefer to discuss</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Special Requirements -->
+            <div class="form-section scroll-animate animate-slide-left">
+              <h2 class="section-title text-animate">
+                <i class="fas fa-exclamation-circle section-icon"></i>
+                Special Requirements & Notes
+              </h2>
+
+              <div class="form-group">
+                <label class="form-label" for="participants">
+                  Number of People in Session
+                </label>
+                <input
+                  type="number"
+                  id="participants"
+                  name="participants"
+                  class="form-input"
+                  min="1"
+                  placeholder="e.g., 2"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="specialRequests">
+                  Special Requests or Requirements
+                </label>
+                <textarea
+                  id="specialRequests"
+                  name="specialRequests"
+                  class="form-textarea"
+                  placeholder="Any specific shots you want, accessibility needs, cultural considerations, etc."
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="timeline">
+                  When do you need the final photos?
+                </label>
+                <select id="timeline" name="timeline" class="form-select">
+                  <option value="">Select timeline</option>
+                  <option value="asap">As soon as possible</option>
+                  <option value="1-week">Within 1 week</option>
+                  <option value="2-weeks">Within 2 weeks</option>
+                  <option value="1-month">Within 1 month</option>
+                  <option value="flexible">Flexible timeline</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="foundUs">
+                  How did you hear about us?
+                </label>
+                <select id="foundUs" name="foundUs" class="form-select">
+                  <option value="">Select option</option>
+                  <option value="google">Google Search</option>
+                  <option value="social-media">Social Media</option>
+                  <option value="referral">Friend/Family Referral</option>
+                  <option value="previous-client">Previous Client</option>
+                  <option value="website">Website</option>
+                  <option value="advertisement">Advertisement</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="additionalInfo">
+                  Anything else you'd like us to know?
+                </label>
+                <textarea
+                  id="additionalInfo"
+                  name="additionalInfo"
+                  class="form-textarea"
+                  placeholder="Share any additional information, questions, or concerns..."
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Submit Section -->
+            <div class="submit-section scroll-animate animate-fade">
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i>
+                Submit Questionnaire
+              </button>
+              <p class="form-help" style="margin-top: var(--spacing-md)">
+                Thank you for taking the time to complete this questionnaire.
+                We'll review your responses and get back to you within 24 hours.
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <!--footer-->
+    <footer class="footer">
+      <div class="footer-content container">
+        <div class="footer-grid">
+          <!-- Logo Section -->
+          <div class="footer-section scroll-animate animate-fade">
+            <div class="footer-logo">
+              <img
+                src="assets/images/logo2.png"
+                class="footer-logo-icon"
+                alt="Impasto Photography Logo"
+              />
+            </div>
+            <p class="footer-description text-animate">
+              At Impasto Photography, we specialize in capturing life's precious
+              moments with artistry and precision. Our team of professional
+              photographers is dedicated to creating timeless memories that
+              you'll cherish for generations to come.
+            </p>
+          </div>
+          <!-- Quick Links -->
+          <div class="footer-section scroll-animate animate-slide-left">
+            <h3 class="text-animate">Quick Links</h3>
+            <ul class="footer-links">
+              <li class="text-animate">
+                <a href="#home">
+                  <i class="fas fa-chevron-right"></i>
+                  Home
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="information.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Information
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="ratecards.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Ratecards
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="store.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Store
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="contact.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Contact
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="blog.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Services -->
+          <div class="footer-section scroll-animate animate-fade">
+            <h3 class="text-animate">Services</h3>
+            <ul class="footer-links">
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-camera"></i>
+                  Pre-Birthday Shoots
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-user"></i>
+                  Studio Portraits
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-building"></i>
+                  Large Format Print and Cut
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-calendar-alt"></i>
+                  Event Coverage
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-plane"></i>
+                  Passport Pictures
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-palette"></i>
+                  Graphic Design
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-ellipsis-h"></i>
+                  etc
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Contact -->
+          <div class="footer-section scroll-animate animate-slide-right">
+            <h3 class="text-animate">Get In Touch</h3>
+            <ul class="contact-info">
+              <li class="text-animate">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dome - Accra. Opposite Adehyeman Bank.</span>
+              </li>
+              <li class="text-animate">
+                <i class="fas fa-phone"></i>
+                <span>+233 (0) 242-641-305</span>
+              </li>
+              <li class="text-animate">
+                <i class="fas fa-envelope"></i>
+                <span>potrit1@gmail.com</span>
+              </li>
+              <li class="text-animate">
+                <i class="fas fa-clock"></i>
+                <span>Mon-Fri: 8AM-5PM, Sat: 9:30AM-6PM, Sun: 1PM-6PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content container">
+          <div class="footer-copyright">
+            <p class="text-animate">
+              © 2025 Impasto Photography. All rights reserved.
+            </p>
+          </div>
+          <div class="kenzy-credit">
+            <p class="text-animate">Website developed with 💖 by Kenzyverse</p>
+          </div>
+          <div class="social-links">
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Facebook"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Instagram"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Twitter"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on LinkedIn"
+            >
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on YouTube"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Pinterest"
+            >
+              <i class="fab fa-pinterest-p"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // ===========================================
+      // GLOBAL VARIABLES AND CONSTANTS
+      // ===========================================
+      let heroCurrentSlide = 0;
+      const heroTotalSlides = 5;
+      let heroSlideInterval;
+      let isAnimating = false;
+
+      // ===========================================
+      // ENHANCED SCROLL ANIMATION FUNCTIONALITY
+      // ===========================================
+      function initScrollAnimations() {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry, index) => {
+              if (entry.isIntersecting) {
+                setTimeout(() => {
+                  entry.target.classList.add("visible");
+                }, index * 100);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -30px 0px",
+          }
+        );
+
+        document.querySelectorAll(".scroll-animate").forEach((el) => {
+          observer.observe(el);
+        });
+
+        document.querySelectorAll(".text-animate").forEach((el) => {
+          observer.observe(el);
+        });
+      }
+
+      function initVisibleElements() {
+        const elements = document.querySelectorAll(
+          ".scroll-animate, .text-animate"
+        );
+        elements.forEach((el, index) => {
+          const rect = el.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+          if (isVisible) {
+            setTimeout(() => {
+              el.classList.add("visible");
+            }, index * 50);
+          }
+        });
+      }
+
+      // ===========================================
+      // HERO SLIDER FUNCTIONALITY
+      // ===========================================
+      const heroSlides = document.querySelectorAll(".hero-slide");
+      const heroDots = document.querySelectorAll(".hero-dot");
+
+      function updateHeroSlide() {
+        if (isAnimating) return;
+
+        isAnimating = true;
+
+        heroSlides.forEach((slide) => slide.classList.remove("active"));
+        heroDots.forEach((dot) => dot.classList.remove("active"));
+
+        heroSlides[heroCurrentSlide].classList.add("active");
+        heroDots[heroCurrentSlide].classList.add("active");
+
+        setTimeout(() => {
+          isAnimating = false;
+        }, 1000);
+      }
+
+      function nextHeroSlide() {
+        heroCurrentSlide = (heroCurrentSlide + 1) % heroTotalSlides;
+        updateHeroSlide();
+      }
+
+      function previousHeroSlide() {
+        heroCurrentSlide =
+          (heroCurrentSlide - 1 + heroTotalSlides) % heroTotalSlides;
+        updateHeroSlide();
+      }
+
+      function goToSlide(slideIndex) {
+        if (slideIndex >= 0 && slideIndex < heroTotalSlides && !isAnimating) {
+          heroCurrentSlide = slideIndex;
+          updateHeroSlide();
+        }
+      }
+
+      function startHeroAutoSlide() {
+        heroSlideInterval = setInterval(() => {
+          nextHeroSlide();
+        }, 6000);
+      }
+
+      function stopHeroAutoSlide() {
+        if (heroSlideInterval) {
+          clearInterval(heroSlideInterval);
+        }
+      }
+
+      // ===========================================
+      // THEME TOGGLE FUNCTIONALITY
+      // ===========================================
+      function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.querySelector(".theme-icon");
+        const themeText = document.querySelector(".theme-text");
+        const logos = document.querySelectorAll(
+          ".logo-icon, .footer-logo-icon"
+        );
+
+        if (body.getAttribute("data-theme") === "dark") {
+          body.removeAttribute("data-theme");
+          if (themeIcon) themeIcon.className = "fas fa-moon theme-icon";
+          if (themeText) themeText.textContent = "Dark";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2.png";
+          });
+          localStorage.setItem("theme", "light");
+        } else {
+          body.setAttribute("data-theme", "dark");
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+          localStorage.setItem("theme", "dark");
+        }
+      }
+
+      function loadSavedTheme() {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          document.body.setAttribute("data-theme", "dark");
+
+          const themeIcon = document.querySelector(".theme-icon");
+          const themeText = document.querySelector(".theme-text");
+
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
+
+          const logos = document.querySelectorAll(
+            ".logo-icon, .footer-logo-icon"
+          );
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+        }
+      }
+
+      // ===========================================
+      // NAVIGATION FUNCTIONALITY
+      // ===========================================
+      function setActiveNav(element) {
+        if (element.classList.contains("dropdown-toggle")) {
+          return;
+        }
+
+        document
+          .querySelectorAll(".nav-link:not(.dropdown-toggle)")
+          .forEach((link) => {
+            link.classList.remove("active");
+          });
+
+        element.classList.add("active");
+        closeMobileMenu();
+      }
+
+      function toggleMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        if (navMenu && mobileToggle && overlay) {
+          const isActive = navMenu.classList.contains("active");
+
+          if (isActive) {
+            closeMobileMenu();
+          } else {
+            openMobileMenu();
+          }
+        }
+      }
+
+      function openMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        navMenu.classList.add("active");
+        mobileToggle.classList.add("active");
+        overlay.classList.add("active");
+        mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        if (navMenu && navMenu.classList.contains("active")) {
+          navMenu.classList.remove("active");
+          if (mobileToggle) {
+            mobileToggle.classList.remove("active");
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          }
+          if (overlay) {
+            overlay.classList.remove("active");
+          }
+
+          document.body.style.overflow = "";
+        }
+      }
+
+      function toggleDropdown(element) {
+        if (window.innerWidth < 1024) {
+          const dropdownMenu =
+            element.parentElement.parentElement.querySelector(".dropdown-menu");
+          const dropdownArrow = element.querySelector(".dropdown-arrow");
+
+          if (dropdownMenu && dropdownArrow) {
+            dropdownMenu.classList.toggle("open");
+            dropdownArrow.classList.toggle("open");
+
+            if (event) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+          }
+        }
+      }
+
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          closeMobileMenu();
+
+          const navbarHeight = document.getElementById("navbar").offsetHeight;
+          const targetPosition = section.offsetTop - navbarHeight - 20;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        }
+      }
+
+      function handleNavbarScroll() {
+        const navbar = document.getElementById("navbar");
+        if (navbar) {
+          if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        }
+      }
+
+      // ===========================================
+      // QUESTIONNAIRE FORM FUNCTIONALITY
+      // ===========================================
+      function updateProgressBar() {
+        const form = document.getElementById("clientQuestionnaire");
+        const inputs = form.querySelectorAll("input, select, textarea");
+        const progressFill = document.getElementById("progressFill");
+
+        let filledInputs = 0;
+        let totalInputs = 0;
+
+        inputs.forEach((input) => {
+          totalInputs++;
+          if (input.type === "checkbox" || input.type === "radio") {
+            // For checkboxes and radios, check if any in the group is selected
+            const groupName = input.name;
+            const groupInputs = form.querySelectorAll(
+              `input[name="${groupName}"]`
+            );
+            if (Array.from(groupInputs).some((inp) => inp.checked)) {
+              // Only count once per group
+              if (!input.dataset.counted) {
+                filledInputs++;
+                groupInputs.forEach((inp) => (inp.dataset.counted = "true"));
+              }
+            }
+          } else if (input.value.trim() !== "") {
+            filledInputs++;
+          }
+        });
+
+        const progressPercentage = (filledInputs / totalInputs) * 100;
+        progressFill.style.width = `${progressPercentage}%`;
+      }
+
+      function initQuestionnaireForm() {
+        const form = document.getElementById("clientQuestionnaire");
+
+        // Add event listeners to all form inputs
+        form.addEventListener("input", updateProgressBar);
+        form.addEventListener("change", updateProgressBar);
+
+        // Form submission
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Basic validation
+          const requiredFields = form.querySelectorAll("[required]");
+          let isValid = true;
+
+          requiredFields.forEach((field) => {
+            if (!field.value.trim()) {
+              isValid = false;
+              field.style.borderColor = "#ef4444";
+              field.focus();
+            } else {
+              field.style.borderColor = "";
+            }
+          });
+
+          if (isValid) {
+            // Simulate form submission
+            const submitBtn = form.querySelector(".submit-btn");
+            const originalText = submitBtn.innerHTML;
+
+            submitBtn.innerHTML =
+              '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+              alert(
+                "Thank you! Your questionnaire has been submitted successfully. We'll get back to you within 24 hours."
+              );
+              submitBtn.innerHTML = originalText;
+              submitBtn.disabled = false;
+              form.reset();
+              updateProgressBar();
+            }, 2000);
+          } else {
+            alert("Please fill in all required fields.");
+          }
+        });
+      }
+
+      // ===========================================
+      // TOUCH/SWIPE SUPPORT
+      // ===========================================
+      let touchStartX = 0;
+      let touchEndX = 0;
+      let touchStartY = 0;
+      let touchEndY = 0;
+
+      function initTouchSupport() {
+        const heroSection = document.querySelector(".hero");
+
+        if (heroSection) {
+          heroSection.addEventListener("touchstart", handleTouchStart, {
+            passive: true,
+          });
+          heroSection.addEventListener("touchmove", handleTouchMove, {
+            passive: true,
+          });
+          heroSection.addEventListener("touchend", handleTouchEnd);
+        }
+      }
+
+      function handleTouchStart(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+      }
+
+      function handleTouchMove(e) {
+        const touchCurrentX = e.changedTouches[0].screenX;
+        const touchCurrentY = e.changedTouches[0].screenY;
+
+        const diffX = Math.abs(touchCurrentX - touchStartX);
+        const diffY = Math.abs(touchCurrentY - touchStartY);
+
+        if (diffX > diffY && diffX > 30) {
+          e.preventDefault();
+        }
+      }
+
+      function handleTouchEnd(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+      }
+
+      function handleSwipe() {
+        const diffX = touchEndX - touchStartX;
+        const diffY = touchEndY - touchStartY;
+
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+          if (diffX > 0) {
+            previousHeroSlide();
+          } else {
+            nextHeroSlide();
+          }
+        }
+      }
+
+      // ===========================================
+      // UTILITY FUNCTIONS
+      // ===========================================
+      function throttle(func, limit) {
+        let inThrottle;
+        return function () {
+          const args = arguments;
+          const context = this;
+          if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => (inThrottle = false), limit);
+          }
+        };
+      }
+
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+
+      function handleVisibilityChange() {
+        if (document.hidden) {
+          stopHeroAutoSlide();
+        } else {
+          startHeroAutoSlide();
+        }
+      }
+
+      // ===========================================
+      // OPTIMIZED EVENT HANDLERS
+      // ===========================================
+      const throttledScrollHandler = throttle(handleNavbarScroll, 16);
+      const debouncedResizeHandler = debounce(() => {
+        initScrollAnimations();
+        initVisibleElements();
+      }, 250);
+
+      // ===========================================
+      // INITIALIZATION
+      // ===========================================
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log(
+          "🎨 Impasto Photography Client Questionnaire - Initializing..."
+        );
+
+        // Core initialization
+        loadSavedTheme();
+        updateHeroSlide();
+        initScrollAnimations();
+        initVisibleElements();
+        initTouchSupport();
+        initQuestionnaireForm();
+
+        // Start hero slider
+        startHeroAutoSlide();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            if (targetId) {
+              scrollToSection(targetId);
+            }
+          });
+        });
+
+        // Hero dots event listeners
+        heroDots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            goToSlide(index);
+            stopHeroAutoSlide();
+            setTimeout(startHeroAutoSlide, 3000);
+          });
+        });
+
+        console.log("✅ Client Questionnaire Website Loaded Successfully!");
+      });
+
+      // ===========================================
+      // WINDOW EVENT LISTENERS
+      // ===========================================
+      window.addEventListener("scroll", throttledScrollHandler);
+      window.addEventListener("resize", debouncedResizeHandler);
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+      window.addEventListener("focus", startHeroAutoSlide);
+      window.addEventListener("blur", stopHeroAutoSlide);
+
+      // ===========================================
+      // KEYBOARD NAVIGATION SUPPORT
+      // ===========================================
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeMobileMenu();
+        }
+
+        if (e.key === "ArrowLeft") {
+          previousHeroSlide();
+          stopHeroAutoSlide();
+          setTimeout(startHeroAutoSlide, 3000);
+        }
+        if (e.key === "ArrowRight") {
+          nextHeroSlide();
+          stopHeroAutoSlide();
+          setTimeout(startHeroAutoSlide, 3000);
+        }
+
+        if (e.key === " " && e.target === document.body) {
+          e.preventDefault();
+          if (heroSlideInterval) {
+            stopHeroAutoSlide();
+          } else {
+            startHeroAutoSlide();
+          }
+        }
+      });
+
+      // ===========================================
+      // IMAGE PROTECTION
+      // ===========================================
+      document.addEventListener("contextmenu", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      document.addEventListener("dragstart", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Add smooth scroll behavior
+      document.documentElement.style.scrollBehavior = "smooth";
+
+      // ===========================================
+      // PERFORMANCE OPTIMIZATIONS
+      // ===========================================
+      window.addEventListener("load", function () {
+        const criticalImages = [
+          "assets/images/img5.jpg",
+          "assets/images/img6.jpg",
+          "assets/images/img7.jpg",
+        ];
+
+        criticalImages.forEach((src) => {
+          const link = document.createElement("link");
+          link.rel = "preload";
+          link.as = "image";
+          link.href = src;
+          document.head.appendChild(link);
+        });
+      });
+
+      function updateStructuredData() {
+        const script = document.querySelector(
+          'script[type="application/ld+json"]'
+        );
+        if (script) {
+          const data = JSON.parse(script.textContent);
+          data.dateModified = new Date().toISOString();
+          script.textContent = JSON.stringify(data);
+        }
+      }
+
+      window.addEventListener("load", updateStructuredData);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,3155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/logo-fav.png" />
+    <link rel="apple-touch-icon" href="assets/images/logo.png" />
+
+    <!--Default Styles-->
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/components/footer.css" />
+
+    <style>
+      /* Custom Scrollbar Styles */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--gradient-primary);
+        border-radius: 10px;
+        transition: all var(--transition-normal);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      }
+
+      /* Firefox Scrollbar */
+      html {
+        scrollbar-width: thin;
+        scrollbar-color: #2563eb var(--bg-secondary);
+      }
+
+      body {
+        font-family: var(--font-primary);
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        transition: background-color var(--transition-normal),
+          color var(--transition-normal);
+      }
+
+      .container {
+        max-width: 1200px;
+      }
+
+      /* Enhanced Scroll Animation Classes */
+      .scroll-animate {
+        opacity: 0;
+        transform: translateY(60px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .scroll-animate.animate-slide-left {
+        transform: translateX(-60px) translateY(30px);
+      }
+
+      .scroll-animate.animate-slide-right {
+        transform: translateX(60px) translateY(30px);
+      }
+
+      .scroll-animate.animate-scale {
+        transform: scale(0.8) translateY(30px);
+      }
+
+      .scroll-animate.animate-fade {
+        transform: translateY(30px);
+      }
+
+      .scroll-animate.visible {
+        opacity: 1;
+        transform: translateX(0) translateY(0) scale(1);
+      }
+
+      /* Text Animation Classes */
+      .text-animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .text-animate.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Stagger animation delays */
+      .scroll-animate:nth-child(1) {
+        transition-delay: 0s;
+      }
+      .scroll-animate:nth-child(2) {
+        transition-delay: 0.1s;
+      }
+      .scroll-animate:nth-child(3) {
+        transition-delay: 0.2s;
+      }
+      .scroll-animate:nth-child(4) {
+        transition-delay: 0.3s;
+      }
+      .scroll-animate:nth-child(5) {
+        transition-delay: 0.4s;
+      }
+      .scroll-animate:nth-child(6) {
+        transition-delay: 0.5s;
+      }
+
+      /* Text stagger delays */
+      .text-animate:nth-child(1) {
+        transition-delay: 0s;
+      }
+      .text-animate:nth-child(2) {
+        transition-delay: 0.15s;
+      }
+      .text-animate:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+
+      /* ===========================================
+          NAVIGATION - MOBILE FIRST
+         =========================================== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background: var(--nav-bg);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        transition: all var(--transition-normal);
+      }
+      .navbar.scrolled {
+        box-shadow: 0 4px 20px var(--shadow);
+      }
+      .nav-container {
+        margin: 0 auto;
+        padding: 0 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+      }
+      .logo {
+        transition: all var(--transition-normal);
+      }
+      .logo:hover {
+        transform: scale(1.05);
+      }
+      .logo-icon {
+        width: 90px;
+        height: auto;
+      }
+      .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: calc(100vh - 60px);
+        background: var(--nav-bg);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: var(--spacing-xl);
+        transition: left var(--transition-normal);
+        list-style: none;
+        overflow-y: auto;
+        box-shadow: 2px 0 10px var(--shadow);
+      }
+      .nav-menu.active {
+        left: 0;
+      }
+      .nav-item {
+        width: 100%;
+        text-align: left;
+        position: relative;
+      }
+      .nav-link-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+      .nav-link {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        transition: color var(--transition-fast);
+        padding: var(--spacing-md) 0;
+        display: block;
+        position: relative;
+        flex-grow: 1;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--link-color);
+        transition: width var(--transition-normal);
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--link-color);
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 60%;
+      }
+      /* Dropdown Toggle for Mobile */
+      .dropdown-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--spacing-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        color: var(--link-color);
+      }
+      /* Dropdown Arrow for Mobile */
+      .dropdown-arrow {
+        font-size: 12px;
+        transition: transform var(--transition-normal);
+      }
+      .dropdown-arrow.open {
+        transform: rotate(180deg);
+      }
+      /* Dropdown Menu */
+      .dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height var(--transition-normal);
+        padding-left: var(--spacing-md);
+        margin-top: 0;
+      }
+      .dropdown-menu.open {
+        max-height: 500px;
+        margin-top: var(--spacing-sm);
+      }
+      .dropdown-item {
+        margin-bottom: var(--spacing-sm);
+      }
+      .dropdown-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 14px;
+        text-transform: capitalize;
+        transition: color var(--transition-fast);
+        display: block;
+        padding: var(--spacing-xs) 0;
+      }
+      .dropdown-link:hover {
+        color: var(--link-color);
+      }
+      .nav-controls {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+      .theme-toggle {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 50px;
+        padding: 4px 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-primary);
+        transition: all var(--transition-normal);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 12px var(--shadow);
+      }
+      .theme-toggle:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px var(--shadow-hover);
+      }
+      .theme-icon {
+        font-size: 12px;
+        transition: transform var(--transition-normal);
+      }
+      .theme-toggle:hover .theme-icon {
+        transform: rotate(180deg);
+      }
+      .mobile-menu-toggle {
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        font-size: 18px;
+        cursor: pointer;
+        padding: var(--spacing-sm);
+        display: block;
+        z-index: 1000;
+      }
+      .mobile-menu-toggle.active {
+        color: var(--link-color);
+      }
+      /* Mobile Menu Overlay */
+      .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition-normal),
+          visibility var(--transition-normal);
+      }
+      .mobile-menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /*============================
+        Hero Section with 5 Images
+        ===========================*/
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        text-align: center;
+        padding: var(--spacing-xl) var(--spacing-md);
+        overflow: hidden;
+      }
+
+      .hero-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .hero-slide {
+        position: absolute;
+        margin-top: 55px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: 50% 10%;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .hero-slide.active {
+        opacity: 1;
+      }
+
+      /* Hero slide backgrounds using blog-related images */
+      .hero-slide-1 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/blog-hero-1.jpg");
+      }
+
+      .hero-slide-2 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/blog-hero-2.jpg");
+      }
+
+      .hero-slide-3 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/blog-hero-3.jpg");
+      }
+
+      .hero-slide-4 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/blog-hero-4.jpg");
+      }
+
+      .hero-slide-5 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/blog-hero-5.jpg");
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+        z-index: -1;
+      }
+
+      .hero-content {
+        max-width: 100%;
+        animation: fadeInUp 1s ease-out;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-title {
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+        font-weight: 600;
+        color: white;
+        margin-top: 2rem;
+        margin-bottom: var(--spacing-sm);
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        line-height: 1.3;
+        font-family: var(--font-secondary);
+        font-optical-sizing: auto;
+      }
+
+      .hero-subtitle {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: var(--spacing-2xl);
+        font-weight: 300;
+        line-height: 1.5;
+        padding: 0 2rem;
+        font-family: var(--font-primary);
+      }
+
+      /* Dot Navigation */
+      .hero-dots {
+        position: absolute;
+        bottom: var(--spacing-xl);
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: var(--spacing-sm);
+        z-index: 10;
+      }
+
+      .hero-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        border: 2px solid rgba(255, 255, 255, 0.6);
+      }
+
+      .hero-dot.active {
+        background: white;
+        transform: scale(1.2);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+
+      .hero-dot:hover {
+        background: rgba(255, 255, 255, 0.7);
+        transform: scale(1.1);
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ===========================================
+         MAIN BLOG SECTION
+       =========================================== */
+
+      .blog-section {
+        padding: var(--spacing-4xl) var(--spacing-lg);
+        background: var(--bg-primary);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .blog-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Section Header */
+      .section-intro {
+        text-align: center;
+        margin-bottom: var(--spacing-4xl);
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .section-intro-subtitle {
+        color: var(--accent-color);
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: var(--spacing-sm);
+        font-family: var(--font-primary);
+      }
+
+      .section-intro-title {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-lg);
+        line-height: 1.2;
+        font-family: var(--font-secondary);
+      }
+
+      .section-intro-description {
+        font-size: 14px;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        font-family: var(--font-primary);
+        margin-bottom: var(--spacing-xl);
+      }
+
+      /* Blog Items */
+      .blog-item {
+        margin-bottom: var(--spacing-4xl);
+        overflow: hidden;
+      }
+
+      /* Blog Post Layout (Image First) */
+      .blog-content {
+        display: flex;
+        flex-direction: column;
+        min-height: 500px;
+      }
+
+      .blog-image {
+        flex: 1;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .blog-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform var(--transition-slow);
+      }
+
+      .blog-image:hover img {
+        transform: scale(1.05);
+      }
+
+      .blog-text {
+        padding: var(--spacing-lg) var(--spacing-md);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .blog-meta {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        flex-wrap: wrap;
+      }
+
+      .blog-date {
+        color: var(--accent-color);
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+      }
+
+      .blog-author {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+      }
+
+      .blog-category {
+        display: inline-block;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        background: var(--bg-secondary);
+        color: var(--accent-color);
+        border-radius: var(--radius-sm);
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .blog-title {
+        font-size: clamp(1.3rem, 4vw, 2rem);
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-sm);
+        font-family: var(--font-secondary);
+        line-height: 1.3;
+      }
+
+      .blog-excerpt {
+        font-size: 16px;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: var(--spacing-xl);
+        font-family: var(--font-primary);
+      }
+
+      /* Blog Tags */
+      .blog-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-xs);
+        margin-top: var(--spacing-md);
+      }
+
+      .blog-tag {
+        display: inline-block;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        background: var(--bg-secondary);
+        color: var(--text-secondary);
+        border-radius: var(--radius-sm);
+        font-size: 0.75rem;
+        transition: all var(--transition-normal);
+      }
+
+      .blog-tag:hover {
+        background: var(--accent-color);
+        color: white;
+      }
+
+      /* Blog CTA Section */
+      .blog-cta {
+        padding: var(--spacing-4xl) var(--spacing-lg);
+        background: var(--gradient-primary);
+        color: white;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-lg);
+        margin: var(--spacing-4xl) 0 0 0;
+      }
+
+      .blog-cta::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("assets/images/blog-cta-bg.jpg") center/cover;
+        opacity: 0.1;
+        z-index: 0;
+      }
+
+      .blog-cta .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .blog-cta-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        margin-bottom: var(--spacing-lg);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        font-family: var(--font-secondary);
+      }
+
+      .blog-cta-description {
+        font-size: 1.2rem;
+        margin-bottom: var(--spacing-3xl);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 0.95;
+        line-height: 1.6;
+        color: #f0f0f0;
+        font-family: var(--font-primary);
+      }
+
+      .blog-cta .btn {
+        background: white;
+        color: var(--accent-color);
+        padding: var(--spacing-lg) var(--spacing-2xl);
+        font-size: 1.1rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 50px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        transition: all var(--transition-normal);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        font-family: var(--font-primary);
+      }
+
+      .blog-cta .btn:hover {
+        background: var(--bg-primary);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        color: var(--text-primary);
+      }
+
+      .blog-cta .btn i {
+        font-size: 1rem;
+      }
+
+      .footer {
+        margin-top: 0;
+      }
+
+      /* Lightbox for images */
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000000;
+        z-index: 2000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .lightbox.active {
+        display: flex;
+        flex-direction: column;
+        opacity: 1;
+      }
+
+      /* Mobile Top Bar */
+      .lightbox-top-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        background: #000;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0 15px;
+        z-index: 2002;
+      }
+
+      .lightbox-close {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 18px;
+      }
+
+      .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+
+      /* Image Container */
+      .lightbox-content {
+        position: relative;
+        width: 100%;
+        height: calc(100% - 50px); /* Account for top bar */
+        margin-top: 50px; /* Space for top bar */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        touch-action: none;
+      }
+
+      .lightbox-image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.3s ease;
+        transform-origin: center center;
+        cursor: zoom-in;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+        -webkit-touch-callout: none;
+      }
+
+      .lightbox-image-container.no-transition {
+        transition: none;
+      }
+
+      .lightbox-image-container.zoomed {
+        cursor: grab;
+      }
+
+      .lightbox-image-container.dragging {
+        cursor: grabbing;
+      }
+
+      .lightbox-image {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 2px;
+        user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        pointer-events: none;
+      }
+
+      /* Mobile Bottom Bar */
+      .lightbox-bottom-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 40px;
+        background: #000000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2002;
+        border-top: 1px solid #333;
+      }
+
+      .zoom-instruction {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 12px;
+        text-align: center;
+      }
+
+      /* Desktop lightbox changes */
+      @media (min-width: 1024px) {
+        .lightbox {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: #000000;
+          z-index: 2000;
+          justify-content: center;
+          align-items: center;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+          display: flex;
+          opacity: 1;
+        }
+
+        .lightbox-content {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          max-width: 100vw;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+          overflow: hidden;
+          margin: 0;
+          touch-action: none;
+        }
+
+        .lightbox-image-container {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: transform 0.3s ease;
+          transform-origin: center center;
+          cursor: zoom-in;
+        }
+
+        .lightbox-top-bar {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          height: auto;
+          background: none;
+          padding: 0;
+          z-index: 2002 !important;
+        }
+
+        .lightbox-close {
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          width: 50px;
+          height: 50px;
+          z-index: 2001;
+        }
+
+        .lightbox-bottom-bar {
+          display: none;
+        }
+      }
+
+      /* ===========================================
+         RESPONSIVE DESIGN - MOBILE FIRST
+       =========================================== */
+
+      @media (min-width: 425px) {
+        .hero-title {
+          font-size: clamp(2rem, 5vw, 3rem);
+          margin-top: 3rem;
+          margin-bottom: var(--spacing-md);
+        }
+        .hero-subtitle {
+          font-size: 0.9rem;
+        }
+
+        .blog-text {
+          padding: var(--spacing-md);
+        }
+      }
+
+      @media (min-width: 640px) {
+        .nav-container {
+          padding: 0 var(--spacing-lg);
+        }
+        .logo-icon {
+          width: 110px;
+        }
+        .hero {
+          padding: var(--spacing-xl) var(--spacing-lg);
+        }
+        .theme-toggle {
+          padding: var(--spacing-xs) var(--spacing-sm);
+        }
+        .mobile-menu-toggle {
+          font-size: 24px;
+        }
+
+        .blog-section {
+          padding: var(--spacing-4xl) var(--spacing-xl);
+        }
+
+        .blog-item {
+          margin-bottom: var(--spacing-3xl);
+        }
+
+        .blog-content {
+          display: flex;
+          flex-direction: column;
+          max-height: 650px;
+        }
+
+        .blog-image img {
+          height: 100%;
+        }
+      }
+
+      @media (min-width: 768px) {
+        /* Desktop Layout for Blog Posts */
+        .blog-content {
+          flex-direction: row;
+          max-height: 520px;
+        }
+
+        /* Reversed Layout (Text First) */
+        .blog-item.reversed .blog-content {
+          flex-direction: row-reverse;
+        }
+
+        .blog-image,
+        .blog-text {
+          flex: 1;
+        }
+
+        .blog-title {
+          font-size: clamp(1.5rem, 4vw, 2.2rem);
+        }
+
+        .blog-excerpt {
+          font-size: 16px;
+        }
+
+        .blog-text {
+          padding: var(--spacing-lg) var(--spacing-xl);
+        }
+
+        .section-intro-description {
+          font-size: 16px;
+        }
+      }
+
+      /* Desktop screens (1024px and up) - DESKTOP NAVIGATION */
+      @media (min-width: 1024px) {
+        .navbar {
+          height: 70px;
+        }
+        .nav-container {
+          height: 70px;
+          padding: 0 var(--spacing-xl);
+        }
+        .logo-icon {
+          width: 120px;
+        }
+        .nav-menu {
+          position: static;
+          width: auto;
+          max-width: none;
+          height: auto;
+          background: transparent;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          padding: 0;
+          transition: none;
+          gap: var(--spacing-xl);
+          margin: 0 auto;
+          box-shadow: none;
+          overflow-y: visible;
+        }
+        .nav-menu.active {
+          left: auto;
+        }
+        .nav-item {
+          width: auto;
+          text-align: center;
+          position: relative;
+        }
+        .nav-link-container {
+          display: block;
+        }
+        .nav-link {
+          font-size: 14px;
+          letter-spacing: 1px;
+          padding: var(--spacing-sm) 0;
+          position: relative;
+          justify-content: center;
+        }
+        .nav-link::after {
+          left: 0;
+          transform: none;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+          width: 100%;
+        }
+        /* Hide dropdown toggle on desktop */
+        .dropdown-toggle {
+          display: none;
+        }
+        /* Desktop Dropdown Menu */
+        .dropdown-arrow {
+          display: none;
+        }
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%) translateY(10px);
+          background: var(--nav-bg);
+          backdrop-filter: blur(10px);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-md);
+          padding: var(--spacing-md);
+          min-width: 200px;
+          box-shadow: 0 4px 20px var(--shadow);
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity var(--transition-normal),
+            visibility var(--transition-normal),
+            transform var(--transition-normal);
+          max-height: none;
+          padding-left: var(--spacing-md);
+          margin-top: 0;
+          text-align: center;
+          list-style: none;
+        }
+        .nav-item:hover .dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-50%) translateY(0);
+        }
+        .dropdown-menu.open {
+          max-height: none;
+          margin-top: 0;
+        }
+        .dropdown-item {
+          margin-bottom: var(--spacing-sm);
+        }
+        .dropdown-item:last-child {
+          margin-bottom: 0;
+        }
+        .dropdown-link {
+          padding: var(--spacing-xs) var(--spacing-sm);
+          border-radius: var(--radius-sm);
+          transition: all var(--transition-fast);
+          display: block;
+          text-align: center;
+        }
+        .dropdown-link:hover {
+          background: var(--bg-tertiary);
+          color: var(--link-color);
+        }
+        .mobile-menu-toggle {
+          display: none;
+        }
+        .mobile-menu-overlay {
+          display: none;
+        }
+        .nav-controls {
+          position: static;
+          transform: none;
+        }
+        .hero {
+          min-height: 100vh;
+          padding: var(--spacing-2xl) var(--spacing-xl);
+        }
+        .hero-content {
+          max-width: 800px;
+        }
+
+        .hero-title {
+          font-size: clamp(2.5rem, 5vw, 3.5rem);
+        }
+        .hero-subtitle {
+          font-size: 1.25rem;
+          margin-bottom: var(--spacing-3xl);
+        }
+
+        .blog-section {
+          padding: var(--spacing-4xl) var(--spacing-2xl);
+        }
+
+        .blog-text {
+          padding: var(--spacing-3xl) var(--spacing-4xl);
+        }
+      }
+
+      /* Extra large screens (1280px and up) */
+      @media (min-width: 1280px) {
+        .nav-container {
+          max-width: 1280px;
+        }
+        .nav-menu {
+          gap: var(--spacing-2xl);
+        }
+
+        .blog-container {
+          padding: 0 var(--spacing-xl);
+        }
+      }
+
+      /* 3XL screens (1536px and up) */
+      @media (min-width: 1536px) {
+        .nav-container {
+          max-width: 1536px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="mobile-menu-overlay"
+      id="mobileMenuOverlay"
+      onclick="toggleMobileMenu()"
+    ></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo">
+          <img
+            src="assets/images/logo2.png"
+            alt="Impasto logo"
+            class="logo-icon"
+          />
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a href="#home" class="nav-link" onclick="setActiveNav(this)"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="information.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Information
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="faq.html" class="dropdown-link"
+                  >Frequently Asked Questions</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="portfolio.html" class="dropdown-link">Portfolio</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="client-questionnaire.html" class="dropdown-link"
+                  >Client Questionnaire</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="reviews.html" class="dropdown-link"
+                  >Review (Clients)</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="ratecards.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Ratecards
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="portrait.html" class="dropdown-link"
+                  >Portrait Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="wedding.html" class="dropdown-link"
+                  >Wedding Photography</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="store.html" class="nav-link" onclick="setActiveNav(this)"
+              >Store</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link" onclick="setActiveNav(this)"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              href="blog.html"
+              class="nav-link active"
+              onclick="setActiveNav(this)"
+              >Blog</a
+            >
+          </li>
+        </ul>
+        <div class="nav-controls">
+          <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon theme-icon"></i>
+            <span class="theme-text">Dark</span>
+          </button>
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section with 5 Images and Dot Navigation -->
+    <section id="home" class="hero">
+      <div class="hero-slider">
+        <div class="hero-slide hero-slide-1 active"></div>
+        <div class="hero-slide hero-slide-2"></div>
+        <div class="hero-slide hero-slide-3"></div>
+        <div class="hero-slide hero-slide-4"></div>
+        <div class="hero-slide hero-slide-5"></div>
+      </div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="hero-title text-animate">OUR STORIES & INSIGHTS</h1>
+        <p class="hero-subtitle text-animate">
+          Discover the art of photography through our eyes. From
+          behind-the-scenes moments to expert tips and showcases of our latest
+          work, our blog is a window into the world of Impasto Photography.
+        </p>
+      </div>
+
+      <!-- Dot Navigation -->
+      <div class="hero-dots">
+        <div class="hero-dot active" onclick="goToSlide(0)"></div>
+        <div class="hero-dot" onclick="goToSlide(1)"></div>
+        <div class="hero-dot" onclick="goToSlide(2)"></div>
+        <div class="hero-dot" onclick="goToSlide(3)"></div>
+        <div class="hero-dot" onclick="goToSlide(4)"></div>
+      </div>
+    </section>
+
+    <!-- Main Blog Section -->
+    <main id="blog" class="blog-section">
+      <div class="blog-container">
+        <!-- Section Introduction -->
+        <div class="section-intro scroll-animate animate-fade">
+          <p class="section-intro-subtitle text-animate">Latest Stories</p>
+          <h2 class="section-intro-title text-animate">From Our Lens to You</h2>
+          <p class="section-intro-description text-animate">
+            Step into the world of Impasto Photography through our blog. Here we
+            share our experiences, techniques, and the stories behind the
+            moments we capture. Each post is a glimpse into our passion for
+            photography and the art of preserving memories.
+          </p>
+        </div>
+
+        <!-- Blog Post 1: Wedding Photography -->
+        <article class="blog-item scroll-animate animate-slide-left">
+          <div class="blog-content">
+            <div
+              class="blog-image"
+              onclick="openLightbox('assets/images/w6.jpg')"
+            >
+              <img
+                src="assets/images/w6.jpg"
+                alt="Wedding Photography - Capturing Emotions"
+              />
+            </div>
+            <div class="blog-text">
+              <div class="blog-meta">
+                <span class="blog-date text-animate">
+                  <i class="far fa-calendar"></i>
+                  May 15, 2025
+                </span>
+                <span class="blog-author text-animate">
+                  <i class="far fa-user"></i>
+                  Impasto Team
+                </span>
+                <span class="blog-category text-animate">Weddings</span>
+              </div>
+              <h3 class="blog-title text-animate">
+                The Art of Capturing Emotion: Our Approach to Wedding
+                Photography
+              </h3>
+              <p class="blog-excerpt text-animate">
+                Wedding photography is more than just taking pictures; it's
+                about capturing the essence of love, joy, and celebration. In
+                this post, we delve into our philosophy and approach to wedding
+                photography, sharing how we create timeless images that tell the
+                unique story of each couple's special day.
+              </p>
+              <p class="blog-excerpt text-animate">
+                At Impasto Photography, we believe that every wedding is a
+                unique narrative waiting to be told. Our approach begins long
+                before the actual ceremony. We invest time in getting to know
+                the couple, understanding their personalities, their love story,
+                and their vision for their special day. This initial connection
+                allows us to anticipate moments and capture authentic emotions
+                that might otherwise be missed.
+              </p>
+              <p class="blog-excerpt text-animate">
+                On the wedding day itself, we strive to be both observers and
+                storytellers. We use a combination of documentary-style
+                photography and carefully orchestrated portraits to create a
+                comprehensive visual narrative. The key is to remain unobtrusive
+                while still being present enough to guide and direct when
+                necessary. This balance allows us to capture those candid
+                moments of genuine emotion while ensuring that the formal
+                portraits are beautifully composed and executed.
+              </p>
+              <p class="blog-excerpt text-animate">
+                Lighting plays a crucial role in our wedding photography. We
+                meticulously plan for various lighting conditions, from the soft
+                natural light of an outdoor ceremony to the challenging
+                low-light environments of an evening reception. Our expertise in
+                utilizing available light, supplemented with discreet artificial
+                lighting when needed, ensures that every image is beautifully
+                lit and evocative.
+              </p>
+              <p class="blog-excerpt text-animate">
+                Post-processing is where we refine our images, enhancing their
+                emotional impact while maintaining their authenticity. We
+                believe in subtle editing that complements the natural beauty of
+                the moment rather than overpowering it. Our goal is to deliver
+                images that not only document the day but also evoke the same
+                emotions felt in those moments, allowing couples to relive their
+                special day for years to come.
+              </p>
+              <div class="blog-tags">
+                <span class="blog-tag text-animate">Wedding Photography</span>
+                <span class="blog-tag text-animate">Emotion</span>
+                <span class="blog-tag text-animate">Storytelling</span>
+                <span class="blog-tag text-animate">Techniques</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Blog Post 2: Studio Life -->
+        <article class="blog-item reversed scroll-animate animate-slide-right">
+          <div class="blog-content">
+            <div
+              class="blog-image"
+              onclick="openLightbox('assets/images/cam2.jpg')"
+            >
+              <img
+                src="assets/images/cam2.jpg"
+                alt="Behind the Scenes at Impasto Photography Studio"
+              />
+            </div>
+            <div class="blog-text">
+              <div class="blog-meta">
+                <span class="blog-date text-animate">
+                  <i class="far fa-calendar"></i>
+                  April 28, 2025
+                </span>
+                <span class="blog-author text-animate">
+                  <i class="far fa-user"></i>
+                  Impasto Team
+                </span>
+                <span class="blog-category text-animate">Studio Life</span>
+              </div>
+              <h3 class="blog-title text-animate">
+                Beyond the Lens: A Day in the Life at Impasto Photography Studio
+              </h3>
+              <p class="blog-excerpt text-animate">
+                Ever wondered what goes on behind the scenes at a professional
+                photography studio? Join us as we take you through a typical day
+                at Impasto Photography Studio. From client consultations and
+                planning sessions to photoshoots and post-processing, discover
+                the dedication, creativity, and attention to detail that goes
+                into every project.
+              </p>
+              <p class="blog-excerpt text-animate">
+                Our day typically begins early at Impasto Photography Studio.
+                The first order of business is reviewing the day's schedule and
+                preparing for any scheduled shoots. This involves checking and
+                organizing equipment, ensuring batteries are charged, memory
+                cards are formatted, and all necessary gear is clean and ready
+                for use. We believe that preparation is key to a successful
+                shoot, and this morning routine sets the tone for the rest of
+                the day.
+              </p>
+              <p class="blog-excerpt text-animate">
+                Client consultations are a vital part of our work. These
+                meetings allow us to understand our clients' vision, discuss
+                their needs, and establish a rapport that helps put them at ease
+                during the actual shoot. We take the time to explain our
+                process, show samples of our work, and answer any questions they
+                might have. This collaborative approach ensures that we're all
+                on the same page and working towards a common goal.
+              </p>
+              <p class="blog-excerpt text-animate">
+                When it's time for a photoshoot, our studio transforms into a
+                hive of creative activity. Whether it's a portrait session, a
+                product shoot, or a creative project, we approach each with the
+                same level of enthusiasm and professionalism. Our team works
+                seamlessly together, with each member playing their part in
+                creating the perfect image. From setting up lighting and
+                backdrops to directing the subject and capturing the shots,
+                every aspect is carefully coordinated.
+              </p>
+              <p class="blog-excerpt text-animate">
+                Post-processing is where the magic truly happens. After a shoot,
+                our dedicated team of editors works tirelessly to enhance and
+                refine the captured images. This involves color correction,
+                retouching, and other adjustments to bring out the best in each
+                photograph. We take pride in our editing process, ensuring that
+                the final images not only meet but exceed our clients'
+                expectations.
+              </p>
+              <p class="blog-excerpt text-animate">
+                Beyond the technical aspects, life at Impasto Photography Studio
+                is about fostering creativity and continuous learning. We
+                regularly hold team brainstorming sessions, attend workshops,
+                and experiment with new techniques to stay at the forefront of
+                the industry. This commitment to growth and innovation is what
+                drives us and allows us to deliver exceptional results to our
+                clients time and time again.
+              </p>
+              <div class="blog-tags">
+                <span class="blog-tag text-animate">Studio Life</span>
+                <span class="blog-tag text-animate">Behind the Scenes</span>
+                <span class="blog-tag text-animate">Team</span>
+                <span class="blog-tag text-animate">Process</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Blog Post 3: Portrait Photography -->
+        <article class="blog-item scroll-animate animate-slide-left">
+          <div class="blog-content">
+            <div
+              class="blog-image"
+              onclick="openLightbox('assets/images/img48.jpg')"
+            >
+              <img
+                src="assets/images/img48.jpg"
+                alt="Portrait Photography - Revealing Personality"
+              />
+            </div>
+            <div class="blog-text">
+              <div class="blog-meta">
+                <span class="blog-date text-animate">
+                  <i class="far fa-calendar"></i>
+                  April 10, 2025
+                </span>
+                <span class="blog-author text-animate">
+                  <i class="far fa-user"></i>
+                  Impasto Team
+                </span>
+                <span class="blog-category text-animate">Portraits</span>
+              </div>
+              <h3 class="blog-title text-animate">
+                Portrait Photography: Revealing the Essence of Personality
+              </h3>
+              <p class="blog-excerpt text-animate">
+                A great portrait does more than capture a likeness; it reveals
+                the essence of a person's character and personality. In this
+                insightful post, we explore the art and technique of portrait
+                photography at Impasto Studio. We discuss our approach to
+                connecting with subjects, creating the right atmosphere, and
+                using lighting and composition to create compelling portraits
+                that tell a story.
+              </p>
+              <p class="blog-excerpt text-animate">
+                At the heart of portrait photography is the connection between
+                the photographer and the subject. We believe that the most
+                powerful portraits are born from genuine human connection.
+                Before we even pick up our cameras, we spend time getting to
+                know our subjects, engaging in conversation, and creating a
+                comfortable environment. This initial interaction helps break
+                down barriers and allows the subject's true personality to shine
+                through.
+              </p>
+              <p class="blog-excerpt text-animate">
+                Lighting is perhaps the most critical element in portrait
+                photography. It has the power to transform an ordinary image
+                into something extraordinary. At Impasto Studio, we employ
+                various lighting techniques depending on the mood and effect we
+                wish to achieve. From the soft, diffused light that creates a
+                gentle, flattering look to the dramatic, high-contrast lighting
+                that adds depth and intensity, we carefully consider how light
+                will interact with our subject's features.
+              </p>
+              <p class="blog-excerpt text-animate">
+                Composition is another vital aspect of our portrait work. We pay
+                careful attention to framing, background, and posing to create
+                images that are not only visually appealing but also meaningful.
+                Every element within the frame serves a purpose, whether it's to
+                draw attention to the subject's eyes, convey a particular
+                emotion, or tell a story about who they are. We often experiment
+                with different angles and perspectives to find the most
+                flattering and expressive composition for each individual.
+              </p>
+              <p class="blog-excerpt text-animate">
+                The post-processing stage is where we refine our portraits,
+                enhancing their impact while maintaining their authenticity. We
+                believe in subtle retouching that preserves the natural beauty
+                and character of our subjects. Our goal is not to create an
+                unrealistic ideal but to highlight the unique qualities that
+                make each person special. This might involve adjusting skin
+                tones, enhancing eyes, or fine-tuning the overall mood of the
+                image to ensure it resonates with the viewer.
+              </p>
+              <p class="blog-excerpt text-animate">
+                Ultimately, portrait photography for us is about celebrating
+                individuality. Whether we're capturing a corporate headshot, a
+                family portrait, or an artistic personal project, our aim is to
+                create images that honor the subject's unique story and
+                personality. It's this commitment to authenticity and connection
+                that sets our portrait work apart and allows us to create images
+                that our clients treasure for years to come.
+              </p>
+              <div class="blog-tags">
+                <span class="blog-tag text-animate">Portrait Photography</span>
+                <span class="blog-tag text-animate">Lighting</span>
+                <span class="blog-tag text-animate">Composition</span>
+                <span class="blog-tag text-animate">Connection</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Blog CTA Section -->
+        <section class="blog-cta">
+          <div class="container">
+            <div class="scroll-animate animate-fade">
+              <h2 class="blog-cta-title text-animate">Get In Touch</h2>
+              <p class="blog-cta-description text-animate">
+                Have questions about our photography services or want to share
+                your own stories? We'd love to hear from you. Connect with us
+                through our contact form or social media channels.
+              </p>
+              <a href="contact.html" class="btn text-animate">
+                <i class="fas fa-envelope"></i>
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!--footer-->
+    <footer class="footer">
+      <div class="footer-content container">
+        <div class="footer-grid">
+          <!-- Logo Section -->
+          <div class="footer-section scroll-animate animate-fade">
+            <div class="footer-logo">
+              <img
+                src="assets/images/logo2.png"
+                class="footer-logo-icon"
+                alt="Impasto Photography Logo"
+              />
+            </div>
+            <p class="footer-description text-animate">
+              At Impasto Photography, we specialize in capturing life's precious
+              moments with artistry and precision. Our team of professional
+              photographers is dedicated to creating timeless memories that
+              you'll cherish for generations to come.
+            </p>
+          </div>
+          <!-- Quick Links -->
+          <div class="footer-section scroll-animate animate-slide-left">
+            <h3 class="text-animate">Quick Links</h3>
+            <ul class="footer-links">
+              <li class="text-animate">
+                <a href="#home">
+                  <i class="fas fa-chevron-right"></i>
+                  Home
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="information.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Information
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="ratecards.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Ratecards
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="store.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Store
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="contact.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Contact
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="blog.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Services -->
+          <div class="footer-section scroll-animate animate-fade">
+            <h3 class="text-animate">Services</h3>
+            <ul class="footer-links">
+              <li class="text-animate">
+                <a href="portrait.html">
+                  <i class="fas fa-camera"></i>
+                  Portrait Photography
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="wedding.html">
+                  <i class="fas fa-heart"></i>
+                  Wedding Photography
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-building"></i>
+                  Event Photography
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-video"></i>
+                  Videography Services
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-print"></i>
+                  Print Services
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-palette"></i>
+                  Photo Editing
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Contact -->
+          <div class="footer-section scroll-animate animate-slide-right">
+            <h3 class="text-animate">Get In Touch</h3>
+            <ul class="contact-info">
+              <li class="text-animate">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dome - Accra. Opposite Adehyeman Bank.</span>
+              </li>
+              <li class="text-animate">
+                <i class="fas fa-phone"></i>
+                <span>+233 (0) 242-641-305</span>
+              </li>
+              <li class="text-animate">
+                <i class="fas fa-envelope"></i>
+                <span>potrit1@gmail.com</span>
+              </li>
+              <li class="text-animate">
+                <i class="fas fa-clock"></i>
+                <span>Mon-Fri: 8AM-5PM, Sat: 9:30AM-6PM, Sun: 1PM-6PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content container">
+          <div class="footer-copyright">
+            <p class="text-animate">
+              © 2025 Impasto Photography. All rights reserved.
+            </p>
+          </div>
+          <div class="kenzy-credit">
+            <p class="text-animate">Website developed with 💖 by Kenzyverse</p>
+          </div>
+          <div class="social-links">
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Facebook"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Instagram"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Twitter"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on LinkedIn"
+            >
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on YouTube"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Pinterest"
+            >
+              <i class="fab fa-pinterest-p"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <!-- Mobile Top Bar -->
+      <div class="lightbox-top-bar">
+        <button class="lightbox-close" onclick="closeLightbox()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <!-- Image Container -->
+      <div class="lightbox-content" id="lightboxContent">
+        <div class="lightbox-image-container" id="lightboxImageContainer">
+          <img src="" alt="" class="lightbox-image" id="lightboxImage" />
+        </div>
+      </div>
+
+      <!-- Mobile Bottom Bar -->
+      <div class="lightbox-bottom-bar">
+        <div class="zoom-instruction">Double tap or pinch to zoom</div>
+      </div>
+    </div>
+
+    <script>
+      // ===========================================
+      // GLOBAL VARIABLES AND CONSTANTS
+      // ===========================================
+      let heroCurrentSlide = 0;
+      const heroTotalSlides = 5; // Updated to 5 slides
+      let heroSlideInterval;
+      let isAnimating = false;
+
+      // ===========================================
+      // ENHANCED SCROLL ANIMATION FUNCTIONALITY
+      // ===========================================
+      /**
+       * Initialize comprehensive scroll animations for all elements
+       * Handles both scroll-animate and text-animate classes
+       */
+      function initScrollAnimations() {
+        // Enhanced intersection observer with better threshold
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry, index) => {
+              if (entry.isIntersecting) {
+                // Add staggered delay for better visual effect
+                setTimeout(() => {
+                  entry.target.classList.add("visible");
+                }, index * 100);
+              }
+            });
+          },
+          {
+            threshold: 0.1, // Trigger when 10% of element is visible
+            rootMargin: "0px 0px -30px 0px", // Trigger slightly before element comes into view
+          }
+        );
+
+        // Observe all scroll-animate elements
+        document.querySelectorAll(".scroll-animate").forEach((el) => {
+          observer.observe(el);
+        });
+
+        // Observe all text-animate elements
+        document.querySelectorAll(".text-animate").forEach((el) => {
+          observer.observe(el);
+        });
+      }
+
+      /**
+       * Initialize animations on elements already in viewport
+       */
+      function initVisibleElements() {
+        const elements = document.querySelectorAll(
+          ".scroll-animate, .text-animate"
+        );
+        elements.forEach((el, index) => {
+          const rect = el.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+          if (isVisible) {
+            setTimeout(() => {
+              el.classList.add("visible");
+            }, index * 50);
+          }
+        });
+      }
+
+      // ===========================================
+      // HERO SLIDER FUNCTIONALITY WITH 5 IMAGES
+      // ===========================================
+      const heroSlides = document.querySelectorAll(".hero-slide");
+      const heroDots = document.querySelectorAll(".hero-dot");
+
+      /**
+       * Update active hero slide and dot indicator
+       */
+      function updateHeroSlide() {
+        if (isAnimating) return;
+
+        isAnimating = true;
+
+        // Remove active class from all slides and dots
+        heroSlides.forEach((slide) => slide.classList.remove("active"));
+        heroDots.forEach((dot) => dot.classList.remove("active"));
+
+        // Add active class to current slide and dot
+        heroSlides[heroCurrentSlide].classList.add("active");
+        heroDots[heroCurrentSlide].classList.add("active");
+
+        // Reset animation flag after transition
+        setTimeout(() => {
+          isAnimating = false;
+        }, 1000);
+      }
+
+      /**
+       * Navigate to next hero slide
+       */
+      function nextHeroSlide() {
+        heroCurrentSlide = (heroCurrentSlide + 1) % heroTotalSlides;
+        updateHeroSlide();
+      }
+
+      /**
+       * Navigate to previous hero slide
+       */
+      function previousHeroSlide() {
+        heroCurrentSlide =
+          (heroCurrentSlide - 1 + heroTotalSlides) % heroTotalSlides;
+        updateHeroSlide();
+      }
+
+      /**
+       * Go to specific slide (for dot navigation)
+       * @param {number} slideIndex - Index of slide to navigate to
+       */
+      function goToSlide(slideIndex) {
+        if (slideIndex >= 0 && slideIndex < heroTotalSlides && !isAnimating) {
+          heroCurrentSlide = slideIndex;
+          updateHeroSlide();
+        }
+      }
+
+      /**
+       * Start auto-advance functionality for hero slider
+       */
+      function startHeroAutoSlide() {
+        heroSlideInterval = setInterval(() => {
+          nextHeroSlide();
+        }, 6000); // Changed to 6 seconds for better UX
+      }
+
+      /**
+       * Stop auto-advance functionality
+       */
+      function stopHeroAutoSlide() {
+        if (heroSlideInterval) {
+          clearInterval(heroSlideInterval);
+        }
+      }
+
+      // ===========================================
+      // TOUCH/SWIPE SUPPORT FOR MOBILE
+      // ===========================================
+      let touchStartX = 0;
+      let touchEndX = 0;
+      let touchStartY = 0;
+      let touchEndY = 0;
+
+      /**
+       * Initialize comprehensive touch support for hero slider
+       */
+      function initTouchSupport() {
+        const heroSection = document.querySelector(".hero");
+
+        if (heroSection) {
+          heroSection.addEventListener("touchstart", handleTouchStart, {
+            passive: true,
+          });
+          heroSection.addEventListener("touchmove", handleTouchMove, {
+            passive: true,
+          });
+          heroSection.addEventListener("touchend", handleTouchEnd);
+        }
+      }
+
+      /**
+       * Handle touch start event
+       * @param {TouchEvent} e - Touch event
+       */
+      function handleTouchStart(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+      }
+
+      /**
+       * Handle touch move event (prevent vertical scrolling during horizontal swipe)
+       * @param {TouchEvent} e - Touch event
+       */
+      function handleTouchMove(e) {
+        const touchCurrentX = e.changedTouches[0].screenX;
+        const touchCurrentY = e.changedTouches[0].screenY;
+
+        const diffX = Math.abs(touchCurrentX - touchStartX);
+        const diffY = Math.abs(touchCurrentY - touchStartY);
+
+        // If horizontal swipe is more prominent, prevent default scroll
+        if (diffX > diffY && diffX > 30) {
+          e.preventDefault();
+        }
+      }
+
+      /**
+       * Handle touch end event and process swipe
+       * @param {TouchEvent} e - Touch event
+       */
+      function handleTouchEnd(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+      }
+
+      /**
+       * Process swipe gesture for hero navigation
+       */
+      function handleSwipe() {
+        const diffX = touchEndX - touchStartX;
+        const diffY = touchEndY - touchStartY;
+
+        // Only process horizontal swipes
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+          if (diffX > 0) {
+            previousHeroSlide(); // Swipe right - go to previous
+          } else {
+            nextHeroSlide(); // Swipe left - go to next
+          }
+        }
+      }
+
+      // ===========================================
+      // THEME TOGGLE FUNCTIONALITY
+      // ===========================================
+      /**
+       * Toggle between light and dark themes
+       */
+      function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.querySelector(".theme-icon");
+        const themeText = document.querySelector(".theme-text");
+        const logos = document.querySelectorAll(
+          ".logo-icon, .footer-logo-icon"
+        );
+
+        // Check current theme and toggle
+        if (body.getAttribute("data-theme") === "dark") {
+          // Switch to light theme
+          body.removeAttribute("data-theme");
+          if (themeIcon) themeIcon.className = "fas fa-moon theme-icon";
+          if (themeText) themeText.textContent = "Dark";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2.png";
+          });
+          localStorage.setItem("theme", "light");
+        } else {
+          // Switch to dark theme
+          body.setAttribute("data-theme", "dark");
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+          localStorage.setItem("theme", "dark");
+        }
+      }
+
+      /**
+       * Load saved theme preference from localStorage
+       */
+      function loadSavedTheme() {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          document.body.setAttribute("data-theme", "dark");
+
+          const themeIcon = document.querySelector(".theme-icon");
+          const themeText = document.querySelector(".theme-text");
+
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
+
+          const logos = document.querySelectorAll(
+            ".logo-icon, .footer-logo-icon"
+          );
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+        }
+      }
+
+      // ===========================================
+      // NAVIGATION FUNCTIONALITY
+      // ===========================================
+      /**
+       * Set active navigation link
+       * @param {HTMLElement} element - Navigation element to set as active
+       */
+      function setActiveNav(element) {
+        // Don't set active if this is a dropdown toggle
+        if (element.classList.contains("dropdown-toggle")) {
+          return;
+        }
+
+        // Remove active class from all nav links
+        document
+          .querySelectorAll(".nav-link:not(.dropdown-toggle)")
+          .forEach((link) => {
+            link.classList.remove("active");
+          });
+
+        // Add active class to clicked link
+        element.classList.add("active");
+
+        // Close mobile menu if open
+        closeMobileMenu();
+      }
+
+      /**
+       * Toggle mobile menu visibility
+       */
+      function toggleMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        if (navMenu && mobileToggle && overlay) {
+          const isActive = navMenu.classList.contains("active");
+
+          if (isActive) {
+            closeMobileMenu();
+          } else {
+            openMobileMenu();
+          }
+        }
+      }
+
+      /**
+       * Open mobile menu
+       */
+      function openMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        navMenu.classList.add("active");
+        mobileToggle.classList.add("active");
+        overlay.classList.add("active");
+        mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = "hidden";
+      }
+
+      /**
+       * Close mobile menu
+       */
+      function closeMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+
+        if (navMenu && navMenu.classList.contains("active")) {
+          navMenu.classList.remove("active");
+          if (mobileToggle) {
+            mobileToggle.classList.remove("active");
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          }
+          if (overlay) {
+            overlay.classList.remove("active");
+          }
+
+          // Restore body scroll
+          document.body.style.overflow = "";
+        }
+      }
+
+      /**
+       * Toggle dropdown menu (mobile only)
+       * @param {HTMLElement} element - Dropdown toggle element
+       */
+      function toggleDropdown(element) {
+        // Only for mobile view
+        if (window.innerWidth < 1024) {
+          const dropdownMenu =
+            element.parentElement.parentElement.querySelector(".dropdown-menu");
+          const dropdownArrow = element.querySelector(".dropdown-arrow");
+
+          if (dropdownMenu && dropdownArrow) {
+            dropdownMenu.classList.toggle("open");
+            dropdownArrow.classList.toggle("open");
+
+            // Prevent event bubbling
+            if (event) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+          }
+        }
+      }
+
+      /**
+       * Smooth scroll to section
+       * @param {string} sectionId - ID of section to scroll to
+       */
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          closeMobileMenu();
+
+          const navbarHeight = document.getElementById("navbar").offsetHeight;
+          const targetPosition = section.offsetTop - navbarHeight - 20;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        }
+      }
+
+      /**
+       * Handle navbar scroll effects
+       */
+      function handleNavbarScroll() {
+        const navbar = document.getElementById("navbar");
+        if (navbar) {
+          if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        }
+      }
+
+      // ===========================================
+      // BLOG INTERACTIONS
+      // ===========================================
+      /**
+       * Initialize blog post hover effects and interactions
+       */
+      function initBlogInteractions() {
+        // No hover effects needed per requirements
+      }
+
+      // ===========================================
+      // LIGHTBOX FUNCTIONALITY
+      // ===========================================
+      let currentZoom = 1;
+      let translateX = 0;
+      let translateY = 0;
+
+      // Touch device variables
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let touchStartDistance = 0;
+      let isPinching = false;
+      let isDragging = false;
+      let lastTapTime = 0;
+      const doubleTapDelay = 300; // milliseconds between taps for double-tap
+
+      // Non-touch device variables
+      let dragStartX = 0;
+      let dragStartY = 0;
+      let startTranslateX = 0;
+      let startTranslateY = 0;
+      let mouseDownTime = 0;
+      let hasMoved = false;
+      const dragThreshold = 5; // pixels to move before considering it a drag
+
+      // Inertia variables
+      let velocityX = 0;
+      let velocityY = 0;
+      let lastTouchX = 0;
+      let lastTouchY = 0;
+      let lastTouchTime = 0;
+      let animationFrameId = null;
+
+      // Detect if device is touch-enabled
+      const isTouchDevice = () => {
+        return (
+          "ontouchstart" in window ||
+          navigator.maxTouchPoints > 0 ||
+          navigator.msMaxTouchPoints > 0 ||
+          (window.matchMedia && window.matchMedia("(pointer: coarse)").matches)
+        );
+      };
+
+      function openLightbox(imageSrc) {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+
+        lightboxImage.src = imageSrc;
+
+        // Reset zoom and position
+        currentZoom = 1;
+        translateX = 0;
+        translateY = 0;
+        updateImageTransform();
+
+        // Show lightbox
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+
+        // Setup appropriate event listeners based on device type
+        setupMouseEvents();
+        setupTouchEvents();
+        setupKeyboardEvents();
+        setupMouseWheelZoom();
+      }
+
+      function closeLightbox() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "auto";
+
+        // Cancel any ongoing animations
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = null;
+        }
+
+        // Reset zoom and position
+        currentZoom = 1;
+        translateX = 0;
+        translateY = 0;
+        updateImageTransform();
+
+        // Remove event listeners
+        removeMouseEvents();
+        removeTouchEvents();
+        removeKeyboardEvents();
+        removeMouseWheelZoom();
+      }
+
+      function updateImageTransform() {
+        const imageContainer = document.getElementById(
+          "lightboxImageContainer"
+        );
+        imageContainer.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentZoom})`;
+
+        // Update cursor based on zoom state
+        if (currentZoom > 1) {
+          imageContainer.classList.add("zoomed");
+        } else {
+          imageContainer.classList.remove("zoomed");
+        }
+      }
+
+      // ===========================================
+      // BOUNDARY CALCULATION
+      // ===========================================
+      function calculateBoundaries() {
+        const container = document.getElementById("lightboxContent");
+        const image = document.getElementById("lightboxImage");
+        if (!container || !image) return { maxX: 0, maxY: 0 };
+
+        const containerRect = container.getBoundingClientRect();
+
+        // Get the natural dimensions of the image
+        const naturalWidth = image.naturalWidth;
+        const naturalHeight = image.naturalHeight;
+
+        // Calculate the displayed dimensions of the image (without zoom)
+        const containerAspect = containerRect.width / containerRect.height;
+        const imageAspect = naturalWidth / naturalHeight;
+
+        let displayedWidth, displayedHeight;
+
+        if (imageAspect > containerAspect) {
+          // Image is wider than container (relative to their aspect ratios)
+          displayedWidth = containerRect.width;
+          displayedHeight = containerRect.width / imageAspect;
+        } else {
+          // Image is taller than container (relative to their aspect ratios)
+          displayedHeight = containerRect.height;
+          displayedWidth = containerRect.height * imageAspect;
+        }
+
+        // Calculate the dimensions after zoom
+        const zoomedWidth = displayedWidth * currentZoom;
+        const zoomedHeight = displayedHeight * currentZoom;
+
+        // Calculate maximum allowed translation
+        let maxX = 0;
+        let maxY = 0;
+
+        if (zoomedWidth > containerRect.width) {
+          maxX = (zoomedWidth - containerRect.width) / 2;
+        }
+
+        if (zoomedHeight > containerRect.height) {
+          maxY = (zoomedHeight - containerRect.height) / 2;
+        }
+
+        return { maxX, maxY };
+      }
+
+      function clampPosition() {
+        const { maxX, maxY } = calculateBoundaries();
+
+        // Clamp translateX and translateY to keep image within boundaries
+        translateX = Math.max(-maxX, Math.min(maxX, translateX));
+        translateY = Math.max(-maxY, Math.min(maxY, translateY));
+      }
+
+      // ===========================================
+      // DESKTOP ZOOM & PAN BEHAVIOR
+      // ===========================================
+      function toggleZoom(x, y) {
+        const container = document.getElementById("lightboxContent");
+        const containerRect = container.getBoundingClientRect();
+
+        if (currentZoom === 1) {
+          // Zoom in to 2x
+          currentZoom = 2;
+
+          // Calculate the offset from the center of the container to the mouse position
+          // Adjust for current zoom level to prevent jumping
+          const offsetX =
+            ((containerRect.width / 2 - (x - containerRect.left)) *
+              (currentZoom - 1)) /
+            currentZoom;
+          const offsetY =
+            ((containerRect.height / 2 - (y - containerRect.top)) *
+              (currentZoom - 1)) /
+            currentZoom;
+
+          translateX = offsetX;
+          translateY = offsetY;
+        } else {
+          // Zoom out
+          currentZoom = 1;
+          translateX = 0;
+          translateY = 0;
+        }
+
+        // Clamp position and update transform
+        clampPosition();
+        updateImageTransform();
+      }
+
+      // ===========================================
+      // TOUCH DEVICE FUNCTIONALITY
+      // ===========================================
+      function setupTouchEvents() {
+        const imageContainer = document.getElementById(
+          "lightboxImageContainer"
+        );
+        imageContainer.addEventListener(
+          "touchstart",
+          handleTouchStartLightbox,
+          {
+            passive: false,
+          }
+        );
+        imageContainer.addEventListener("touchmove", handleTouchMoveLightbox, {
+          passive: false,
+        });
+        imageContainer.addEventListener("touchend", handleTouchEndLightbox, {
+          passive: true,
+        });
+      }
+
+      function removeTouchEvents() {
+        const imageContainer = document.getElementById(
+          "lightboxImageContainer"
+        );
+        if (imageContainer) {
+          imageContainer.removeEventListener(
+            "touchstart",
+            handleTouchStartLightbox
+          );
+          imageContainer.removeEventListener(
+            "touchmove",
+            handleTouchMoveLightbox
+          );
+          imageContainer.removeEventListener(
+            "touchend",
+            handleTouchEndLightbox
+          );
+        }
+      }
+
+      function handleTouchStartLightbox(e) {
+        const currentTime = new Date().getTime();
+        const tapLength = currentTime - lastTapTime;
+
+        // Detect double-tap
+        if (
+          tapLength < doubleTapDelay &&
+          tapLength > 0 &&
+          e.touches.length === 1
+        ) {
+          // Double-tap detected
+          const touch = e.touches[0];
+          toggleZoom(touch.clientX, touch.clientY);
+          e.preventDefault();
+        }
+
+        lastTapTime = currentTime;
+
+        // Store touch start position
+        if (e.touches.length === 1) {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+          lastTouchX = touchStartX;
+          lastTouchY = touchStartY;
+          lastTouchTime = Date.now();
+
+          // Only allow dragging when zoomed in
+          isDragging = currentZoom > 1;
+
+          // Reset velocity
+          velocityX = 0;
+          velocityY = 0;
+        }
+
+        // Detect pinch-to-zoom
+        if (e.touches.length === 2) {
+          isPinching = true;
+          isDragging = false; // Ensure we're not in dragging mode
+
+          // Calculate initial distance between two touches
+          touchStartDistance = getDistance(e.touches[0], e.touches[1]);
+
+          // Prevent default to avoid page zoom
+          e.preventDefault();
+        }
+      }
+
+      function handleTouchMoveLightbox(e) {
+        if (isPinching && e.touches.length === 2) {
+          // Pinch-to-zoom logic
+          e.preventDefault(); // Prevent page scroll during pinch
+
+          // Calculate current distance between two touches
+          const currentDistance = getDistance(e.touches[0], e.touches[1]);
+
+          // Calculate scale factor
+          const scale = currentDistance / touchStartDistance;
+
+          // Apply zoom with limits (min: 1, max: 5)
+          let newZoom = currentZoom * scale;
+          newZoom = Math.max(1, Math.min(5, newZoom));
+
+          // Store the old zoom level for center calculation
+          const oldZoom = currentZoom;
+          currentZoom = newZoom;
+          touchStartDistance = currentDistance;
+
+          // Calculate the center of the pinch gesture
+          const centerX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+          const centerY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+          // Calculate the container position
+          const container = document.getElementById("lightboxContent");
+          const containerRect = container.getBoundingClientRect();
+
+          // Calculate the position of the pinch center relative to the container
+          const relX = centerX - containerRect.left;
+          const relY = centerY - containerRect.top;
+
+          // Calculate the offset from the center of the container
+          const offsetX = containerRect.width / 2 - relX;
+          const offsetY = containerRect.height / 2 - relY;
+
+          // Calculate the zoom factor
+          const zoomFactor = currentZoom / oldZoom;
+
+          // If we're zooming out, gradually move the image towards the center
+          if (currentZoom < oldZoom) {
+            // Calculate the centering factor (0 when zoom is 1, 1 when zoom is at max)
+            const centeringFactor = 1 - (currentZoom - 1) / 4; // 4 is maxZoom - 1
+
+            // Apply centering by moving the translation towards 0
+            translateX =
+              translateX * zoomFactor +
+              offsetX * (1 - zoomFactor) * centeringFactor;
+            translateY =
+              translateY * zoomFactor +
+              offsetY * (1 - zoomFactor) * centeringFactor;
+          } else {
+            // When zooming in, adjust translation to keep the pinch center fixed
+            translateX = translateX * zoomFactor + offsetX * (1 - zoomFactor);
+            translateY = translateY * zoomFactor + offsetY * (1 - zoomFactor);
+          }
+
+          // If we're at or below zoom level 1, reset to center
+          if (currentZoom <= 1) {
+            currentZoom = 1;
+            translateX = 0;
+            translateY = 0;
+          }
+
+          // Clamp position to keep image within boundaries
+          clampPosition();
+          updateImageTransform();
+        } else if (isDragging && e.touches.length === 1) {
+          // Panning when zoomed in with one finger
+          e.preventDefault(); // Prevent page scroll during pan
+
+          const touch = e.touches[0];
+          const currentTime = Date.now();
+
+          // Calculate velocity for inertia
+          const timeDiff = currentTime - lastTouchTime;
+          if (timeDiff > 0) {
+            velocityX = (touch.clientX - lastTouchX) / timeDiff;
+            velocityY = (touch.clientY - lastTouchY) / timeDiff;
+          }
+
+          // Calculate new position
+          const deltaX = touch.clientX - lastTouchX;
+          const deltaY = touch.clientY - lastTouchY;
+
+          translateX += deltaX;
+          translateY += deltaY;
+
+          // Clamp position to keep image within boundaries
+          clampPosition();
+
+          // Update transform
+          updateImageTransform();
+
+          // Update last touch position and time
+          lastTouchX = touch.clientX;
+          lastTouchY = touch.clientY;
+          lastTouchTime = currentTime;
+        }
+        // Don't prevent default for other cases to allow swipe navigation
+      }
+
+      function handleTouchEndLightbox(e) {
+        // Apply inertia if we were dragging and there's velocity
+        if (
+          isDragging &&
+          (Math.abs(velocityX) > 0.1 || Math.abs(velocityY) > 0.1)
+        ) {
+          applyInertia();
+        }
+
+        // Reset flags
+        isDragging = false;
+        isPinching = false;
+      }
+
+      function applyInertia() {
+        const inertia = () => {
+          // Apply velocity to position
+          translateX += velocityX * 16; // 16ms is roughly one frame at 60fps
+          translateY += velocityY * 16;
+
+          // Apply friction
+          velocityX *= 0.95;
+          velocityY *= 0.95;
+
+          // Clamp position to keep image within boundaries
+          clampPosition();
+
+          // Update transform
+          updateImageTransform();
+
+          // Continue animation if there's still significant velocity
+          if (Math.abs(velocityX) > 0.01 || Math.abs(velocityY) > 0.01) {
+            animationFrameId = requestAnimationFrame(inertia);
+          }
+        };
+
+        // Start the inertia animation
+        animationFrameId = requestAnimationFrame(inertia);
+      }
+
+      function getDistance(touch1, touch2) {
+        const dx = touch1.clientX - touch2.clientX;
+        const dy = touch1.clientY - touch2.clientY;
+        return Math.sqrt(dx * dx + dy * dy);
+      }
+
+      // ===========================================
+      // NON-TOUCH DEVICE FUNCTIONALITY (DESKTOP)
+      // ===========================================
+      function setupMouseEvents() {
+        const imageContainer = document.getElementById(
+          "lightboxImageContainer"
+        );
+
+        // Use native dblclick for zoom
+        imageContainer.addEventListener("dblclick", (e) => {
+          e.preventDefault();
+          toggleZoom(e.clientX, e.clientY);
+        });
+
+        // Dragging
+        imageContainer.addEventListener("mousedown", handleMouseDownLightbox);
+        document.addEventListener("mousemove", handleMouseMoveLightbox);
+        document.addEventListener("mouseup", handleMouseUpLightbox);
+        imageContainer.addEventListener("contextmenu", (e) =>
+          e.preventDefault()
+        );
+      }
+
+      function removeMouseEvents() {
+        const imageContainer = document.getElementById(
+          "lightboxImageContainer"
+        );
+        if (imageContainer) {
+          imageContainer.removeEventListener(
+            "dblclick",
+            handleDoubleClickLightbox
+          );
+          imageContainer.removeEventListener(
+            "mousedown",
+            handleMouseDownLightbox
+          );
+        }
+        document.removeEventListener("mousemove", handleMouseMoveLightbox);
+        document.removeEventListener("mouseup", handleMouseUpLightbox);
+      }
+
+      function handleDoubleClickLightbox(e) {
+        // Prevent default behavior
+        e.preventDefault();
+
+        // Zoom in/out at the clicked position
+        toggleZoom(e.clientX, e.clientY);
+      }
+
+      function handleMouseDownLightbox(e) {
+        if (currentZoom <= 1 || e.button !== 0) return; // Only left click when zoomed
+
+        mouseDownTime = Date.now();
+        hasMoved = false;
+        dragStartX = e.clientX;
+        dragStartY = e.clientY;
+        startTranslateX = translateX;
+        startTranslateY = translateY;
+
+        // Don't set isDragging = true yet, wait for movement beyond threshold
+        const imageContainer = document.getElementById(
+          "lightboxImageContainer"
+        );
+
+        // Remove transition during drag for immediate response
+        imageContainer.classList.add("no-transition");
+
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      function handleMouseMoveLightbox(e) {
+        if (mouseDownTime > 0) {
+          // Check if mouse has moved beyond threshold
+          const deltaX = Math.abs(e.clientX - dragStartX);
+          const deltaY = Math.abs(e.clientY - dragStartY);
+
+          if (!hasMoved && (deltaX > dragThreshold || deltaY > dragThreshold)) {
+            // Mouse has moved beyond threshold, start dragging
+            hasMoved = true;
+            isDragging = true;
+            const imageContainer = document.getElementById(
+              "lightboxImageContainer"
+            );
+            imageContainer.classList.add("dragging");
+          }
+
+          if (isDragging) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            // Calculate new position
+            const moveX = e.clientX - dragStartX;
+            const moveY = e.clientY - dragStartY;
+
+            translateX = startTranslateX + moveX;
+            translateY = startTranslateY + moveY;
+
+            // Clamp position to keep image within boundaries
+            clampPosition();
+
+            // Update transform immediately without transition
+            updateImageTransform();
+          }
+        }
+      }
+
+      function handleMouseUpLightbox() {
+        if (mouseDownTime > 0) {
+          mouseDownTime = 0;
+
+          if (isDragging) {
+            isDragging = false;
+            const imageContainer = document.getElementById(
+              "lightboxImageContainer"
+            );
+            imageContainer.classList.remove("dragging");
+          }
+
+          // Restore transition after drag
+          const imageContainer = document.getElementById(
+            "lightboxImageContainer"
+          );
+          imageContainer.classList.remove("no-transition");
+        }
+      }
+
+      // ===========================================
+      // MOUSE WHEEL ZOOM
+      // ===========================================
+      function setupMouseWheelZoom() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.addEventListener("wheel", handleMouseWheelLightbox, {
+          passive: false,
+        });
+      }
+
+      function removeMouseWheelZoom() {
+        const lightbox = document.getElementById("lightbox");
+        if (lightbox) {
+          lightbox.removeEventListener("wheel", handleMouseWheelLightbox);
+        }
+      }
+
+      function handleMouseWheelLightbox(e) {
+        e.preventDefault();
+
+        // Set min and max zoom levels
+        const minZoom = 1;
+        const maxZoom = 5;
+
+        // Calculate zoom delta based on wheel direction
+        const zoomDelta = -e.deltaY * 0.001;
+        const newZoom = currentZoom + zoomDelta;
+
+        if (newZoom >= minZoom && newZoom <= maxZoom) {
+          currentZoom = newZoom;
+
+          // If we're zooming out to 1, reset position
+          if (currentZoom <= 1) {
+            currentZoom = 1;
+            translateX = 0;
+            translateY = 0;
+          }
+
+          // Clamp position and update transform
+          clampPosition();
+          updateImageTransform();
+        }
+      }
+
+      // ===========================================
+      // KEYBOARD FUNCTIONALITY
+      // ===========================================
+      function setupKeyboardEvents() {
+        document.addEventListener("keydown", handleKeyDownLightbox);
+      }
+
+      function removeKeyboardEvents() {
+        document.removeEventListener("keydown", handleKeyDownLightbox);
+      }
+
+      function handleKeyDownLightbox(e) {
+        const lightbox = document.getElementById("lightbox");
+        if (lightbox && lightbox.classList.contains("active")) {
+          if (e.key === "Escape") {
+            closeLightbox();
+          } else if (currentZoom > 1) {
+            // When zoomed, use arrow keys for panning
+            const panAmount = 30; // pixels to pan
+
+            if (e.key === "ArrowLeft") {
+              translateX -= panAmount; // Move image left to see more of the right
+            } else if (e.key === "ArrowRight") {
+              translateX += panAmount; // Move image right to see more of the left
+            } else if (e.key === "ArrowUp") {
+              translateY -= panAmount; // Move image up to see more of the bottom
+            } else if (e.key === "ArrowDown") {
+              translateY += panAmount; // Move image down to see more of the top
+            }
+
+            // Clamp position and update transform
+            clampPosition();
+            updateImageTransform();
+          }
+        }
+      }
+
+      // ===========================================
+      // UTILITY FUNCTIONS
+      // ===========================================
+      /**
+       * Throttle function to limit function calls
+       * @param {Function} func - Function to throttle
+       * @param {number} limit - Time limit in milliseconds
+       */
+      function throttle(func, limit) {
+        let inThrottle;
+        return function () {
+          const args = arguments;
+          const context = this;
+          if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => (inThrottle = false), limit);
+          }
+        };
+      }
+
+      /**
+       * Debounce function to delay function calls
+       * @param {Function} func - Function to debounce
+       * @param {number} wait - Wait time in milliseconds
+       */
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+
+      /**
+       * Handle visibility change to pause/resume slider
+       */
+      function handleVisibilityChange() {
+        if (document.hidden) {
+          stopHeroAutoSlide();
+        } else {
+          startHeroAutoSlide();
+        }
+      }
+
+      // ===========================================
+      // OPTIMIZED EVENT HANDLERS
+      // ===========================================
+      const throttledScrollHandler = throttle(handleNavbarScroll, 16); // ~60fps
+      const debouncedResizeHandler = debounce(() => {
+        initScrollAnimations();
+        initVisibleElements();
+      }, 250);
+
+      // ===========================================
+      // INITIALIZATION AND MAIN EVENT LISTENERS
+      // ===========================================
+      /**
+       * Initialize all functionality when DOM is loaded
+       */
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("🎨 Impasto Photography Blog - Initializing...");
+
+        // Core initialization
+        loadSavedTheme();
+        updateHeroSlide();
+        initScrollAnimations();
+        initVisibleElements();
+        initTouchSupport();
+        initBlogInteractions();
+
+        // Start hero slider auto-advance
+        startHeroAutoSlide();
+
+        // Add smooth scrolling to anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            if (targetId) {
+              scrollToSection(targetId);
+            }
+          });
+        });
+
+        // Hero dots event listeners
+        heroDots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            goToSlide(index);
+            stopHeroAutoSlide();
+            // Restart auto-slide after user interaction
+            setTimeout(startHeroAutoSlide, 3000);
+          });
+        });
+
+        console.log("✅ Blog Page Loaded Successfully!");
+      });
+
+      // ===========================================
+      // WINDOW EVENT LISTENERS
+      // ===========================================
+      // Optimized scroll handler
+      window.addEventListener("scroll", throttledScrollHandler);
+
+      // Handle window resize
+      window.addEventListener("resize", debouncedResizeHandler);
+
+      // Handle page visibility changes
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+
+      // Handle page focus/blur
+      window.addEventListener("focus", startHeroAutoSlide);
+      window.addEventListener("blur", stopHeroAutoSlide);
+
+      // ===========================================
+      // KEYBOARD NAVIGATION SUPPORT
+      // ===========================================
+      document.addEventListener("keydown", function (e) {
+        // Close mobile menu on escape
+        if (e.key === "Escape") {
+          closeMobileMenu();
+        }
+
+        // Arrow key navigation for hero slider
+        if (e.key === "ArrowLeft") {
+          previousHeroSlide();
+          stopHeroAutoSlide();
+          setTimeout(startHeroAutoSlide, 3000);
+        }
+        if (e.key === "ArrowRight") {
+          nextHeroSlide();
+          stopHeroAutoSlide();
+          setTimeout(startHeroAutoSlide, 3000);
+        }
+
+        // Space bar to pause/resume slider
+        if (e.key === " " && e.target === document.body) {
+          e.preventDefault();
+          if (heroSlideInterval) {
+            stopHeroAutoSlide();
+          } else {
+            startHeroAutoSlide();
+          }
+        }
+      });
+
+      // ===========================================
+      // IMAGE PROTECTION AND ACCESSIBILITY
+      // ===========================================
+      // Disable right-click on images
+      document.addEventListener("contextmenu", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Disable drag on images
+      document.addEventListener("dragstart", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Add smooth scroll behavior to HTML
+      document.documentElement.style.scrollBehavior = "smooth";
+
+      // ===========================================
+      // SEO AND PERFORMANCE OPTIMIZATIONS
+      // ===========================================
+      // Preload critical images
+      window.addEventListener("load", function () {
+        const criticalImages = [
+          "assets/images/blog-hero-1.jpg",
+          "assets/images/blog-hero-2.jpg",
+          "assets/images/blog-hero-3.jpg",
+        ];
+
+        criticalImages.forEach((src) => {
+          const link = document.createElement("link");
+          link.rel = "preload";
+          link.as = "image";
+          link.href = src;
+          document.head.appendChild(link);
+        });
+      });
+
+      // Add structured data update function
+      function updateStructuredData() {
+        const script = document.querySelector(
+          'script[type="application/ld+json"]'
+        );
+        if (script) {
+          const data = JSON.parse(script.textContent);
+          data.dateModified = new Date().toISOString();
+          script.textContent = JSON.stringify(data);
+        }
+      }
+
+      // Call on page load
+      window.addEventListener("load", updateStructuredData);
+    </script>
+  </body>
+</html>

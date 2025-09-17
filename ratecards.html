@@ -1330,13 +1330,13 @@
         <a href="#home" class="logo">
           <img
             src="assets/images/logo2.png"
-            alt="Impasto Photography Studio Logo"
+            alt="Impasto logo"
             class="logo-icon"
           />
         </a>
         <ul class="nav-menu" id="navMenu">
           <li class="nav-item">
-            <a href="index.html" class="nav-link" onclick="setActiveNav(this)"
+            <a href="#home" class="nav-link" onclick="setActiveNav(this)"
               >Home</a
             >
           </li>
@@ -1355,17 +1355,21 @@
             </div>
             <ul class="dropdown-menu">
               <li class="dropdown-item">
-                <a href="about.html" class="dropdown-link">About Us</a>
+                <a href="faq.html" class="dropdown-link"
+                  >Frequently Asked Questions</a
+                >
               </li>
               <li class="dropdown-item">
-                <a href="team.html" class="dropdown-link">Our Team</a>
+                <a href="portfolio.html" class="dropdown-link">Portfolio</a>
               </li>
               <li class="dropdown-item">
-                <a href="services.html" class="dropdown-link">Services</a>
+                <a href="client-questionnaire.html" class="dropdown-link"
+                  >Client Questionnaire</a
+                >
               </li>
               <li class="dropdown-item">
-                <a href="testimonials.html" class="dropdown-link"
-                  >Testimonials</a
+                <a href="reviews.html" class="dropdown-link"
+                  >Review (Clients)</a
                 >
               </li>
             </ul>
@@ -1384,7 +1388,7 @@
               </button>
             </div>
             <ul class="dropdown-menu">
-              <li class="dropdown-item active">
+              <li class="dropdown-item">
                 <a href="portrait.html" class="dropdown-link"
                   >Portrait Photography</a
                 >
@@ -1397,28 +1401,9 @@
             </ul>
           </li>
           <li class="nav-item">
-            <div class="nav-link-container">
-              <a
-                href="store.html"
-                class="nav-link"
-                onclick="setActiveNav(this)"
-              >
-                Store
-              </a>
-              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
-                <i class="fas fa-chevron-down dropdown-arrow"></i>
-              </button>
-            </div>
-            <ul class="dropdown-menu">
-              <li class="dropdown-item">
-                <a href="prints.html" class="dropdown-link">Prints</a>
-              </li>
-              <li class="dropdown-item">
-                <a href="digital-products.html" class="dropdown-link"
-                  >Digital Products</a
-                >
-              </li>
-            </ul>
+            <a href="store.html" class="nav-link" onclick="setActiveNav(this)"
+              >Store</a
+            >
           </li>
           <li class="nav-item">
             <a href="contact.html" class="nav-link" onclick="setActiveNav(this)"
@@ -1432,19 +1417,11 @@
           </li>
         </ul>
         <div class="nav-controls">
-          <button
-            class="theme-toggle"
-            onclick="toggleTheme()"
-            aria-label="Toggle theme"
-          >
+          <button class="theme-toggle" onclick="toggleTheme()">
             <i class="fas fa-moon theme-icon"></i>
             <span class="theme-text">Dark</span>
           </button>
-          <button
-            class="mobile-menu-toggle"
-            onclick="toggleMobileMenu()"
-            aria-label="Toggle mobile menu"
-          >
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
             <i class="fas fa-bars"></i>
           </button>
         </div>

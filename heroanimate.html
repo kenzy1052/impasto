@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Diagonal Split Hero — Professional</title>
+    <style>
+      :root {
+        --accent: #0ea5ff;
+        --bg: #0f1724;
+        --text: #0b1220;
+        --line: rgba(255, 255, 255, 0.95);
+        --gap: 28px; /* horizontal gap between slices (visual) */
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        background: linear-gradient(180deg, #eef2ff 0%, #ffffff 100%);
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+      }
+
+      /* Layout */
+      .hero {
+        width: 100%;
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .content {
+        padding: 24px 12px;
+      }
+      .kicker {
+        display: inline-block;
+        background: rgba(14, 165, 255, 0.1);
+        color: var(--accent);
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 13px;
+        margin-bottom: 18px;
+      }
+      h1 {
+        font-size: 44px;
+        line-height: 1.02;
+        margin: 0 0 18px;
+      }
+      p {
+        color: #475569;
+        font-size: 16px;
+        margin: 0 0 24px;
+        max-width: 48ch;
+      }
+      .cta {
+        display: inline-flex;
+        gap: 12px;
+        align-items: center;
+        padding: 12px 18px;
+        border-radius: 10px;
+        background: var(--accent);
+        color: white;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 6px 20px rgba(14, 165, 255, 0.18);
+      }
+
+      /* Image column */
+      .image-col {
+        position: relative;
+        height: 520px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        perspective: 1200px;
+      }
+
+      .frame {
+        position: relative;
+        width: 100%;
+        max-width: 540px;
+        height: 420px;
+        border-radius: 12px;
+        overflow: visible; /* allow slices to move slightly */
+        background: linear-gradient(
+          180deg,
+          rgba(2, 6, 23, 0.02),
+          rgba(2, 6, 23, 0.02)
+        );
+      }
+
+      /* Each slice uses the same background image so they visually line up. */
+      .slice {
+        position: absolute;
+        inset: 0; /* full size */
+        background-image: url("assets/images/cam2.jpg"); /* <-- put split.png or assets/images/cam2.jpg next to this file */
+        background-size: cover;
+        background-position: center center;
+        will-change: transform;
+        transition: transform 480ms cubic-bezier(0.2, 0.9, 0.2, 1), filter 360ms;
+        box-shadow: 0 20px 40px rgba(2, 6, 23, 0.12);
+      }
+
+      /* diagonal clip shapes (right-leaning strips) */
+      .slice--1 {
+        z-index: 6;
+        clip-path: polygon(0 0, 58% 0, 43% 100%, 0 100%);
+        transform: translateY(-48px);
+      }
+      .slice--2 {
+        z-index: 5;
+        clip-path: polygon(58% 0, 92% 0, 77% 100%, 43% 100%);
+        transform: translateY(6px);
+      }
+      .slice--3 {
+        z-index: 4;
+        clip-path: polygon(92% 0, 100% 0, 100% 100%, 77% 100%);
+        transform: translateY(64px);
+      }
+
+      /* thin dividing lines to mimic the crisp white edges from your example */
+
+      /* Gentle, looping oscillation where slices meet and mis-align again */
+      @keyframes floatA {
+        0% {
+          transform: translateY(-48px);
+        }
+        22% {
+          transform: translateY(-18px);
+        }
+        44% {
+          transform: translateY(0);
+        }
+        66% {
+          transform: translateY(-18px);
+        }
+        88% {
+          transform: translateY(-48px);
+        }
+        100% {
+          transform: translateY(-48px);
+        }
+      }
+      @keyframes floatB {
+        0% {
+          transform: translateY(6px);
+        }
+        22% {
+          transform: translateY(26px);
+        }
+        44% {
+          transform: translateY(0);
+        }
+        66% {
+          transform: translateY(-12px);
+        }
+        88% {
+          transform: translateY(6px);
+        }
+        100% {
+          transform: translateY(6px);
+        }
+      }
+      @keyframes floatC {
+        0% {
+          transform: translateY(64px);
+        }
+        22% {
+          transform: translateY(40px);
+        }
+        44% {
+          transform: translateY(0);
+        }
+        66% {
+          transform: translateY(20px);
+        }
+        88% {
+          transform: translateY(64px);
+        }
+        100% {
+          transform: translateY(64px);
+        }
+      }
+
+      .animate .slice--1 {
+        animation: floatA 6.2s cubic-bezier(0.2, 0.9, 0.2, 1) infinite;
+      }
+      .animate .slice--2 {
+        animation: floatB 6.2s cubic-bezier(0.2, 0.9, 0.2, 1) infinite 0.12s;
+      }
+      .animate .slice--3 {
+        animation: floatC 6.2s cubic-bezier(0.2, 0.9, 0.2, 1) infinite 0.24s;
+      }
+
+      /* Hover (or touch) -> smoothly align all slices and pause the animation */
+      .frame:hover .slice,
+      .frame.pause .slice {
+        animation: none !important;
+        transform: translateY(0) !important;
+        transition: transform 520ms cubic-bezier(0.22, 0.9, 0.3, 1);
+        filter: saturate(1.06) contrast(1.04);
+        box-shadow: 0 24px 46px rgba(2, 6, 23, 0.14);
+      }
+
+      /* small screens: stack and reduce complexity */
+      @media (max-width: 880px) {
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .image-col {
+          order: -1;
+        }
+        .frame {
+          max-width: 100%;
+          height: 360px;
+        }
+        .slice {
+          background-position: 40% center;
+        }
+        .divider {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="content">
+        <span class="kicker">Photography</span>
+        <h1>Capture Each Frame — With Precision & Style</h1>
+        <p>
+          High-fidelity images, elegant composition and motion — showcased
+          through a modern diagonal split reveal. Hover the image to pause and
+          align the slices.
+        </p>
+        <div style="display: flex; gap: 12px">
+          <button class="cta">Get Started</button>
+          <button
+            class="cta"
+            style="
+              background: transparent;
+              color: var(--accent);
+              box-shadow: none;
+              border: 1px solid rgba(14, 165, 255, 0.12);
+            "
+          >
+            Learn more
+          </button>
+        </div>
+      </div>
+
+      <div class="image-col">
+        <div class="frame animate" id="frame">
+          <!-- three slices share the same background so they line up visually -->
+          <div class="slice slice--1" aria-hidden="true"></div>
+          <div class="slice slice--2" aria-hidden="true"></div>
+          <div class="slice slice--3" aria-hidden="true"></div>
+
+          <!-- crisp white dividers to emulate the look you provided -->
+          <div class="divider divider--a" aria-hidden="true"></div>
+          <div class="divider divider--b" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Touch-friendly pause: on touchstart/tap it aligns slices; on touchend it resumes.
+      (function () {
+        const frame = document.getElementById("frame");
+        let touchTimer = null;
+
+        frame.addEventListener(
+          "touchstart",
+          () => {
+            frame.classList.add("pause");
+            if (touchTimer) clearTimeout(touchTimer);
+          },
+          { passive: true }
+        );
+
+        frame.addEventListener("touchend", () => {
+          // give a graceful resume after a short pause
+          if (touchTimer) clearTimeout(touchTimer);
+          touchTimer = setTimeout(() => frame.classList.remove("pause"), 500);
+        });
+
+        // Optional: allow a keyboard shortcut 'Space' to toggle pause for quick previews
+        window.addEventListener("keydown", (e) => {
+          if (e.code === "Space") {
+            frame.classList.toggle("pause");
+            e.preventDefault();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

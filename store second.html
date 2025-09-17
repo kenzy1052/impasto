@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Impasto Photography Studio - Professional photography services capturing life's precious moments with artistry and precision."
+    />
+    <meta
+      name="keywords"
+      content="photography, studio, professional, portraits, wedding, events, prints, digital products"
+    />
+    <meta name="author" content="Impasto Photography Studio" />
+    <title>
+      Impasto Photography Studio | Professional Photography Services
+    </title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Open Graph Meta Tags for SEO -->
+    <meta
+      property="og:title"
+      content="Impasto Photography Studio | Professional Photography Services"
+    />
+    <meta
+      property="og:description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://impastophotography.com" />
+    <meta
+      property="og:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Impasto Photography Studio | Professional Photography Services"
+    />
+    <meta
+      name="twitter:description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta
+      name="twitter:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/logo-fav.png" />
+    <link rel="apple-touch-icon" href="assets/images/logo.png" />
+
+    <!--Default Styles-->
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/components/navhero.css" />
+    <link rel="stylesheet" href="assets/styles/components/gal.css" />
+    <link rel="stylesheet" href="assets/styles/components/footer.css" />
+
+    <style>
+      /* Additional styles for Jema Studios replica */
+      :root {
+        --primary: #0ea5ff;
+        --secondary: #0f1724;
+        --accent: #ff5e5e;
+        --light: #f8f9fa;
+        --dark: #212529;
+        --gray: #6c757d;
+        --border: #dee2e6;
+      }
+
+      /* Diagonal Split Hero Styles */
+      .hero {
+        width: 100%;
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+        margin: 0 auto;
+        padding: 80px 20px;
+      }
+
+      .hero-content {
+        padding: 24px 12px;
+      }
+
+      .hero-kicker {
+        display: inline-block;
+        background: rgba(14, 165, 255, 0.1);
+        color: var(--primary);
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 13px;
+        margin-bottom: 18px;
+      }
+
+      .hero-title {
+        font-size: 44px;
+        line-height: 1.02;
+        margin: 0 0 18px;
+        font-family: "Playfair Display", serif;
+      }
+
+      .hero-subtitle {
+        color: #475569;
+        font-size: 16px;
+        margin: 0 0 24px;
+        max-width: 48ch;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 12px;
+      }
+
+      .hero-btn {
+        display: inline-flex;
+        gap: 12px;
+        align-items: center;
+        padding: 12px 18px;
+        border-radius: 10px;
+        background: var(--primary);
+        color: white;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 6px 20px rgba(14, 165, 255, 0.18);
+        transition: all 0.3s ease;
+      }
+
+      .hero-btn:hover {
+        background: #0090e0;
+        transform: translateY(-3px);
+      }
+
+      .hero-btn-outline {
+        background: transparent;
+        color: var(--primary);
+        box-shadow: none;
+        border: 1px solid rgba(14, 165, 255, 0.12);
+      }
+
+      .hero-btn-outline:hover {
+        background: rgba(14, 165, 255, 0.1);
+      }
+
+      /* Image column */
+      .hero-image-col {
+        position: relative;
+        height: 520px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        perspective: 1200px;
+      }
+
+      .hero-frame {
+        position: relative;
+        width: 100%;
+        max-width: 540px;
+        height: 420px;
+        border-radius: 12px;
+        overflow: visible;
+        background: linear-gradient(
+          180deg,
+          rgba(2, 6, 23, 0.02),
+          rgba(2, 6, 23, 0.02)
+        );
+      }
+
+      /* Each slice uses the same background image */
+      .hero-slice {
+        position: absolute;
+        inset: 0;
+        background-image: url("https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+        background-size: cover;
+        background-position: center center;
+        will-change: transform;
+        transition: transform 480ms cubic-bezier(0.2, 0.9, 0.2, 1), filter 360ms;
+        box-shadow: 0 20px 40px rgba(2, 6, 23, 0.12);
+      }
+
+      /* diagonal clip shapes */
+      .hero-slice--1 {
+        z-index: 6;
+        clip-path: polygon(0 0, 58% 0, 43% 100%, 0 100%);
+        transform: translateY(-48px);
+      }
+
+      .hero-slice--2 {
+        z-index: 5;
+        clip-path: polygon(58% 0, 92% 0, 77% 100%, 43% 100%);
+        transform: translateY(6px);
+      }
+
+      .hero-slice--3 {
+        z-index: 4;
+        clip-path: polygon(92% 0, 100% 0, 100% 100%, 77% 100%);
+        transform: translateY(64px);
+      }
+
+      /* Animation */
+      @keyframes floatA {
+        0% {
+          transform: translateY(-48px);
+        }
+        22% {
+          transform: translateY(-18px);
+        }
+        44% {
+          transform: translateY(0);
+        }
+        66% {
+          transform: translateY(-18px);
+        }
+        88% {
+          transform: translateY(-48px);
+        }
+        100% {
+          transform: translateY(-48px);
+        }
+      }
+
+      @keyframes floatB {
+        0% {
+          transform: translateY(6px);
+        }
+        22% {
+          transform: translateY(26px);
+        }
+        44% {
+          transform: translateY(0);
+        }
+        66% {
+          transform: translateY(-12px);
+        }
+        88% {
+          transform: translateY(6px);
+        }
+        100% {
+          transform: translateY(6px);
+        }
+      }
+
+      @keyframes floatC {
+        0% {
+          transform: translateY(64px);
+        }
+        22% {
+          transform: translateY(40px);
+        }
+        44% {
+          transform: translateY(0);
+        }
+        66% {
+          transform: translateY(20px);
+        }
+        88% {
+          transform: translateY(64px);
+        }
+        100% {
+          transform: translateY(64px);
+        }
+      }
+
+      .hero-animate .hero-slice--1 {
+        animation: floatA 6.2s cubic-bezier(0.2, 0.9, 0.2, 1) infinite;
+      }
+
+      .hero-animate .hero-slice--2 {
+        animation: floatB 6.2s cubic-bezier(0.2, 0.9, 0.2, 1) infinite 0.12s;
+      }
+
+      .hero-animate .hero-slice--3 {
+        animation: floatC 6.2s cubic-bezier(0.2, 0.9, 0.2, 1) infinite 0.24s;
+      }
+
+      /* Hover effect */
+      .hero-frame:hover .hero-slice,
+      .hero-frame.pause .hero-slice {
+        animation: none !important;
+        transform: translateY(0) !important;
+        transition: transform 520ms cubic-bezier(0.22, 0.9, 0.3, 1);
+        filter: saturate(1.06) contrast(1.04);
+        box-shadow: 0 24px 46px rgba(2, 6, 23, 0.14);
+      }
+
+      /* Responsive */
+      @media (max-width: 880px) {
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .hero-image-col {
+          order: -1;
+        }
+
+        .hero-frame {
+          max-width: 100%;
+          height: 360px;
+        }
+
+        .hero-slice {
+          background-position: 40% center;
+        }
+      }
+
+      /* Jema Studios Sections */
+      .section {
+        padding: 80px 0;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-family: "Playfair Display", serif;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+      }
+
+      .section-title:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background-color: var(--primary);
+      }
+
+      .section-subtitle {
+        color: var(--gray);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* Portfolio Section */
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .portfolio-item {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .portfolio-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .portfolio-image {
+        height: 250px;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .portfolio-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(0, 0, 0, 0.8) 100%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .portfolio-item:hover .portfolio-overlay {
+        opacity: 1;
+      }
+
+      .portfolio-title {
+        color: white;
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+      }
+
+      .portfolio-category {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+      }
+
+      /* Services Section */
+      .services {
+        background-color: var(--light);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .service-card {
+        background: white;
+        border-radius: 12px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .service-icon {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 20px;
+      }
+
+      .service-title {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+      }
+
+      .service-description {
+        color: var(--gray);
+        margin-bottom: 20px;
+      }
+
+      .service-link {
+        color: var(--primary);
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .service-link:hover {
+        gap: 10px;
+      }
+
+      /* Testimonials Section */
+      .testimonials {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")
+            center/cover no-repeat;
+        color: white;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .testimonial-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 30px;
+        position: relative;
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .testimonial-text:before {
+        content: '"';
+        font-size: 4rem;
+        position: absolute;
+        top: -20px;
+        left: -15px;
+        opacity: 0.3;
+        font-family: "Playfair Display", serif;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .author-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .author-info h4 {
+        margin-bottom: 5px;
+      }
+
+      .author-position {
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+
+      /* Contact Section */
+      .contact-form {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-family: "Montserrat", sans-serif;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-control:focus {
+        border-color: var(--primary);
+        outline: none;
+      }
+
+      textarea.form-control {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .contact-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      .contact-icon {
+        font-size: 1.5rem;
+        color: var(--primary);
+        margin-top: 5px;
+      }
+
+      .contact-details h4 {
+        margin-bottom: 10px;
+      }
+
+      .contact-details p {
+        color: var(--gray);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="mobile-menu-overlay"
+      id="mobileMenuOverlay"
+      onclick="toggleMobileMenu()"
+    ></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo">
+          <img
+            src="assets/images/logo2.png"
+            alt="Impasto logo"
+            class="logo-icon"
+          />
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a href="#home" class="nav-link active" onclick="setActiveNav(this)"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="information.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Information
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="about.html" class="dropdown-link">About Us</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="team.html" class="dropdown-link">Our Team</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="services.html" class="dropdown-link">Services</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="testimonials.html" class="dropdown-link"
+                  >Testimonials</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="ratecards.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Ratecards
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="portrait.html" class="dropdown-link"
+                  >Portrait Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="wedding.html" class="dropdown-link"
+                  >Wedding Photography</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="store.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Store
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="prints.html" class="dropdown-link">Prints</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="digital-products.html" class="dropdown-link"
+                  >Digital Products</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link" onclick="setActiveNav(this)"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="blog.html" class="nav-link" onclick="setActiveNav(this)"
+              >Blog</a
+            >
+          </li>
+        </ul>
+        <div class="nav-controls">
+          <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon theme-icon"></i>
+            <span class="theme-text">Dark</span>
+          </button>
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section with Diagonal Split -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-kicker">Professional Photography</span>
+        <h1 class="hero-title">
+          Capture Life's Precious Moments With Artistry & Precision
+        </h1>
+        <p class="hero-subtitle">
+          At Impasto Photography, we specialize in creating timeless memories
+          through our artistic vision and technical expertise. From portraits to
+          events, we capture every moment with precision and style.
+        </p>
+        <div class="hero-buttons">
+          <button class="hero-btn">
+            <i class="fas fa-camera"></i>
+            View Our Work
+          </button>
+          <button class="hero-btn hero-btn-outline">
+            <i class="fas fa-envelope"></i>
+            Contact Us
+          </button>
+        </div>
+      </div>
+      <div class="hero-image-col">
+        <div class="hero-frame hero-animate" id="heroFrame">
+          <div class="hero-slice hero-slice--1" aria-hidden="true"></div>
+          <div class="hero-slice hero-slice--2" aria-hidden="true"></div>
+          <div class="hero-slice hero-slice--3" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Our Portfolio</h2>
+          <p class="section-subtitle">
+            Explore our collection of stunning photographs that capture life's
+            most precious moments
+          </p>
+        </div>
+        <div class="portfolio-grid">
+          <div class="portfolio-item">
+            <img
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              alt="Landscape Photography"
+              class="portfolio-image"
+            />
+            <div class="portfolio-overlay">
+              <h3 class="portfolio-title">Mountain Serenity</h3>
+              <p class="portfolio-category">Landscape</p>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <img
+              src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1888&q=80"
+              alt="Portrait Photography"
+              class="portfolio-image"
+            />
+            <div class="portfolio-overlay">
+              <h3 class="portfolio-title">Natural Beauty</h3>
+              <p class="portfolio-category">Portrait</p>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <img
+              src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              alt="Urban Photography"
+              class="portfolio-image"
+            />
+            <div class="portfolio-overlay">
+              <h3 class="portfolio-title">City Lights</h3>
+              <p class="portfolio-category">Urban</p>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <img
+              src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              alt="Nature Photography"
+              class="portfolio-image"
+            />
+            <div class="portfolio-overlay">
+              <h3 class="portfolio-title">Forest Path</h3>
+              <p class="portfolio-category">Nature</p>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <img
+              src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              alt="Ocean Photography"
+              class="portfolio-image"
+            />
+            <div class="portfolio-overlay">
+              <h3 class="portfolio-title">Ocean Waves</h3>
+              <p class="portfolio-category">Seascape</p>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <img
+              src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              alt="Desert Photography"
+              class="portfolio-image"
+            />
+            <div class="portfolio-overlay">
+              <h3 class="portfolio-title">Desert Dunes</h3>
+              <p class="portfolio-category">Landscape</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Our Services</h2>
+          <p class="section-subtitle">
+            We offer a wide range of professional photography services to meet
+            your needs
+          </p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-camera"></i>
+            </div>
+            <h3 class="service-title">Portrait Photography</h3>
+            <p class="service-description">
+              Professional portraits that capture your unique personality and
+              style.
+            </p>
+            <a href="#" class="service-link"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-ring"></i>
+            </div>
+            <h3 class="service-title">Wedding Photography</h3>
+            <p class="service-description">
+              Capture your special day with beautiful, timeless photographs.
+            </p>
+            <a href="#" class="service-link"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h3 class="service-title">Event Coverage</h3>
+            <p class="service-description">
+              Professional coverage for all types of events, from corporate to
+              personal.
+            </p>
+            <a href="#" class="service-link"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-image"></i>
+            </div>
+            <h3 class="service-title">Print Services</h3>
+            <p class="service-description">
+              High-quality prints of your favorite photographs in various sizes
+              and formats.
+            </p>
+            <a href="#" class="service-link"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Client Testimonials</h2>
+          <p class="section-subtitle">
+            Hear what our clients have to say about their experience with
+            Impasto Photography
+          </p>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              Impasto Photography captured our wedding day perfectly. The
+              attention to detail and artistic vision was beyond our
+              expectations. We'll cherish these photos forever!
+            </p>
+            <div class="testimonial-author">
+              <img
+                src="https://randomuser.me/api/portraits/women/44.jpg"
+                alt="Sarah Johnson"
+                class="author-image"
+              />
+              <div class="author-info">
+                <h4>Sarah Johnson</h4>
+                <p class="author-position">Wedding Client</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              The portrait session was a wonderful experience. The photographer
+              made me feel comfortable and captured my personality in every
+              shot. Highly recommended!
+            </p>
+            <div class="testimonial-author">
+              <img
+                src="https://randomuser.me/api/portraits/men/32.jpg"
+                alt="Michael Chen"
+                class="author-image"
+              />
+              <div class="author-info">
+                <h4>Michael Chen</h4>
+                <p class="author-position">Portrait Client</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              We hired Impasto Photography for our corporate event and were
+              blown away by the results. The team was professional, efficient,
+              and the photos were outstanding.
+            </p>
+            <div class="testimonial-author">
+              <img
+                src="https://randomuser.me/api/portraits/women/68.jpg"
+                alt="Emily Rodriguez"
+                class="author-image"
+              />
+              <div class="author-info">
+                <h4>Emily Rodriguez</h4>
+                <p class="author-position">Corporate Client</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Get In Touch</h2>
+          <p class="section-subtitle">
+            We'd love to hear from you. Send us a message and we'll respond as
+            soon as possible.
+          </p>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Your Name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Your Email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Subject" />
+          </div>
+          <div class="form-group">
+            <textarea
+              class="form-control"
+              placeholder="Your Message"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="hero-btn" style="width: 100%">
+            <i class="fas fa-paper-plane"></i>
+            Send Message
+          </button>
+        </form>
+
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Our Location</h4>
+              <p>Dome - Accra. Opposite Adehyeman Bank.</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Phone Number</h4>
+              <p>+233 (0) 242-641-305</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Email Address</h4>
+              <p>potrit1@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Working Hours</h4>
+              <p>Mon-Fri: 8AM-5PM, Sat: 9:30AM-6PM, Sun: 1PM-6PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer scale-in">
+      <div class="footer-content container">
+        <div class="footer-grid">
+          <!-- Logo Section -->
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img
+                src="assets/images/logo2.png"
+                class="footer-logo-icon"
+                alt="Impasto Photography"
+              />
+            </div>
+            <p class="footer-description">
+              At Impasto Photography, we specialize in capturing life's precious
+              moments with artistry and precision. Our team of professional
+              photographers is dedicated to creating timeless memories that
+              you'll cherish for generations to come.
+            </p>
+          </div>
+          <!-- Quick Links -->
+          <div class="footer-section slide-in-left">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#home">
+                  <i class="fas fa-chevron-right"></i>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="information.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Information
+                </a>
+              </li>
+              <li>
+                <a href="ratecards.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Ratecards
+                </a>
+              </li>
+              <li>
+                <a href="store.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Store
+                </a>
+              </li>
+              <li>
+                <a href="contact.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a href="blog.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Services -->
+          <div class="footer-section fade-in">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#">
+                  <i class="fas fa-camera"></i>
+                  Pre-Birthday Shoots
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-user"></i>
+                  Studio Portraits
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-building"></i>
+                  Large Format Print and Cut
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-calendar-alt"></i>
+                  Event Coverage
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-plane"></i>
+                  Passport Pictures
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-palette"></i>
+                  Graphic Design
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-ellipsis-h"></i>
+                  etc
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Contact -->
+          <div class="footer-section slide-in-right">
+            <h3>Get In Touch</h3>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dome - Accra. Opposite Adehyeman Bank.</span>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>+233 (0) 242-641-305</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <span>potrit1@gmail.com</span>
+              </li>
+              <li>
+                <i class="fas fa-clock"></i>
+                <span>Mon-Fri: 8AM-5PM, Sat: 9:30AM-6PM, Sun: 1PM-6PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content container">
+          <div class="footer-copyright">
+            <p>© 2025 Impasto Photography. All rights reserved.</p>
+          </div>
+          <div class="kenzy-credit">
+            <p>Website developed with 💖 by Kenzyverse</p>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-pinterest-p"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/src/general.js"></script>
+    <script src="assets/src/navhero.js"></script>
+    <script src="assets/src/gal.js"></script>
+
+    <script>
+      // Touch-friendly pause for hero animation
+      (function () {
+        const frame = document.getElementById("heroFrame");
+        let touchTimer = null;
+
+        frame.addEventListener(
+          "touchstart",
+          () => {
+            frame.classList.add("pause");
+            if (touchTimer) clearTimeout(touchTimer);
+          },
+          { passive: true }
+        );
+
+        frame.addEventListener("touchend", () => {
+          if (touchTimer) clearTimeout(touchTimer);
+          touchTimer = setTimeout(() => frame.classList.remove("pause"), 500);
+        });
+
+        // Keyboard shortcut 'Space' to toggle pause
+        window.addEventListener("keydown", (e) => {
+          if (e.code === "Space") {
+            frame.classList.toggle("pause");
+            e.preventDefault();
+          }
+        });
+      })();
+
+      // Contact form submission
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Show success message
+          const successMessage = document.createElement("div");
+          successMessage.style.position = "fixed";
+          successMessage.style.top = "50%";
+          successMessage.style.left = "50%";
+          successMessage.style.transform = "translate(-50%, -50%)";
+          successMessage.style.backgroundColor = "white";
+          successMessage.style.color = "#0f1724";
+          successMessage.style.padding = "30px";
+          successMessage.style.borderRadius = "8px";
+          successMessage.style.boxShadow = "0 5px 15px rgba(0,0,0,0.2)";
+          successMessage.style.zIndex = "1000";
+          successMessage.style.textAlign = "center";
+          successMessage.innerHTML = `
+                <h3>Thank You!</h3>
+                <p>Your message has been sent successfully. We'll get back to you soon.</p>
+                <button class="hero-btn" style="margin-top: 15px;">Close</button>
+            `;
+
+          document.body.appendChild(successMessage);
+
+          successMessage
+            .querySelector("button")
+            .addEventListener("click", function () {
+              document.body.removeChild(successMessage);
+              document.getElementById("contactForm").reset();
+            });
+        });
+    </script>
+  </body>
+</html>

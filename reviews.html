@@ -1,0 +1,2352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Client Review Form - Impasto Photography Studio. Share your feedback and help us improve our photography services."
+    />
+    <meta
+      name="keywords"
+      content="photography review, client feedback, customer satisfaction, photography services, Ghana photographer"
+    />
+    <meta name="author" content="Impasto Photography Studio" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#2563eb" />
+    <title>Client Review Form | Impasto Photography Ghana</title>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Impasto Photography Studio",
+        "description": "Professional Photography Client Review Form in Ghana",
+        "url": "https://impastophotography.com/review.html",
+        "image": "https://impastophotography.com/assets/images/logo2.png",
+        "telephone": "+233242641305",
+        "email": "potrit1@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Dome - Accra. Opposite Adehyeman Bank",
+          "addressLocality": "Accra",
+          "addressRegion": "Greater Accra",
+          "addressCountry": "Ghana"
+        },
+        "serviceType": "Photography Services"
+      }
+    </script>
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Open Graph Meta Tags for SEO -->
+    <meta
+      property="og:title"
+      content="Client Review Form | Impasto Photography"
+    />
+    <meta
+      property="og:description"
+      content="Share your feedback and help us improve our photography services with our comprehensive client review form."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://impastophotography.com/review.html"
+    />
+    <meta
+      property="og:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/logo-fav.png" />
+    <link rel="apple-touch-icon" href="assets/images/logo.png" />
+    <!--Default Styles-->
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/components/footer.css" />
+    <style>
+      /* Custom Scrollbar Styles */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--gradient-primary);
+        border-radius: 10px;
+        transition: all var(--transition-normal);
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      }
+      /* Firefox Scrollbar */
+      html {
+        scrollbar-width: thin;
+        scrollbar-color: #2563eb var(--bg-secondary);
+      }
+      body {
+        font-family: var(--font-primary);
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        transition: background-color var(--transition-normal),
+          color var(--transition-normal);
+      }
+      .container {
+        max-width: 1200px;
+      }
+      /* Enhanced Scroll Animation Classes */
+      .scroll-animate {
+        opacity: 0;
+        transform: translateY(60px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .scroll-animate.animate-slide-left {
+        transform: translateX(-60px) translateY(30px);
+      }
+      .scroll-animate.animate-slide-right {
+        transform: translateX(60px) translateY(30px);
+      }
+      .scroll-animate.animate-scale {
+        transform: scale(0.8) translateY(30px);
+      }
+      .scroll-animate.animate-fade {
+        transform: translateY(30px);
+      }
+      .scroll-animate.visible {
+        opacity: 1;
+        transform: translateX(0) translateY(0) scale(1);
+      }
+      /* Text Animation Classes */
+      .text-animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .text-animate.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      /* Stagger animation delays */
+      .scroll-animate:nth-child(1) {
+        transition-delay: 0s;
+      }
+      .scroll-animate:nth-child(2) {
+        transition-delay: 0.1s;
+      }
+      .scroll-animate:nth-child(3) {
+        transition-delay: 0.2s;
+      }
+      .scroll-animate:nth-child(4) {
+        transition-delay: 0.3s;
+      }
+      .scroll-animate:nth-child(5) {
+        transition-delay: 0.4s;
+      }
+      .scroll-animate:nth-child(6) {
+        transition-delay: 0.5s;
+      }
+      /* Text stagger delays */
+      .text-animate:nth-child(1) {
+        transition-delay: 0s;
+      }
+      .text-animate:nth-child(2) {
+        transition-delay: 0.15s;
+      }
+      .text-animate:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+      /* ===========================================
+          NAVIGATION - MOBILE FIRST
+         =========================================== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background: var(--nav-bg);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        transition: all var(--transition-normal);
+      }
+      .navbar.scrolled {
+        box-shadow: 0 4px 20px var(--shadow);
+      }
+      .nav-container {
+        margin: 0 auto;
+        padding: 0 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+      }
+      .logo {
+        transition: all var(--transition-normal);
+      }
+      .logo:hover {
+        transform: scale(1.05);
+      }
+      .logo-icon {
+        width: 90px;
+        height: auto;
+      }
+      .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: calc(100vh - 60px);
+        background: var(--nav-bg);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: var(--spacing-xl);
+        transition: left var(--transition-normal);
+        list-style: none;
+        overflow-y: auto;
+        box-shadow: 2px 0 10px var(--shadow);
+      }
+      .nav-menu.active {
+        left: 0;
+      }
+      .nav-item {
+        width: 100%;
+        text-align: left;
+        position: relative;
+      }
+      .nav-link-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+      .nav-link {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        transition: color var(--transition-fast);
+        padding: var(--spacing-md) 0;
+        display: block;
+        position: relative;
+        flex-grow: 1;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--link-color);
+        transition: width var(--transition-normal);
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--link-color);
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 60%;
+      }
+      /* Dropdown Toggle for Mobile */
+      .dropdown-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--spacing-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        color: var(--link-color);
+      }
+      /* Dropdown Arrow for Mobile */
+      .dropdown-arrow {
+        font-size: 12px;
+        transition: transform var(--transition-normal);
+      }
+      .dropdown-arrow.open {
+        transform: rotate(180deg);
+      }
+      /* Dropdown Menu */
+      .dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height var(--transition-normal);
+        padding-left: var(--spacing-md);
+        margin-top: 0;
+      }
+      .dropdown-menu.open {
+        max-height: 500px;
+        margin-top: var(--spacing-sm);
+      }
+      .dropdown-item {
+        margin-bottom: var(--spacing-sm);
+      }
+      .dropdown-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 14px;
+        text-transform: capitalize;
+        transition: color var(--transition-fast);
+        display: block;
+        padding: var(--spacing-xs) 0;
+      }
+      .dropdown-link:hover {
+        color: var(--link-color);
+      }
+      .nav-controls {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+      .theme-toggle {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 50px;
+        padding: 4px 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-primary);
+        transition: all var(--transition-normal);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 12px var(--shadow);
+      }
+      .theme-toggle:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px var(--shadow-hover);
+      }
+      .theme-icon {
+        font-size: 12px;
+        transition: transform var(--transition-normal);
+      }
+      .theme-toggle:hover .theme-icon {
+        transform: rotate(180deg);
+      }
+      .mobile-menu-toggle {
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        font-size: 18px;
+        cursor: pointer;
+        padding: var(--spacing-sm);
+        display: block;
+        z-index: 1000;
+      }
+      .mobile-menu-toggle.active {
+        color: var(--link-color);
+      }
+      /* Mobile Menu Overlay */
+      .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition-normal),
+          visibility var(--transition-normal);
+      }
+      .mobile-menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      /*============================
+        Hero Section with 5 Images
+        ===========================*/
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        text-align: center;
+        padding: var(--spacing-xl) var(--spacing-md);
+        overflow: hidden;
+      }
+      .hero-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+      .hero-slide {
+        position: absolute;
+        margin-top: 55px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: 50% 10%;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+      .hero-slide.active {
+        opacity: 1;
+      }
+      /* Hero slide backgrounds using img5.jpg to img9.jpg */
+      .hero-slide-1 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/img5.jpg");
+      }
+      .hero-slide-2 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/img6.jpg");
+      }
+      .hero-slide-3 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/img7.jpg");
+      }
+      .hero-slide-4 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/img8.jpg");
+      }
+      .hero-slide-5 {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/img9.jpg");
+      }
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+        z-index: -1;
+      }
+      .hero-content {
+        max-width: 100%;
+        animation: fadeInUp 1s ease-out;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-title {
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+        font-weight: 600;
+        color: white;
+        margin-top: 2rem;
+        margin-bottom: var(--spacing-sm);
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        line-height: 1.3;
+        font-family: var(--font-secondary);
+        font-optical-sizing: auto;
+      }
+      .hero-subtitle {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: var(--spacing-2xl);
+        font-weight: 300;
+        line-height: 1.5;
+        padding: 0 2rem;
+        font-family: var(--font-primary);
+      }
+      .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        justify-content: center;
+        align-items: center;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm);
+        border-radius: var(--radius-lg);
+        text-decoration: none;
+        font-weight: 600;
+        font-family: var(--font-primary);
+        transition: all var(--transition-normal);
+        cursor: pointer;
+        border: none;
+        font-size: 12px;
+      }
+      .btn-primary {
+        background: var(--gradient-primary);
+        color: white;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+      }
+      .btn-secondary {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+      }
+      .btn-secondary:hover {
+        background: white;
+        color: var(--text-primary);
+        transform: translateY(-2px);
+      }
+      .h-btn {
+        min-width: 220px;
+      }
+      /* Dot Navigation */
+      .hero-dots {
+        position: absolute;
+        bottom: var(--spacing-xl);
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: var(--spacing-sm);
+        z-index: 10;
+      }
+      .hero-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        border: 2px solid rgba(255, 255, 255, 0.6);
+      }
+      .hero-dot.active {
+        background: white;
+        transform: scale(1.2);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+      .hero-dot:hover {
+        background: rgba(255, 255, 255, 0.7);
+        transform: scale(1.1);
+      }
+      .scroll-indicator {
+        position: absolute;
+        bottom: calc(var(--spacing-xl) + 40px);
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba(255, 255, 255, 0.7);
+        animation: bounce 2s infinite;
+        cursor: pointer;
+        z-index: 1;
+      }
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        40% {
+          transform: translateX(-50%) translateY(-10px);
+        }
+        60% {
+          transform: translateX(-50%) translateY(-5px);
+        }
+      }
+      /* ===========================================
+         REVIEW FORM STYLES
+       =========================================== */
+      .review-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: var(--spacing-xl) var(--spacing-lg);
+        backdrop-filter: blur(10px);
+      }
+      .review-header {
+        text-align: center;
+        margin-bottom: var(--spacing-3xl);
+        padding-bottom: var(--spacing-lg);
+        border-bottom: 2px solid var(--border);
+      }
+      .review-title {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        font-weight: 700;
+        margin-bottom: var(--spacing-md);
+        color: var(--text-primary);
+        font-family: var(--font-secondary);
+      }
+      .review-subtitle {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .form-section {
+        margin-bottom: var(--spacing-3xl);
+        padding: var(--spacing-xl);
+        background: var(--bg-secondary);
+        border-radius: var(--radius-lg);
+        border-left: 4px solid var(--accent-color);
+      }
+      .section-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: var(--spacing-lg);
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+      .section-icon {
+        color: var(--accent-color);
+        font-size: 1.2rem;
+      }
+      .form-group {
+        margin-bottom: var(--spacing-lg);
+      }
+      .form-label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: var(--spacing-sm);
+        color: var(--text-primary);
+        font-size: 1rem;
+      }
+      .required {
+        color: #ef4444;
+      }
+      .form-input,
+      .form-textarea,
+      .form-select {
+        width: 100%;
+        padding: var(--spacing-md);
+        border: 2px solid var(--border);
+        border-radius: var(--radius-md);
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        font-size: 1rem;
+        font-family: var(--font-primary);
+        transition: all var(--transition-normal);
+        box-sizing: border-box;
+      }
+      .form-input:focus,
+      .form-textarea:focus,
+      .form-select:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        transform: translateY(-1px);
+      }
+      .form-textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+      .radio-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+      .radio-item {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm);
+        border-radius: var(--radius-sm);
+        transition: background-color var(--transition-fast);
+        cursor: pointer;
+      }
+      .radio-item:hover {
+        background: var(--bg-tertiary);
+      }
+      .radio-input {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+      }
+      .radio-label {
+        cursor: pointer;
+        color: var(--text-primary);
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+      .form-help {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin-top: var(--spacing-xs);
+        font-style: italic;
+      }
+      .submit-section {
+        text-align: center;
+        padding: var(--spacing-2xl) 0;
+        border-top: 2px solid var(--border);
+        margin-top: var(--spacing-3xl);
+      }
+      .submit-btn {
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        padding: var(--spacing-md) var(--spacing-3xl);
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: var(--radius-lg);
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        min-width: 200px;
+        font-family: var(--font-primary);
+      }
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+      }
+      .submit-btn:active {
+        transform: translateY(0);
+      }
+      /* Progress indicator */
+      .progress-bar {
+        width: 100%;
+        height: 8px;
+        background: var(--bg-tertiary);
+        border-radius: 4px;
+        margin-bottom: var(--spacing-xl);
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: var(--gradient-primary);
+        border-radius: 4px;
+        transition: width 0.3s ease;
+        width: 0%;
+      }
+      /* Rating Stars */
+      .rating-container {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        gap: 5px;
+        font-size: 1.2rem;
+        margin-top: var(--spacing-sm);
+      }
+      .rating-input {
+        display: none;
+      }
+      .rating-label {
+        color: #ddd;
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+      .rating-input:checked ~ .rating-label,
+      .rating-label:hover,
+      .rating-label:hover ~ .rating-label {
+        color: #ffc107;
+      }
+      .rating-value {
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+      /* Responsive Design */
+      @media (min-width: 425px) {
+        .rating-container {
+          font-size: 1.5rem;
+        }
+      }
+
+      @media (min-width: 640px) {
+        .review-container {
+          padding: var(--spacing-2xl);
+        }
+        .form-section {
+          padding: var(--spacing-2xl);
+        }
+        .radio-group {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: var(--spacing-md);
+        }
+        .radio-item {
+          flex: 1;
+          min-width: 200px;
+        }
+      }
+      @media (min-width: 768px) {
+        .hero-buttons {
+          flex-direction: row;
+          gap: var(--spacing-lg);
+        }
+        .btn {
+          padding: var(--spacing-md) var(--spacing-xl);
+          font-size: 1rem;
+        }
+        .h-btn {
+          min-width: 280px;
+        }
+        .nav-container {
+          padding: 0 var(--spacing-lg);
+        }
+        .logo-icon {
+          width: 110px;
+        }
+        .hero {
+          padding: var(--spacing-xl) var(--spacing-lg);
+        }
+        .theme-toggle {
+          padding: var(--spacing-xs) var(--spacing-sm);
+        }
+        .mobile-menu-toggle {
+          font-size: 24px;
+        }
+      }
+      /* Desktop screens (1024px and up) - DESKTOP NAVIGATION */
+      @media (min-width: 1024px) {
+        .navbar {
+          height: 70px;
+        }
+        .nav-container {
+          height: 70px;
+          padding: 0 var(--spacing-xl);
+        }
+        .logo-icon {
+          width: 120px;
+        }
+        .nav-menu {
+          position: static;
+          width: auto;
+          max-width: none;
+          height: auto;
+          background: transparent;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          padding: 0;
+          transition: none;
+          gap: var(--spacing-xl);
+          margin: 0 auto;
+          box-shadow: none;
+          overflow-y: visible;
+        }
+        .nav-menu.active {
+          left: auto;
+        }
+        .nav-item {
+          width: auto;
+          text-align: center;
+          position: relative;
+        }
+        .nav-link-container {
+          display: block;
+        }
+        .nav-link {
+          font-size: 14px;
+          letter-spacing: 1px;
+          padding: var(--spacing-sm) 0;
+          position: relative;
+          justify-content: center;
+        }
+        .nav-link::after {
+          left: 0;
+          transform: none;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+          width: 100%;
+        }
+        /* Hide dropdown toggle on desktop */
+        .dropdown-toggle {
+          display: none;
+        }
+        /* Desktop Dropdown Menu */
+        .dropdown-arrow {
+          display: none;
+        }
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%) translateY(10px);
+          background: var(--nav-bg);
+          backdrop-filter: blur(10px);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-md);
+          padding: var(--spacing-md);
+          min-width: 200px;
+          box-shadow: 0 4px 20px var(--shadow);
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity var(--transition-normal),
+            visibility var(--transition-normal),
+            transform var(--transition-normal);
+          max-height: none;
+          padding-left: var(--spacing-md);
+          margin-top: 0;
+          text-align: center;
+          list-style: none;
+        }
+        .nav-item:hover .dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-50%) translateY(0);
+        }
+        .dropdown-menu.open {
+          max-height: none;
+          margin-top: 0;
+        }
+        .dropdown-item {
+          margin-bottom: var(--spacing-sm);
+        }
+        .dropdown-item:last-child {
+          margin-bottom: 0;
+        }
+        .dropdown-link {
+          padding: var(--spacing-xs) var(--spacing-sm);
+          border-radius: var(--radius-sm);
+          transition: all var(--transition-fast);
+          display: block;
+          text-align: center;
+        }
+        .dropdown-link:hover {
+          background: var(--bg-tertiary);
+          color: var(--link-color);
+        }
+        .mobile-menu-toggle {
+          display: none;
+        }
+        .mobile-menu-overlay {
+          display: none;
+        }
+        .nav-controls {
+          position: static;
+          transform: none;
+        }
+        .hero {
+          min-height: 100vh;
+          padding: var(--spacing-2xl) var(--spacing-xl);
+        }
+        .hero-content {
+          max-width: 800px;
+        }
+        .hero-title {
+          font-size: clamp(2.5rem, 5vw, 3.5rem);
+        }
+        .hero-subtitle {
+          font-size: 1.25rem;
+          margin-bottom: var(--spacing-3xl);
+        }
+      }
+      /* Extra large screens (1280px and up) */
+      @media (min-width: 1280px) {
+        .nav-container {
+          max-width: 1280px;
+        }
+        .nav-menu {
+          gap: var(--spacing-2xl);
+        }
+      }
+      /* 3XL screens (1536px and up) */
+      @media (min-width: 1536px) {
+        .nav-container {
+          max-width: 1536px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="mobile-menu-overlay"
+      id="mobileMenuOverlay"
+      onclick="toggleMobileMenu()"
+    ></div>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo">
+          <img
+            src="assets/images/logo2.png"
+            alt="Impasto logo"
+            class="logo-icon"
+          />
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a href="#home" class="nav-link" onclick="setActiveNav(this)"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="information.html"
+                class="nav-link active"
+                onclick="setActiveNav(this)"
+              >
+                Information
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="faq.html" class="dropdown-link"
+                  >Frequently Asked Questions</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="portfolio.html" class="dropdown-link">Portfolio</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="client-questionnaire.html" class="dropdown-link"
+                  >Client Questionnaire</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="reviews.html" class="dropdown-link"
+                  >Review (Clients)</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="ratecards.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Ratecards
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="portrait.html" class="dropdown-link"
+                  >Portrait Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="wedding.html" class="dropdown-link"
+                  >Wedding Photography</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="store.html" class="nav-link" onclick="setActiveNav(this)"
+              >Store</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link" onclick="setActiveNav(this)"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="blog.html" class="nav-link" onclick="setActiveNav(this)"
+              >Blog</a
+            >
+          </li>
+        </ul>
+        <div class="nav-controls">
+          <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon theme-icon"></i>
+            <span class="theme-text">Dark</span>
+          </button>
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- Hero Section with 5 Images and Dot Navigation -->
+    <section id="home" class="hero">
+      <div class="hero-slider">
+        <div class="hero-slide hero-slide-1 active"></div>
+        <div class="hero-slide hero-slide-2"></div>
+        <div class="hero-slide hero-slide-3"></div>
+        <div class="hero-slide hero-slide-4"></div>
+        <div class="hero-slide hero-slide-5"></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title text-animate">CLIENT REVIEW</h1>
+        <p class="hero-subtitle text-animate">
+          Your feedback is valuable to us. Please take a few moments to share
+          your experience with our photography services and help us improve.
+        </p>
+        <div class="hero-buttons">
+          <a href="#review" class="btn btn-primary h-btn text-animate">
+            <i class="fas fa-star"></i>
+            Leave a Review
+          </a>
+          <a href="contact.html" class="btn btn-secondary h-btn text-animate">
+            <i class="fas fa-phone"></i>
+            Contact Us
+          </a>
+        </div>
+      </div>
+      <!-- Dot Navigation -->
+      <div class="hero-dots">
+        <div class="hero-dot active" onclick="goToSlide(0)"></div>
+        <div class="hero-dot" onclick="goToSlide(1)"></div>
+        <div class="hero-dot" onclick="goToSlide(2)"></div>
+        <div class="hero-dot" onclick="goToSlide(3)"></div>
+        <div class="hero-dot" onclick="goToSlide(4)"></div>
+      </div>
+      <div class="scroll-indicator" onclick="scrollToSection('review')">
+        <i class="fas fa-chevron-down fa-2x"></i>
+      </div>
+    </section>
+    <!-- Main Content - Client Review Form -->
+    <main id="review">
+      <div class="container">
+        <div class="review-container scroll-animate animate-fade">
+          <!-- Header -->
+          <div class="review-header">
+            <h1 class="review-title text-animate">Client Review Form</h1>
+            <p class="review-subtitle text-animate">
+              We value your feedback! Please take a few minutes to complete this
+              review form. Your honest opinions help us improve our services and
+              provide better experiences for all our clients.
+            </p>
+          </div>
+          <!-- Progress Bar -->
+          <div class="progress-bar scroll-animate animate-fade">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <form id="clientReview" class="review-form">
+            <!-- Basic Information -->
+            <div class="form-section scroll-animate animate-slide-left">
+              <h2 class="section-title text-animate">
+                <i class="fas fa-user section-icon"></i>
+                Basic Information
+              </h2>
+              <div class="form-group">
+                <label class="form-label" for="fullName">
+                  Full Name <span class="required">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  class="form-input"
+                  required
+                  placeholder="Enter your full name"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">
+                  Email Address <span class="required">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-input"
+                  required
+                  placeholder="your.email@example.com"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">
+                  Phone Number <span class="required">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="form-input"
+                  required
+                  placeholder="+233 XX XXX XXXX"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="serviceType">
+                  Service Received <span class="required">*</span>
+                </label>
+                <select
+                  id="serviceType"
+                  name="serviceType"
+                  class="form-select"
+                  required
+                >
+                  <option value="">Select service type</option>
+                  <option value="wedding">Wedding Photography</option>
+                  <option value="pre-wedding">Pre-Wedding/Engagement</option>
+                  <option value="portrait">Portrait Session</option>
+                  <option value="family">Family Photography</option>
+                  <option value="maternity">Maternity Photography</option>
+                  <option value="newborn">Newborn Photography</option>
+                  <option value="event">Event Photography</option>
+                  <option value="commercial">Commercial Photography</option>
+                  <option value="workshop">Photography Workshop</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="serviceDate">
+                  Date of Service <span class="required">*</span>
+                </label>
+                <input
+                  type="date"
+                  id="serviceDate"
+                  name="serviceDate"
+                  class="form-input"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Satisfaction Questions -->
+            <div class="form-section scroll-animate animate-slide-right">
+              <h2 class="section-title text-animate">
+                <i class="fas fa-smile section-icon"></i>
+                Service Satisfaction
+              </h2>
+              <div class="form-group">
+                <label class="form-label">
+                  HOW SATISFIED WERE YOU WITH OUR SERVICE?
+                  <span class="required">*</span>
+                </label>
+                <div class="radio-group">
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="satisfied"
+                      name="satisfaction"
+                      value="satisfied"
+                      class="radio-input"
+                      required
+                    />
+                    <label for="satisfied" class="radio-label">Satisfied</label>
+                  </div>
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="partially-satisfied"
+                      name="satisfaction"
+                      value="partially-satisfied"
+                      class="radio-input"
+                    />
+                    <label for="partially-satisfied" class="radio-label"
+                      >Partially Satisfied</label
+                    >
+                  </div>
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="not-satisfied"
+                      name="satisfaction"
+                      value="not-satisfied"
+                      class="radio-input"
+                    />
+                    <label for="not-satisfied" class="radio-label"
+                      >Not Satisfied</label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">
+                  DID WE MEET YOUR EXPECTATION? <span class="required">*</span>
+                </label>
+                <div class="radio-group">
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="yes-expectation"
+                      name="expectation"
+                      value="yes"
+                      class="radio-input"
+                      required
+                    />
+                    <label for="yes-expectation" class="radio-label">Yes</label>
+                  </div>
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="no-expectation"
+                      name="expectation"
+                      value="no"
+                      class="radio-input"
+                    />
+                    <label for="no-expectation" class="radio-label">No</label>
+                  </div>
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="somewhat-expectation"
+                      name="expectation"
+                      value="somewhat"
+                      class="radio-input"
+                    />
+                    <label for="somewhat-expectation" class="radio-label"
+                      >Somewhat</label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="form-group"
+                id="expectation-details-group"
+                style="display: none"
+              >
+                <label class="form-label" for="expectationDetails">
+                  IF NO, KINDLY SHARE WITH US EXACTLY WHAT YOUR EXPECTATIONS
+                  WERE AND THOSE NOT MET.
+                </label>
+                <textarea
+                  id="expectationDetails"
+                  name="expectationDetails"
+                  class="form-textarea"
+                  placeholder="Please describe your expectations and how we failed to meet them..."
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">
+                  WOULD YOU PLEASE MIND RATING US OVER 10?
+                  <span class="required">*</span>
+                </label>
+                <div class="rating-container">
+                  <input
+                    type="radio"
+                    id="star10"
+                    name="rating"
+                    value="10"
+                    class="rating-input"
+                    required
+                  />
+                  <label for="star10" class="rating-label">★</label>
+                  <input
+                    type="radio"
+                    id="star9"
+                    name="rating"
+                    value="9"
+                    class="rating-input"
+                  />
+                  <label for="star9" class="rating-label">★</label>
+                  <input
+                    type="radio"
+                    id="star8"
+                    name="rating"
+                    value="8"
+                    class="rating-input"
+                  />
+                  <label for="star8" class="rating-label">★</label>
+                  <input
+                    type="radio"
+                    id="star7"
+                    name="rating"
+                    value="7"
+                    class="rating-input"
+                  />
+                  <label for="star7" class="rating-label">★</label>
+                  <input
+                    type="radio"
+                    id="star6"
+                    name="rating"
+                    value="6"
+                    class="rating-input"
+                  />
+                  <label for="star6" class="rating-label">★</label>
+                  <input
+                    type="radio"
+                    id="star5"
+                    name="rating"
+                    value="5"
+                    class="rating-input"
+                  />
+                  <label for="star5" class="rating-label">★</label>
+                  <input
+                    type="radio"
+                    id="star4"
+                    name="rating"
+                    value="4"
+                    class="rating-input"
+                  />
+                  <label for="star4" class="rating-label">★</label>
+                  <input
+                    type="radio"
+                    id="star3"
+                    name="rating"
+                    value="3"
+                    class="rating-input"
+                  />
+                  <label for="star3" class="rating-label">★</label>
+                  <input
+                    type="radio"
+                    id="star2"
+                    name="rating"
+                    value="2"
+                    class="rating-input"
+                  />
+                  <label for="star2" class="rating-label">★</label>
+                  <input
+                    type="radio"
+                    id="star1"
+                    name="rating"
+                    value="1"
+                    class="rating-input"
+                  />
+                  <label for="star1" class="rating-label">★</label>
+                  <span class="rating-value" id="ratingValue">0/10</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">
+                  WOULD YOU RECOMMEND US TO A FRIEND?
+                  <span class="required">*</span>
+                </label>
+                <div class="radio-group">
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="recommend-yes"
+                      name="recommend"
+                      value="yes"
+                      class="radio-input"
+                      required
+                    />
+                    <label for="recommend-yes" class="radio-label">Yes</label>
+                  </div>
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="recommend-no"
+                      name="recommend"
+                      value="no"
+                      class="radio-input"
+                    />
+                    <label for="recommend-no" class="radio-label">No</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Additional Feedback -->
+            <div class="form-section scroll-animate animate-slide-left">
+              <h2 class="section-title text-animate">
+                <i class="fas fa-comment-alt section-icon"></i>
+                Additional Feedback
+              </h2>
+              <div class="form-group">
+                <label class="form-label" for="additionalFeedback">
+                  IS THERE SOMETHING YOU WOULD LIKE TO SHARE OR RECOMMEND TO US
+                  ABOUT OUR SERVICES?
+                </label>
+                <textarea
+                  id="additionalFeedback"
+                  name="additionalFeedback"
+                  class="form-textarea"
+                  placeholder="Please share any additional comments, suggestions, or recommendations..."
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="favoriteAspect">
+                  What was your favorite aspect of our service?
+                </label>
+                <textarea
+                  id="favoriteAspect"
+                  name="favoriteAspect"
+                  class="form-textarea"
+                  placeholder="Tell us what you enjoyed most about our photography service..."
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="improvement">
+                  How could we improve our services?
+                </label>
+                <textarea
+                  id="improvement"
+                  name="improvement"
+                  class="form-textarea"
+                  placeholder="Let us know how we can serve you better in the future..."
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="futureService">
+                  Would you consider using our services again in the future?
+                </label>
+                <select
+                  id="futureService"
+                  name="futureService"
+                  class="form-select"
+                >
+                  <option value="">Select an option</option>
+                  <option value="definitely">Definitely</option>
+                  <option value="probably">Probably</option>
+                  <option value="not-sure">Not sure</option>
+                  <option value="probably-not">Probably not</option>
+                  <option value="definitely-not">Definitely not</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Permission to Share Review -->
+            <div class="form-section scroll-animate animate-slide-right">
+              <h2 class="section-title text-animate">
+                <i class="fas fa-share-alt section-icon"></i>
+                Review Sharing
+              </h2>
+              <div class="form-group">
+                <label class="form-label">
+                  Do you give us permission to share your review (anonymously if
+                  preferred) on our website or social media?
+                </label>
+                <div class="radio-group">
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="share-yes"
+                      name="sharePermission"
+                      value="yes"
+                      class="radio-input"
+                    />
+                    <label for="share-yes" class="radio-label"
+                      >Yes, with my name</label
+                    >
+                  </div>
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="share-anonymous"
+                      name="sharePermission"
+                      value="anonymous"
+                      class="radio-input"
+                    />
+                    <label for="share-anonymous" class="radio-label"
+                      >Yes, anonymously</label
+                    >
+                  </div>
+                  <div class="radio-item">
+                    <input
+                      type="radio"
+                      id="share-no"
+                      name="sharePermission"
+                      value="no"
+                      class="radio-input"
+                    />
+                    <label for="share-no" class="radio-label"
+                      >No, keep it private</label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="testimonial">
+                  If you'd like to provide a brief testimonial for our website,
+                  please write it here:
+                </label>
+                <textarea
+                  id="testimonial"
+                  name="testimonial"
+                  class="form-textarea"
+                  placeholder="A brief statement about your experience with our services..."
+                ></textarea>
+                <p class="form-help">
+                  This may be used on our website or marketing materials with
+                  your permission
+                </p>
+              </div>
+            </div>
+
+            <!-- Submit Section -->
+            <div class="submit-section scroll-animate animate-fade">
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i>
+                Submit Review
+              </button>
+              <p class="form-help" style="margin-top: var(--spacing-md)">
+                Thank you for taking the time to share your feedback with us. We
+                appreciate your honest review and will use it to improve our
+                services.
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <!--footer-->
+    <footer class="footer">
+      <div class="footer-content container">
+        <div class="footer-grid">
+          <!-- Logo Section -->
+          <div class="footer-section scroll-animate animate-fade">
+            <div class="footer-logo">
+              <img
+                src="assets/images/logo2.png"
+                class="footer-logo-icon"
+                alt="Impasto Photography Logo"
+              />
+            </div>
+            <p class="footer-description text-animate">
+              At Impasto Photography, we specialize in capturing life's precious
+              moments with artistry and precision. Your feedback helps us
+              continuously improve our services.
+            </p>
+          </div>
+          <!-- Quick Links -->
+          <div class="footer-section scroll-animate animate-slide-left">
+            <h3 class="text-animate">Quick Links</h3>
+            <ul class="footer-links">
+              <li class="text-animate">
+                <a href="#home">
+                  <i class="fas fa-chevron-right"></i>
+                  Home
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="information.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Information
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="ratecards.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Ratecards
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="store.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Store
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="contact.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Contact
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="blog.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Services -->
+          <div class="footer-section scroll-animate animate-fade">
+            <h3 class="text-animate">Services</h3>
+            <ul class="footer-links">
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-camera"></i>
+                  Pre-Birthday Shoots
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-user"></i>
+                  Studio Portraits
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-building"></i>
+                  Large Format Print and Cut
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-calendar-alt"></i>
+                  Event Coverage
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-plane"></i>
+                  Passport Pictures
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-palette"></i>
+                  Graphic Design
+                </a>
+              </li>
+              <li class="text-animate">
+                <a href="#">
+                  <i class="fas fa-ellipsis-h"></i>
+                  etc
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Contact -->
+          <div class="footer-section scroll-animate animate-slide-right">
+            <h3 class="text-animate">Get In Touch</h3>
+            <ul class="contact-info">
+              <li class="text-animate">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dome - Accra. Opposite Adehyeman Bank.</span>
+              </li>
+              <li class="text-animate">
+                <i class="fas fa-phone"></i>
+                <span>+233 (0) 242-641-305</span>
+              </li>
+              <li class="text-animate">
+                <i class="fas fa-envelope"></i>
+                <span>potrit1@gmail.com</span>
+              </li>
+              <li class="text-animate">
+                <i class="fas fa-clock"></i>
+                <span>Mon-Fri: 8AM-5PM, Sat: 9:30AM-6PM, Sun: 1PM-6PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content container">
+          <div class="footer-copyright">
+            <p class="text-animate">
+              © 2025 Impasto Photography. All rights reserved.
+            </p>
+          </div>
+          <div class="kenzy-credit">
+            <p class="text-animate">Website developed with 💖 by Kenzyverse</p>
+          </div>
+          <div class="social-links">
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Facebook"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Instagram"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Twitter"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on LinkedIn"
+            >
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on YouTube"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a
+              href="#"
+              class="social-link text-animate"
+              aria-label="Follow us on Pinterest"
+            >
+              <i class="fab fa-pinterest-p"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // ===========================================
+      // GLOBAL VARIABLES AND CONSTANTS
+      // ===========================================
+      let heroCurrentSlide = 0;
+      const heroTotalSlides = 5;
+      let heroSlideInterval;
+      let isAnimating = false;
+      // ===========================================
+      // ENHANCED SCROLL ANIMATION FUNCTIONALITY
+      // ===========================================
+      function initScrollAnimations() {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry, index) => {
+              if (entry.isIntersecting) {
+                setTimeout(() => {
+                  entry.target.classList.add("visible");
+                }, index * 100);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -30px 0px",
+          }
+        );
+        document.querySelectorAll(".scroll-animate").forEach((el) => {
+          observer.observe(el);
+        });
+        document.querySelectorAll(".text-animate").forEach((el) => {
+          observer.observe(el);
+        });
+      }
+      function initVisibleElements() {
+        const elements = document.querySelectorAll(
+          ".scroll-animate, .text-animate"
+        );
+        elements.forEach((el, index) => {
+          const rect = el.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+          if (isVisible) {
+            setTimeout(() => {
+              el.classList.add("visible");
+            }, index * 50);
+          }
+        });
+      }
+      // ===========================================
+      // HERO SLIDER FUNCTIONALITY
+      // ===========================================
+      const heroSlides = document.querySelectorAll(".hero-slide");
+      const heroDots = document.querySelectorAll(".hero-dot");
+      function updateHeroSlide() {
+        if (isAnimating) return;
+        isAnimating = true;
+        heroSlides.forEach((slide) => slide.classList.remove("active"));
+        heroDots.forEach((dot) => dot.classList.remove("active"));
+        heroSlides[heroCurrentSlide].classList.add("active");
+        heroDots[heroCurrentSlide].classList.add("active");
+        setTimeout(() => {
+          isAnimating = false;
+        }, 1000);
+      }
+      function nextHeroSlide() {
+        heroCurrentSlide = (heroCurrentSlide + 1) % heroTotalSlides;
+        updateHeroSlide();
+      }
+      function previousHeroSlide() {
+        heroCurrentSlide =
+          (heroCurrentSlide - 1 + heroTotalSlides) % heroTotalSlides;
+        updateHeroSlide();
+      }
+      function goToSlide(slideIndex) {
+        if (slideIndex >= 0 && slideIndex < heroTotalSlides && !isAnimating) {
+          heroCurrentSlide = slideIndex;
+          updateHeroSlide();
+        }
+      }
+      function startHeroAutoSlide() {
+        heroSlideInterval = setInterval(() => {
+          nextHeroSlide();
+        }, 6000);
+      }
+      function stopHeroAutoSlide() {
+        if (heroSlideInterval) {
+          clearInterval(heroSlideInterval);
+        }
+      }
+      // ===========================================
+      // THEME TOGGLE FUNCTIONALITY
+      // ===========================================
+      function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.querySelector(".theme-icon");
+        const themeText = document.querySelector(".theme-text");
+        const logos = document.querySelectorAll(
+          ".logo-icon, .footer-logo-icon"
+        );
+        if (body.getAttribute("data-theme") === "dark") {
+          body.removeAttribute("data-theme");
+          if (themeIcon) themeIcon.className = "fas fa-moon theme-icon";
+          if (themeText) themeText.textContent = "Dark";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2.png";
+          });
+          localStorage.setItem("theme", "light");
+        } else {
+          body.setAttribute("data-theme", "dark");
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+          localStorage.setItem("theme", "dark");
+        }
+      }
+      function loadSavedTheme() {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          document.body.setAttribute("data-theme", "dark");
+          const themeIcon = document.querySelector(".theme-icon");
+          const themeText = document.querySelector(".theme-text");
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
+          const logos = document.querySelectorAll(
+            ".logo-icon, .footer-logo-icon"
+          );
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+        }
+      }
+      // ===========================================
+      // NAVIGATION FUNCTIONALITY
+      // ===========================================
+      function setActiveNav(element) {
+        if (element.classList.contains("dropdown-toggle")) {
+          return;
+        }
+        document
+          .querySelectorAll(".nav-link:not(.dropdown-toggle)")
+          .forEach((link) => {
+            link.classList.remove("active");
+          });
+        element.classList.add("active");
+        closeMobileMenu();
+      }
+      function toggleMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+        if (navMenu && mobileToggle && overlay) {
+          const isActive = navMenu.classList.contains("active");
+          if (isActive) {
+            closeMobileMenu();
+          } else {
+            openMobileMenu();
+          }
+        }
+      }
+      function openMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+        navMenu.classList.add("active");
+        mobileToggle.classList.add("active");
+        overlay.classList.add("active");
+        mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+        document.body.style.overflow = "hidden";
+      }
+      function closeMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const overlay = document.getElementById("mobileMenuOverlay");
+        if (navMenu && navMenu.classList.contains("active")) {
+          navMenu.classList.remove("active");
+          if (mobileToggle) {
+            mobileToggle.classList.remove("active");
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          }
+          if (overlay) {
+            overlay.classList.remove("active");
+          }
+          document.body.style.overflow = "";
+        }
+      }
+      function toggleDropdown(element) {
+        if (window.innerWidth < 1024) {
+          const dropdownMenu =
+            element.parentElement.parentElement.querySelector(".dropdown-menu");
+          const dropdownArrow = element.querySelector(".dropdown-arrow");
+          if (dropdownMenu && dropdownArrow) {
+            dropdownMenu.classList.toggle("open");
+            dropdownArrow.classList.toggle("open");
+            if (event) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+          }
+        }
+      }
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          closeMobileMenu();
+          const navbarHeight = document.getElementById("navbar").offsetHeight;
+          const targetPosition = section.offsetTop - navbarHeight - 20;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        }
+      }
+      function handleNavbarScroll() {
+        const navbar = document.getElementById("navbar");
+        if (navbar) {
+          if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        }
+      }
+      // ===========================================
+      // REVIEW FORM FUNCTIONALITY
+      // ===========================================
+      function updateProgressBar() {
+        const form = document.getElementById("clientReview");
+        const inputs = form.querySelectorAll("input, select, textarea");
+        const progressFill = document.getElementById("progressFill");
+        let filledInputs = 0;
+        let totalInputs = 0;
+        inputs.forEach((input) => {
+          totalInputs++;
+          if (input.type === "checkbox" || input.type === "radio") {
+            // For checkboxes and radios, check if any in the group is selected
+            const groupName = input.name;
+            const groupInputs = form.querySelectorAll(
+              `input[name="${groupName}"]`
+            );
+            if (Array.from(groupInputs).some((inp) => inp.checked)) {
+              // Only count once per group
+              if (!input.dataset.counted) {
+                filledInputs++;
+                groupInputs.forEach((inp) => (inp.dataset.counted = "true"));
+              }
+            }
+          } else if (input.value.trim() !== "") {
+            filledInputs++;
+          }
+        });
+        const progressPercentage = (filledInputs / totalInputs) * 100;
+        progressFill.style.width = `${progressPercentage}%`;
+      }
+
+      function initReviewForm() {
+        const form = document.getElementById("clientReview");
+
+        // Handle expectation details visibility
+        const expectationRadios = document.querySelectorAll(
+          'input[name="expectation"]'
+        );
+        const expectationDetailsGroup = document.getElementById(
+          "expectation-details-group"
+        );
+
+        expectationRadios.forEach((radio) => {
+          radio.addEventListener("change", function () {
+            if (this.value === "no") {
+              expectationDetailsGroup.style.display = "block";
+              document.getElementById("expectationDetails").required = true;
+            } else {
+              expectationDetailsGroup.style.display = "none";
+              document.getElementById("expectationDetails").required = false;
+            }
+            updateProgressBar();
+          });
+        });
+
+        // Handle star rating
+        const ratingInputs = document.querySelectorAll('input[name="rating"]');
+        const ratingValue = document.getElementById("ratingValue");
+
+        ratingInputs.forEach((input) => {
+          input.addEventListener("change", function () {
+            ratingValue.textContent = `${this.value}/10`;
+            updateProgressBar();
+          });
+        });
+
+        // Add event listeners to all form inputs
+        form.addEventListener("input", updateProgressBar);
+        form.addEventListener("change", updateProgressBar);
+
+        // Form submission
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Basic validation
+          const requiredFields = form.querySelectorAll("[required]");
+          let isValid = true;
+
+          requiredFields.forEach((field) => {
+            if (!field.value.trim()) {
+              isValid = false;
+              field.style.borderColor = "#ef4444";
+              field.focus();
+            } else {
+              field.style.borderColor = "";
+            }
+          });
+
+          if (isValid) {
+            // Simulate form submission
+            const submitBtn = form.querySelector(".submit-btn");
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML =
+              '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+              alert(
+                "Thank you! Your review has been submitted successfully. We appreciate your feedback and will use it to improve our services."
+              );
+              submitBtn.innerHTML = originalText;
+              submitBtn.disabled = false;
+              form.reset();
+              ratingValue.textContent = "0/10";
+              expectationDetailsGroup.style.display = "none";
+              updateProgressBar();
+            }, 2000);
+          } else {
+            alert("Please fill in all required fields.");
+          }
+        });
+      }
+      // ===========================================
+      // TOUCH/SWIPE SUPPORT
+      // ===========================================
+      let touchStartX = 0;
+      let touchEndX = 0;
+      let touchStartY = 0;
+      let touchEndY = 0;
+      function initTouchSupport() {
+        const heroSection = document.querySelector(".hero");
+        if (heroSection) {
+          heroSection.addEventListener("touchstart", handleTouchStart, {
+            passive: true,
+          });
+          heroSection.addEventListener("touchmove", handleTouchMove, {
+            passive: true,
+          });
+          heroSection.addEventListener("touchend", handleTouchEnd);
+        }
+      }
+      function handleTouchStart(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+      }
+      function handleTouchMove(e) {
+        const touchCurrentX = e.changedTouches[0].screenX;
+        const touchCurrentY = e.changedTouches[0].screenY;
+        const diffX = Math.abs(touchCurrentX - touchStartX);
+        const diffY = Math.abs(touchCurrentY - touchStartY);
+        if (diffX > diffY && diffX > 30) {
+          e.preventDefault();
+        }
+      }
+      function handleTouchEnd(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+      }
+      function handleSwipe() {
+        const diffX = touchEndX - touchStartX;
+        const diffY = touchEndY - touchStartY;
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+          if (diffX > 0) {
+            previousHeroSlide();
+          } else {
+            nextHeroSlide();
+          }
+        }
+      }
+      // ===========================================
+      // UTILITY FUNCTIONS
+      // ===========================================
+      function throttle(func, limit) {
+        let inThrottle;
+        return function () {
+          const args = arguments;
+          const context = this;
+          if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => (inThrottle = false), limit);
+          }
+        };
+      }
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+      function handleVisibilityChange() {
+        if (document.hidden) {
+          stopHeroAutoSlide();
+        } else {
+          startHeroAutoSlide();
+        }
+      }
+      // ===========================================
+      // OPTIMIZED EVENT HANDLERS
+      // ===========================================
+      const throttledScrollHandler = throttle(handleNavbarScroll, 16);
+      const debouncedResizeHandler = debounce(() => {
+        initScrollAnimations();
+        initVisibleElements();
+      }, 250);
+      // ===========================================
+      // INITIALIZATION
+      // ===========================================
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log(
+          "🎨 Impasto Photography Client Review Form - Initializing..."
+        );
+        // Core initialization
+        loadSavedTheme();
+        updateHeroSlide();
+        initScrollAnimations();
+        initVisibleElements();
+        initTouchSupport();
+        initReviewForm();
+        // Start hero slider
+        startHeroAutoSlide();
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            if (targetId) {
+              scrollToSection(targetId);
+            }
+          });
+        });
+        // Hero dots event listeners
+        heroDots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            goToSlide(index);
+            stopHeroAutoSlide();
+            setTimeout(startHeroAutoSlide, 3000);
+          });
+        });
+        console.log("✅ Client Review Form Website Loaded Successfully!");
+      });
+      // ===========================================
+      // WINDOW EVENT LISTENERS
+      // ===========================================
+      window.addEventListener("scroll", throttledScrollHandler);
+      window.addEventListener("resize", debouncedResizeHandler);
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+      window.addEventListener("focus", startHeroAutoSlide);
+      window.addEventListener("blur", stopHeroAutoSlide);
+      // ===========================================
+      // KEYBOARD NAVIGATION SUPPORT
+      // ===========================================
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeMobileMenu();
+        }
+        if (e.key === "ArrowLeft") {
+          previousHeroSlide();
+          stopHeroAutoSlide();
+          setTimeout(startHeroAutoSlide, 3000);
+        }
+        if (e.key === "ArrowRight") {
+          nextHeroSlide();
+          stopHeroAutoSlide();
+          setTimeout(startHeroAutoSlide, 3000);
+        }
+        if (e.key === " " && e.target === document.body) {
+          e.preventDefault();
+          if (heroSlideInterval) {
+            stopHeroAutoSlide();
+          } else {
+            startHeroAutoSlide();
+          }
+        }
+      });
+      // ===========================================
+      // IMAGE PROTECTION
+      // ===========================================
+      document.addEventListener("contextmenu", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+      document.addEventListener("dragstart", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+      // Add smooth scroll behavior
+      document.documentElement.style.scrollBehavior = "smooth";
+      // ===========================================
+      // PERFORMANCE OPTIMIZATIONS
+      // ===========================================
+      window.addEventListener("load", function () {
+        const criticalImages = [
+          "assets/images/img5.jpg",
+          "assets/images/img6.jpg",
+          "assets/images/img7.jpg",
+        ];
+        criticalImages.forEach((src) => {
+          const link = document.createElement("link");
+          link.rel = "preload";
+          link.as = "image";
+          link.href = src;
+          document.head.appendChild(link);
+        });
+      });
+      function updateStructuredData() {
+        const script = document.querySelector(
+          'script[type="application/ld+json"]'
+        );
+        if (script) {
+          const data = JSON.parse(script.textContent);
+          data.dateModified = new Date().toISOString();
+          script.textContent = JSON.stringify(data);
+        }
+      }
+      window.addEventListener("load", updateStructuredData);
+    </script>
+  </body>
+</html>
