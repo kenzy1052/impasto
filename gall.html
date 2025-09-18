@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="assets/styles/utils.css" />
     <style>
       /*===========================================
-      GALLERY SECTION - MOBILE FIRST
-      =========================================== */
+    GALLERY SECTION - MOBILE FIRST
+    =========================================== */
       .gallery {
         margin-top: 100px;
         padding: 5px;
@@ -255,7 +255,7 @@
         justify-content: center;
         align-items: center;
         /* Remove transition during dragging for immediate response */
-        transition: transform var(--transition-normal);
+        transition: none;
         transform-origin: center center;
         cursor: zoom-in; /* Default cursor - magnifying glass with plus */
         /* Prevent text selection and default drag behavior */
@@ -269,9 +269,6 @@
         -o-user-drag: none;
         user-drag: none;
         -webkit-touch-callout: none;
-      }
-      .lightbox-image-container.no-transition {
-        transition: none;
       }
       .lightbox-image-container.zoomed {
         cursor: grab; /* Grab cursor when zoomed in */
@@ -437,7 +434,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          transition: transform var(--transition-normal);
+          transition: none;
           transform-origin: center center;
           cursor: zoom-in; /* Default cursor - magnifying glass with plus */
         }
@@ -554,38 +551,11 @@
       // GALLERY FUNCTIONALITY
       // ===========================================
       let currentImageIndex = 1;
-      let currentZoom = 1;
-      let translateX = 0;
-      let translateY = 0;
       const totalImages = 60;
       const imagesPerLoad = 12;
       let currentImageCount = 12;
-      // Touch device variables
-      let touchStartX = 0;
-      let touchStartY = 0;
-      let touchEndX = 0;
-      let touchEndY = 0;
-      let touchStartDistance = 0;
-      let isPinching = false;
-      let isDragging = false;
-      let lastTapTime = 0;
-      const doubleTapDelay = 300; // milliseconds between taps for double-tap
-      // Non-touch device variables
-      let dragStartX = 0;
-      let dragStartY = 0;
-      let startTranslateX = 0;
-      let startTranslateY = 0;
-      let mouseDownTime = 0;
-      let hasMoved = false;
-      const dragThreshold = 5; // pixels to move before considering it a drag
-      // Inertia variables
-      let velocityX = 0;
-      let velocityY = 0;
-      let lastTouchX = 0;
-      let lastTouchY = 0;
-      let lastTouchTime = 0;
-      let animationFrameId = null;
-      // Detect if device is touch-enabled - improved detection
+
+      // Detect if device is touch-enabled
       const isTouchDevice = () => {
         return (
           "ontouchstart" in window ||
@@ -594,6 +564,7 @@
           (window.matchMedia && window.matchMedia("(pointer: coarse)").matches)
         );
       };
+
       // Initialize gallery
       function initializeGallery() {
         const galleryGrid = document.getElementById("galleryGrid");
@@ -603,6 +574,7 @@
           galleryGrid.appendChild(galleryItem);
         }
       }
+
       // Create gallery item
       function createGalleryItem(imageNumber) {
         const item = document.createElement("div");
@@ -629,6 +601,7 @@
         }, 100);
         return item;
       }
+
       // Load more images
       function loadMoreImages() {
         const galleryGrid = document.getElementById("galleryGrid");
@@ -656,6 +629,7 @@
           }
         }, 800);
       }
+
       // ===========================================
       // LIGHTBOX FUNCTIONALITY
       // ===========================================
@@ -664,56 +638,45 @@
         const lightboxImage = document.getElementById("lightboxImage");
         const lightboxCounter = document.getElementById("lightboxCounter");
         currentImageIndex = imageNumber;
-        currentZoom = 1;
-        translateX = 0;
-        translateY = 0;
         lightboxImage.src = `assets/images/img${imageNumber}.jpg`;
         lightboxImage.alt = `Gallery Image ${imageNumber}`;
         lightboxCounter.textContent = `Image ${imageNumber} of ${totalImages}`;
         lightbox.classList.add("active");
         document.body.style.overflow = "hidden";
-        // Update image transform
-        updateImageTransform();
-        // Setup appropriate event listeners based on device type
-        // Always setup both mouse and touch events for devices with both capabilities
-        setupMouseEvents();
+
+        // Reset transform
+        resetTransform();
+
+        // Setup event listeners
         setupTouchEvents();
-        // Setup common events
+        setupMouseEvents();
         setupKeyboardEvents();
         setupMouseWheelZoom();
       }
+
       function closeLightbox() {
         const lightbox = document.getElementById("lightbox");
         lightbox.classList.remove("active");
         document.body.style.overflow = "auto";
-        // Cancel any ongoing animations
-        if (animationFrameId) {
-          cancelAnimationFrame(animationFrameId);
-          animationFrameId = null;
-        }
-        // Reset zoom and position
-        currentZoom = 1;
-        translateX = 0;
-        translateY = 0;
-        updateImageTransform();
+
         // Remove event listeners
-        removeMouseEvents();
         removeTouchEvents();
+        removeMouseEvents();
         removeKeyboardEvents();
         removeMouseWheelZoom();
       }
+
       function updateLightboxImage() {
         const lightboxImage = document.getElementById("lightboxImage");
         const lightboxCounter = document.getElementById("lightboxCounter");
         lightboxImage.src = `assets/images/img${currentImageIndex}.jpg`;
         lightboxImage.alt = `Gallery Image ${currentImageIndex}`;
         lightboxCounter.textContent = `Image ${currentImageIndex} of ${totalImages}`;
+
         // Reset zoom and position for new image
-        currentZoom = 1;
-        translateX = 0;
-        translateY = 0;
-        updateImageTransform();
+        resetTransform();
       }
+
       function previousImage() {
         if (currentImageIndex > 1) {
           currentImageIndex--;
@@ -724,6 +687,7 @@
           updateLightboxImage();
         }
       }
+
       function nextImage() {
         if (currentImageIndex < totalImages) {
           currentImageIndex++;
@@ -734,406 +698,445 @@
           updateLightboxImage();
         }
       }
-      function updateImageTransform() {
-        const imageContainer = document.getElementById(
-          "lightboxImageContainer"
-        );
-        imageContainer.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentZoom})`;
+
+      // ===========================================
+      // NEW TOUCH & ZOOM FUNCTIONALITY
+      // ===========================================
+      let transform = {
+        scale: 1,
+        translateX: 0,
+        translateY: 0,
+      };
+
+      function updateTransform() {
+        const container = document.getElementById("lightboxImageContainer");
+        container.style.transform = `translate(${transform.translateX}px, ${transform.translateY}px) scale(${transform.scale})`;
+
         // Update cursor based on zoom state
-        if (currentZoom > 1) {
-          imageContainer.classList.add("zoomed");
+        if (transform.scale > 1) {
+          container.classList.add("zoomed");
         } else {
-          imageContainer.classList.remove("zoomed");
+          container.classList.remove("zoomed");
         }
       }
-      // ===========================================
-      // BOUNDARY CALCULATION
-      // ===========================================
-      function calculateBoundaries() {
-        const container = document.getElementById("lightboxContent");
-        const image = document.getElementById("lightboxImage");
-        if (!container || !image) return { maxX: 0, maxY: 0 };
-        const containerRect = container.getBoundingClientRect();
-        // Get the natural dimensions of the image
-        const naturalWidth = image.naturalWidth;
-        const naturalHeight = image.naturalHeight;
-        // Calculate the displayed dimensions of the image (without zoom)
-        const containerAspect = containerRect.width / containerRect.height;
-        const imageAspect = naturalWidth / naturalHeight;
-        let displayedWidth, displayedHeight;
-        if (imageAspect > containerAspect) {
-          // Image is wider than container (relative to their aspect ratios)
-          displayedWidth = containerRect.width;
-          displayedHeight = containerRect.width / imageAspect;
-        } else {
-          // Image is taller than container (relative to their aspect ratios)
-          displayedHeight = containerRect.height;
-          displayedWidth = containerRect.height * imageAspect;
-        }
-        // Calculate the dimensions after zoom
-        const zoomedWidth = displayedWidth * currentZoom;
-        const zoomedHeight = displayedHeight * currentZoom;
-        // Calculate maximum allowed translation
-        let maxX = 0;
-        let maxY = 0;
-        if (zoomedWidth > containerRect.width) {
-          maxX = (zoomedWidth - containerRect.width) / 2;
-        }
-        if (zoomedHeight > containerRect.height) {
-          maxY = (zoomedHeight - containerRect.height) / 2;
-        }
-        return { maxX, maxY };
+
+      function resetTransform() {
+        transform = {
+          scale: 1,
+          translateX: 0,
+          translateY: 0,
+        };
+        updateTransform();
       }
-      function clampPosition() {
-        const { maxX, maxY } = calculateBoundaries();
-        // Clamp translateX and translateY to keep image within boundaries
-        translateX = Math.max(-maxX, Math.min(maxX, translateX));
-        translateY = Math.max(-maxY, Math.min(maxY, translateY));
-      }
-      // ===========================================
-      // DESKTOP ZOOM & PAN BEHAVIOR
-      // ===========================================
-      function toggleZoom(x, y) {
-        const container = document.getElementById("lightboxContent");
-        const containerRect = container.getBoundingClientRect();
 
-        if (currentZoom === 1) {
-          // Zoom in to 2x
-          const targetZoom = 2;
-          const oldZoom = currentZoom;
-          currentZoom = targetZoom;
-
-          // Position relative to container
-          const relX = x - containerRect.left;
-          const relY = y - containerRect.top;
-
-          // Keep the tapped point under the finger
-          const zoomFactor = currentZoom / oldZoom;
-          translateX =
-            (translateX - (relX - containerRect.width / 2)) * zoomFactor +
-            (relX - containerRect.width / 2);
-          translateY =
-            (translateY - (relY - containerRect.height / 2)) * zoomFactor +
-            (relY - containerRect.height / 2);
-        } else {
-          // Reset zoom
-          currentZoom = 1;
-          translateX = 0;
-          translateY = 0;
-        }
-
-        clampPosition();
-        updateImageTransform();
-      }
       // ===========================================
-      // TOUCH DEVICE FUNCTIONALITY
+      // TOUCH EVENTS - COMPLETELY REWRITTEN
       // ===========================================
+      let touchState = {
+        isSingleTouch: false,
+        isDoubleTouch: false,
+        isDragging: false,
+        lastTapTime: 0,
+        tapCount: 0,
+        touchStart: { x: 0, y: 0 },
+        lastTouch: { x: 0, y: 0 },
+        touchStartTransform: { scale: 1, translateX: 0, translateY: 0 },
+        pinchStartDistance: 0,
+        pinchStartScale: 1,
+        pinchCenter: { x: 0, y: 0 },
+      };
+
       function setupTouchEvents() {
-        const imageContainer = document.getElementById(
-          "lightboxImageContainer"
-        );
-        imageContainer.addEventListener("touchstart", handleTouchStart, {
+        const container = document.getElementById("lightboxContent");
+        container.addEventListener("touchstart", handleTouchStart, {
           passive: false,
         });
-        imageContainer.addEventListener("touchmove", handleTouchMove, {
+        container.addEventListener("touchmove", handleTouchMove, {
           passive: false,
         });
-        imageContainer.addEventListener("touchend", handleTouchEnd, {
+        container.addEventListener("touchend", handleTouchEnd, {
+          passive: true,
+        });
+        container.addEventListener("touchcancel", handleTouchCancel, {
           passive: true,
         });
       }
+
       function removeTouchEvents() {
-        const imageContainer = document.getElementById(
-          "lightboxImageContainer"
-        );
-        if (imageContainer) {
-          imageContainer.removeEventListener("touchstart", handleTouchStart);
-          imageContainer.removeEventListener("touchmove", handleTouchMove);
-          imageContainer.removeEventListener("touchend", handleTouchEnd);
+        const container = document.getElementById("lightboxContent");
+        if (container) {
+          container.removeEventListener("touchstart", handleTouchStart);
+          container.removeEventListener("touchmove", handleTouchMove);
+          container.removeEventListener("touchend", handleTouchEnd);
+          container.removeEventListener("touchcancel", handleTouchCancel);
         }
       }
+
       function handleTouchStart(e) {
-        const currentTime = new Date().getTime();
-        const tapLength = currentTime - lastTapTime;
-        // Detect double-tap
-        if (
-          tapLength < doubleTapDelay &&
-          tapLength > 0 &&
-          e.touches.length === 1
-        ) {
-          // Double-tap detected
-          const touch = e.touches[0];
-          toggleZoom(touch.clientX, touch.clientY);
-          e.preventDefault();
-        }
-        lastTapTime = currentTime;
-        // Store touch start position
-        if (e.touches.length === 1) {
-          touchStartX = e.touches[0].clientX;
-          touchStartY = e.touches[0].clientY;
-          lastTouchX = touchStartX;
-          lastTouchY = touchStartY;
-          lastTouchTime = Date.now();
+        const touches = e.touches;
+
+        // Reset touch state
+        touchState.isSingleTouch = false;
+        touchState.isDoubleTouch = false;
+        touchState.isDragging = false;
+
+        if (touches.length === 1) {
+          // Single touch
+          touchState.isSingleTouch = true;
+          touchState.touchStart = {
+            x: touches[0].clientX,
+            y: touches[0].clientY,
+          };
+          touchState.lastTouch = {
+            x: touches[0].clientX,
+            y: touches[0].clientY,
+          };
+
+          // Save current transform for panning
+          touchState.touchStartTransform = { ...transform };
+
+          // Check for double tap
+          const now = Date.now();
+          if (now - touchState.lastTapTime < 300) {
+            // Double tap detected
+            handleDoubleTap(touches[0].clientX, touches[0].clientY);
+            touchState.tapCount = 0;
+            touchState.lastTapTime = 0;
+          } else {
+            touchState.tapCount = 1;
+            touchState.lastTapTime = now;
+          }
+
           // Only allow dragging when zoomed in
-          isDragging = currentZoom > 1;
-          // Reset velocity
-          velocityX = 0;
-          velocityY = 0;
-        }
-        // Detect pinch-to-zoom
-        if (e.touches.length === 2) {
-          isPinching = true;
-          isDragging = false; // Ensure we're not in dragging mode
-          // Calculate initial distance between two touches
-          touchStartDistance = getDistance(e.touches[0], e.touches[1]);
-          // Prevent default to avoid page zoom
-          e.preventDefault();
+          if (transform.scale > 1) {
+            touchState.isDragging = true;
+          }
+        } else if (touches.length === 2) {
+          // Double touch (pinch)
+          touchState.isDoubleTouch = true;
+          touchState.isSingleTouch = false;
+          touchState.isDragging = false;
+
+          // Calculate pinch start distance
+          const dx = touches[0].clientX - touches[1].clientX;
+          const dy = touches[0].clientY - touches[1].clientY;
+          touchState.pinchStartDistance = Math.sqrt(dx * dx + dy * dy);
+
+          // Save current scale
+          touchState.pinchStartScale = transform.scale;
+
+          // Calculate pinch center
+          touchState.pinchCenter = {
+            x: (touches[0].clientX + touches[1].clientX) / 2,
+            y: (touches[0].clientY + touches[1].clientY) / 2,
+          };
+
+          // Save current transform for pinch
+          touchState.touchStartTransform = { ...transform };
+
+          e.preventDefault(); // Prevent page zoom
         }
       }
+
       function handleTouchMove(e) {
-        if (isPinching && e.touches.length === 2) {
-          // Pinch-to-zoom logic
-          e.preventDefault(); // Prevent page scroll during pinch
-          // Calculate current distance between two touches
-          const currentDistance = getDistance(e.touches[0], e.touches[1]);
+        const touches = e.touches;
+
+        if (touchState.isDoubleTouch && touches.length === 2) {
+          // Pinch to zoom
+          e.preventDefault(); // Prevent page scroll
+
+          // Calculate current distance
+          const dx = touches[0].clientX - touches[1].clientX;
+          const dy = touches[0].clientY - touches[1].clientY;
+          const currentDistance = Math.sqrt(dx * dx + dy * dy);
+
           // Calculate scale factor
-          const scale = currentDistance / touchStartDistance;
-          // Apply zoom with limits (min: 1, max: 5)
-          let newZoom = currentZoom * scale;
-          newZoom = Math.max(1, Math.min(5, newZoom));
-          // Store the old zoom level for center calculation
-          const oldZoom = currentZoom;
-          currentZoom = newZoom;
-          touchStartDistance = currentDistance;
-          // Calculate the center of the pinch gesture
-          const centerX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-          const centerY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
-          // Calculate the container position
+          const scaleFactor = currentDistance / touchState.pinchStartDistance;
+
+          // Calculate new scale
+          let newScale = touchState.pinchStartScale * scaleFactor;
+
+          // Limit scale between 1 and 5
+          newScale = Math.max(1, Math.min(5, newScale));
+
+          // Calculate current pinch center
+          const currentPinchCenter = {
+            x: (touches[0].clientX + touches[1].clientX) / 2,
+            y: (touches[0].clientY + touches[1].clientY) / 2,
+          };
+
+          // Calculate container position
           const container = document.getElementById("lightboxContent");
           const containerRect = container.getBoundingClientRect();
-          // Calculate the position of the pinch center relative to the container
-          const relX = centerX - containerRect.left;
-          const relY = centerY - containerRect.top;
-          // Calculate the offset from the center of the container
-          const offsetX = containerRect.width / 2 - relX;
-          const offsetY = containerRect.height / 2 - relY;
-          // Calculate the zoom factor
-          const zoomFactor = currentZoom / oldZoom;
-          // If we're zooming out, gradually move the image towards the center
-          if (currentZoom < oldZoom) {
-            // Calculate the centering factor (0 when zoom is 1, 1 when zoom is at max)
-            const centeringFactor = 1 - (currentZoom - 1) / 4; // 4 is maxZoom - 1
-            // Apply centering by moving the translation towards 0
-            translateX =
-              translateX * zoomFactor +
-              offsetX * (1 - zoomFactor) * centeringFactor;
-            translateY =
-              translateY * zoomFactor +
-              offsetY * (1 - zoomFactor) * centeringFactor;
-          } else {
-            // When zooming in, adjust translation to keep the pinch center fixed
-            translateX = translateX * zoomFactor + offsetX * (1 - zoomFactor);
-            translateY = translateY * zoomFactor + offsetY * (1 - zoomFactor);
+
+          // Calculate the position relative to container center
+          const containerCenterX = containerRect.left + containerRect.width / 2;
+          const containerCenterY = containerRect.top + containerRect.height / 2;
+
+          // Calculate the pinch center relative to container center
+          const relX = currentPinchCenter.x - containerCenterX;
+          const relY = currentPinchCenter.y - containerCenterY;
+
+          // Calculate the scale factor
+          const scaleDiff = newScale / touchState.touchStartTransform.scale;
+
+          // Adjust translation to keep pinch center fixed
+          transform.translateX =
+            (touchState.touchStartTransform.translateX - relX) * scaleDiff +
+            relX;
+          transform.translateY =
+            (touchState.touchStartTransform.translateY - relY) * scaleDiff +
+            relY;
+          transform.scale = newScale;
+
+          // If scale is 1, reset to center
+          if (transform.scale <= 1.01) {
+            transform.scale = 1;
+            transform.translateX = 0;
+            transform.translateY = 0;
           }
-          // If we're at or below zoom level 1, reset to center
-          if (currentZoom <= 1) {
-            currentZoom = 1;
-            translateX = 0;
-            translateY = 0;
-          }
-          // Clamp position to keep image within boundaries
-          clampPosition();
-          updateImageTransform();
-        } else if (isDragging && e.touches.length === 1) {
-          // Panning when zoomed in with one finger
-          e.preventDefault(); // Prevent page scroll during pan
-          const touch = e.touches[0];
-          const currentTime = Date.now();
-          // Calculate velocity for inertia
-          const timeDiff = currentTime - lastTouchTime;
-          if (timeDiff > 0) {
-            velocityX = (touch.clientX - lastTouchX) / timeDiff;
-            velocityY = (touch.clientY - lastTouchY) / timeDiff;
-          }
-          // Calculate new position
-          const deltaX = touch.clientX - lastTouchX;
-          const deltaY = touch.clientY - lastTouchY;
-          translateX += deltaX;
-          translateY += deltaY;
-          // Clamp position to keep image within boundaries
-          clampPosition();
+
+          // Apply boundaries
+          applyBoundaries();
+
           // Update transform
-          updateImageTransform();
-          // Update last touch position and time
-          lastTouchX = touch.clientX;
-          lastTouchY = touch.clientY;
-          lastTouchTime = currentTime;
+          updateTransform();
+        } else if (touchState.isDragging && touches.length === 1) {
+          // Panning
+          e.preventDefault(); // Prevent page scroll
+
+          const touch = touches[0];
+          const deltaX = touch.clientX - touchState.lastTouch.x;
+          const deltaY = touch.clientY - touchState.lastTouch.y;
+
+          // Update translation
+          transform.translateX += deltaX;
+          transform.translateY += deltaY;
+
+          // Apply boundaries
+          applyBoundaries();
+
+          // Update transform
+          updateTransform();
+
+          // Update last touch position
+          touchState.lastTouch = {
+            x: touch.clientX,
+            y: touch.clientY,
+          };
         }
-        // Don't prevent default for other cases to allow swipe navigation
       }
+
       function handleTouchEnd(e) {
-        // Handle swipe navigation only if not zoomed in and not dragging
-        if (
-          currentZoom === 1 &&
-          !isDragging &&
-          !isPinching &&
-          e.changedTouches.length === 1
-        ) {
-          const touch = e.changedTouches[0];
-          const swipeThreshold = 50;
-          const diffX = touchStartX - touch.clientX;
-          if (Math.abs(diffX) > swipeThreshold) {
-            if (diffX > 0) {
-              nextImage();
-            } else {
-              previousImage();
+        const touches = e.changedTouches;
+
+        if (e.touches.length === 0) {
+          // All fingers lifted
+          touchState.isSingleTouch = false;
+          touchState.isDoubleTouch = false;
+          touchState.isDragging = false;
+
+          // Handle swipe navigation when not zoomed
+          if (transform.scale <= 1.01) {
+            const touch = touches[0];
+            const deltaX = touch.clientX - touchState.touchStart.x;
+            const absDeltaX = Math.abs(deltaX);
+
+            if (absDeltaX > 50) {
+              if (deltaX > 0) {
+                previousImage();
+              } else {
+                nextImage();
+              }
             }
           }
-        }
-        // Apply inertia if we were dragging and there's velocity
-        if (
-          isDragging &&
-          (Math.abs(velocityX) > 0.1 || Math.abs(velocityY) > 0.1)
-        ) {
-          applyInertia();
-        }
-        // Reset flags
-        isDragging = false;
-        isPinching = false;
-      }
-      function applyInertia() {
-        const friction = 0.9; // stronger friction for faster stop
-        const minVelocity = 0.2; // threshold to stop
-        const step = () => {
-          translateX += velocityX * 16;
-          translateY += velocityY * 16;
+        } else if (e.touches.length === 1 && touchState.isDoubleTouch) {
+          // Transition from pinch to pan
+          touchState.isDoubleTouch = false;
+          touchState.isSingleTouch = true;
 
-          // Apply friction
-          velocityX *= friction;
-          velocityY *= friction;
+          // Update touch start position for panning
+          touchState.touchStart = {
+            x: e.touches[0].clientX,
+            y: e.touches[0].clientY,
+          };
 
-          clampPosition();
-          updateImageTransform();
+          touchState.lastTouch = {
+            x: e.touches[0].clientX,
+            y: e.touches[0].clientY,
+          };
 
-          // Stop if velocity too small or we've hit boundaries
-          if (
-            Math.abs(velocityX) < minVelocity &&
-            Math.abs(velocityY) < minVelocity
-          ) {
-            cancelAnimationFrame(animationFrameId);
-            animationFrameId = null;
-            return;
+          // Save current transform for panning
+          touchState.touchStartTransform = { ...transform };
+
+          // Only allow dragging when zoomed in
+          if (transform.scale > 1) {
+            touchState.isDragging = true;
           }
+        }
+      }
 
-          animationFrameId = requestAnimationFrame(step);
-        };
-        animationFrameId = requestAnimationFrame(step);
+      function handleTouchCancel(e) {
+        // Reset all touch states
+        touchState.isSingleTouch = false;
+        touchState.isDoubleTouch = false;
+        touchState.isDragging = false;
       }
-      function getDistance(touch1, touch2) {
-        const dx = touch1.clientX - touch2.clientX;
-        const dy = touch1.clientY - touch2.clientY;
-        return Math.sqrt(dx * dx + dy * dy);
+
+      function handleDoubleTap(x, y) {
+        const container = document.getElementById("lightboxContent");
+        const containerRect = container.getBoundingClientRect();
+
+        // Calculate position relative to container center
+        const containerCenterX = containerRect.left + containerRect.width / 2;
+        const containerCenterY = containerRect.top + containerRect.height / 2;
+
+        const relX = x - containerCenterX;
+        const relY = y - containerCenterY;
+
+        if (transform.scale <= 1.01) {
+          // Zoom in
+          transform.scale = 2.5;
+
+          // Adjust translation to keep tapped point fixed
+          transform.translateX = -relX * (transform.scale - 1);
+          transform.translateY = -relY * (transform.scale - 1);
+        } else {
+          // Zoom out
+          resetTransform();
+        }
+
+        // Apply boundaries
+        applyBoundaries();
+
+        // Update transform
+        updateTransform();
       }
+
+      function applyBoundaries() {
+        const container = document.getElementById("lightboxContent");
+        const image = document.getElementById("lightboxImage");
+
+        if (!container || !image) return;
+
+        const containerRect = container.getBoundingClientRect();
+        const naturalWidth = image.naturalWidth;
+        const naturalHeight = image.naturalHeight;
+
+        // Calculate the displayed dimensions of the image (without zoom)
+        const containerAspect = containerRect.width / containerRect.height;
+        const imageAspect = naturalWidth / naturalHeight;
+
+        let displayedWidth, displayedHeight;
+        if (imageAspect > containerAspect) {
+          // Image is wider than container
+          displayedWidth = containerRect.width;
+          displayedHeight = containerRect.width / imageAspect;
+        } else {
+          // Image is taller than container
+          displayedHeight = containerRect.height;
+          displayedWidth = containerRect.height * imageAspect;
+        }
+
+        // Calculate the dimensions after zoom
+        const zoomedWidth = displayedWidth * transform.scale;
+        const zoomedHeight = displayedHeight * transform.scale;
+
+        // Calculate maximum allowed translation
+        let maxTranslateX = 0;
+        let maxTranslateY = 0;
+
+        if (zoomedWidth > containerRect.width) {
+          maxTranslateX = (zoomedWidth - containerRect.width) / 2;
+        }
+
+        if (zoomedHeight > containerRect.height) {
+          maxTranslateY = (zoomedHeight - containerRect.height) / 2;
+        }
+
+        // Clamp translation to keep image within boundaries
+        transform.translateX = Math.max(
+          -maxTranslateX,
+          Math.min(maxTranslateX, transform.translateX)
+        );
+        transform.translateY = Math.max(
+          -maxTranslateY,
+          Math.min(maxTranslateY, transform.translateY)
+        );
+      }
+
       // ===========================================
-      // NON-TOUCH DEVICE FUNCTIONALITY (DESKTOP)
+      // MOUSE EVENTS (DESKTOP)
       // ===========================================
       function setupMouseEvents() {
-        const imageContainer = document.getElementById(
-          "lightboxImageContainer"
-        );
-        // Use native dblclick for zoom
-        imageContainer.addEventListener("dblclick", (e) => {
-          e.preventDefault();
-          toggleZoom(e.clientX, e.clientY);
+        const container = document.getElementById("lightboxImageContainer");
+
+        // Double click to zoom
+        container.addEventListener("dblclick", (e) => {
+          handleDoubleTap(e.clientX, e.clientY);
         });
-        // Dragging
-        imageContainer.addEventListener("mousedown", handleMouseDown);
+
+        // Mouse drag for panning
+        container.addEventListener("mousedown", handleMouseDown);
         document.addEventListener("mousemove", handleMouseMove);
         document.addEventListener("mouseup", handleMouseUp);
-        imageContainer.addEventListener("contextmenu", (e) =>
-          e.preventDefault()
-        );
+
+        // Prevent context menu
+        container.addEventListener("contextmenu", (e) => e.preventDefault());
       }
+
       function removeMouseEvents() {
-        const imageContainer = document.getElementById(
-          "lightboxImageContainer"
-        );
-        if (imageContainer) {
-          imageContainer.removeEventListener("dblclick", handleDoubleClick);
-          imageContainer.removeEventListener("mousedown", handleMouseDown);
+        const container = document.getElementById("lightboxImageContainer");
+        if (container) {
+          container.removeEventListener("dblclick", handleDoubleClick);
+          container.removeEventListener("mousedown", handleMouseDown);
         }
         document.removeEventListener("mousemove", handleMouseMove);
         document.removeEventListener("mouseup", handleMouseUp);
       }
-      function handleDoubleClick(e) {
-        // Prevent default behavior
-        e.preventDefault();
-        // Zoom in/out at the clicked position
-        toggleZoom(e.clientX, e.clientY);
-      }
+
+      let mouseState = {
+        isDragging: false,
+        startX: 0,
+        startY: 0,
+        startTransform: { scale: 1, translateX: 0, translateY: 0 },
+      };
+
       function handleMouseDown(e) {
-        if (currentZoom <= 1 || e.button !== 0) return; // Only left click when zoomed
-        mouseDownTime = Date.now();
-        hasMoved = false;
-        dragStartX = e.clientX;
-        dragStartY = e.clientY;
-        startTranslateX = translateX;
-        startTranslateY = translateY;
-        // Don't set isDragging = true yet, wait for movement beyond threshold
-        const imageContainer = document.getElementById(
-          "lightboxImageContainer"
-        );
-        // Remove transition during drag for immediate response
-        imageContainer.classList.add("no-transition");
+        if (transform.scale <= 1 || e.button !== 0) return; // Only left click when zoomed
+
+        mouseState.isDragging = true;
+        mouseState.startX = e.clientX;
+        mouseState.startY = e.clientY;
+        mouseState.startTransform = { ...transform };
+
+        const container = document.getElementById("lightboxImageContainer");
+        container.classList.add("dragging");
+
         e.preventDefault();
-        e.stopPropagation();
       }
+
       function handleMouseMove(e) {
-        if (mouseDownTime > 0) {
-          // Check if mouse has moved beyond threshold
-          const deltaX = Math.abs(e.clientX - dragStartX);
-          const deltaY = Math.abs(e.clientY - dragStartY);
-          if (!hasMoved && (deltaX > dragThreshold || deltaY > dragThreshold)) {
-            // Mouse has moved beyond threshold, start dragging
-            hasMoved = true;
-            isDragging = true;
-            const imageContainer = document.getElementById(
-              "lightboxImageContainer"
-            );
-            imageContainer.classList.add("dragging");
-          }
-          if (isDragging) {
-            e.preventDefault();
-            e.stopPropagation();
-            // Calculate new position
-            const moveX = e.clientX - dragStartX;
-            const moveY = e.clientY - dragStartY;
-            translateX = startTranslateX + moveX;
-            translateY = startTranslateY + moveY;
-            // Clamp position to keep image within boundaries
-            clampPosition();
-            // Update transform immediately without transition
-            updateImageTransform();
-          }
-        }
+        if (!mouseState.isDragging) return;
+
+        const deltaX = e.clientX - mouseState.startX;
+        const deltaY = e.clientY - mouseState.startY;
+
+        transform.translateX = mouseState.startTransform.translateX + deltaX;
+        transform.translateY = mouseState.startTransform.translateY + deltaY;
+
+        applyBoundaries();
+        updateTransform();
       }
+
       function handleMouseUp() {
-        if (mouseDownTime > 0) {
-          mouseDownTime = 0;
-          if (isDragging) {
-            isDragging = false;
-            const imageContainer = document.getElementById(
-              "lightboxImageContainer"
-            );
-            imageContainer.classList.remove("dragging");
-          }
-          // Restore transition after drag
-          const imageContainer = document.getElementById(
-            "lightboxImageContainer"
-          );
-          imageContainer.classList.remove("no-transition");
+        if (mouseState.isDragging) {
+          mouseState.isDragging = false;
+          const container = document.getElementById("lightboxImageContainer");
+          container.classList.remove("dragging");
         }
       }
+
       // ===========================================
       // MOUSE WHEEL ZOOM
       // ===========================================
@@ -1143,48 +1146,68 @@
           passive: false,
         });
       }
+
       function removeMouseWheelZoom() {
         const lightbox = document.getElementById("lightbox");
         if (lightbox) {
           lightbox.removeEventListener("wheel", handleMouseWheel);
         }
       }
+
       function handleMouseWheel(e) {
         e.preventDefault();
-        // Set min and max zoom levels
-        const minZoom = 1;
-        const maxZoom = 5;
-        // Calculate zoom delta based on wheel direction
+
+        // Calculate zoom delta
         const zoomDelta = -e.deltaY * 0.001;
-        const newZoom = currentZoom + zoomDelta;
-        if (newZoom >= minZoom && newZoom <= maxZoom) {
-          currentZoom = newZoom;
-          // If we're zooming out to 1, reset position
-          if (currentZoom <= 1) {
-            currentZoom = 1;
-            translateX = 0;
-            translateY = 0;
-          }
-          // Clamp position and update transform
-          clampPosition();
-          updateImageTransform();
+        let newScale = transform.scale + zoomDelta;
+
+        // Limit scale between 1 and 5
+        newScale = Math.max(1, Math.min(5, newScale));
+
+        // Calculate container position
+        const container = document.getElementById("lightboxContent");
+        const containerRect = container.getBoundingClientRect();
+
+        // Calculate mouse position relative to container center
+        const mouseX = e.clientX - containerRect.left - containerRect.width / 2;
+        const mouseY = e.clientY - containerRect.top - containerRect.height / 2;
+
+        // Calculate scale factor
+        const scaleFactor = newScale / transform.scale;
+
+        // Adjust translation to keep mouse position fixed
+        transform.translateX =
+          (transform.translateX - mouseX) * scaleFactor + mouseX;
+        transform.translateY =
+          (transform.translateY - mouseY) * scaleFactor + mouseY;
+        transform.scale = newScale;
+
+        // If scale is 1, reset to center
+        if (transform.scale <= 1.01) {
+          resetTransform();
+        } else {
+          applyBoundaries();
+          updateTransform();
         }
       }
+
       // ===========================================
       // KEYBOARD FUNCTIONALITY
       // ===========================================
       function setupKeyboardEvents() {
         document.addEventListener("keydown", handleKeyDown);
       }
+
       function removeKeyboardEvents() {
         document.removeEventListener("keydown", handleKeyDown);
       }
+
       function handleKeyDown(e) {
         const lightbox = document.getElementById("lightbox");
         if (lightbox && lightbox.classList.contains("active")) {
           if (e.key === "Escape") {
             closeLightbox();
-          } else if (currentZoom === 1) {
+          } else if (transform.scale <= 1.01) {
             // When not zoomed, use arrow keys for navigation
             if (e.key === "ArrowLeft") {
               previousImage();
@@ -1193,23 +1216,24 @@
             }
           } else {
             // When zoomed, use arrow keys for panning
-            const panAmount = 30; // pixels to pan
-            // Fixed arrow key directions to match intuitive behavior:
+            const panAmount = 30;
+
             if (e.key === "ArrowLeft") {
-              translateX -= panAmount; // Move image left to see more of the right
+              transform.translateX -= panAmount;
             } else if (e.key === "ArrowRight") {
-              translateX += panAmount; // Move image right to see more of the left
+              transform.translateX += panAmount;
             } else if (e.key === "ArrowUp") {
-              translateY -= panAmount; // Move image up to see more of the bottom
+              transform.translateY -= panAmount;
             } else if (e.key === "ArrowDown") {
-              translateY += panAmount; // Move image down to see more of the top
+              transform.translateY += panAmount;
             }
-            // Clamp position and update transform
-            clampPosition();
-            updateImageTransform();
+
+            applyBoundaries();
+            updateTransform();
           }
         }
       }
+
       // ===========================================
       // THEME TOGGLE FUNCTIONALITY
       // ===========================================
@@ -1220,6 +1244,7 @@
         const logos = document.querySelectorAll(
           ".logo-icon, .footer-logo-icon"
         );
+
         // Check current theme
         if (body.getAttribute("data-theme") === "dark") {
           // Switch to light theme
@@ -1241,6 +1266,7 @@
           localStorage.setItem("theme", "dark");
         }
       }
+
       function loadSavedTheme() {
         const savedTheme = localStorage.getItem("theme");
         if (savedTheme === "dark") {
@@ -1257,6 +1283,7 @@
           });
         }
       }
+
       // ===========================================
       // NAVIGATION FUNCTIONALITY
       // ===========================================
@@ -1267,6 +1294,7 @@
         });
         // Add active class to clicked link
         element.classList.add("active");
+
         // Close mobile menu if open
         const navMenu = document.getElementById("navMenu");
         if (navMenu && navMenu.classList.contains("active")) {
@@ -1279,12 +1307,15 @@
           }
         }
       }
+
       function toggleMobileMenu() {
         const navMenu = document.getElementById("navMenu");
         const mobileToggle = document.querySelector(".mobile-menu-toggle");
+
         if (navMenu && mobileToggle) {
           navMenu.classList.toggle("active");
           mobileToggle.classList.toggle("active");
+
           // Change icon based on menu state
           if (navMenu.classList.contains("active")) {
             mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
@@ -1293,6 +1324,7 @@
           }
         }
       }
+
       function scrollToSection(sectionId) {
         const section = document.getElementById(sectionId);
         if (section) {
@@ -1306,12 +1338,14 @@
               mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
             }
           }
+
           section.scrollIntoView({
             behavior: "smooth",
             block: "start",
           });
         }
       }
+
       function handleNavbarScroll() {
         const navbar = document.getElementById("navbar");
         if (navbar) {
@@ -1322,6 +1356,7 @@
           }
         }
       }
+
       // ===========================================
       // SCROLL ANIMATION FUNCTIONS
       // ===========================================
@@ -1331,27 +1366,34 @@
         if (heroSection) {
           heroSection.classList.add("visible");
         }
+
         // Trigger initial check for elements in view
         handleScrollAnimations();
       }
+
       function handleScrollAnimations() {
         const animatedElements = document.querySelectorAll(
           ".fade-in:not(.visible), .slide-in-left:not(.visible), .slide-in-right:not(.visible), .scale-in:not(.visible)"
         );
+
         animatedElements.forEach((element) => {
           if (isElementInViewport(element)) {
             element.classList.add("visible");
           }
         });
       }
+
       function isElementInViewport(element) {
         const rect = element.getBoundingClientRect();
         const windowHeight =
           window.innerHeight || document.documentElement.clientHeight;
+
         // Add some offset for better timing (trigger when element is 80% visible)
         const offset = windowHeight * 0.2;
+
         return rect.top <= windowHeight - offset && rect.bottom >= offset;
       }
+
       // ===========================================
       // EVENT LISTENERS
       // ===========================================
@@ -1359,10 +1401,13 @@
       document.addEventListener("DOMContentLoaded", function () {
         // Load saved theme
         loadSavedTheme();
+
         // Initialize gallery
         initializeGallery();
+
         // Initialize scroll animations
         initScrollAnimations();
+
         // Add smooth scrolling to all navigation links
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
           anchor.addEventListener("click", function (e) {
@@ -1372,9 +1417,11 @@
           });
         });
       });
+
       // Scroll event listeners
       window.addEventListener("scroll", handleNavbarScroll);
       window.addEventListener("scroll", handleScrollAnimations);
+
       // ===========================================
       // IMAGE PROTECTION
       // ===========================================
@@ -1386,6 +1433,7 @@
           return false;
         }
       });
+
       // Prevent drag and drop of images
       document.addEventListener("dragstart", function (e) {
         if (e.target.tagName === "IMG") {
@@ -1393,6 +1441,7 @@
           return false;
         }
       });
+
       // ===========================================
       // UTILITY FUNCTIONS
       // ===========================================
@@ -1407,6 +1456,7 @@
           timeout = setTimeout(later, wait);
         };
       }
+
       // Console log for debugging
       console.log("Impasto Photography Website Loaded Successfully! 📸");
     </script>
