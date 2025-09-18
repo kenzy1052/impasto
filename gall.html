@@ -738,12 +738,15 @@
         isDragging: false,
         lastTapTime: 0,
         tapCount: 0,
+        tapTimeout: null,
         touchStart: { x: 0, y: 0 },
         lastTouch: { x: 0, y: 0 },
         touchStartTransform: { scale: 1, translateX: 0, translateY: 0 },
         pinchStartDistance: 0,
         pinchStartScale: 1,
         pinchCenter: { x: 0, y: 0 },
+        lastTapPosition: { x: 0, y: 0 },
+        isTransitioningFromPinch: false,
       };
 
       function setupTouchEvents() {
@@ -797,14 +800,35 @@
 
           // Check for double tap
           const now = Date.now();
-          if (now - touchState.lastTapTime < 300) {
+          const timeSinceLastTap = now - touchState.lastTapTime;
+
+          // Calculate distance from last tap
+          const distanceFromLastTap = Math.sqrt(
+            Math.pow(touches[0].clientX - touchState.lastTapPosition.x, 2) +
+              Math.pow(touches[0].clientY - touchState.lastTapPosition.y, 2)
+          );
+
+          // Only consider it a double tap if it's within 300ms and 30px distance
+          if (timeSinceLastTap < 300 && distanceFromLastTap < 30) {
             // Double tap detected
+            clearTimeout(touchState.tapTimeout);
             handleDoubleTap(touches[0].clientX, touches[0].clientY);
             touchState.tapCount = 0;
             touchState.lastTapTime = 0;
           } else {
+            // Set a timeout to reset tap count
             touchState.tapCount = 1;
             touchState.lastTapTime = now;
+            touchState.lastTapPosition = {
+              x: touches[0].clientX,
+              y: touches[0].clientY,
+            };
+
+            clearTimeout(touchState.tapTimeout);
+            touchState.tapTimeout = setTimeout(() => {
+              touchState.tapCount = 0;
+              touchState.lastTapTime = 0;
+            }, 300);
           }
 
           // Only allow dragging when zoomed in
@@ -816,6 +840,11 @@
           touchState.isDoubleTouch = true;
           touchState.isSingleTouch = false;
           touchState.isDragging = false;
+
+          // Clear any tap timeout
+          clearTimeout(touchState.tapTimeout);
+          touchState.tapCount = 0;
+          touchState.lastTapTime = 0;
 
           // Calculate pinch start distance
           const dx = touches[0].clientX - touches[1].clientX;
@@ -935,14 +964,16 @@
           touchState.isSingleTouch = false;
           touchState.isDoubleTouch = false;
           touchState.isDragging = false;
+          touchState.isTransitioningFromPinch = false;
 
-          // Handle swipe navigation when not zoomed
-          if (transform.scale <= 1.01) {
+          // Handle swipe navigation only when not zoomed in
+          if (transform.scale <= 1) {
             const touch = touches[0];
             const deltaX = touch.clientX - touchState.touchStart.x;
             const absDeltaX = Math.abs(deltaX);
 
-            if (absDeltaX > 50) {
+            // Increased swipe threshold to prevent accidental swipes
+            if (absDeltaX > 80) {
               if (deltaX > 0) {
                 previousImage();
               } else {
@@ -954,8 +985,9 @@
           // Transition from pinch to pan
           touchState.isDoubleTouch = false;
           touchState.isSingleTouch = true;
+          touchState.isTransitioningFromPinch = true;
 
-          // Update touch start position for panning
+          // Update touch start position to the current position of the remaining finger
           touchState.touchStart = {
             x: e.touches[0].clientX,
             y: e.touches[0].clientY,
@@ -981,6 +1013,10 @@
         touchState.isSingleTouch = false;
         touchState.isDoubleTouch = false;
         touchState.isDragging = false;
+        touchState.isTransitioningFromPinch = false;
+        clearTimeout(touchState.tapTimeout);
+        touchState.tapCount = 0;
+        touchState.lastTapTime = 0;
       }
 
       function handleDoubleTap(x, y) {
@@ -1207,7 +1243,7 @@
         if (lightbox && lightbox.classList.contains("active")) {
           if (e.key === "Escape") {
             closeLightbox();
-          } else if (transform.scale <= 1.01) {
+          } else if (transform.scale <= 1) {
             // When not zoomed, use arrow keys for navigation
             if (e.key === "ArrowLeft") {
               previousImage();

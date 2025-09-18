@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>gallery Claude</title>
+    <title>Gallery Z-AI-2</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -254,7 +254,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        /* Removed all transitions for immediate response like Samsung Gallery */
+        /* Remove transition during dragging for immediate response */
+        transition: none;
         transform-origin: center center;
         cursor: zoom-in; /* Default cursor - magnifying glass with plus */
         /* Prevent text selection and default drag behavior */
@@ -268,8 +269,10 @@
         -o-user-drag: none;
         user-drag: none;
         -webkit-touch-callout: none;
+        /* Hardware acceleration for smoother performance */
+        will-change: transform;
+        transform: translateZ(0);
       }
-
       .lightbox-image-container.zoomed {
         cursor: grab; /* Grab cursor when zoomed in */
       }
@@ -498,7 +501,7 @@
       <!-- Gallery Section -->
       <section id="gallery" class="gallery container fade-in">
         <div class="gallery-header slide-in-left">
-          <h2 class="gallery-title">Our Portfolio</h2>
+          <h2 class="gallery-title">Gallery Z-AI-2</h2>
           <p class="gallery-subtitle">
             Explore our collection of stunning photographs that capture life's
             most precious moments
@@ -546,7 +549,6 @@
         </div>
       </div>
     </main>
-
     <script>
       //===========================================
       // GALLERY FUNCTIONALITY
@@ -645,6 +647,9 @@
         lightbox.classList.add("active");
         document.body.style.overflow = "hidden";
 
+        // Reset transform
+        resetTransform();
+
         // Setup event listeners
         setupTouchEvents();
         setupMouseEvents();
@@ -698,7 +703,7 @@
       }
 
       // ===========================================
-      // ROBUST ZOOM & PAN FUNCTIONALITY (Fixed All Issues)
+      // NEW TOUCH & ZOOM FUNCTIONALITY
       // ===========================================
       let transform = {
         scale: 1,
@@ -706,142 +711,61 @@
         translateY: 0,
       };
 
-      // GESTURE STATE MANAGEMENT (prevents conflicts)
-      let gestureState = {
-        lastTouchEnd: 0,
-        lastTapTime: 0,
-        lastTapPosition: { x: 0, y: 0 },
-        touchStartPoint: { x: 0, y: 0 },
-        touchStartTime: 0,
-        isDragging: false,
-        isPinching: false,
-        hasMoved: false,
-        totalMovement: 0,
-        pinchData: {
-          startDistance: 0,
-          startScale: 1,
-          startCenter: { x: 0, y: 0 },
-          startTransform: { scale: 1, translateX: 0, translateY: 0 },
-        },
-      };
+      // Cache the container element for better performance
+      let cachedContainer = null;
 
-      // PAN SENSITIVITY
-      const PAN_SENSITIVITY = 1.2;
-
-      // GESTURE DETECTION THRESHOLDS
-      const DOUBLE_TAP_DELAY = 300;
-      const TAP_MOVEMENT_THRESHOLD = 15;
-      const SWIPE_THRESHOLD = 50;
-      const PINCH_THRESHOLD = 10;
-
-      // Immediate transform update with no transitions
       function updateTransform() {
-        const container = document.getElementById("lightboxImageContainer");
-        if (!container) return;
+        if (!cachedContainer) {
+          cachedContainer = document.getElementById("lightboxImageContainer");
+        }
 
-        container.style.transform = `translate(${transform.translateX}px, ${transform.translateY}px) scale(${transform.scale})`;
+        // Use direct style manipulation for immediate updates
+        cachedContainer.style.transform = `translate3d(${transform.translateX}px, ${transform.translateY}px, 0) scale(${transform.scale})`;
 
         // Update cursor based on zoom state
-        if (transform.scale > 1.01) {
-          container.classList.add("zoomed");
+        if (transform.scale > 1) {
+          cachedContainer.classList.add("zoomed");
         } else {
-          container.classList.remove("zoomed");
+          cachedContainer.classList.remove("zoomed");
         }
       }
 
       function resetTransform() {
-        transform = { scale: 1, translateX: 0, translateY: 0 };
+        transform = {
+          scale: 1,
+          translateX: 0,
+          translateY: 0,
+        };
         updateTransform();
       }
 
-      function getDistance(touch1, touch2) {
-        const dx = touch1.clientX - touch2.clientX;
-        const dy = touch1.clientY - touch2.clientY;
-        return Math.sqrt(dx * dx + dy * dy);
-      }
-
-      function getMidpoint(touch1, touch2) {
-        return {
-          x: (touch1.clientX + touch2.clientX) / 2,
-          y: (touch1.clientY + touch2.clientY) / 2,
-        };
-      }
-
-      // Get precise image coordinates from touch/click point
-      function getImageCoordinates(clientX, clientY) {
-        const container = document.getElementById("lightboxContent");
-        if (!container) return { x: 0, y: 0 };
-
-        const containerRect = container.getBoundingClientRect();
-
-        return {
-          x: clientX - containerRect.left - containerRect.width / 2,
-          y: clientY - containerRect.top - containerRect.height / 2,
-        };
-      }
-
-      function getImageBounds() {
-        const container = document.getElementById("lightboxContent");
-        const image = document.getElementById("lightboxImage");
-
-        if (!container || !image || !image.naturalWidth) {
-          return { width: 0, height: 0, displayedWidth: 0, displayedHeight: 0 };
-        }
-
-        const containerRect = container.getBoundingClientRect();
-        const imageAspect = image.naturalWidth / image.naturalHeight;
-        const containerAspect = containerRect.width / containerRect.height;
-
-        let displayedWidth, displayedHeight;
-        if (imageAspect > containerAspect) {
-          displayedWidth = containerRect.width * 0.95; // Add padding to prevent edge lines
-          displayedHeight = (containerRect.width * 0.95) / imageAspect;
-        } else {
-          displayedHeight = containerRect.height * 0.95; // Add padding to prevent edge lines
-          displayedWidth = containerRect.height * 0.95 * imageAspect;
-        }
-
-        return {
-          width: containerRect.width,
-          height: containerRect.height,
-          displayedWidth,
-          displayedHeight,
-        };
-      }
-
-      function applyBoundaries() {
-        const bounds = getImageBounds();
-        if (bounds.displayedWidth === 0) return;
-
-        const zoomedWidth = bounds.displayedWidth * transform.scale;
-        const zoomedHeight = bounds.displayedHeight * transform.scale;
-
-        let maxX = 0,
-          maxY = 0;
-
-        if (zoomedWidth > bounds.width) {
-          maxX = (zoomedWidth - bounds.width) / 2;
-        }
-        if (zoomedHeight > bounds.height) {
-          maxY = (zoomedHeight - bounds.height) / 2;
-        }
-
-        // Clamp translation within bounds with small buffer
-        const buffer = 5;
-        transform.translateX = Math.max(
-          -maxX - buffer,
-          Math.min(maxX + buffer, transform.translateX)
-        );
-        transform.translateY = Math.max(
-          -maxY - buffer,
-          Math.min(maxY + buffer, transform.translateY)
-        );
-      }
+      // ===========================================
+      // TOUCH EVENTS - OPTIMIZED FOR IMMEDIATE RESPONSE
+      // ===========================================
+      let touchState = {
+        isSingleTouch: false,
+        isDoubleTouch: false,
+        isDragging: false,
+        lastTapTime: 0,
+        tapCount: 0,
+        tapTimeout: null,
+        touchStart: { x: 0, y: 0 },
+        lastTouch: { x: 0, y: 0 },
+        touchStartTransform: { scale: 1, translateX: 0, translateY: 0 },
+        pinchStartDistance: 0,
+        pinchStartScale: 1,
+        pinchCenter: { x: 0, y: 0 },
+        lastTapPosition: { x: 0, y: 0 },
+        isTransitioningFromPinch: false,
+        wasPinching: false,
+        pinchEndTime: 0,
+        pendingDoubleTap: false,
+        firstTapPosition: { x: 0, y: 0 },
+        firstTapTime: 0,
+      };
 
       function setupTouchEvents() {
         const container = document.getElementById("lightboxContent");
-        if (!container) return;
-
         container.addEventListener("touchstart", handleTouchStart, {
           passive: false,
         });
@@ -849,10 +773,10 @@
           passive: false,
         });
         container.addEventListener("touchend", handleTouchEnd, {
-          passive: false,
+          passive: true,
         });
         container.addEventListener("touchcancel", handleTouchCancel, {
-          passive: false,
+          passive: true,
         });
       }
 
@@ -866,181 +790,232 @@
         }
       }
 
-      function resetGestureState() {
-        gestureState.isDragging = false;
-        gestureState.isPinching = false;
-        gestureState.hasMoved = false;
-        gestureState.totalMovement = 0;
-      }
-
       function handleTouchStart(e) {
-        const now = Date.now();
+        const touches = e.touches;
 
-        if (e.touches.length === 1) {
-          const touch = e.touches[0];
+        // Reset touch state
+        touchState.isSingleTouch = false;
+        touchState.isDoubleTouch = false;
+        touchState.isDragging = false;
 
-          // Reset gesture state
-          resetGestureState();
+        if (touches.length === 1) {
+          // Single touch
+          touchState.isSingleTouch = true;
+          touchState.touchStart = {
+            x: touches[0].clientX,
+            y: touches[0].clientY,
+          };
+          touchState.lastTouch = {
+            x: touches[0].clientX,
+            y: touches[0].clientY,
+          };
 
-          // Store touch start info
-          gestureState.touchStartPoint = { x: touch.clientX, y: touch.clientY };
-          gestureState.touchStartTime = now;
+          // Save current transform for panning
+          touchState.touchStartTransform = { ...transform };
 
           // Check for double tap
-          const timeSinceLastTap = now - gestureState.lastTapTime;
+          const now = Date.now();
+          const timeSinceLastTap = now - touchState.lastTapTime;
+
+          // Calculate distance from last tap
           const distanceFromLastTap = Math.sqrt(
-            Math.pow(touch.clientX - gestureState.lastTapPosition.x, 2) +
-              Math.pow(touch.clientY - gestureState.lastTapPosition.y, 2)
+            Math.pow(touches[0].clientX - touchState.lastTapPosition.x, 2) +
+              Math.pow(touches[0].clientY - touchState.lastTapPosition.y, 2)
           );
 
-          if (
-            timeSinceLastTap < DOUBLE_TAP_DELAY &&
-            timeSinceLastTap > 50 &&
-            distanceFromLastTap < TAP_MOVEMENT_THRESHOLD
-          ) {
-            e.preventDefault();
-            toggleZoomAtExactPoint(touch.clientX, touch.clientY);
-            gestureState.lastTapTime = 0; // Reset to prevent triple tap
-            return;
+          // Only consider it a double tap if it's within 300ms and 50px distance
+          if (timeSinceLastTap < 300 && distanceFromLastTap < 50) {
+            // Double tap detected
+            e.preventDefault(); // Prevent default behavior
+            clearTimeout(touchState.tapTimeout);
+            handleDoubleTap(touches[0].clientX, touches[0].clientY);
+            touchState.tapCount = 0;
+            touchState.lastTapTime = 0;
+            touchState.pendingDoubleTap = false;
+          } else {
+            // This might be the first tap of a double tap
+            // Store the first tap info and wait to see if there's a second tap
+            touchState.firstTapPosition = {
+              x: touches[0].clientX,
+              y: touches[0].clientY,
+            };
+            touchState.firstTapTime = now;
+            touchState.pendingDoubleTap = true;
+
+            // Set a timeout to handle single tap if no second tap comes
+            clearTimeout(touchState.tapTimeout);
+            touchState.tapTimeout = setTimeout(() => {
+              // This was a single tap, not a double tap
+              // Only allow dragging when zoomed in
+              if (transform.scale > 1) {
+                touchState.isDragging = true;
+              }
+              touchState.pendingDoubleTap = false;
+              touchState.tapCount = 0;
+              touchState.lastTapTime = 0;
+            }, 300);
+
+            touchState.tapCount = 1;
+            touchState.lastTapTime = now;
+            touchState.lastTapPosition = {
+              x: touches[0].clientX,
+              y: touches[0].clientY,
+            };
           }
+        } else if (touches.length === 2) {
+          // Double touch (pinch)
+          touchState.isDoubleTouch = true;
+          touchState.isSingleTouch = false;
+          touchState.isDragging = false;
+          touchState.wasPinching = true;
+          touchState.pendingDoubleTap = false;
 
-          // Store tap info for potential double tap
-          gestureState.lastTapPosition = { x: touch.clientX, y: touch.clientY };
-          gestureState.lastTapTime = now;
-        } else if (e.touches.length === 2) {
-          e.preventDefault();
+          // Clear any tap timeout
+          clearTimeout(touchState.tapTimeout);
+          touchState.tapCount = 0;
+          touchState.lastTapTime = 0;
 
-          // Reset single touch state
-          gestureState.isDragging = false;
-          gestureState.isPinching = true;
-          gestureState.hasMoved = false;
+          // Calculate pinch start distance
+          const dx = touches[0].clientX - touches[1].clientX;
+          const dy = touches[0].clientY - touches[1].clientY;
+          touchState.pinchStartDistance = Math.sqrt(dx * dx + dy * dy);
 
-          // Store pinch start info
-          const center = getMidpoint(e.touches[0], e.touches[1]);
-          gestureState.pinchData.startDistance = getDistance(
-            e.touches[0],
-            e.touches[1]
-          );
-          gestureState.pinchData.startScale = transform.scale;
-          gestureState.pinchData.startCenter = center;
-          gestureState.pinchData.startTransform = { ...transform };
+          // Save current scale
+          touchState.pinchStartScale = transform.scale;
+
+          // Calculate pinch center
+          touchState.pinchCenter = {
+            x: (touches[0].clientX + touches[1].clientX) / 2,
+            y: (touches[0].clientY + touches[1].clientY) / 2,
+          };
+
+          // Save current transform for pinch
+          touchState.touchStartTransform = { ...transform };
+
+          e.preventDefault(); // Prevent page zoom
         }
       }
 
       function handleTouchMove(e) {
-        e.preventDefault();
+        const touches = e.touches;
 
-        if (gestureState.isPinching && e.touches.length === 2) {
-          // PINCH ZOOM
-          const currentDistance = getDistance(e.touches[0], e.touches[1]);
-          const distanceDelta = Math.abs(
-            currentDistance - gestureState.pinchData.startDistance
-          );
+        if (touchState.isDoubleTouch && touches.length === 2) {
+          // Pinch to zoom
+          e.preventDefault(); // Prevent page scroll
 
-          // Only start pinching if movement is significant enough
-          if (distanceDelta < PINCH_THRESHOLD && !gestureState.hasMoved) return;
+          // Calculate current distance
+          const dx = touches[0].clientX - touches[1].clientX;
+          const dy = touches[0].clientY - touches[1].clientY;
+          const currentDistance = Math.sqrt(dx * dx + dy * dy);
 
-          gestureState.hasMoved = true;
+          // Calculate scale factor
+          const scaleFactor = currentDistance / touchState.pinchStartDistance;
 
-          // Calculate scale change
-          const scaleFactor =
-            currentDistance / gestureState.pinchData.startDistance;
-          let newScale = gestureState.pinchData.startScale * scaleFactor;
+          // Calculate new scale
+          let newScale = touchState.pinchStartScale * scaleFactor;
+
+          // Limit scale between 1 and 5
           newScale = Math.max(1, Math.min(5, newScale));
 
-          // Get pinch point in image coordinates
-          const pinchPoint = getImageCoordinates(
-            gestureState.pinchData.startCenter.x,
-            gestureState.pinchData.startCenter.y
-          );
+          // Calculate current pinch center
+          const currentPinchCenter = {
+            x: (touches[0].clientX + touches[1].clientX) / 2,
+            y: (touches[0].clientY + touches[1].clientY) / 2,
+          };
 
-          // Apply zoom centered on pinch point
-          const scaleChange =
-            newScale - gestureState.pinchData.startTransform.scale;
+          // Calculate container position
+          const container = document.getElementById("lightboxContent");
+          const containerRect = container.getBoundingClientRect();
+
+          // Calculate the position relative to container center
+          const containerCenterX = containerRect.left + containerRect.width / 2;
+          const containerCenterY = containerRect.top + containerRect.height / 2;
+
+          // Calculate the pinch center relative to container center
+          const relX = currentPinchCenter.x - containerCenterX;
+          const relY = currentPinchCenter.y - containerCenterY;
+
+          // Calculate the scale factor
+          const scaleDiff = newScale / touchState.touchStartTransform.scale;
+
+          // Adjust translation to keep pinch center fixed
           transform.translateX =
-            gestureState.pinchData.startTransform.translateX -
-            pinchPoint.x * scaleChange;
+            (touchState.touchStartTransform.translateX - relX) * scaleDiff +
+            relX;
           transform.translateY =
-            gestureState.pinchData.startTransform.translateY -
-            pinchPoint.y * scaleChange;
+            (touchState.touchStartTransform.translateY - relY) * scaleDiff +
+            relY;
           transform.scale = newScale;
 
-          // Reset to center if zoomed out completely
+          // If scale is 1, reset to center
           if (transform.scale <= 1.01) {
-            resetTransform();
-            return;
+            transform.scale = 1;
+            transform.translateX = 0;
+            transform.translateY = 0;
           }
 
+          // Apply boundaries
           applyBoundaries();
+
+          // Update transform immediately for responsive feel
           updateTransform();
-        } else if (e.touches.length === 1 && !gestureState.isPinching) {
-          // SINGLE TOUCH MOVEMENT
-          const touch = e.touches[0];
-          const deltaX = touch.clientX - gestureState.touchStartPoint.x;
-          const deltaY = touch.clientY - gestureState.touchStartPoint.y;
-          const totalDistance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        } else if (touchState.isDragging && touches.length === 1) {
+          // Panning
+          e.preventDefault(); // Prevent page scroll
 
-          gestureState.totalMovement = totalDistance;
+          const touch = touches[0];
+          const deltaX = touch.clientX - touchState.lastTouch.x;
+          const deltaY = touch.clientY - touchState.lastTouch.y;
 
-          // Only start dragging if zoomed in and movement is significant
-          if (
-            transform.scale > 1.01 &&
-            totalDistance > TAP_MOVEMENT_THRESHOLD
-          ) {
-            if (!gestureState.isDragging) {
-              gestureState.isDragging = true;
-              gestureState.hasMoved = true;
-            }
-          }
+          // Update translation
+          transform.translateX += deltaX;
+          transform.translateY += deltaY;
 
-          // PAN (only if dragging is active)
-          if (gestureState.isDragging) {
-            const moveDeltaX =
-              (touch.clientX - gestureState.touchStartPoint.x) *
-              PAN_SENSITIVITY;
-            const moveDeltaY =
-              (touch.clientY - gestureState.touchStartPoint.y) *
-              PAN_SENSITIVITY;
+          // Apply boundaries
+          applyBoundaries();
 
-            transform.translateX += moveDeltaX;
-            transform.translateY += moveDeltaY;
+          // Update transform immediately for responsive feel
+          updateTransform();
 
-            applyBoundaries();
-            updateTransform();
-
-            gestureState.touchStartPoint = {
-              x: touch.clientX,
-              y: touch.clientY,
-            };
-          }
+          // Update last touch position
+          touchState.lastTouch = {
+            x: touch.clientX,
+            y: touch.clientY,
+          };
         }
       }
 
       function handleTouchEnd(e) {
-        const now = Date.now();
-        const touchDuration = now - gestureState.touchStartTime;
+        const touches = e.changedTouches;
 
         if (e.touches.length === 0) {
           // All fingers lifted
-          gestureState.lastTouchEnd = now;
+          if (touchState.isDoubleTouch) {
+            // Just finished pinching
+            touchState.pinchEndTime = Date.now();
+          }
 
-          // Handle swipe navigation (only when not zoomed and no significant movement)
-          if (
-            !gestureState.isPinching &&
-            !gestureState.isDragging &&
-            transform.scale <= 1.01 &&
-            gestureState.totalMovement > SWIPE_THRESHOLD &&
-            touchDuration < 500
-          ) {
-            const touch = e.changedTouches[0];
-            const deltaX = touch.clientX - gestureState.touchStartPoint.x;
-            const deltaY = touch.clientY - gestureState.touchStartPoint.y;
+          touchState.isSingleTouch = false;
+          touchState.isDoubleTouch = false;
+          touchState.isDragging = false;
+          touchState.isTransitioningFromPinch = false;
 
-            // Only navigate if it's a clear horizontal swipe
-            if (
-              Math.abs(deltaX) > Math.abs(deltaY) &&
-              Math.abs(deltaX) > SWIPE_THRESHOLD
-            ) {
+          // Handle swipe navigation only when not zoomed in and not just finished pinching
+          const now = Date.now();
+          const timeSincePinchEnd = now - touchState.pinchEndTime;
+
+          if (transform.scale <= 1 && timeSincePinchEnd > 300) {
+            const touch = touches[0];
+            const deltaX = touch.clientX - touchState.touchStart.x;
+            const absDeltaX = Math.abs(deltaX);
+
+            // Calculate vertical movement to ensure it's a horizontal swipe
+            const deltaY = touch.clientY - touchState.touchStart.y;
+            const absDeltaY = Math.abs(deltaY);
+
+            // Only trigger swipe if horizontal movement is significantly greater than vertical movement
+            // and if the horizontal distance is large enough
+            if (absDeltaX > 100 && absDeltaX > absDeltaY * 2) {
               if (deltaX > 0) {
                 previousImage();
               } else {
@@ -1048,68 +1023,143 @@
               }
             }
           }
+        } else if (e.touches.length === 1 && touchState.isDoubleTouch) {
+          // Transition from pinch to pan
+          touchState.isDoubleTouch = false;
+          touchState.isSingleTouch = true;
+          touchState.isTransitioningFromPinch = true;
 
-          // Reset all gesture states
-          resetGestureState();
-        } else if (e.touches.length === 1 && gestureState.isPinching) {
-          // Transition from pinch to potential pan
-          gestureState.isPinching = false;
-          gestureState.isDragging = false; // Don't auto-start dragging
-          gestureState.hasMoved = false;
-          gestureState.touchStartPoint = {
+          // Update touch start position to the current position of the remaining finger
+          touchState.touchStart = {
             x: e.touches[0].clientX,
             y: e.touches[0].clientY,
           };
-          gestureState.touchStartTime = now;
+
+          touchState.lastTouch = {
+            x: e.touches[0].clientX,
+            y: e.touches[0].clientY,
+          };
+
+          // Save current transform for panning
+          touchState.touchStartTransform = { ...transform };
+
+          // Only allow dragging when zoomed in
+          if (transform.scale > 1) {
+            touchState.isDragging = true;
+          }
         }
       }
 
       function handleTouchCancel(e) {
-        // Reset all states on touch cancel
-        resetGestureState();
+        // Reset all touch states
+        touchState.isSingleTouch = false;
+        touchState.isDoubleTouch = false;
+        touchState.isDragging = false;
+        touchState.isTransitioningFromPinch = false;
+        touchState.wasPinching = false;
+        touchState.pendingDoubleTap = false;
+        clearTimeout(touchState.tapTimeout);
+        touchState.tapCount = 0;
+        touchState.lastTapTime = 0;
       }
 
-      // PRECISE ZOOM AT EXACT POINT
-      function toggleZoomAtExactPoint(clientX, clientY) {
-        const imageCoords = getImageCoordinates(clientX, clientY);
+      function handleDoubleTap(x, y) {
+        const container = document.getElementById("lightboxContent");
+        const containerRect = container.getBoundingClientRect();
+
+        // Calculate position relative to container center
+        const containerCenterX = containerRect.left + containerRect.width / 2;
+        const containerCenterY = containerRect.top + containerRect.height / 2;
+
+        const relX = x - containerCenterX;
+        const relY = y - containerCenterY;
 
         if (transform.scale <= 1.01) {
-          // Zoom in to 2.5x at the exact tapped point
-          const targetScale = 2.5;
-          const scaleChange = targetScale - transform.scale;
+          // Zoom in
+          transform.scale = 2.5;
 
-          transform.translateX =
-            transform.translateX - imageCoords.x * scaleChange;
-          transform.translateY =
-            transform.translateY - imageCoords.y * scaleChange;
-          transform.scale = targetScale;
-
-          applyBoundaries();
+          // Adjust translation to keep tapped point fixed
+          transform.translateX = -relX * (transform.scale - 1);
+          transform.translateY = -relY * (transform.scale - 1);
         } else {
-          // Zoom out completely
+          // Zoom out
           resetTransform();
         }
 
+        // Apply boundaries
+        applyBoundaries();
+
+        // Update transform
         updateTransform();
       }
 
-      // ===========================================
-      // MOUSE EVENTS (DESKTOP) - Fixed
-      // ===========================================
-      let isMouseDragging = false;
-      let mouseLastPoint = { x: 0, y: 0 };
-      let mouseStartTime = 0;
-      let lastMouseClickTime = 0;
+      function applyBoundaries() {
+        const container = document.getElementById("lightboxContent");
+        const image = document.getElementById("lightboxImage");
 
+        if (!container || !image) return;
+
+        const containerRect = container.getBoundingClientRect();
+        const naturalWidth = image.naturalWidth;
+        const naturalHeight = image.naturalHeight;
+
+        // Calculate the displayed dimensions of the image (without zoom)
+        const containerAspect = containerRect.width / containerRect.height;
+        const imageAspect = naturalWidth / naturalHeight;
+
+        let displayedWidth, displayedHeight;
+        if (imageAspect > containerAspect) {
+          // Image is wider than container
+          displayedWidth = containerRect.width;
+          displayedHeight = containerRect.width / imageAspect;
+        } else {
+          // Image is taller than container
+          displayedHeight = containerRect.height;
+          displayedWidth = containerRect.height * imageAspect;
+        }
+
+        // Calculate the dimensions after zoom
+        const zoomedWidth = displayedWidth * transform.scale;
+        const zoomedHeight = displayedHeight * transform.scale;
+
+        // Calculate maximum allowed translation
+        let maxTranslateX = 0;
+        let maxTranslateY = 0;
+
+        if (zoomedWidth > containerRect.width) {
+          maxTranslateX = (zoomedWidth - containerRect.width) / 2;
+        }
+
+        if (zoomedHeight > containerRect.height) {
+          maxTranslateY = (zoomedHeight - containerRect.height) / 2;
+        }
+
+        // Clamp translation to keep image within boundaries
+        transform.translateX = Math.max(
+          -maxTranslateX,
+          Math.min(maxTranslateX, transform.translateX)
+        );
+        transform.translateY = Math.max(
+          -maxTranslateY,
+          Math.min(maxTranslateY, transform.translateY)
+        );
+      }
+
+      // ===========================================
+      // MOUSE EVENTS (DESKTOP) - OPTIMIZED FOR IMMEDIATE RESPONSE
+      // ===========================================
       function setupMouseEvents() {
         const container = document.getElementById("lightboxImageContainer");
 
-        // Handle double click
+        // Double click to zoom
+        container.addEventListener("dblclick", (e) => {
+          handleDoubleTap(e.clientX, e.clientY);
+        });
+
+        // Mouse drag for panning
         container.addEventListener("mousedown", handleMouseDown);
-        container.addEventListener("dblclick", handleMouseDoubleClick);
         document.addEventListener("mousemove", handleMouseMove);
         document.addEventListener("mouseup", handleMouseUp);
-        document.addEventListener("mouseleave", handleMouseUp);
 
         // Prevent context menu
         container.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -1118,62 +1168,57 @@
       function removeMouseEvents() {
         const container = document.getElementById("lightboxImageContainer");
         if (container) {
+          container.removeEventListener("dblclick", handleDoubleClick);
           container.removeEventListener("mousedown", handleMouseDown);
-          container.removeEventListener("dblclick", handleMouseDoubleClick);
         }
         document.removeEventListener("mousemove", handleMouseMove);
         document.removeEventListener("mouseup", handleMouseUp);
-        document.removeEventListener("mouseleave", handleMouseUp);
       }
 
-      function handleMouseDoubleClick(e) {
-        e.preventDefault();
-        toggleZoomAtExactPoint(e.clientX, e.clientY);
-      }
+      let mouseState = {
+        isDragging: false,
+        startX: 0,
+        startY: 0,
+        startTransform: { scale: 1, translateX: 0, translateY: 0 },
+      };
 
       function handleMouseDown(e) {
-        if (e.button !== 0) return; // Only left click
+        if (transform.scale <= 1 || e.button !== 0) return; // Only left click when zoomed
 
-        mouseStartTime = Date.now();
+        mouseState.isDragging = true;
+        mouseState.startX = e.clientX;
+        mouseState.startY = e.clientY;
+        mouseState.startTransform = { ...transform };
 
-        if (transform.scale > 1.01) {
-          isMouseDragging = true;
-          mouseLastPoint = { x: e.clientX, y: e.clientY };
-
-          const container = document.getElementById("lightboxImageContainer");
-          container.classList.add("dragging");
-        }
+        const container = document.getElementById("lightboxImageContainer");
+        container.classList.add("dragging");
 
         e.preventDefault();
       }
 
       function handleMouseMove(e) {
-        if (!isMouseDragging) return;
+        if (!mouseState.isDragging) return;
 
-        const deltaX = (e.clientX - mouseLastPoint.x) * PAN_SENSITIVITY;
-        const deltaY = (e.clientY - mouseLastPoint.y) * PAN_SENSITIVITY;
+        const deltaX = e.clientX - mouseState.startX;
+        const deltaY = e.clientY - mouseState.startY;
 
-        transform.translateX += deltaX;
-        transform.translateY += deltaY;
+        transform.translateX = mouseState.startTransform.translateX + deltaX;
+        transform.translateY = mouseState.startTransform.translateY + deltaY;
 
         applyBoundaries();
-        updateTransform();
-
-        mouseLastPoint = { x: e.clientX, y: e.clientY };
+        updateTransform(); // Update immediately for responsive feel
       }
 
-      function handleMouseUp(e) {
-        if (isMouseDragging) {
-          isMouseDragging = false;
+      function handleMouseUp() {
+        if (mouseState.isDragging) {
+          mouseState.isDragging = false;
           const container = document.getElementById("lightboxImageContainer");
-          if (container) {
-            container.classList.remove("dragging");
-          }
+          container.classList.remove("dragging");
         }
       }
 
       // ===========================================
-      // MOUSE WHEEL ZOOM - Fixed
+      // MOUSE WHEEL ZOOM - OPTIMIZED FOR IMMEDIATE RESPONSE
       // ===========================================
       function setupMouseWheelZoom() {
         const lightbox = document.getElementById("lightbox");
@@ -1192,28 +1237,38 @@
       function handleMouseWheel(e) {
         e.preventDefault();
 
-        const zoomSpeed = 0.003;
-        const zoomDelta = -e.deltaY * zoomSpeed;
+        // Calculate zoom delta
+        const zoomDelta = -e.deltaY * 0.001;
         let newScale = transform.scale + zoomDelta;
 
+        // Limit scale between 1 and 5
         newScale = Math.max(1, Math.min(5, newScale));
 
-        const cursorPoint = getImageCoordinates(e.clientX, e.clientY);
-        const scaleChange = newScale - transform.scale;
+        // Calculate container position
+        const container = document.getElementById("lightboxContent");
+        const containerRect = container.getBoundingClientRect();
 
+        // Calculate mouse position relative to container center
+        const mouseX = e.clientX - containerRect.left - containerRect.width / 2;
+        const mouseY = e.clientY - containerRect.top - containerRect.height / 2;
+
+        // Calculate scale factor
+        const scaleFactor = newScale / transform.scale;
+
+        // Adjust translation to keep mouse position fixed
         transform.translateX =
-          transform.translateX - cursorPoint.x * scaleChange;
+          (transform.translateX - mouseX) * scaleFactor + mouseX;
         transform.translateY =
-          transform.translateY - cursorPoint.y * scaleChange;
+          (transform.translateY - mouseY) * scaleFactor + mouseY;
         transform.scale = newScale;
 
+        // If scale is 1, reset to center
         if (transform.scale <= 1.01) {
           resetTransform();
-          return;
+        } else {
+          applyBoundaries();
+          updateTransform(); // Update immediately for responsive feel
         }
-
-        applyBoundaries();
-        updateTransform();
       }
 
       // ===========================================
@@ -1232,14 +1287,16 @@
         if (lightbox && lightbox.classList.contains("active")) {
           if (e.key === "Escape") {
             closeLightbox();
-          } else if (transform.scale <= 1.01) {
+          } else if (transform.scale <= 1) {
+            // When not zoomed, use arrow keys for navigation
             if (e.key === "ArrowLeft") {
               previousImage();
             } else if (e.key === "ArrowRight") {
               nextImage();
             }
           } else {
-            const panAmount = 40 * PAN_SENSITIVITY;
+            // When zoomed, use arrow keys for panning
+            const panAmount = 30;
 
             if (e.key === "ArrowLeft") {
               transform.translateX -= panAmount;
@@ -1268,7 +1325,9 @@
           ".logo-icon, .footer-logo-icon"
         );
 
+        // Check current theme
         if (body.getAttribute("data-theme") === "dark") {
+          // Switch to light theme
           body.removeAttribute("data-theme");
           if (themeIcon) themeIcon.className = "fas fa-moon theme-icon";
           if (themeText) themeText.textContent = "Dark";
@@ -1277,6 +1336,7 @@
           });
           localStorage.setItem("theme", "light");
         } else {
+          // Switch to dark theme
           body.setAttribute("data-theme", "dark");
           if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
           if (themeText) themeText.textContent = "Light";
@@ -1308,14 +1368,18 @@
       // NAVIGATION FUNCTIONALITY
       // ===========================================
       function setActiveNav(element) {
+        // Remove active class from all nav links
         document.querySelectorAll(".nav-link").forEach((link) => {
           link.classList.remove("active");
         });
+        // Add active class to clicked link
         element.classList.add("active");
 
+        // Close mobile menu if open
         const navMenu = document.getElementById("navMenu");
         if (navMenu && navMenu.classList.contains("active")) {
           navMenu.classList.remove("active");
+          // Reset mobile menu toggle icon
           const mobileToggle = document.querySelector(".mobile-menu-toggle");
           if (mobileToggle) {
             mobileToggle.classList.remove("active");
@@ -1332,6 +1396,7 @@
           navMenu.classList.toggle("active");
           mobileToggle.classList.toggle("active");
 
+          // Change icon based on menu state
           if (navMenu.classList.contains("active")) {
             mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
           } else {
@@ -1343,6 +1408,7 @@
       function scrollToSection(sectionId) {
         const section = document.getElementById(sectionId);
         if (section) {
+          // Close mobile menu if open
           const navMenu = document.getElementById("navMenu");
           if (navMenu && navMenu.classList.contains("active")) {
             navMenu.classList.remove("active");
@@ -1375,10 +1441,13 @@
       // SCROLL ANIMATION FUNCTIONS
       // ===========================================
       function initScrollAnimations() {
+        // Make hero section visible immediately
         const heroSection = document.querySelector(".hero");
         if (heroSection) {
           heroSection.classList.add("visible");
         }
+
+        // Trigger initial check for elements in view
         handleScrollAnimations();
       }
 
@@ -1398,18 +1467,28 @@
         const rect = element.getBoundingClientRect();
         const windowHeight =
           window.innerHeight || document.documentElement.clientHeight;
+
+        // Add some offset for better timing (trigger when element is 80% visible)
         const offset = windowHeight * 0.2;
+
         return rect.top <= windowHeight - offset && rect.bottom >= offset;
       }
 
       // ===========================================
       // EVENT LISTENERS
       // ===========================================
+      // Initialize when DOM is loaded
       document.addEventListener("DOMContentLoaded", function () {
+        // Load saved theme
         loadSavedTheme();
+
+        // Initialize gallery
         initializeGallery();
+
+        // Initialize scroll animations
         initScrollAnimations();
 
+        // Add smooth scrolling to all navigation links
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
           anchor.addEventListener("click", function (e) {
             e.preventDefault();
@@ -1419,19 +1498,23 @@
         });
       });
 
+      // Scroll event listeners
       window.addEventListener("scroll", handleNavbarScroll);
       window.addEventListener("scroll", handleScrollAnimations);
 
       // ===========================================
       // IMAGE PROTECTION
       // ===========================================
+      // Prevent right-click on the entire document
       document.addEventListener("contextmenu", function (e) {
+        // Check if the target is an image
         if (e.target.tagName === "IMG") {
           e.preventDefault();
           return false;
         }
       });
 
+      // Prevent drag and drop of images
       document.addEventListener("dragstart", function (e) {
         if (e.target.tagName === "IMG") {
           e.preventDefault();
@@ -1455,7 +1538,7 @@
       }
 
       // Console log for debugging
-      console.log("Impasto Photography Website Loaded Successfully!");
+      console.log("Gallery Z-AI-2 Loaded Successfully! 📸");
     </script>
   </body>
 </html>
