@@ -61,14 +61,14 @@
       content="https://impastophotography.com/assets/images/og-image.jpg"
     />
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/images/logo-fav.png" />
-    <link rel="apple-touch-icon" href="../assets/images/logo.png" />
+    <link rel="icon" type="image/x-icon" href="assets/images/logo-fav.png" />
+    <link rel="apple-touch-icon" href="assets/images/logo.png" />
     <!--Default Styles-->
-    <link rel="stylesheet" href="../assets/styles/modern-normalize.css" />
-    <link rel="stylesheet" href="../assets/styles/style.css" />
-    <link rel="stylesheet" href="../assets/styles/utils.css" />
-    <link rel="stylesheet" href="../assets/styles/components/navhero.css" />
-    <link rel="stylesheet" href="../assets/styles/components/footer.css" />
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/components/navhero.css" />
+    <link rel="stylesheet" href="assets/styles/components/footer.css" />
     <style>
       /* ===========================================
     ABOUT US PAGE STYLES
@@ -195,25 +195,32 @@
       /* ===========================================
            OUR STORY SECTION - MATCHING FIRST FILE DESIGN
            =========================================== */
+      /* Fix 1: Our Story Section - Hide image on mobile */
       .story-content {
         display: grid;
         grid-template-columns: 1fr;
         gap: var(--spacing-2xl);
         align-items: center;
       }
+
       .story-image {
         position: relative;
         border-radius: var(--radius-sm);
         overflow: hidden;
         height: 500px;
-        display: flex;
+        display: none; /* Hidden on mobile by default */
         align-items: center;
         justify-content: center;
       }
+
       .story-image img {
         width: 200px;
         object-fit: cover;
         transition: transform var(--transition-slow);
+      }
+
+      .story-image:hover img {
+        transform: scale(1.05);
       }
       .story-image:hover img {
         transform: scale(1.05);
@@ -222,7 +229,7 @@
         padding: var(--spacing-lg) 0;
       }
       .story-text p {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         line-height: 1.7;
         margin-bottom: var(--spacing-lg);
         color: var(--text-secondary);
@@ -367,19 +374,21 @@
       /* Meet the Team Section */
       .team-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: 1fr; /* Single column on mobile */
         gap: var(--spacing-2xl);
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
       .team-member {
         text-align: center;
         transition: transform var(--transition-normal);
+        width: 100%; /* Ensure full width on mobile */
+        max-width: 350px; /* Prevent too wide on larger mobiles */
+        margin: 0 auto; /* Center the team member */
       }
+
       .team-member:hover {
         transform: translateY(-10px);
       }
+
       .member-image {
         position: relative;
         width: 250px;
@@ -593,6 +602,9 @@
         .section {
           padding: var(--spacing-4xl) 0;
         }
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
       }
       @media (min-width: 640px) {
         .about-hero {
@@ -602,10 +614,13 @@
           font-size: clamp(2.5rem, 5vw, 4.5rem);
         }
         .story-text p {
-          font-size: 1.2rem;
+          font-size: 0.9rem;
         }
         .section {
           padding: var(--spacing-5xl) 0;
+        }
+        .team-grid {
+          grid-template-columns: repeat(2, 1fr);
         }
       }
       @media (min-width: 768px) {
@@ -629,14 +644,20 @@
         }
       }
       @media (min-width: 1024px) {
+        .main-content {
+          padding: 6rem;
+        }
         .story-content {
           grid-template-columns: 1fr 1fr;
         }
+        .story-image {
+          display: flex;
+        }
         .values-grid {
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(2, 1fr);
         }
         .team-grid {
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(3, 1fr);
         }
         .about-hero {
           padding: var(--spacing-7xl) 0;
@@ -651,6 +672,9 @@
         }
         .section {
           padding: var(--spacing-8xl) 0;
+        }
+        .values-grid {
+          grid-template-columns: repeat(4, 1fr);
         }
       }
       @media (min-width: 1536px) {
@@ -722,26 +746,23 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
       <div class="nav-container">
-        <a href="../index.html" class="logo">
+        <a href="#home" class="logo">
           <img
-            src="../assets/images/logo2.png"
+            src="assets/images/logo2.png"
             alt="Impasto logo"
             class="logo-icon"
           />
         </a>
         <ul class="nav-menu" id="navMenu">
           <li class="nav-item">
-            <a
-              href="../index.html"
-              class="nav-link"
-              onclick="setActiveNav(this)"
+            <a href="#home" class="nav-link" onclick="setActiveNav(this)"
               >Home</a
             >
           </li>
           <li class="nav-item">
             <div class="nav-link-container">
               <a
-                href="/pages/information.html"
+                href="information.html"
                 class="nav-link active"
                 onclick="setActiveNav(this)"
               >
@@ -753,19 +774,21 @@
             </div>
             <ul class="dropdown-menu">
               <li class="dropdown-item">
-                <a href="/pages/about.html" class="dropdown-link">About Us</a>
-              </li>
-              <li class="dropdown-item">
-                <a href="/pages/team.html" class="dropdown-link">Our Team</a>
-              </li>
-              <li class="dropdown-item">
-                <a href="/pages/services.html" class="dropdown-link"
-                  >Services</a
+                <a href="faq.html" class="dropdown-link"
+                  >Frequently Asked Questions</a
                 >
               </li>
               <li class="dropdown-item">
-                <a href="/pages/testimonials.html" class="dropdown-link"
-                  >Testimonials</a
+                <a href="portfolio.html" class="dropdown-link">Portfolio</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="client-questionnaire.html" class="dropdown-link"
+                  >Client Questionnaire</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="reviews.html" class="dropdown-link"
+                  >Review (Clients)</a
                 >
               </li>
             </ul>
@@ -773,7 +796,7 @@
           <li class="nav-item">
             <div class="nav-link-container">
               <a
-                href="/pages/ratecards.html"
+                href="ratecards.html"
                 class="nav-link"
                 onclick="setActiveNav(this)"
               >
@@ -785,69 +808,29 @@
             </div>
             <ul class="dropdown-menu">
               <li class="dropdown-item">
-                <a href="/pages/portrait-rates.html" class="dropdown-link"
+                <a href="portrait.html" class="dropdown-link"
                   >Portrait Photography</a
                 >
               </li>
               <li class="dropdown-item">
-                <a href="/pages/wedding-rates.html" class="dropdown-link"
+                <a href="wedding.html" class="dropdown-link"
                   >Wedding Photography</a
                 >
               </li>
-              <li class="dropdown-item">
-                <a href="/pages/event-rates.html" class="dropdown-link"
-                  >Event Photography</a
-                >
-              </li>
-              <li class="dropdown-item">
-                <a href="/pages/commercial-rates.html" class="dropdown-link"
-                  >Commercial Photography</a
-                >
-              </li>
-              <li class="dropdown-item">
-                <a href="/pages/special-packages.html" class="dropdown-link"
-                  >Special Packages</a
-                >
-              </li>
             </ul>
           </li>
           <li class="nav-item">
-            <div class="nav-link-container">
-              <a
-                href="/pages/store.html"
-                class="nav-link"
-                onclick="setActiveNav(this)"
-              >
-                Store
-              </a>
-              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
-                <i class="fas fa-chevron-down dropdown-arrow"></i>
-              </button>
-            </div>
-            <ul class="dropdown-menu">
-              <li class="dropdown-item">
-                <a href="/pages/prints.html" class="dropdown-link">Prints</a>
-              </li>
-              <li class="dropdown-item">
-                <a href="/pages/digital-products.html" class="dropdown-link"
-                  >Digital Products</a
-                >
-              </li>
-            </ul>
+            <a href="store.html" class="nav-link" onclick="setActiveNav(this)"
+              >Store</a
+            >
           </li>
           <li class="nav-item">
-            <a
-              href="/pages/contact.html"
-              class="nav-link"
-              onclick="setActiveNav(this)"
+            <a href="contact.html" class="nav-link" onclick="setActiveNav(this)"
               >Contact</a
             >
           </li>
           <li class="nav-item">
-            <a
-              href="/pages/blog.html"
-              class="nav-link"
-              onclick="setActiveNav(this)"
+            <a href="blog.html" class="nav-link" onclick="setActiveNav(this)"
               >Blog</a
             >
           </li>
@@ -868,23 +851,23 @@
       <div class="hero-slider">
         <div
           class="hero-slide active"
-          style="background-image: url('../assets/images/img5.jpg')"
+          style="background-image: url('assets/images/img5.jpg')"
         ></div>
         <div
           class="hero-slide"
-          style="background-image: url('../assets/images/img6.jpg')"
+          style="background-image: url('assets/images/img6.jpg')"
         ></div>
         <div
           class="hero-slide"
-          style="background-image: url('../assets/images/img7.jpg')"
+          style="background-image: url('assets/images/img7.jpg')"
         ></div>
         <div
           class="hero-slide"
-          style="background-image: url('../assets/images/img8.jpg')"
+          style="background-image: url('assets/images/img8.jpg')"
         ></div>
         <div
           class="hero-slide"
-          style="background-image: url('../assets/images/img9.jpg')"
+          style="background-image: url('assets/images/img9.jpg')"
         ></div>
       </div>
       <div class="hero-overlay"></div>
@@ -954,9 +937,9 @@
           <div class="story-content">
             <div class="story-image">
               <img
-                src="../assets/images/logo2.png"
+                src="assets/images/logo2.png"
                 alt="Our Photography Studio"
-                class="no-context-menu logo-icon2"
+                class="no-context-menu logo-icon"
               />
             </div>
             <div class="story-text">
@@ -1114,7 +1097,7 @@
             <div class="team-member">
               <div class="member-image">
                 <img
-                  src="../assets/images/image2.jpg"
+                  src="assets/images/image2.jpg"
                   alt="Lead Photographer"
                   class="no-context-menu"
                 />
@@ -1142,7 +1125,7 @@
             <div class="team-member">
               <div class="member-image">
                 <img
-                  src="../assets/images/image3.jpg"
+                  src="assets/images/image3.jpg"
                   alt="Studio Manager"
                   class="no-context-menu"
                 />
@@ -1170,7 +1153,7 @@
             <div class="team-member">
               <div class="member-image">
                 <img
-                  src="../assets/images/image4.jpg"
+                  src="assets/images/image4.jpg"
                   alt="Photographer"
                   class="no-context-menu"
                 />
@@ -1286,11 +1269,11 @@
               professional expertise.
             </p>
             <div class="cta-buttons">
-              <a href="/pages/contact.html" class="btn btn-primary">
+              <a href="contact.html" class="btn btn-primary">
                 <i class="fas fa-calendar-alt"></i>
                 Book a Session
               </a>
-              <a href="/pages/ratecards.html" class="btn btn-primary2">
+              <a href="ratecards.html" class="btn btn-primary2">
                 <i class="fas fa-images"></i>
                 View Our Services
               </a>
@@ -1308,7 +1291,7 @@
           <div class="footer-section">
             <div class="footer-logo">
               <img
-                src="../assets/images/logo2.png"
+                src="assets/images/logo2.png"
                 class="footer-logo-icon"
                 alt="Impasto Photography"
               />
@@ -1331,31 +1314,31 @@
                 </a>
               </li>
               <li>
-                <a href="/pages/information.html">
+                <a href="information.html">
                   <i class="fas fa-chevron-right"></i>
                   Information
                 </a>
               </li>
               <li>
-                <a href="/pages/ratecards.html">
+                <a href="ratecards.html">
                   <i class="fas fa-chevron-right"></i>
                   Ratecards
                 </a>
               </li>
               <li>
-                <a href="/pages/store.html">
+                <a href="store.html">
                   <i class="fas fa-chevron-right"></i>
                   Store
                 </a>
               </li>
               <li>
-                <a href="/pages/contact.html">
+                <a href="contact.html">
                   <i class="fas fa-chevron-right"></i>
                   Contact
                 </a>
               </li>
               <li>
-                <a href="/pages/blog.html">
+                <a href="blog.html">
                   <i class="fas fa-chevron-right"></i>
                   Blog
                 </a>
@@ -1466,8 +1449,8 @@
       </div>
     </footer>
 
-    <script src="../assets/src/general.js"></script>
-    <script src="../assets/src/navhero.js"></script>
+    <script src="assets/src/general.js"></script>
+    <script src="assets/src/navhero.js"></script>
     <script>
       // ===========================================
       // COUNTER ANIMATIONS FOR STATS SECTION

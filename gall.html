@@ -796,28 +796,32 @@
       function toggleZoom(x, y) {
         const container = document.getElementById("lightboxContent");
         const containerRect = container.getBoundingClientRect();
+
         if (currentZoom === 1) {
           // Zoom in to 2x
-          currentZoom = 2;
-          // Calculate the offset from the center of the container to the mouse position
-          // Adjust for current zoom level to prevent jumping
-          const offsetX =
-            ((containerRect.width / 2 - (x - containerRect.left)) *
-              (currentZoom - 1)) /
-            currentZoom;
-          const offsetY =
-            ((containerRect.height / 2 - (y - containerRect.top)) *
-              (currentZoom - 1)) /
-            currentZoom;
-          translateX = offsetX;
-          translateY = offsetY;
+          const targetZoom = 2;
+          const oldZoom = currentZoom;
+          currentZoom = targetZoom;
+
+          // Position relative to container
+          const relX = x - containerRect.left;
+          const relY = y - containerRect.top;
+
+          // Keep the tapped point under the finger
+          const zoomFactor = currentZoom / oldZoom;
+          translateX =
+            (translateX - (relX - containerRect.width / 2)) * zoomFactor +
+            (relX - containerRect.width / 2);
+          translateY =
+            (translateY - (relY - containerRect.height / 2)) * zoomFactor +
+            (relY - containerRect.height / 2);
         } else {
-          // Zoom out
+          // Reset zoom
           currentZoom = 1;
           translateX = 0;
           translateY = 0;
         }
-        // Clamp position and update transform
+
         clampPosition();
         updateImageTransform();
       }
@@ -998,24 +1002,32 @@
         isPinching = false;
       }
       function applyInertia() {
-        const inertia = () => {
-          // Apply velocity to position
-          translateX += velocityX * 16; // 16ms is roughly one frame at 60fps
+        const friction = 0.9; // stronger friction for faster stop
+        const minVelocity = 0.2; // threshold to stop
+        const step = () => {
+          translateX += velocityX * 16;
           translateY += velocityY * 16;
+
           // Apply friction
-          velocityX *= 0.95;
-          velocityY *= 0.95;
-          // Clamp position to keep image within boundaries
+          velocityX *= friction;
+          velocityY *= friction;
+
           clampPosition();
-          // Update transform
           updateImageTransform();
-          // Continue animation if there's still significant velocity
-          if (Math.abs(velocityX) > 0.01 || Math.abs(velocityY) > 0.01) {
-            animationFrameId = requestAnimationFrame(inertia);
+
+          // Stop if velocity too small or we've hit boundaries
+          if (
+            Math.abs(velocityX) < minVelocity &&
+            Math.abs(velocityY) < minVelocity
+          ) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+            return;
           }
+
+          animationFrameId = requestAnimationFrame(step);
         };
-        // Start the inertia animation
-        animationFrameId = requestAnimationFrame(inertia);
+        animationFrameId = requestAnimationFrame(step);
       }
       function getDistance(touch1, touch2) {
         const dx = touch1.clientX - touch2.clientX;
@@ -1199,6 +1211,148 @@
         }
       }
       // ===========================================
+      // THEME TOGGLE FUNCTIONALITY
+      // ===========================================
+      function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.querySelector(".theme-icon");
+        const themeText = document.querySelector(".theme-text");
+        const logos = document.querySelectorAll(
+          ".logo-icon, .footer-logo-icon"
+        );
+        // Check current theme
+        if (body.getAttribute("data-theme") === "dark") {
+          // Switch to light theme
+          body.removeAttribute("data-theme");
+          if (themeIcon) themeIcon.className = "fas fa-moon theme-icon";
+          if (themeText) themeText.textContent = "Dark";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2.png";
+          });
+          localStorage.setItem("theme", "light");
+        } else {
+          // Switch to dark theme
+          body.setAttribute("data-theme", "dark");
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+          localStorage.setItem("theme", "dark");
+        }
+      }
+      function loadSavedTheme() {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          document.body.setAttribute("data-theme", "dark");
+          const themeIcon = document.querySelector(".theme-icon");
+          const themeText = document.querySelector(".theme-text");
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
+          const logos = document.querySelectorAll(
+            ".logo-icon, .footer-logo-icon"
+          );
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+        }
+      }
+      // ===========================================
+      // NAVIGATION FUNCTIONALITY
+      // ===========================================
+      function setActiveNav(element) {
+        // Remove active class from all nav links
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.classList.remove("active");
+        });
+        // Add active class to clicked link
+        element.classList.add("active");
+        // Close mobile menu if open
+        const navMenu = document.getElementById("navMenu");
+        if (navMenu && navMenu.classList.contains("active")) {
+          navMenu.classList.remove("active");
+          // Reset mobile menu toggle icon
+          const mobileToggle = document.querySelector(".mobile-menu-toggle");
+          if (mobileToggle) {
+            mobileToggle.classList.remove("active");
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          }
+        }
+      }
+      function toggleMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        if (navMenu && mobileToggle) {
+          navMenu.classList.toggle("active");
+          mobileToggle.classList.toggle("active");
+          // Change icon based on menu state
+          if (navMenu.classList.contains("active")) {
+            mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+          } else {
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          }
+        }
+      }
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          // Close mobile menu if open
+          const navMenu = document.getElementById("navMenu");
+          if (navMenu && navMenu.classList.contains("active")) {
+            navMenu.classList.remove("active");
+            const mobileToggle = document.querySelector(".mobile-menu-toggle");
+            if (mobileToggle) {
+              mobileToggle.classList.remove("active");
+              mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+          }
+          section.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }
+      function handleNavbarScroll() {
+        const navbar = document.getElementById("navbar");
+        if (navbar) {
+          if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        }
+      }
+      // ===========================================
+      // SCROLL ANIMATION FUNCTIONS
+      // ===========================================
+      function initScrollAnimations() {
+        // Make hero section visible immediately
+        const heroSection = document.querySelector(".hero");
+        if (heroSection) {
+          heroSection.classList.add("visible");
+        }
+        // Trigger initial check for elements in view
+        handleScrollAnimations();
+      }
+      function handleScrollAnimations() {
+        const animatedElements = document.querySelectorAll(
+          ".fade-in:not(.visible), .slide-in-left:not(.visible), .slide-in-right:not(.visible), .scale-in:not(.visible)"
+        );
+        animatedElements.forEach((element) => {
+          if (isElementInViewport(element)) {
+            element.classList.add("visible");
+          }
+        });
+      }
+      function isElementInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        const windowHeight =
+          window.innerHeight || document.documentElement.clientHeight;
+        // Add some offset for better timing (trigger when element is 80% visible)
+        const offset = windowHeight * 0.2;
+        return rect.top <= windowHeight - offset && rect.bottom >= offset;
+      }
+      // ===========================================
       // EVENT LISTENERS
       // ===========================================
       // Initialize when DOM is loaded
@@ -1239,7 +1393,20 @@
           return false;
         }
       });
-      //
+      // ===========================================
+      // UTILITY FUNCTIONS
+      // ===========================================
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
       // Console log for debugging
       console.log("Impasto Photography Website Loaded Successfully! 📸");
     </script>

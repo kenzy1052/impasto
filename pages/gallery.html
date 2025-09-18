@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gallery</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/components/gallery.css" />
+  </head>
+  <body>
+    <!-- Main Content -->
+    <main>
+      <!-- Gallery Section -->
+      <section id="gallery" class="gallery container fade-in">
+        <div class="gallery-header slide-in-left">
+          <h2 class="gallery-title">Our Portfolio</h2>
+          <p class="gallery-subtitle">
+            Explore our collection of stunning photographs that capture life's
+            most precious moments
+          </p>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Gallery items will be dynamically inserted here -->
+        </div>
+        <div class="load-more-container slide-in-right">
+          <button
+            class="btn-load-more"
+            id="loadMoreBtn"
+            onclick="loadMoreImages()"
+          >
+            <i class="fas fa-plus"></i>
+            View More
+          </button>
+        </div>
+      </section>
+      <!-- Advanced Lightbox -->
+      <div class="lightbox" id="lightbox">
+        <!-- Mobile Top Bar -->
+        <div class="lightbox-top-bar">
+          <div class="lightbox-counter" id="lightboxCounter">Image 1 of 60</div>
+          <button class="lightbox-close" onclick="closeLightbox()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <!-- Navigation Arrows (Desktop Only) -->
+        <button class="lightbox-nav lightbox-prev" onclick="previousImage()">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="lightbox-nav lightbox-next" onclick="nextImage()">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        <!-- Image Container -->
+        <div class="lightbox-content">
+          <div class="lightbox-image-container" id="lightboxImageContainer">
+            <img src="" alt="" class="lightbox-image" id="lightboxImage" />
+          </div>
+        </div>
+        <!-- Mobile Bottom Bar -->
+        <div class="lightbox-bottom-bar">
+          <div class="zoom-instruction">Swipe to view next picture</div>
+        </div>
+      </div>
+    </main>
+    <script src="assets/src/general.js"></script>
+    <script src="assets/src/gallery.js"></script>
+  </body>
+</html>
