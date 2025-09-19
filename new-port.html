@@ -153,7 +153,7 @@
         border-radius: 3px;
         border: 1px solid var(--border);
         width: 100%;
-        height: 350px;
+        height: 280px;
         cursor: pointer;
         transition: all var(--transition-normal);
         box-shadow: 0 4px 12px var(--shadow);
@@ -980,14 +980,33 @@
 
     <script src="assets/src/general.js"></script>
     <script src="assets/src/navhero.js"></script>
+
     <script>
       // ===========================================
       // GALLERY FUNCTIONALITY
       // ===========================================
-      let currentImageIndex = 1;
-      const totalImages = 60;
+      // Gallery categories with image numbers
+      const galleryCategories = {
+        all: Array.from({ length: 60 }, (_, i) => i + 1), // All images from 1 to 60
+        portraits: [
+          1, 2, 5, 9, 10, 13, 17, 21, 25, 29, 33, 37, 41, 45, 49, 53, 57, 3, 6,
+          11,
+        ], // 20 images
+        weddings: [14, 18, 22, 26, 30, 34, 38, 42, 46, 50], // 10 images
+        events: [
+          4, 7, 12, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 55, 59, 8, 16, 20,
+        ], // 18 images
+        others: [24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 54, 58], // 12 images
+      };
+
+      let currentFilter = "all";
+      let currentImageCount = 0;
       const imagesPerLoad = 12;
-      let currentImageCount = 12;
+
+      // Current filtered images array and lightbox state
+      let currentFilteredImages = [];
+      let currentImageIndex = 0;
+      let lightboxImageIndex = 0; // Index within the filtered array
 
       // Detect if device is touch-enabled
       const isTouchDevice = () => {
@@ -1002,36 +1021,69 @@
       // Initialize gallery
       function initializeGallery() {
         const galleryGrid = document.getElementById("galleryGrid");
-        for (let i = 1; i <= currentImageCount; i++) {
-          const galleryItem = createGalleryItem(i);
+        galleryGrid.innerHTML = ""; // Clear existing gallery items
+
+        // Get images for current filter
+        currentFilteredImages = [...galleryCategories[currentFilter]];
+
+        // Load initial images
+        const imagesToShow = Math.min(
+          imagesPerLoad,
+          currentFilteredImages.length
+        );
+        currentImageCount = imagesToShow;
+
+        for (let i = 0; i < imagesToShow; i++) {
+          const imageNumber = currentFilteredImages[i];
+          const galleryItem = createGalleryItem(imageNumber, i);
           galleryGrid.appendChild(galleryItem);
         }
+
+        // Update load more button state
+        updateLoadMoreButton();
       }
 
       // Create gallery item
-      function createGalleryItem(imageNumber) {
+      function createGalleryItem(imageNumber, indexInFiltered) {
         const item = document.createElement("div");
         item.className = "gallery-item fade-in";
-        item.onclick = () => openLightbox(imageNumber);
+
+        // Find which category this image belongs to
+        let categoryName = "Image";
+        for (const [category, images] of Object.entries(galleryCategories)) {
+          if (category !== "all" && images.includes(imageNumber)) {
+            categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+            break;
+          }
+        }
+
+        item.setAttribute("data-category", categoryName.toLowerCase());
+        item.onclick = () => openLightbox(indexInFiltered);
+
         const img = document.createElement("img");
         img.src = `assets/images/img${imageNumber}.jpg`;
         img.alt = `Gallery Image ${imageNumber}`;
         img.className = "no-context-menu";
         img.draggable = false;
         img.oncontextmenu = () => false;
+
         const overlay = document.createElement("div");
         overlay.className = "gallery-overlay";
+
         const info = document.createElement("div");
         info.className = "gallery-info";
-        info.innerHTML = `<div class="gallery-number">Image ${imageNumber} of ${totalImages}</div>`;
+        info.innerHTML = `<div class="gallery-number">${categoryName} - Image ${imageNumber}</div>`;
+
         overlay.appendChild(info);
         item.appendChild(img);
         item.appendChild(overlay);
+
         setTimeout(() => {
           if (isElementInViewport(item)) {
             item.classList.add("visible");
           }
         }, 100);
+
         return item;
       }
 
@@ -1042,38 +1094,81 @@
         loadMoreBtn.disabled = true;
         loadMoreBtn.innerHTML =
           '<i class="fas fa-spinner fa-spin"></i> Loading...';
+
         setTimeout(() => {
+          // Calculate how many more images to load
           const remainingImages = Math.min(
             imagesPerLoad,
-            totalImages - currentImageCount
+            currentFilteredImages.length - currentImageCount
           );
-          for (let i = 1; i <= remainingImages; i++) {
-            const imageNumber = currentImageCount + i;
-            const galleryItem = createGalleryItem(imageNumber);
+
+          // Add new images
+          for (let i = 0; i < remainingImages; i++) {
+            const indexInFiltered = currentImageCount + i;
+            const imageNumber = currentFilteredImages[indexInFiltered];
+            const galleryItem = createGalleryItem(imageNumber, indexInFiltered);
             galleryGrid.appendChild(galleryItem);
           }
+
           currentImageCount += remainingImages;
-          if (currentImageCount >= totalImages) {
-            loadMoreBtn.innerHTML =
-              '<i class="fas fa-check"></i> All Images Loaded';
-          } else {
-            loadMoreBtn.disabled = false;
-            loadMoreBtn.innerHTML = '<i class="fas fa-plus"></i> View More';
-          }
+
+          // Update button state
+          updateLoadMoreButton();
         }, 800);
+      }
+
+      // Update load more button state
+      function updateLoadMoreButton() {
+        const loadMoreBtn = document.getElementById("loadMoreBtn");
+
+        if (currentImageCount >= currentFilteredImages.length) {
+          loadMoreBtn.innerHTML =
+            '<i class="fas fa-check"></i> All Images Loaded';
+          loadMoreBtn.disabled = true;
+        } else {
+          loadMoreBtn.disabled = false;
+          loadMoreBtn.innerHTML = '<i class="fas fa-plus"></i> View More';
+        }
+      }
+
+      // Initialize filter buttons
+      function initializeFilters() {
+        const filterButtons = document.querySelectorAll(".filter-btn");
+
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            // Remove active class from all buttons
+            filterButtons.forEach((btn) => btn.classList.remove("active"));
+
+            // Add active class to clicked button
+            button.classList.add("active");
+
+            // Update current filter
+            currentFilter = button.getAttribute("data-filter");
+
+            // Reset image count and reload gallery
+            currentImageCount = 0;
+            initializeGallery();
+          });
+        });
       }
 
       // ===========================================
       // LIGHTBOX FUNCTIONALITY
       // ===========================================
-      function openLightbox(imageNumber) {
+      function openLightbox(indexInFiltered) {
         const lightbox = document.getElementById("lightbox");
         const lightboxImage = document.getElementById("lightboxImage");
         const lightboxCounter = document.getElementById("lightboxCounter");
-        currentImageIndex = imageNumber;
+
+        lightboxImageIndex = indexInFiltered;
+        const imageNumber = currentFilteredImages[lightboxImageIndex];
+
         lightboxImage.src = `assets/images/img${imageNumber}.jpg`;
         lightboxImage.alt = `Gallery Image ${imageNumber}`;
-        lightboxCounter.textContent = `Image ${imageNumber} of ${totalImages}`;
+        lightboxCounter.textContent = `Image ${lightboxImageIndex + 1} of ${
+          currentFilteredImages.length
+        }`;
         lightbox.classList.add("active");
         document.body.style.overflow = "hidden";
 
@@ -1102,32 +1197,36 @@
       function updateLightboxImage() {
         const lightboxImage = document.getElementById("lightboxImage");
         const lightboxCounter = document.getElementById("lightboxCounter");
-        lightboxImage.src = `assets/images/img${currentImageIndex}.jpg`;
-        lightboxImage.alt = `Gallery Image ${currentImageIndex}`;
-        lightboxCounter.textContent = `Image ${currentImageIndex} of ${totalImages}`;
+
+        const imageNumber = currentFilteredImages[lightboxImageIndex];
+        lightboxImage.src = `assets/images/img${imageNumber}.jpg`;
+        lightboxImage.alt = `Gallery Image ${imageNumber}`;
+        lightboxCounter.textContent = `Image ${lightboxImageIndex + 1} of ${
+          currentFilteredImages.length
+        }`;
 
         // Reset zoom and position for new image
         resetTransform();
       }
 
       function previousImage() {
-        if (currentImageIndex > 1) {
-          currentImageIndex--;
+        if (lightboxImageIndex > 0) {
+          lightboxImageIndex--;
           updateLightboxImage();
         } else {
-          // Loop to last image
-          currentImageIndex = totalImages;
+          // Loop to last image in current filter
+          lightboxImageIndex = currentFilteredImages.length - 1;
           updateLightboxImage();
         }
       }
 
       function nextImage() {
-        if (currentImageIndex < totalImages) {
-          currentImageIndex++;
+        if (lightboxImageIndex < currentFilteredImages.length - 1) {
+          lightboxImageIndex++;
           updateLightboxImage();
         } else {
-          // Loop to first image
-          currentImageIndex = 1;
+          // Loop to first image in current filter
+          lightboxImageIndex = 0;
           updateLightboxImage();
         }
       }
@@ -1831,6 +1930,7 @@
       document.addEventListener("DOMContentLoaded", function () {
         loadSavedTheme();
         initializeGallery();
+        initializeFilters();
         initScrollAnimations();
 
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
