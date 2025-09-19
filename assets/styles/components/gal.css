@@ -233,6 +233,7 @@
   align-items: center;
   overflow: hidden;
 }
+
 .lightbox-image-container {
   position: relative;
   width: 100%;
@@ -240,11 +241,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform var(--transition-normal);
   transform-origin: center center;
   cursor: zoom-in;
-  /* Enhanced touch interaction */
-  touch-action: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -256,6 +254,7 @@
   user-drag: none;
   -webkit-touch-callout: none;
 }
+
 .lightbox-image-container.no-transition {
   transition: none;
 }

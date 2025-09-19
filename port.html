@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta
+      name="keywords"
+      content="photography, studio, professional, memories, artistry, technology"
+    />
+    <meta name="author" content="Impasto Photography Studio" />
+    <title>Impasto Photography Studio | Portfolio</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Open Graph Meta Tags for SEO -->
+    <meta
+      property="og:title"
+      content="Impasto Photography Studio | Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://impastophotography.com" />
+    <meta
+      property="og:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Impasto Photography Studio | Portfolio"
+    />
+    <meta
+      name="twitter:description"
+      content="Professional Photography Studio - Cherished moments come as you are. Where artistry meets technology to create timeless memories."
+    />
+    <meta
+      name="twitter:image"
+      content="https://impastophotography.com/assets/images/og-image.jpg"
+    />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/logo-fav.png" />
+    <link rel="apple-touch-icon" href="assets/images/logo.png" />
+    <!--Default Styles-->
+    <link rel="stylesheet" href="assets/styles/modern-normalize.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/utils.css" />
+    <link rel="stylesheet" href="assets/styles/components/navhero.css" />
+    <link rel="stylesheet" href="assets/styles/components/footer.css" />
+    <style>
+      /*===========================================
+      GALLERY SECTION - MOBILE FIRST
+      =========================================== */
+      .gallery {
+        margin-top: 100px;
+        padding: 5px;
+      }
+      .gallery-header {
+        text-align: center;
+        margin-bottom: var(--spacing-2xl);
+      }
+      .gallery-title {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-md);
+        color: var(--text-primary);
+        position: relative;
+        display: inline-block;
+      }
+      .gallery-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: var(--accent-color);
+      }
+      .gallery-subtitle {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        max-width: 100%;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+      /* Gallery Filters */
+      .gallery-filters {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 30px;
+      }
+      .filter-btn {
+        background: transparent;
+        border: 2px solid var(--accent-color);
+        color: var(--accent-color);
+        padding: 8px 16px;
+        border-radius: 30px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .filter-btn:hover {
+        background: var(--accent-color);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .filter-btn.active {
+        background: var(--accent-color);
+        color: white;
+      }
+      .filter-btn i {
+        font-size: 12px;
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        justify-content: center;
+        margin-bottom: var(--spacing-2xl);
+      }
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 3px;
+        border: 1px solid var(--border);
+        width: 100%;
+        height: 280px;
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        box-shadow: 0 4px 12px var(--shadow);
+      }
+      .gallery-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px var(--shadow-hover);
+      }
+      .gallery-item img {
+        height: 100%;
+        left: 0;
+        object-fit: cover;
+        object-position: top;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        transition: transform var(--transition-normal);
+        user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        pointer-events: none;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+      .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(0, 0, 0, 0.7) 100%
+        );
+        opacity: 0;
+        transition: opacity var(--transition-normal);
+        display: flex;
+        align-items: flex-end;
+        padding: var(--spacing-md);
+      }
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+      .gallery-info {
+        color: white;
+        font-weight: 500;
+      }
+      .gallery-number {
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+      .load-more-container {
+        text-align: center;
+        margin-top: var(--spacing-xl);
+      }
+      .btn-load-more {
+        background: transparent;
+        color: var(--accent-color);
+        border: 2px solid var(--accent-color);
+        padding: var(--spacing-md) var(--spacing-2xl);
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+      .btn-load-more:hover {
+        background: var(--accent-color);
+        color: var(--bg-primary);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(44, 62, 80, 0.4);
+      }
+      .btn-load-more:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+      /* ===========================================
+    ADVANCED LIGHTBOX - MOBILE FIRST
+   =========================================== */
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000000;
+        z-index: 2000;
+        opacity: 0;
+        transition: opacity var(--transition-normal);
+      }
+      .lightbox.active {
+        display: flex;
+        flex-direction: column;
+        opacity: 1;
+      }
+      /* Mobile Top Bar */
+      .lightbox-top-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        background: #000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+        z-index: 2002;
+      }
+      .lightbox-counter {
+        color: white;
+        font-size: 14px;
+        font-weight: 500;
+        width: auto;
+      }
+      .lightbox-close {
+        background: none;
+        border: none;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        font-size: 18px;
+      }
+      .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+      /* Desktop Navigation */
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        font-size: 20px;
+        z-index: 2001;
+      }
+      .lightbox-nav:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-50%) scale(1.1);
+      }
+      .lightbox-prev {
+        left: 20px;
+      }
+      .lightbox-next {
+        right: 20px;
+      }
+      /* Image Container */
+      .lightbox-content {
+        position: relative;
+        width: 100%;
+        height: calc(100% - 90px);
+        margin-top: 50px;
+        margin-bottom: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        touch-action: none;
+      }
+      .lightbox-image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: none;
+        transform-origin: center center;
+        cursor: zoom-in;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+        -webkit-touch-callout: none;
+      }
+      .lightbox-image-container.no-transition {
+        transition: none;
+      }
+      .lightbox-image-container.zoomed {
+        cursor: grab;
+      }
+      .lightbox-image-container.dragging {
+        cursor: grabbing;
+      }
+      .lightbox-image {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 2px;
+        user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        pointer-events: none;
+      }
+      /* Mobile Bottom Bar */
+      .lightbox-bottom-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 40px;
+        background: #000000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2002;
+        border-top: 1px solid #333;
+      }
+      .zoom-instruction {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 12px;
+        text-align: center;
+      }
+      /* ===========================================
+    SCROLL ANIMATIONS
+   =========================================== */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .slide-in-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.8s ease-out;
+      }
+      .slide-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .slide-in-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.8s ease-out;
+      }
+      .slide-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      /* ===========================================
+    RESPONSIVE STYLES
+   =========================================== */
+      /* Small screens (475px and up) */
+      @media (min-width: 475px) {
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .gallery-item {
+          height: 300px;
+        }
+      }
+      /* Medium screens (640px and up) */
+      @media (min-width: 640px) {
+        .gallery {
+          padding: var(--spacing-3xl) var(--spacing-lg);
+        }
+        .gallery-grid {
+          gap: var(--spacing-lg);
+        }
+        .gallery-item {
+          height: 320px;
+        }
+      }
+      /* Desktop screens (1024px and up) */
+      @media (min-width: 1024px) {
+        .gallery {
+          padding: var(--spacing-4xl) var(--spacing-xl);
+        }
+        .gallery-header {
+          margin-bottom: var(--spacing-3xl);
+        }
+        .gallery-title {
+          font-size: 2.5rem;
+        }
+        .gallery-subtitle {
+          font-size: 1.1rem;
+          max-width: 600px;
+        }
+        .gallery-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: var(--spacing-lg);
+          margin-bottom: var(--spacing-3xl);
+        }
+        .gallery-item {
+          height: 340px;
+        }
+        /* Desktop lightbox changes */
+        .lightbox {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: #000000;
+          z-index: 2000;
+          justify-content: center;
+          align-items: center;
+          opacity: 0;
+          transition: opacity var(--transition-normal);
+        }
+        .lightbox.active {
+          display: flex;
+          opacity: 1;
+        }
+        .lightbox-content {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          max-width: 100vw;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: var(--spacing-lg);
+          overflow: hidden;
+          margin: 0;
+          touch-action: none;
+        }
+        .lightbox-image-container {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: none;
+          transform-origin: center center;
+          cursor: zoom-in;
+        }
+        .lightbox-nav {
+          display: flex;
+        }
+        .lightbox-top-bar {
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          height: auto;
+          background: none;
+          border-radius: 5px;
+          padding: var(--spacing-sm) var(--spacing-md);
+          z-index: 2002 !important;
+        }
+        .lightbox-counter {
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          color: white;
+          font-size: 14px;
+          font-weight: 500;
+          width: auto;
+          padding: var(--spacing-md);
+          border-radius: 4px;
+        }
+        .lightbox-close {
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          width: 50px;
+          height: 50px;
+          z-index: 2001;
+          position: absolute;
+          top: 20px;
+          right: 20px;
+        }
+        .lightbox-bottom-bar {
+          display: none;
+        }
+      }
+      /* Extra large screens (1280px and up) */
+      @media (min-width: 1280px) {
+        .gallery-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .gallery {
+          max-width: 1400px;
+          margin: 0 auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="mobile-menu-overlay"
+      id="mobileMenuOverlay"
+      onclick="toggleMobileMenu()"
+    ></div>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo">
+          <img
+            src="assets/images/logo2.png"
+            alt="Impasto logo"
+            class="logo-icon"
+          />
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a href="#home" class="nav-link" onclick="setActiveNav(this)"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="information.html"
+                class="nav-link active"
+                onclick="setActiveNav(this)"
+              >
+                Information
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="faq.html" class="dropdown-link"
+                  >Frequently Asked Questions</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="portfolio.html" class="dropdown-link">Portfolio</a>
+              </li>
+              <li class="dropdown-item">
+                <a href="client-questionnaire.html" class="dropdown-link"
+                  >Client Questionnaire</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="reviews.html" class="dropdown-link"
+                  >Review (Clients)</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-container">
+              <a
+                href="ratecards.html"
+                class="nav-link"
+                onclick="setActiveNav(this)"
+              >
+                Ratecards
+              </a>
+              <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+            </div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item">
+                <a href="portrait.html" class="dropdown-link"
+                  >Portrait Photography</a
+                >
+              </li>
+              <li class="dropdown-item">
+                <a href="wedding.html" class="dropdown-link"
+                  >Wedding Photography</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="store.html" class="nav-link" onclick="setActiveNav(this)"
+              >Store</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link" onclick="setActiveNav(this)"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="blog.html" class="nav-link" onclick="setActiveNav(this)"
+              >Blog</a
+            >
+          </li>
+        </ul>
+        <div class="nav-controls">
+          <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon theme-icon"></i>
+            <span class="theme-text">Dark</span>
+          </button>
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- Hero Section -->
+    <section id="home" class="hero fade-in">
+      <div class="hero-slider">
+        <div
+          class="hero-slide active"
+          style="background-image: url('assets/images/img5.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('assets/images/img6.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('assets/images/img7.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('assets/images/img8.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('assets/images/img9.jpg')"
+        ></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-camera"></i>
+          Since 2010
+        </div>
+        <h1 class="hero-title">OUR PORTFOLIO</h1>
+        <p class="hero-subtitle">Capturing Life's Beautiful Moments</p>
+      </div>
+      <!-- Hero Slider Indicators -->
+      <div class="hero-indicators">
+        <div class="hero-indicator active" onclick="goToSlide(0)"></div>
+        <div class="hero-indicator" onclick="goToSlide(1)"></div>
+        <div class="hero-indicator" onclick="goToSlide(2)"></div>
+        <div class="hero-indicator" onclick="goToSlide(3)"></div>
+        <div class="hero-indicator" onclick="goToSlide(4)"></div>
+      </div>
+      <div class="scroll-indicator" onclick="scrollToSection('gallery')">
+        <i class="fas fa-chevron-down fa-2x"></i>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Gallery Section -->
+      <section id="gallery" class="gallery container fade-in">
+        <div class="gallery-header slide-in-left">
+          <h2 class="gallery-title">Our Portfolio</h2>
+          <p class="gallery-subtitle">
+            Explore our collection of stunning photographs that capture life's
+            most precious moments
+          </p>
+        </div>
+
+        <!-- Gallery Filters -->
+        <div class="gallery-filters">
+          <button class="filter-btn active" data-filter="all">
+            <i class="fas fa-th"></i> All
+          </button>
+          <button class="filter-btn" data-filter="portraits">
+            <i class="fas fa-user"></i> Portraits
+          </button>
+          <button class="filter-btn" data-filter="weddings">
+            <i class="fas fa-heart"></i> Weddings
+          </button>
+          <button class="filter-btn" data-filter="events">
+            <i class="fas fa-calendar-alt"></i> Events
+          </button>
+          <button class="filter-btn" data-filter="others">
+            <i class="fas fa-star"></i> Others
+          </button>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Gallery items will be dynamically inserted here -->
+        </div>
+
+        <div class="load-more-container slide-in-right">
+          <button
+            class="btn-load-more"
+            id="loadMoreBtn"
+            onclick="loadMoreImages()"
+          >
+            <i class="fas fa-plus"></i>
+            View More
+          </button>
+        </div>
+      </section>
+
+      <!-- Advanced Lightbox -->
+      <div class="lightbox" id="lightbox">
+        <!-- Mobile Top Bar -->
+        <div class="lightbox-top-bar">
+          <div class="lightbox-counter" id="lightboxCounter">Image 1 of 60</div>
+          <button class="lightbox-close" onclick="closeLightbox()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <!-- Navigation Arrows (Desktop Only) -->
+        <button class="lightbox-nav lightbox-prev" onclick="previousImage()">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="lightbox-nav lightbox-next" onclick="nextImage()">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <!-- Image Container -->
+        <div class="lightbox-content" id="lightboxContent">
+          <div class="lightbox-image-container" id="lightboxImageContainer">
+            <img src="" alt="" class="lightbox-image" id="lightboxImage" />
+          </div>
+        </div>
+
+        <!-- Mobile Bottom Bar -->
+        <div class="lightbox-bottom-bar">
+          <div class="zoom-instruction">Swipe to view next picture</div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer scale-in">
+      <div class="footer-content container">
+        <div class="footer-grid">
+          <!-- Logo Section -->
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img
+                src="assets/images/logo2.png"
+                class="footer-logo-icon"
+                alt="Impasto Photography"
+              />
+            </div>
+            <p class="footer-description">
+              At Impasto Photography, we specialize in capturing life's precious
+              moments with artistry and precision. Our team of professional
+              photographers is dedicated to creating timeless memories that
+              you'll cherish for generations to come.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="footer-section slide-in-left">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#home">
+                  <i class="fas fa-chevron-right"></i>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="information.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Information
+                </a>
+              </li>
+              <li>
+                <a href="ratecards.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Ratecards
+                </a>
+              </li>
+              <li>
+                <a href="store.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Store
+                </a>
+              </li>
+              <li>
+                <a href="contact.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a href="blog.html">
+                  <i class="fas fa-chevron-right"></i>
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Services -->
+          <div class="footer-section fade-in">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#">
+                  <i class="fas fa-camera"></i>
+                  Pre-Birthday Shoots
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-user"></i>
+                  Studio Portraits
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-building"></i>
+                  Large Format Print and Cut
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-calendar-alt"></i>
+                  Event Coverage
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-plane"></i>
+                  Passport Pictures
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-palette"></i>
+                  Graphic Design
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-ellipsis-h"></i>
+                  etc
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div class="footer-section slide-in-right">
+            <h3>Get In Touch</h3>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dome - Accra. Opposite Adehyeman Bank.</span>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>+233 (0) 242-641-305</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <span>potrit1@gmail.com</span>
+              </li>
+              <li>
+                <i class="fas fa-clock"></i>
+                <span>Mon-Fri: 8AM-5PM, Sat: 9:30AM-6PM, Sun: 1PM-6PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-content container">
+          <div class="footer-copyright">
+            <p>© 2025 Impasto Photography. All rights reserved.</p>
+          </div>
+          <div class="kenzy-credit">
+            <p>Website developed with 💖 by Kenzyverse</p>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="social-link">
+              <i class="fab fa-pinterest-p"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/src/general.js"></script>
+    <script src="assets/src/navhero.js"></script>
+    <script>
+      // ===========================================
+      // GALLERY FUNCTIONALITY
+      // ===========================================
+      let currentImageIndex = 1;
+      const totalImages = 60;
+      const imagesPerLoad = 12;
+      let currentImageCount = 12;
+
+      // Detect if device is touch-enabled
+      const isTouchDevice = () => {
+        return (
+          "ontouchstart" in window ||
+          navigator.maxTouchPoints > 0 ||
+          navigator.msMaxTouchPoints > 0 ||
+          (window.matchMedia && window.matchMedia("(pointer: coarse)").matches)
+        );
+      };
+
+      // Initialize gallery
+      function initializeGallery() {
+        const galleryGrid = document.getElementById("galleryGrid");
+        for (let i = 1; i <= currentImageCount; i++) {
+          const galleryItem = createGalleryItem(i);
+          galleryGrid.appendChild(galleryItem);
+        }
+      }
+
+      // Create gallery item
+      function createGalleryItem(imageNumber) {
+        const item = document.createElement("div");
+        item.className = "gallery-item fade-in";
+        item.onclick = () => openLightbox(imageNumber);
+        const img = document.createElement("img");
+        img.src = `assets/images/img${imageNumber}.jpg`;
+        img.alt = `Gallery Image ${imageNumber}`;
+        img.className = "no-context-menu";
+        img.draggable = false;
+        img.oncontextmenu = () => false;
+        const overlay = document.createElement("div");
+        overlay.className = "gallery-overlay";
+        const info = document.createElement("div");
+        info.className = "gallery-info";
+        info.innerHTML = `<div class="gallery-number">Image ${imageNumber} of ${totalImages}</div>`;
+        overlay.appendChild(info);
+        item.appendChild(img);
+        item.appendChild(overlay);
+        setTimeout(() => {
+          if (isElementInViewport(item)) {
+            item.classList.add("visible");
+          }
+        }, 100);
+        return item;
+      }
+
+      // Load more images
+      function loadMoreImages() {
+        const galleryGrid = document.getElementById("galleryGrid");
+        const loadMoreBtn = document.getElementById("loadMoreBtn");
+        loadMoreBtn.disabled = true;
+        loadMoreBtn.innerHTML =
+          '<i class="fas fa-spinner fa-spin"></i> Loading...';
+        setTimeout(() => {
+          const remainingImages = Math.min(
+            imagesPerLoad,
+            totalImages - currentImageCount
+          );
+          for (let i = 1; i <= remainingImages; i++) {
+            const imageNumber = currentImageCount + i;
+            const galleryItem = createGalleryItem(imageNumber);
+            galleryGrid.appendChild(galleryItem);
+          }
+          currentImageCount += remainingImages;
+          if (currentImageCount >= totalImages) {
+            loadMoreBtn.innerHTML =
+              '<i class="fas fa-check"></i> All Images Loaded';
+          } else {
+            loadMoreBtn.disabled = false;
+            loadMoreBtn.innerHTML = '<i class="fas fa-plus"></i> View More';
+          }
+        }, 800);
+      }
+
+      // ===========================================
+      // LIGHTBOX FUNCTIONALITY
+      // ===========================================
+      function openLightbox(imageNumber) {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxCounter = document.getElementById("lightboxCounter");
+        currentImageIndex = imageNumber;
+        lightboxImage.src = `assets/images/img${imageNumber}.jpg`;
+        lightboxImage.alt = `Gallery Image ${imageNumber}`;
+        lightboxCounter.textContent = `Image ${imageNumber} of ${totalImages}`;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+
+        // Reset transform
+        resetTransform();
+
+        // Setup event listeners
+        setupTouchEvents();
+        setupMouseEvents();
+        setupKeyboardEvents();
+        setupMouseWheelZoom();
+      }
+
+      function closeLightbox() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "auto";
+
+        // Remove event listeners
+        removeTouchEvents();
+        removeMouseEvents();
+        removeKeyboardEvents();
+        removeMouseWheelZoom();
+      }
+
+      function updateLightboxImage() {
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxCounter = document.getElementById("lightboxCounter");
+        lightboxImage.src = `assets/images/img${currentImageIndex}.jpg`;
+        lightboxImage.alt = `Gallery Image ${currentImageIndex}`;
+        lightboxCounter.textContent = `Image ${currentImageIndex} of ${totalImages}`;
+
+        // Reset zoom and position for new image
+        resetTransform();
+      }
+
+      function previousImage() {
+        if (currentImageIndex > 1) {
+          currentImageIndex--;
+          updateLightboxImage();
+        } else {
+          // Loop to last image
+          currentImageIndex = totalImages;
+          updateLightboxImage();
+        }
+      }
+
+      function nextImage() {
+        if (currentImageIndex < totalImages) {
+          currentImageIndex++;
+          updateLightboxImage();
+        } else {
+          // Loop to first image
+          currentImageIndex = 1;
+          updateLightboxImage();
+        }
+      }
+
+      // ===========================================
+      // IMPROVED ZOOM & PAN FUNCTIONALITY (Fixed All Issues)
+      // ===========================================
+      let transform = {
+        scale: 1,
+        translateX: 0,
+        translateY: 0,
+      };
+
+      // GESTURE STATE MANAGEMENT
+      let gestureState = {
+        lastTouchEnd: 0,
+        lastTapTime: 0,
+        lastTapPosition: { x: 0, y: 0 },
+        touchStartPoint: { x: 0, y: 0 },
+        touchStartTime: 0,
+        isDragging: false,
+        isPinching: false,
+        hasMoved: false,
+        totalMovement: 0,
+        pinchData: {
+          startDistance: 0,
+          startScale: 1,
+          startCenter: { x: 0, y: 0 },
+          startTransform: { scale: 1, translateX: 0, translateY: 0 },
+          currentCenter: { x: 0, y: 0 }, // Track current pinch center
+        },
+      };
+
+      // PAN SENSITIVITY
+      const PAN_SENSITIVITY = 1.2;
+
+      // GESTURE DETECTION THRESHOLDS
+      const DOUBLE_TAP_DELAY = 300;
+      const TAP_MOVEMENT_THRESHOLD = 15;
+      const SWIPE_THRESHOLD = 50;
+      const PINCH_THRESHOLD = 10;
+
+      // Immediate transform update with no transitions
+      function updateTransform() {
+        const container = document.getElementById("lightboxImageContainer");
+        if (!container) return;
+
+        container.style.transform = `translate(${transform.translateX}px, ${transform.translateY}px) scale(${transform.scale})`;
+
+        // Update cursor based on zoom state
+        if (transform.scale > 1.01) {
+          container.classList.add("zoomed");
+        } else {
+          container.classList.remove("zoomed");
+        }
+      }
+
+      function resetTransform() {
+        transform = { scale: 1, translateX: 0, translateY: 0 };
+        updateTransform();
+      }
+
+      function getDistance(touch1, touch2) {
+        const dx = touch1.clientX - touch2.clientX;
+        const dy = touch1.clientY - touch2.clientY;
+        return Math.sqrt(dx * dx + dy * dy);
+      }
+
+      function getMidpoint(touch1, touch2) {
+        return {
+          x: (touch1.clientX + touch2.clientX) / 2,
+          y: (touch1.clientY + touch2.clientY) / 2,
+        };
+      }
+
+      // Get precise image coordinates from touch/click point
+      function getImageCoordinates(clientX, clientY) {
+        const container = document.getElementById("lightboxContent");
+        if (!container) return { x: 0, y: 0 };
+
+        const containerRect = container.getBoundingClientRect();
+
+        return {
+          x: clientX - containerRect.left - containerRect.width / 2,
+          y: clientY - containerRect.top - containerRect.height / 2,
+        };
+      }
+
+      function getImageBounds() {
+        const container = document.getElementById("lightboxContent");
+        const image = document.getElementById("lightboxImage");
+
+        if (!container || !image || !image.naturalWidth) {
+          return { width: 0, height: 0, displayedWidth: 0, displayedHeight: 0 };
+        }
+
+        const containerRect = container.getBoundingClientRect();
+        const imageAspect = image.naturalWidth / image.naturalHeight;
+        const containerAspect = containerRect.width / containerRect.height;
+
+        let displayedWidth, displayedHeight;
+        if (imageAspect > containerAspect) {
+          displayedWidth = containerRect.width * 0.95;
+          displayedHeight = (containerRect.width * 0.95) / imageAspect;
+        } else {
+          displayedHeight = containerRect.height * 0.95;
+          displayedWidth = containerRect.height * 0.95 * imageAspect;
+        }
+
+        return {
+          width: containerRect.width,
+          height: containerRect.height,
+          displayedWidth,
+          displayedHeight,
+        };
+      }
+
+      function applyBoundaries() {
+        const bounds = getImageBounds();
+        if (bounds.displayedWidth === 0) return;
+
+        const zoomedWidth = bounds.displayedWidth * transform.scale;
+        const zoomedHeight = bounds.displayedHeight * transform.scale;
+
+        let maxX = 0,
+          maxY = 0;
+
+        if (zoomedWidth > bounds.width) {
+          maxX = (zoomedWidth - bounds.width) / 2;
+        }
+        if (zoomedHeight > bounds.height) {
+          maxY = (zoomedHeight - bounds.height) / 2;
+        }
+
+        const buffer = 5;
+        transform.translateX = Math.max(
+          -maxX - buffer,
+          Math.min(maxX + buffer, transform.translateX)
+        );
+        transform.translateY = Math.max(
+          -maxY - buffer,
+          Math.min(maxY + buffer, transform.translateY)
+        );
+      }
+
+      function setupTouchEvents() {
+        const container = document.getElementById("lightboxContent");
+        if (!container) return;
+
+        container.addEventListener("touchstart", handleTouchStart, {
+          passive: false,
+        });
+        container.addEventListener("touchmove", handleTouchMove, {
+          passive: false,
+        });
+        container.addEventListener("touchend", handleTouchEnd, {
+          passive: false,
+        });
+        container.addEventListener("touchcancel", handleTouchCancel, {
+          passive: false,
+        });
+      }
+
+      function removeTouchEvents() {
+        const container = document.getElementById("lightboxContent");
+        if (container) {
+          container.removeEventListener("touchstart", handleTouchStart);
+          container.removeEventListener("touchmove", handleTouchMove);
+          container.removeEventListener("touchend", handleTouchEnd);
+          container.removeEventListener("touchcancel", handleTouchCancel);
+        }
+      }
+
+      function resetGestureState() {
+        gestureState.isDragging = false;
+        gestureState.isPinching = false;
+        gestureState.hasMoved = false;
+        gestureState.totalMovement = 0;
+      }
+
+      function handleTouchStart(e) {
+        const now = Date.now();
+
+        if (e.touches.length === 1) {
+          const touch = e.touches[0];
+
+          resetGestureState();
+
+          gestureState.touchStartPoint = { x: touch.clientX, y: touch.clientY };
+          gestureState.touchStartTime = now;
+
+          // Check for double tap
+          const timeSinceLastTap = now - gestureState.lastTapTime;
+          const distanceFromLastTap = Math.sqrt(
+            Math.pow(touch.clientX - gestureState.lastTapPosition.x, 2) +
+              Math.pow(touch.clientY - gestureState.lastTapPosition.y, 2)
+          );
+
+          if (
+            timeSinceLastTap < DOUBLE_TAP_DELAY &&
+            timeSinceLastTap > 50 &&
+            distanceFromLastTap < TAP_MOVEMENT_THRESHOLD
+          ) {
+            e.preventDefault();
+            toggleZoomAtExactPoint(touch.clientX, touch.clientY);
+            gestureState.lastTapTime = 0;
+            return;
+          }
+
+          gestureState.lastTapPosition = { x: touch.clientX, y: touch.clientY };
+          gestureState.lastTapTime = now;
+        } else if (e.touches.length === 2) {
+          e.preventDefault();
+
+          gestureState.isDragging = false;
+          gestureState.isPinching = true;
+          gestureState.hasMoved = false;
+
+          const center = getMidpoint(e.touches[0], e.touches[1]);
+          gestureState.pinchData.startDistance = getDistance(
+            e.touches[0],
+            e.touches[1]
+          );
+          gestureState.pinchData.startScale = transform.scale;
+          gestureState.pinchData.startCenter = center;
+          gestureState.pinchData.currentCenter = center; // Track current center
+          gestureState.pinchData.startTransform = { ...transform };
+        }
+      }
+
+      function handleTouchMove(e) {
+        e.preventDefault();
+
+        if (gestureState.isPinching && e.touches.length === 2) {
+          // PINCH ZOOM
+          const currentDistance = getDistance(e.touches[0], e.touches[1]);
+          const currentCenter = getMidpoint(e.touches[0], e.touches[1]); // Current pinch center
+          const distanceDelta = Math.abs(
+            currentDistance - gestureState.pinchData.startDistance
+          );
+
+          if (distanceDelta < PINCH_THRESHOLD && !gestureState.hasMoved) return;
+
+          gestureState.hasMoved = true;
+
+          // Update current center for zoom out reference
+          gestureState.pinchData.currentCenter = currentCenter;
+
+          // Calculate scale change
+          const scaleFactor =
+            currentDistance / gestureState.pinchData.startDistance;
+          let newScale = gestureState.pinchData.startScale * scaleFactor;
+          newScale = Math.max(1, Math.min(5, newScale));
+
+          // Use current pinch center for zoom calculations (not start center)
+          const pinchPoint = getImageCoordinates(
+            currentCenter.x,
+            currentCenter.y
+          );
+
+          // Apply zoom centered on current pinch point
+          const scaleChange =
+            newScale - gestureState.pinchData.startTransform.scale;
+          transform.translateX =
+            gestureState.pinchData.startTransform.translateX -
+            pinchPoint.x * scaleChange;
+          transform.translateY =
+            gestureState.pinchData.startTransform.translateY -
+            pinchPoint.y * scaleChange;
+          transform.scale = newScale;
+
+          if (transform.scale <= 1.01) {
+            resetTransform();
+            return;
+          }
+
+          applyBoundaries();
+          updateTransform();
+        } else if (e.touches.length === 1 && !gestureState.isPinching) {
+          // SINGLE TOUCH MOVEMENT
+          const touch = e.touches[0];
+          const deltaX = touch.clientX - gestureState.touchStartPoint.x;
+          const deltaY = touch.clientY - gestureState.touchStartPoint.y;
+          const totalDistance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+          gestureState.totalMovement = totalDistance;
+
+          if (
+            transform.scale > 1.01 &&
+            totalDistance > TAP_MOVEMENT_THRESHOLD
+          ) {
+            if (!gestureState.isDragging) {
+              gestureState.isDragging = true;
+              gestureState.hasMoved = true;
+            }
+          }
+
+          // PAN (only if dragging is active)
+          if (gestureState.isDragging) {
+            const moveDeltaX =
+              (touch.clientX - gestureState.touchStartPoint.x) *
+              PAN_SENSITIVITY;
+            const moveDeltaY =
+              (touch.clientY - gestureState.touchStartPoint.y) *
+              PAN_SENSITIVITY;
+
+            transform.translateX += moveDeltaX;
+            transform.translateY += moveDeltaY;
+
+            applyBoundaries();
+            updateTransform();
+
+            gestureState.touchStartPoint = {
+              x: touch.clientX,
+              y: touch.clientY,
+            };
+          }
+        }
+      }
+
+      function handleTouchEnd(e) {
+        const now = Date.now();
+        const touchDuration = now - gestureState.touchStartTime;
+
+        if (e.touches.length === 0) {
+          gestureState.lastTouchEnd = now;
+
+          // Handle swipe navigation
+          if (
+            !gestureState.isPinching &&
+            !gestureState.isDragging &&
+            transform.scale <= 1.01 &&
+            gestureState.totalMovement > SWIPE_THRESHOLD &&
+            touchDuration < 500
+          ) {
+            const touch = e.changedTouches[0];
+            const deltaX = touch.clientX - gestureState.touchStartPoint.x;
+            const deltaY = touch.clientY - gestureState.touchStartPoint.y;
+
+            if (
+              Math.abs(deltaX) > Math.abs(deltaY) &&
+              Math.abs(deltaX) > SWIPE_THRESHOLD
+            ) {
+              if (deltaX > 0) {
+                previousImage();
+              } else {
+                nextImage();
+              }
+            }
+          }
+
+          resetGestureState();
+        } else if (e.touches.length === 1 && gestureState.isPinching) {
+          gestureState.isPinching = false;
+          gestureState.isDragging = false;
+          gestureState.hasMoved = false;
+          gestureState.touchStartPoint = {
+            x: e.touches[0].clientX,
+            y: e.touches[0].clientY,
+          };
+          gestureState.touchStartTime = now;
+        }
+      }
+
+      function handleTouchCancel(e) {
+        resetGestureState();
+      }
+
+      // PRECISE ZOOM AT EXACT POINT
+      function toggleZoomAtExactPoint(clientX, clientY) {
+        const imageCoords = getImageCoordinates(clientX, clientY);
+
+        if (transform.scale <= 1.01) {
+          const targetScale = 2.5;
+          const scaleChange = targetScale - transform.scale;
+
+          transform.translateX =
+            transform.translateX - imageCoords.x * scaleChange;
+          transform.translateY =
+            transform.translateY - imageCoords.y * scaleChange;
+          transform.scale = targetScale;
+
+          applyBoundaries();
+        } else {
+          resetTransform();
+        }
+
+        updateTransform();
+      }
+
+      // ===========================================
+      // MOUSE EVENTS (DESKTOP) - Fixed
+      // ===========================================
+      let isMouseDragging = false;
+      let mouseLastPoint = { x: 0, y: 0 };
+      let mouseStartTime = 0;
+
+      function setupMouseEvents() {
+        const container = document.getElementById("lightboxImageContainer");
+
+        container.addEventListener("mousedown", handleMouseDown);
+        container.addEventListener("dblclick", handleMouseDoubleClick);
+        document.addEventListener("mousemove", handleMouseMove);
+        document.addEventListener("mouseup", handleMouseUp);
+        document.addEventListener("mouseleave", handleMouseUp);
+
+        container.addEventListener("contextmenu", (e) => e.preventDefault());
+      }
+
+      function removeMouseEvents() {
+        const container = document.getElementById("lightboxImageContainer");
+        if (container) {
+          container.removeEventListener("mousedown", handleMouseDown);
+          container.removeEventListener("dblclick", handleMouseDoubleClick);
+        }
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseup", handleMouseUp);
+        document.removeEventListener("mouseleave", handleMouseUp);
+      }
+
+      function handleMouseDoubleClick(e) {
+        e.preventDefault();
+        toggleZoomAtExactPoint(e.clientX, e.clientY);
+      }
+
+      function handleMouseDown(e) {
+        if (e.button !== 0) return;
+
+        mouseStartTime = Date.now();
+
+        if (transform.scale > 1.01) {
+          isMouseDragging = true;
+          mouseLastPoint = { x: e.clientX, y: e.clientY };
+
+          const container = document.getElementById("lightboxImageContainer");
+          container.classList.add("dragging");
+        }
+
+        e.preventDefault();
+      }
+
+      function handleMouseMove(e) {
+        if (!isMouseDragging) return;
+
+        const deltaX = (e.clientX - mouseLastPoint.x) * PAN_SENSITIVITY;
+        const deltaY = (e.clientY - mouseLastPoint.y) * PAN_SENSITIVITY;
+
+        transform.translateX += deltaX;
+        transform.translateY += deltaY;
+
+        applyBoundaries();
+        updateTransform();
+
+        mouseLastPoint = { x: e.clientX, y: e.clientY };
+      }
+
+      function handleMouseUp(e) {
+        if (isMouseDragging) {
+          isMouseDragging = false;
+          const container = document.getElementById("lightboxImageContainer");
+          if (container) {
+            container.classList.remove("dragging");
+          }
+        }
+      }
+
+      // ===========================================
+      // MOUSE WHEEL ZOOM - Fixed to use current cursor position
+      // ===========================================
+      function setupMouseWheelZoom() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.addEventListener("wheel", handleMouseWheel, {
+          passive: false,
+        });
+      }
+
+      function removeMouseWheelZoom() {
+        const lightbox = document.getElementById("lightbox");
+        if (lightbox) {
+          lightbox.removeEventListener("wheel", handleMouseWheel);
+        }
+      }
+
+      function handleMouseWheel(e) {
+        e.preventDefault();
+
+        const zoomSpeed = 0.003;
+        const zoomDelta = -e.deltaY * zoomSpeed;
+        let newScale = transform.scale + zoomDelta;
+
+        newScale = Math.max(1, Math.min(5, newScale));
+
+        // Use current mouse position for zoom center (both in and out)
+        const cursorPoint = getImageCoordinates(e.clientX, e.clientY);
+        const scaleChange = newScale - transform.scale;
+
+        transform.translateX =
+          transform.translateX - cursorPoint.x * scaleChange;
+        transform.translateY =
+          transform.translateY - cursorPoint.y * scaleChange;
+        transform.scale = newScale;
+
+        if (transform.scale <= 1.01) {
+          resetTransform();
+          return;
+        }
+
+        applyBoundaries();
+        updateTransform();
+      }
+
+      // ===========================================
+      // KEYBOARD FUNCTIONALITY
+      // ===========================================
+      function setupKeyboardEvents() {
+        document.addEventListener("keydown", handleKeyDown);
+      }
+
+      function removeKeyboardEvents() {
+        document.removeEventListener("keydown", handleKeyDown);
+      }
+
+      function handleKeyDown(e) {
+        const lightbox = document.getElementById("lightbox");
+        if (lightbox && lightbox.classList.contains("active")) {
+          if (e.key === "Escape") {
+            closeLightbox();
+          } else if (transform.scale <= 1.01) {
+            if (e.key === "ArrowLeft") {
+              previousImage();
+            } else if (e.key === "ArrowRight") {
+              nextImage();
+            }
+          } else {
+            const panAmount = 40 * PAN_SENSITIVITY;
+
+            if (e.key === "ArrowLeft") {
+              transform.translateX -= panAmount;
+            } else if (e.key === "ArrowRight") {
+              transform.translateX += panAmount;
+            } else if (e.key === "ArrowUp") {
+              transform.translateY -= panAmount;
+            } else if (e.key === "ArrowDown") {
+              transform.translateY += panAmount;
+            }
+
+            applyBoundaries();
+            updateTransform();
+          }
+        }
+      }
+
+      // ===========================================
+      // THEME TOGGLE FUNCTIONALITY
+      // ===========================================
+      function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.querySelector(".theme-icon");
+        const themeText = document.querySelector(".theme-text");
+        const logos = document.querySelectorAll(
+          ".logo-icon, .footer-logo-icon"
+        );
+
+        if (body.getAttribute("data-theme") === "dark") {
+          body.removeAttribute("data-theme");
+          if (themeIcon) themeIcon.className = "fas fa-moon theme-icon";
+          if (themeText) themeText.textContent = "Dark";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2.png";
+          });
+          localStorage.setItem("theme", "light");
+        } else {
+          body.setAttribute("data-theme", "dark");
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+          localStorage.setItem("theme", "dark");
+        }
+      }
+
+      function loadSavedTheme() {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          document.body.setAttribute("data-theme", "dark");
+          const themeIcon = document.querySelector(".theme-icon");
+          const themeText = document.querySelector(".theme-text");
+          if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
+          if (themeText) themeText.textContent = "Light";
+          const logos = document.querySelectorAll(
+            ".logo-icon, .footer-logo-icon"
+          );
+          logos.forEach((logo) => {
+            logo.src = "assets/images/logo2d.png";
+          });
+        }
+      }
+
+      // ===========================================
+      // NAVIGATION FUNCTIONALITY
+      // ===========================================
+      function setActiveNav(element) {
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.classList.remove("active");
+        });
+        element.classList.add("active");
+
+        const navMenu = document.getElementById("navMenu");
+        if (navMenu && navMenu.classList.contains("active")) {
+          navMenu.classList.remove("active");
+          const mobileToggle = document.querySelector(".mobile-menu-toggle");
+          if (mobileToggle) {
+            mobileToggle.classList.remove("active");
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          }
+        }
+      }
+
+      function toggleMobileMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+
+        if (navMenu && mobileToggle) {
+          navMenu.classList.toggle("active");
+          mobileToggle.classList.toggle("active");
+
+          if (navMenu.classList.contains("active")) {
+            mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+          } else {
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          }
+        }
+      }
+
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const navMenu = document.getElementById("navMenu");
+          if (navMenu && navMenu.classList.contains("active")) {
+            navMenu.classList.remove("active");
+            const mobileToggle = document.querySelector(".mobile-menu-toggle");
+            if (mobileToggle) {
+              mobileToggle.classList.remove("active");
+              mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+          }
+
+          section.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }
+
+      function handleNavbarScroll() {
+        const navbar = document.getElementById("navbar");
+        if (navbar) {
+          if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        }
+      }
+
+      // ===========================================
+      // SCROLL ANIMATION FUNCTIONS
+      // ===========================================
+      function initScrollAnimations() {
+        const heroSection = document.querySelector(".hero");
+        if (heroSection) {
+          heroSection.classList.add("visible");
+        }
+        handleScrollAnimations();
+      }
+
+      function handleScrollAnimations() {
+        const animatedElements = document.querySelectorAll(
+          ".fade-in:not(.visible), .slide-in-left:not(.visible), .slide-in-right:not(.visible), .scale-in:not(.visible)"
+        );
+
+        animatedElements.forEach((element) => {
+          if (isElementInViewport(element)) {
+            element.classList.add("visible");
+          }
+        });
+      }
+
+      function isElementInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        const windowHeight =
+          window.innerHeight || document.documentElement.clientHeight;
+        const offset = windowHeight * 0.2;
+        return rect.top <= windowHeight - offset && rect.bottom >= offset;
+      }
+
+      // ===========================================
+      // EVENT LISTENERS
+      // ===========================================
+      document.addEventListener("DOMContentLoaded", function () {
+        loadSavedTheme();
+        initializeGallery();
+        initScrollAnimations();
+
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            scrollToSection(targetId);
+          });
+        });
+      });
+
+      window.addEventListener("scroll", handleNavbarScroll);
+      window.addEventListener("scroll", handleScrollAnimations);
+
+      // ===========================================
+      // IMAGE PROTECTION
+      // ===========================================
+      document.addEventListener("contextmenu", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      document.addEventListener("dragstart", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // ===========================================
+      // UTILITY FUNCTIONS
+      // ===========================================
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+
+      console.log("Impasto Photography Website Loaded Successfully!");
+    </script>
+  </body>
+</html>
