@@ -177,6 +177,7 @@
   --overlay: rgba(0, 0, 0, 0.6);
   --nav-bg: rgba(255, 255, 255, 0.95);
   --card-bg: #ffffff;
+  --card: #f1f5f9;
   --gradient-primary: linear-gradient(
     135deg,
     #1e3a8a 0%,
@@ -236,6 +237,7 @@
   --overlay: rgba(0, 0, 0, 0.7);
   --nav-bg: rgba(15, 23, 42, 0.95);
   --card-bg: #1e293b;
+  --card: #1e293b;
   --link-color: #60a5fa;
 
   /* Dark Theme Accent Colors */

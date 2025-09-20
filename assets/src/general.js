@@ -1,20 +1,13 @@
 // ===========================================
-// THEME TOGGLE FUNCTIONALITY - FIXED LOGO SWITCHING
+// THEME TOGGLE FUNCTIONALITY
 // ===========================================
-/**
- * Toggle between light and dark themes
- */
 function toggleTheme() {
   const body = document.body;
   const themeIcon = document.querySelector(".theme-icon");
   const themeText = document.querySelector(".theme-text");
-  const logos = document.querySelectorAll(
-    ".logo-icon, .footer-logo-icon, .logo-icon2" // Fixed selector to match HTML class
-  );
+  const logos = document.querySelectorAll(".logo-icon, .footer-logo-icon");
 
-  // Check current theme
   if (body.getAttribute("data-theme") === "dark") {
-    // Switch to light theme
     body.removeAttribute("data-theme");
     themeIcon.className = "fas fa-moon theme-icon";
     themeText.textContent = "Dark";
@@ -23,7 +16,6 @@ function toggleTheme() {
     });
     localStorage.setItem("theme", "light");
   } else {
-    // Switch to dark theme
     body.setAttribute("data-theme", "dark");
     themeIcon.className = "fas fa-sun theme-icon";
     themeText.textContent = "Light";
@@ -34,24 +26,15 @@ function toggleTheme() {
   }
 }
 
-/**
- * Load saved theme preference on page load
- */
 function loadSavedTheme() {
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "dark") {
     document.body.setAttribute("data-theme", "dark");
-
-    // Update theme button
     const themeIcon = document.querySelector(".theme-icon");
     const themeText = document.querySelector(".theme-text");
     if (themeIcon) themeIcon.className = "fas fa-sun theme-icon";
     if (themeText) themeText.textContent = "Light";
-
-    // Update all logos including the story section logo
-    const logos = document.querySelectorAll(
-      ".logo-icon, .footer-logo-icon, .logo-icon2"
-    );
+    const logos = document.querySelectorAll(".logo-icon, .footer-logo-icon");
     logos.forEach((logo) => {
       logo.src = "assets/images/logo2d.png";
     });
@@ -59,145 +42,233 @@ function loadSavedTheme() {
 }
 
 // ===========================================
-// NAVIGATION FUNCTIONALITY
+// NAVIGATION FUNCTIONALITY - COMPLETE FIX
 // ===========================================
-/**
- * Set active navigation item
- * @param {HTMLElement} element - The clicked navigation link
- */
+// Define parent-child relationships for navigation
+const navHierarchy = {
+  "information.html": [
+    "faq.html",
+    "portfolio.html",
+    "client-questionnaire.html",
+    "reviews.html",
+  ],
+  "ratecards.html": ["portrait.html", "wedding.html"],
+};
+
+// Override any existing setActiveNav function
 function setActiveNav(element) {
-  // Remove active class from all nav links
+  // Prevent default behavior
+  if (window.event) {
+    window.event.preventDefault();
+  }
+
+  // Get the href attribute
+  const href = element.getAttribute("href");
+
+  // Only handle internal links (not anchor links)
+  if (href && !href.startsWith("#")) {
+    // Close mobile menu if open
+    closeMobileMenu();
+
+    // Navigate to the new page
+    window.location.href = href;
+  }
+
+  // Set active state
   document.querySelectorAll(".nav-link").forEach((link) => {
     link.classList.remove("active");
   });
-  // Add active class to clicked link
   element.classList.add("active");
-  // Close mobile menu if open
-  const navMenu = document.getElementById("navMenu");
-  if (navMenu.classList.contains("active")) {
-    navMenu.classList.remove("active");
-    // Reset mobile menu toggle icon
-    const mobileToggle = document.querySelector(".mobile-menu-toggle");
-    mobileToggle.classList.remove("active");
-    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+}
+
+// Set active state based on current page with parent-child relationships
+function setActiveNavBasedOnPage() {
+  const currentPath = window.location.pathname.split("/").pop() || "index.html";
+
+  // First, remove active class from all nav links
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    link.classList.remove("active");
+  });
+
+  // Check if current page is a child page
+  let parentPage = null;
+  for (const [parent, children] of Object.entries(navHierarchy)) {
+    if (children.includes(currentPath)) {
+      parentPage = parent;
+      break;
+    }
+  }
+
+  // Set active state
+  if (parentPage) {
+    // If it's a child page, set the parent as active
+    const parentLink = document.querySelector(
+      `.nav-link[href="${parentPage}"]`
+    );
+    if (parentLink) {
+      parentLink.classList.add("active");
+    }
+  } else {
+    // If it's a parent page or standalone page, set it as active
+    const currentLink = document.querySelector(
+      `.nav-link[href="${currentPath}"]`
+    );
+    if (currentLink) {
+      currentLink.classList.add("active");
+    }
   }
 }
 
-/**
- * Toggle mobile menu
- */
+// Handle navigation clicks with event delegation
+function handleNavigationClicks() {
+  document.addEventListener("click", function (e) {
+    // Check if clicked element is a nav link
+    const navLink = e.target.closest(".nav-link");
+    if (navLink && !navLink.closest(".dropdown-toggle")) {
+      const href = navLink.getAttribute("href");
+
+      // Only handle internal links (not anchor links)
+      if (href && !href.startsWith("#")) {
+        e.preventDefault();
+
+        // Close mobile menu if open
+        closeMobileMenu();
+
+        // Navigate to the new page
+        window.location.href = href;
+      }
+    }
+  });
+}
+
+// Mobile menu functions
 function toggleMobileMenu() {
   const navMenu = document.getElementById("navMenu");
   const mobileToggle = document.querySelector(".mobile-menu-toggle");
+  const overlay = document.getElementById("mobileMenuOverlay");
 
-  navMenu.classList.toggle("active");
-  mobileToggle.classList.toggle("active");
+  if (navMenu && mobileToggle && overlay) {
+    const isActive = navMenu.classList.contains("active");
 
-  // Change icon based on menu state
-  if (navMenu.classList.contains("active")) {
-    mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
-  } else {
-    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    if (isActive) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
   }
 }
 
-/**
- * Smooth scroll to section
- * @param {string} sectionId - The ID of the section to scroll to
- */
-function scrollToSection(sectionId) {
-  const section = document.getElementById(sectionId);
-  if (section) {
-    // Close mobile menu if open
-    const navMenu = document.getElementById("navMenu");
-    if (navMenu.classList.contains("active")) {
-      navMenu.classList.remove("active");
-      const mobileToggle = document.querySelector(".mobile-menu-toggle");
+function openMobileMenu() {
+  const navMenu = document.getElementById("navMenu");
+  const mobileToggle = document.querySelector(".mobile-menu-toggle");
+  const overlay = document.getElementById("mobileMenuOverlay");
+
+  navMenu.classList.add("active");
+  mobileToggle.classList.add("active");
+  overlay.classList.add("active");
+  mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+  document.body.style.overflow = "hidden";
+}
+
+function closeMobileMenu() {
+  const navMenu = document.getElementById("navMenu");
+  const mobileToggle = document.querySelector(".mobile-menu-toggle");
+  const overlay = document.getElementById("mobileMenuOverlay");
+
+  if (navMenu && navMenu.classList.contains("active")) {
+    navMenu.classList.remove("active");
+    if (mobileToggle) {
       mobileToggle.classList.remove("active");
       mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
     }
+    if (overlay) {
+      overlay.classList.remove("active");
+    }
+    document.body.style.overflow = "";
+  }
+}
 
-    section.scrollIntoView({
+function toggleDropdown(element) {
+  if (window.innerWidth < 1024) {
+    const dropdownMenu =
+      element.parentElement.parentElement.querySelector(".dropdown-menu");
+    const dropdownArrow = element.querySelector(".dropdown-arrow");
+
+    if (dropdownMenu && dropdownArrow) {
+      dropdownMenu.classList.toggle("open");
+      dropdownArrow.classList.toggle("open");
+
+      if (window.event) {
+        window.event.preventDefault();
+        window.event.stopPropagation();
+      }
+    }
+  }
+}
+
+// ===========================================
+// SCROLL AND ANIMATION FUNCTIONS
+// ===========================================
+function scrollToSection(sectionId) {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    closeMobileMenu();
+    const navbarHeight = document.getElementById("navbar").offsetHeight;
+    const targetPosition = section.offsetTop - navbarHeight - 20;
+    window.scrollTo({
+      top: targetPosition,
       behavior: "smooth",
-      block: "start",
     });
   }
 }
 
-/**
- * Handle navbar scroll effect
- */
 function handleNavbarScroll() {
   const navbar = document.getElementById("navbar");
-  if (window.scrollY > 50) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
+  if (navbar) {
+    if (window.scrollY > 50) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
   }
 }
 
-// ===========================================
-// SCROLL ANIMATION FUNCTIONS
-// ===========================================
-/**
- * Initialize scroll animations with professional timing
- */
 function initScrollAnimations() {
-  // Make hero section visible immediately
   const heroSection = document.querySelector(".hero");
   if (heroSection) {
     heroSection.classList.add("visible");
   }
 
-  // Initial check for elements already in viewport
   setTimeout(() => {
     handleScrollAnimations();
   }, 150);
 
-  // Second check to catch any dynamically loaded content
   setTimeout(() => {
     handleScrollAnimations();
   }, 500);
 }
 
-/**
- * Enhanced scroll animation handler with professional timing
- */
 function handleScrollAnimations() {
   const animatedElements = document.querySelectorAll(
-    ".fade-in:not(.visible), .slide-in-left:not(.visible), .slide-in-right:not(.visible), .scale-in:not(.visible)"
+    ".fade-in:not(.visible), .slide-in-left:not(.visible), .slide-in-right:not(.visible), .scale-in:not(.visible), .scroll-animate:not(.visible), .text-animate:not(.visible)"
   );
 
   animatedElements.forEach((element, index) => {
     if (isElementInViewport(element)) {
-      // Add small staggered delay for multiple elements for professional effect
       setTimeout(() => {
         element.classList.add("visible");
-      }, index * 100); // 100ms delay between each element
+      }, index * 100);
     }
   });
 }
 
-/**
- * Professional viewport detection with 20% trigger point
- * @param {HTMLElement} element - The element to check
- * @return {boolean} - True if element is in viewport
- */
 function isElementInViewport(element) {
   const rect = element.getBoundingClientRect();
   const windowHeight =
     window.innerHeight || document.documentElement.clientHeight;
-
-  // Professional trigger: when 20% of element is visible from the top
   const elementHeight = rect.height;
-  const triggerPoint = elementHeight * 0.2; // 20% of element height
-
-  // Trigger when element top crosses the 80% viewport line (bottom 20% of viewport)
+  const triggerPoint = elementHeight * 0.2;
   const viewportTriggerLine = windowHeight * 0.8;
-
-  // Element should animate when:
-  // 1. Its top edge reaches 80% of viewport height, OR
-  // 2. 20% of the element is visible
   const isTopInTriggerZone = rect.top <= viewportTriggerLine;
   const isElementPartiallyVisible = rect.top < windowHeight && rect.bottom > 0;
   const hasMinimumVisibility = rect.top <= windowHeight - triggerPoint;
@@ -207,19 +278,6 @@ function isElementInViewport(element) {
   );
 }
 
-/**
- * Enhanced scroll handler with throttling for better performance
- */
-const throttledScrollHandler = throttle(() => {
-  handleScrollAnimations();
-}, 16); // ~60fps
-
-/**
- * Throttle function for better performance than debounce for scroll events
- * @param {Function} func - The function to throttle
- * @param {number} limit - The time limit in milliseconds
- * @return {Function} - The throttled function
- */
 function throttle(func, limit) {
   let inThrottle;
   return function () {
@@ -233,23 +291,111 @@ function throttle(func, limit) {
   };
 }
 
+const throttledScrollHandler = throttle(() => {
+  handleScrollAnimations();
+}, 16);
+
 // ===========================================
-// EVENT LISTENERS
+// HERO SLIDER FUNCTIONALITY
 // ===========================================
-// Initialize when DOM is loaded
+let heroCurrentSlide = 0;
+let heroTotalSlides = 5;
+let heroSlideInterval;
+let isAnimating = false;
+
+function updateHeroSlide() {
+  if (isAnimating) return;
+
+  isAnimating = true;
+
+  const heroSlides = document.querySelectorAll(".hero-slide");
+  const heroDots = document.querySelectorAll(".hero-dot");
+
+  if (heroSlides.length === 0 || heroDots.length === 0) {
+    isAnimating = false;
+    return;
+  }
+
+  heroSlides.forEach((slide) => slide.classList.remove("active"));
+  heroDots.forEach((dot) => dot.classList.remove("active"));
+
+  heroSlides[heroCurrentSlide].classList.add("active");
+  heroDots[heroCurrentSlide].classList.add("active");
+
+  setTimeout(() => {
+    isAnimating = false;
+  }, 1000);
+}
+
+function nextHeroSlide() {
+  heroCurrentSlide = (heroCurrentSlide + 1) % heroTotalSlides;
+  updateHeroSlide();
+}
+
+function previousHeroSlide() {
+  heroCurrentSlide = (heroCurrentSlide - 1 + heroTotalSlides) % heroTotalSlides;
+  updateHeroSlide();
+}
+
+function goToSlide(slideIndex) {
+  if (slideIndex >= 0 && slideIndex < heroTotalSlides && !isAnimating) {
+    heroCurrentSlide = slideIndex;
+    updateHeroSlide();
+  }
+}
+
+function startHeroAutoSlide() {
+  if (document.querySelector(".hero-slide")) {
+    heroSlideInterval = setInterval(() => {
+      nextHeroSlide();
+    }, 6000);
+  }
+}
+
+function stopHeroAutoSlide() {
+  if (heroSlideInterval) {
+    clearInterval(heroSlideInterval);
+  }
+}
+
+function initHeroSlider() {
+  const heroSlides = document.querySelectorAll(".hero-slide");
+  if (heroSlides.length > 0) {
+    heroTotalSlides = heroSlides.length;
+    updateHeroSlide();
+    startHeroAutoSlide();
+
+    const heroDots = document.querySelectorAll(".hero-dot");
+    heroDots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        goToSlide(index);
+        stopHeroAutoSlide();
+        setTimeout(startHeroAutoSlide, 3000);
+      });
+    });
+  }
+}
+
+// ===========================================
+// INITIALIZATION AND EVENT LISTENERS
+// ===========================================
 document.addEventListener("DOMContentLoaded", function () {
   // Load saved theme
   loadSavedTheme();
 
-  // Initialize gallery if function exists
-  if (typeof initializeGallery === "function") {
-    initializeGallery();
-  }
+  // Set active navigation based on current page
+  setActiveNavBasedOnPage();
+
+  // Handle navigation clicks
+  handleNavigationClicks();
+
+  // Initialize hero slider if it exists
+  initHeroSlider();
 
   // Initialize scroll animations
   initScrollAnimations();
 
-  // Add smooth scrolling to all navigation links
+  // Add smooth scrolling to anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
@@ -258,17 +404,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Trigger animations on page load for elements already in view
+  // Trigger animations on page load
   setTimeout(() => {
     handleScrollAnimations();
   }, 250);
 });
 
-// Optimized scroll event listeners
+// Global event listeners
 window.addEventListener("scroll", handleNavbarScroll);
 window.addEventListener("scroll", throttledScrollHandler);
 
-// Handle resize events to recalculate element positions
 window.addEventListener(
   "resize",
   debounce(() => {
@@ -276,39 +421,44 @@ window.addEventListener(
   }, 250)
 );
 
-// Keyboard navigation for lightbox
+document.addEventListener("visibilitychange", function () {
+  if (document.hidden) {
+    stopHeroAutoSlide();
+  } else {
+    startHeroAutoSlide();
+  }
+});
+
+window.addEventListener("focus", startHeroAutoSlide);
+window.addEventListener("blur", stopHeroAutoSlide);
+
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
-    if (typeof closeLightbox === "function") {
-      closeLightbox();
-    }
+    closeMobileMenu();
   }
-  // Close mobile menu on escape
-  if (e.key === "Escape") {
-    const navMenu = document.getElementById("navMenu");
-    if (navMenu && navMenu.classList.contains("active")) {
-      navMenu.classList.remove("active");
-      const mobileToggle = document.querySelector(".mobile-menu-toggle");
-      if (mobileToggle) {
-        mobileToggle.classList.remove("active");
-        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
-      }
-    }
+
+  if (e.key === "ArrowLeft") {
+    previousHeroSlide();
+    stopHeroAutoSlide();
+    setTimeout(startHeroAutoSlide, 3000);
+  }
+  if (e.key === "ArrowRight") {
+    nextHeroSlide();
+    stopHeroAutoSlide();
+    setTimeout(startHeroAutoSlide, 3000);
   }
 });
 
 // ===========================================
 // IMAGE PROTECTION
 // ===========================================
-// Prevent right-click on the entire document
 document.addEventListener("contextmenu", function (e) {
-  // Check if the target is an image
   if (e.target.tagName === "IMG") {
     e.preventDefault();
     return false;
   }
 });
-// Prevent drag and drop of images
+
 document.addEventListener("dragstart", function (e) {
   if (e.target.tagName === "IMG") {
     e.preventDefault();
@@ -319,12 +469,6 @@ document.addEventListener("dragstart", function (e) {
 // ===========================================
 // UTILITY FUNCTIONS
 // ===========================================
-/**
- * Debounce function to limit how often a function can be called
- * @param {Function} func - The function to debounce
- * @param {number} wait - The wait time in milliseconds
- * @return {Function} - The debounced function
- */
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -337,5 +481,4 @@ function debounce(func, wait) {
   };
 }
 
-// Console log for debugging
 console.log("Impasto Photography Website Loaded Successfully! 📸");

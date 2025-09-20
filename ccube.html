@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Rubik's Cube Hero</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 5%;
+        gap: 5%;
+      }
+
+      .hero-content {
+        flex: 1;
+        max-width: 500px;
+        z-index: 10;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        color: white;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        line-height: 1.1;
+        text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 2.5rem;
+        line-height: 1.6;
+      }
+
+      .cta-button {
+        background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+        color: white;
+        padding: 18px 45px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 15px 35px rgba(255, 107, 107, 0.3);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 50px rgba(255, 107, 107, 0.4);
+      }
+
+      .cube-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        perspective: 1000px;
+        min-height: 600px;
+      }
+
+      .cube-grid {
+        position: relative;
+        width: 450px;
+        height: 450px;
+        transform-style: preserve-3d;
+      }
+
+      .cube-tile {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        transform-style: preserve-3d;
+        transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+      }
+
+      .cube-face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: url("assets/images/cam2.jpg");
+        background-size: 450px 450px;
+        background-repeat: no-repeat;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .cube-face.front {
+        transform: translateZ(2px);
+      }
+
+      .cube-face.back {
+        transform: translateZ(-2px) rotateY(180deg);
+      }
+
+      /* Position tiles in 3x3 grid */
+      .tile-0 {
+        top: 0;
+        left: 0;
+      }
+      .tile-1 {
+        top: 0;
+        left: 150px;
+      }
+      .tile-2 {
+        top: 0;
+        left: 300px;
+      }
+      .tile-3 {
+        top: 150px;
+        left: 0;
+      }
+      .tile-4 {
+        top: 150px;
+        left: 150px;
+      }
+      .tile-5 {
+        top: 150px;
+        left: 300px;
+      }
+      .tile-6 {
+        top: 300px;
+        left: 0;
+      }
+      .tile-7 {
+        top: 300px;
+        left: 150px;
+      }
+      .tile-8 {
+        top: 300px;
+        left: 300px;
+      }
+
+      /* Image positions for front faces */
+      .tile-0 .front {
+        background-position: 0 0;
+      }
+      .tile-1 .front {
+        background-position: -150px 0;
+      }
+      .tile-2 .front {
+        background-position: -300px 0;
+      }
+      .tile-3 .front {
+        background-position: 0 -150px;
+      }
+      .tile-4 .front {
+        background-position: -150px -150px;
+      }
+      .tile-5 .front {
+        background-position: -300px -150px;
+      }
+      .tile-6 .front {
+        background-position: 0 -300px;
+      }
+      .tile-7 .front {
+        background-position: -150px -300px;
+      }
+      .tile-8 .front {
+        background-position: -300px -300px;
+      }
+
+      /* Image positions for back faces (same image repeated) */
+      .tile-0 .back {
+        background-position: 0 0;
+      }
+      .tile-1 .back {
+        background-position: -150px 0;
+      }
+      .tile-2 .back {
+        background-position: -300px 0;
+      }
+      .tile-3 .back {
+        background-position: 0 -150px;
+      }
+      .tile-4 .back {
+        background-position: -150px -150px;
+      }
+      .tile-5 .back {
+        background-position: -300px -150px;
+      }
+      .tile-6 .back {
+        background-position: 0 -300px;
+      }
+      .tile-7 .back {
+        background-position: -150px -300px;
+      }
+      .tile-8 .back {
+        background-position: -300px -300px;
+      }
+
+      /* Animation classes */
+      .rotate-row {
+        transform: rotateY(180deg);
+      }
+      .rotate-column {
+        transform: rotateX(180deg);
+      }
+
+      /* Glow effect */
+      .cube-grid::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        right: -20px;
+        bottom: -20px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+        border-radius: 20px;
+        z-index: -1;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+          gap: 3rem;
+          padding: 5% 2%;
+        }
+
+        .cube-grid {
+          width: 360px;
+          height: 360px;
+        }
+
+        .cube-tile {
+          width: 120px;
+          height: 120px;
+        }
+
+        .cube-face {
+          background-size: 360px 360px;
+        }
+
+        .tile-1 {
+          left: 120px;
+        }
+        .tile-2 {
+          left: 240px;
+        }
+        .tile-3 {
+          top: 120px;
+        }
+        .tile-4 {
+          top: 120px;
+          left: 120px;
+        }
+        .tile-5 {
+          top: 120px;
+          left: 240px;
+        }
+        .tile-6 {
+          top: 240px;
+        }
+        .tile-7 {
+          top: 240px;
+          left: 120px;
+        }
+        .tile-8 {
+          top: 240px;
+          left: 240px;
+        }
+
+        .tile-1 .front,
+        .tile-1 .back {
+          background-position: -120px 0;
+        }
+        .tile-2 .front,
+        .tile-2 .back {
+          background-position: -240px 0;
+        }
+        .tile-3 .front,
+        .tile-3 .back {
+          background-position: 0 -120px;
+        }
+        .tile-4 .front,
+        .tile-4 .back {
+          background-position: -120px -120px;
+        }
+        .tile-5 .front,
+        .tile-5 .back {
+          background-position: -240px -120px;
+        }
+        .tile-6 .front,
+        .tile-6 .back {
+          background-position: 0 -240px;
+        }
+        .tile-7 .front,
+        .tile-7 .back {
+          background-position: -120px -240px;
+        }
+        .tile-8 .front,
+        .tile-8 .back {
+          background-position: -240px -240px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.1rem;
+        }
+
+        .cube-grid {
+          width: 300px;
+          height: 300px;
+        }
+
+        .cube-tile {
+          width: 100px;
+          height: 100px;
+        }
+
+        .cube-face {
+          background-size: 300px 300px;
+        }
+
+        .tile-1 {
+          left: 100px;
+        }
+        .tile-2 {
+          left: 200px;
+        }
+        .tile-3 {
+          top: 100px;
+        }
+        .tile-4 {
+          top: 100px;
+          left: 100px;
+        }
+        .tile-5 {
+          top: 100px;
+          left: 200px;
+        }
+        .tile-6 {
+          top: 200px;
+        }
+        .tile-7 {
+          top: 200px;
+          left: 100px;
+        }
+        .tile-8 {
+          top: 200px;
+          left: 200px;
+        }
+
+        .tile-1 .front,
+        .tile-1 .back {
+          background-position: -100px 0;
+        }
+        .tile-2 .front,
+        .tile-2 .back {
+          background-position: -200px 0;
+        }
+        .tile-3 .front,
+        .tile-3 .back {
+          background-position: 0 -100px;
+        }
+        .tile-4 .front,
+        .tile-4 .back {
+          background-position: -100px -100px;
+        }
+        .tile-5 .front,
+        .tile-5 .back {
+          background-position: -200px -100px;
+        }
+        .tile-6 .front,
+        .tile-6 .back {
+          background-position: 0 -200px;
+        }
+        .tile-7 .front,
+        .tile-7 .back {
+          background-position: -100px -200px;
+        }
+        .tile-8 .front,
+        .tile-8 .back {
+          background-position: -200px -200px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .cta-button {
+          padding: 15px 35px;
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Revolutionary Innovation</h1>
+        <p>
+          Experience the future of technology with our cutting-edge solutions
+          that transform how you work, play, and connect. Discover endless
+          possibilities.
+        </p>
+        <button class="cta-button">Explore Now</button>
+      </div>
+
+      <div class="cube-container">
+        <div class="cube-grid">
+          <div class="cube-tile tile-0">
+            <div class="cube-face front"></div>
+            <div class="cube-face back"></div>
+          </div>
+          <div class="cube-tile tile-1">
+            <div class="cube-face front"></div>
+            <div class="cube-face back"></div>
+          </div>
+          <div class="cube-tile tile-2">
+            <div class="cube-face front"></div>
+            <div class="cube-face back"></div>
+          </div>
+          <div class="cube-tile tile-3">
+            <div class="cube-face front"></div>
+            <div class="cube-face back"></div>
+          </div>
+          <div class="cube-tile tile-4">
+            <div class="cube-face front"></div>
+            <div class="cube-face back"></div>
+          </div>
+          <div class="cube-tile tile-5">
+            <div class="cube-face front"></div>
+            <div class="cube-face back"></div>
+          </div>
+          <div class="cube-tile tile-6">
+            <div class="cube-face front"></div>
+            <div class="cube-face back"></div>
+          </div>
+          <div class="cube-tile tile-7">
+            <div class="cube-face front"></div>
+            <div class="cube-face back"></div>
+          </div>
+          <div class="cube-tile tile-8">
+            <div class="cube-face front"></div>
+            <div class="cube-face back"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      class RubiksCubeAnimation {
+        constructor() {
+          this.tiles = document.querySelectorAll(".cube-tile");
+          this.animationState = "rows"; // 'rows' or 'columns'
+          this.currentIndex = 0;
+          this.isAnimating = false;
+          this.animationDuration = 1200; // milliseconds
+          this.pauseBetweenAnimations = 800; // milliseconds
+
+          this.rowGroups = [
+            [0, 1, 2], // first row
+            [3, 4, 5], // second row
+            [6, 7, 8], // third row
+          ];
+
+          this.columnGroups = [
+            [0, 3, 6], // first column
+            [1, 4, 7], // second column
+            [2, 5, 8], // third column
+          ];
+
+          this.startAnimation();
+        }
+
+        startAnimation() {
+          setTimeout(() => {
+            this.animateNext();
+          }, 1000); // Initial delay
+        }
+
+        animateNext() {
+          if (this.isAnimating) return;
+
+          this.isAnimating = true;
+
+          const groups =
+            this.animationState === "rows" ? this.rowGroups : this.columnGroups;
+          const currentGroup = groups[this.currentIndex];
+          const rotationClass =
+            this.animationState === "rows" ? "rotate-row" : "rotate-column";
+
+          // Apply rotation to current group
+          currentGroup.forEach((tileIndex) => {
+            this.tiles[tileIndex].classList.add(rotationClass);
+          });
+
+          // Schedule removal of rotation and next animation
+          setTimeout(() => {
+            currentGroup.forEach((tileIndex) => {
+              this.tiles[tileIndex].classList.remove(rotationClass);
+            });
+
+            this.currentIndex++;
+
+            // Check if we've completed all groups in current state
+            if (this.currentIndex >= groups.length) {
+              this.currentIndex = 0;
+              // Switch between rows and columns
+              this.animationState =
+                this.animationState === "rows" ? "columns" : "rows";
+            }
+
+            this.isAnimating = false;
+
+            // Continue with next animation
+            setTimeout(() => {
+              this.animateNext();
+            }, this.pauseBetweenAnimations);
+          }, this.animationDuration);
+        }
+
+        // Method to manually trigger specific animations (for debugging)
+        animateRow(rowIndex) {
+          if (rowIndex >= 0 && rowIndex < 3) {
+            this.rowGroups[rowIndex].forEach((tileIndex) => {
+              this.tiles[tileIndex].classList.toggle("rotate-row");
+            });
+          }
+        }
+
+        animateColumn(columnIndex) {
+          if (columnIndex >= 0 && columnIndex < 3) {
+            this.columnGroups[columnIndex].forEach((tileIndex) => {
+              this.tiles[tileIndex].classList.toggle("rotate-column");
+            });
+          }
+        }
+      }
+
+      // Initialize the animation when DOM is loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        new RubiksCubeAnimation();
+      });
+
+      // Add some interactivity - click on cube to pause/resume
+      document
+        .querySelector(".cube-grid")
+        .addEventListener("click", function () {
+          this.style.animationPlayState =
+            this.style.animationPlayState === "paused" ? "running" : "paused";
+        });
+    </script>
+  </body>
+</html>

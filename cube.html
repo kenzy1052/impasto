@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Grid Hero</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        padding: 0 5%;
+        gap: 5%;
+      }
+
+      .hero-content {
+        flex: 1;
+        z-index: 10;
+        position: relative;
+        text-align: left;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        color: white;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-button {
+        background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+        color: white;
+        padding: 15px 40px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+      }
+
+      .grid-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .grid {
+        position: relative;
+        width: 500px;
+        height: 500px;
+      }
+
+      .grid-item {
+        position: absolute;
+        width: 166.67px;
+        height: 166.67px;
+        background-image: url("assets/images/cam2.jpg");
+        background-size: 500px 500px;
+        background-repeat: no-repeat;
+        transition: transform 1s ease-in-out;
+      }
+
+      /* Position each grid piece and show correct part of image */
+      .grid-item:nth-child(1) {
+        top: 0;
+        left: 0;
+        background-position: 0 0;
+      }
+      .grid-item:nth-child(2) {
+        top: 0;
+        left: 166.67px;
+        background-position: -166.67px 0;
+      }
+      .grid-item:nth-child(3) {
+        top: 0;
+        left: 333.33px;
+        background-position: -333.33px 0;
+      }
+      .grid-item:nth-child(4) {
+        top: 166.67px;
+        left: 0;
+        background-position: 0 -166.67px;
+      }
+      .grid-item:nth-child(5) {
+        top: 166.67px;
+        left: 166.67px;
+        background-position: -166.67px -166.67px;
+      }
+      .grid-item:nth-child(6) {
+        top: 166.67px;
+        left: 333.33px;
+        background-position: -333.33px -166.67px;
+      }
+      .grid-item:nth-child(7) {
+        top: 333.33px;
+        left: 0;
+        background-position: 0 -333.33px;
+      }
+      .grid-item:nth-child(8) {
+        top: 333.33px;
+        left: 166.67px;
+        background-position: -166.67px -333.33px;
+      }
+      .grid-item:nth-child(9) {
+        top: 333.33px;
+        left: 333.33px;
+        background-position: -333.33px -333.33px;
+      }
+
+      /* Grid positions */
+      .grid-item:nth-child(1) {
+        /* Top-left corner */
+      }
+      .grid-item:nth-child(2) {
+        /* Top-middle */
+      }
+      .grid-item:nth-child(3) {
+        /* Top-right corner */
+      }
+      .grid-item:nth-child(4) {
+        /* Left-middle */
+      }
+      .grid-item:nth-child(5) {
+        /* Center - stays static */
+      }
+      .grid-item:nth-child(6) {
+        /* Right-middle */
+      }
+      .grid-item:nth-child(7) {
+        /* Bottom-left corner */
+      }
+      .grid-item:nth-child(8) {
+        /* Bottom-middle */
+      }
+      .grid-item:nth-child(9) {
+        /* Bottom-right corner */
+      }
+
+      /* Animation keyframes - Sequential timing */
+      @keyframes topMiddle {
+        0%,
+        20%,
+        100% {
+          transform: translateY(0);
+        }
+        5%,
+        15% {
+          transform: translateY(-30px);
+        }
+      }
+
+      @keyframes bottomMiddle {
+        0%,
+        20%,
+        100% {
+          transform: translateY(0);
+        }
+        5%,
+        15% {
+          transform: translateY(30px);
+        }
+      }
+
+      @keyframes leftMiddle {
+        0%,
+        20%,
+        40%,
+        100% {
+          transform: translateX(0);
+        }
+        25%,
+        35% {
+          transform: translateX(-30px);
+        }
+      }
+
+      @keyframes rightMiddle {
+        0%,
+        20%,
+        40%,
+        100% {
+          transform: translateX(0);
+        }
+        25%,
+        35% {
+          transform: translateX(30px);
+        }
+      }
+
+      @keyframes topLeftCorner {
+        0%,
+        40%,
+        60%,
+        100% {
+          transform: translate(0, 0);
+        }
+        45%,
+        55% {
+          transform: translate(-30px, -30px);
+        }
+      }
+
+      @keyframes topRightCorner {
+        0%,
+        40%,
+        60%,
+        100% {
+          transform: translate(0, 0);
+        }
+        45%,
+        55% {
+          transform: translate(30px, -30px);
+        }
+      }
+
+      @keyframes bottomLeftCorner {
+        0%,
+        40%,
+        60%,
+        100% {
+          transform: translate(0, 0);
+        }
+        45%,
+        55% {
+          transform: translate(-30px, 30px);
+        }
+      }
+
+      @keyframes bottomRightCorner {
+        0%,
+        40%,
+        60%,
+        100% {
+          transform: translate(0, 0);
+        }
+        45%,
+        55% {
+          transform: translate(30px, 30px);
+        }
+      }
+
+      /* Apply animations with 10s cycle for clear sequential timing */
+      .grid-item:nth-child(2) {
+        animation: topMiddle 10s infinite;
+      }
+
+      .grid-item:nth-child(8) {
+        animation: bottomMiddle 10s infinite;
+      }
+
+      .grid-item:nth-child(4) {
+        animation: leftMiddle 10s infinite;
+      }
+
+      .grid-item:nth-child(6) {
+        animation: rightMiddle 10s infinite;
+      }
+
+      .grid-item:nth-child(1) {
+        animation: topLeftCorner 10s infinite;
+      }
+
+      .grid-item:nth-child(3) {
+        animation: topRightCorner 10s infinite;
+      }
+
+      .grid-item:nth-child(7) {
+        animation: bottomLeftCorner 10s infinite;
+      }
+
+      .grid-item:nth-child(9) {
+        animation: bottomRightCorner 10s infinite;
+      }
+
+      /* Floating particles background effect */
+      .particle {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        animation: float 8s infinite ease-in-out;
+      }
+
+      .particle:nth-child(1) {
+        width: 20px;
+        height: 20px;
+        top: 20%;
+        left: 20%;
+        animation-delay: 0s;
+      }
+
+      .particle:nth-child(2) {
+        width: 15px;
+        height: 15px;
+        top: 60%;
+        left: 80%;
+        animation-delay: 2s;
+      }
+
+      .particle:nth-child(3) {
+        width: 25px;
+        height: 25px;
+        top: 80%;
+        left: 30%;
+        animation-delay: 4s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(180deg);
+        }
+      }
+
+      /* Responsive design */
+      @media (max-width: 1024px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+          gap: 3rem;
+          padding: 5% 2%;
+        }
+
+        .hero-content {
+          text-align: center;
+        }
+
+        .grid {
+          width: 400px;
+          height: 400px;
+        }
+
+        .grid-item {
+          width: 133.33px;
+          height: 133.33px;
+          background-size: 400px 400px;
+        }
+
+        .grid-item:nth-child(1) {
+          top: 0;
+          left: 0;
+        }
+        .grid-item:nth-child(2) {
+          top: 0;
+          left: 133.33px;
+          background-position: -133.33px 0;
+        }
+        .grid-item:nth-child(3) {
+          top: 0;
+          left: 266.67px;
+          background-position: -266.67px 0;
+        }
+        .grid-item:nth-child(4) {
+          top: 133.33px;
+          left: 0;
+          background-position: 0 -133.33px;
+        }
+        .grid-item:nth-child(5) {
+          top: 133.33px;
+          left: 133.33px;
+          background-position: -133.33px -133.33px;
+        }
+        .grid-item:nth-child(6) {
+          top: 133.33px;
+          left: 266.67px;
+          background-position: -266.67px -133.33px;
+        }
+        .grid-item:nth-child(7) {
+          top: 266.67px;
+          left: 0;
+          background-position: 0 -266.67px;
+        }
+        .grid-item:nth-child(8) {
+          top: 266.67px;
+          left: 133.33px;
+          background-position: -133.33px -266.67px;
+        }
+        .grid-item:nth-child(9) {
+          top: 266.67px;
+          left: 266.67px;
+          background-position: -266.67px -266.67px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+          padding: 0 20px;
+        }
+
+        .grid {
+          width: 350px;
+          height: 350px;
+        }
+
+        .grid-item {
+          width: 116.67px;
+          height: 116.67px;
+          background-size: 350px 350px;
+        }
+
+        .grid-item:nth-child(1) {
+          top: 0;
+          left: 0;
+        }
+        .grid-item:nth-child(2) {
+          top: 0;
+          left: 116.67px;
+          background-position: -116.67px 0;
+        }
+        .grid-item:nth-child(3) {
+          top: 0;
+          left: 233.33px;
+          background-position: -233.33px 0;
+        }
+        .grid-item:nth-child(4) {
+          top: 116.67px;
+          left: 0;
+          background-position: 0 -116.67px;
+        }
+        .grid-item:nth-child(5) {
+          top: 116.67px;
+          left: 116.67px;
+          background-position: -116.67px -116.67px;
+        }
+        .grid-item:nth-child(6) {
+          top: 116.67px;
+          left: 233.33px;
+          background-position: -233.33px -116.67px;
+        }
+        .grid-item:nth-child(7) {
+          top: 233.33px;
+          left: 0;
+          background-position: 0 -233.33px;
+        }
+        .grid-item:nth-child(8) {
+          top: 233.33px;
+          left: 116.67px;
+          background-position: -116.67px -233.33px;
+        }
+        .grid-item:nth-child(9) {
+          top: 233.33px;
+          left: 233.33px;
+          background-position: -233.33px -233.33px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .grid {
+          width: 280px;
+          height: 280px;
+        }
+
+        .grid-item {
+          width: 93.33px;
+          height: 93.33px;
+          background-size: 280px 280px;
+        }
+
+        .grid-item:nth-child(1) {
+          top: 0;
+          left: 0;
+        }
+        .grid-item:nth-child(2) {
+          top: 0;
+          left: 93.33px;
+          background-position: -93.33px 0;
+        }
+        .grid-item:nth-child(3) {
+          top: 0;
+          left: 186.67px;
+          background-position: -186.67px 0;
+        }
+        .grid-item:nth-child(4) {
+          top: 93.33px;
+          left: 0;
+          background-position: 0 -93.33px;
+        }
+        .grid-item:nth-child(5) {
+          top: 93.33px;
+          left: 93.33px;
+          background-position: -93.33px -93.33px;
+        }
+        .grid-item:nth-child(6) {
+          top: 93.33px;
+          left: 186.67px;
+          background-position: -186.67px -93.33px;
+        }
+        .grid-item:nth-child(7) {
+          top: 186.67px;
+          left: 0;
+          background-position: 0 -186.67px;
+        }
+        .grid-item:nth-child(8) {
+          top: 186.67px;
+          left: 93.33px;
+          background-position: -93.33px -186.67px;
+        }
+        .grid-item:nth-child(9) {
+          top: 186.67px;
+          left: 186.67px;
+          background-position: -186.67px -186.67px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <!-- Floating particles for extra visual interest -->
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+
+      <!-- Animated grid background -->
+      <div class="grid-container">
+        <div class="grid">
+          <div class="grid-item"></div>
+          <!-- Top-left corner -->
+          <div class="grid-item"></div>
+          <!-- Top-middle -->
+          <div class="grid-item"></div>
+          <!-- Top-right corner -->
+          <div class="grid-item"></div>
+          <!-- Left-middle -->
+          <div class="grid-item"></div>
+          <!-- Center (static) -->
+          <div class="grid-item"></div>
+          <!-- Right-middle -->
+          <div class="grid-item"></div>
+          <!-- Bottom-left corner -->
+          <div class="grid-item"></div>
+          <!-- Bottom-middle -->
+          <div class="grid-item"></div>
+          <!-- Bottom-right corner -->
+        </div>
+      </div>
+
+      <!-- Hero content -->
+      <div class="hero-content">
+        <h1>Your Amazing Product</h1>
+        <p>
+          Transform your ideas into reality with our cutting-edge solutions that
+          inspire and innovate.
+        </p>
+        <button class="cta-button">Get Started Today</button>
+      </div>
+    </section>
+  </body>
+</html>
